@@ -1,0 +1,75 @@
+@import-normalize;
+
+:root {
+  --white-color: #fafafa;
+  --black-color: #121212;
+  --gray-color: #d9d9d9;
+  --green-color: #11b843;
+  --accent-color: #ff416c;
+  --black-transparent-color: rgba(0, 0, 0, 0.5);
+  --white-transparent-color: rgba(255, 255, 255, 0.5);
+
+  --hover-effect: 250ms linear;
+  --blur-effect: blur(10px);
+  --main-shadow: 2px 2px 7px 0px var(--black-transparent-color);
+  --main-gradient: linear-gradient(to right, var(--accent-color-), #ff4b2b);
+
+  --small-indent: 15px;
+  --medium-indent: 30px;
+  --large-indent: 50px;
+
+  --main-font: "Montserrat", sans-serif;
+  --second-font: "Young Serif", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  font-size: 16px;
+  font-family: var(--main-font);
+  line-height: 1.75;
+
+  background-color: var(--white-color);
+  color: var(--black-color);
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
