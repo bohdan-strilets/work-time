@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import ScreenWidth from "utilities/ScreenWidth";
 
 export const Wrapper = styled.div`
+  position: relative;
   width: ${ScreenWidth.mobile};
   margin: 0 auto;
 
