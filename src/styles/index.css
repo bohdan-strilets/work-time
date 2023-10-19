@@ -12,7 +12,7 @@
   --hover-effect: 250ms linear;
   --blur-effect: blur(10px);
   --main-shadow: 2px 2px 7px 0px var(--black-transparent-color);
-  --main-gradient: linear-gradient(to right, var(--accent-color-), #ff4b2b);
+  --main-gradient: linear-gradient(to right, var(--accent-color), #ff4b2b);
 
   --small-indent: 15px;
   --medium-indent: 30px;
