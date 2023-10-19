@@ -1,10 +1,10 @@
 import { CgMenuGridO } from "react-icons/cg";
 import Button from "components/UI/Button";
-import { List } from "./Header.styled";
+import { Wrapper, List } from "./Header.styled";
 
 const Header: React.FC<{}> = () => {
   return (
-    <header>
+    <Wrapper>
       <List>
         <li>
           <Button
@@ -18,7 +18,7 @@ const Header: React.FC<{}> = () => {
           <Button type="button" label="Start" width="200px" height="35px" />
         </li>
       </List>
-    </header>
+    </Wrapper>
   );
 };
 
