@@ -5,7 +5,6 @@ const HomePage: React.FC<{}> = () => {
     <>
       <div>
         <Logo />
-        <p>Example text for footer, more text.</p>
         <ul>
           <li>
             <p>F</p>
