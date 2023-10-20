@@ -17,6 +17,7 @@ export const Wrapper = styled.button<WrapperProps>`
   color: var(--white-color);
   background: var(--black-color);
   border: none;
+  outline: none;
   border-radius: 3px;
   box-shadow: var(--main-shadow);
   opacity: ${({ disabled }) => (disabled ? "0.3" : "1")};

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import ScreenWidth from "utilities/ScreenWidth";
 
 export const List = styled.ul`
   position: absolute;
@@ -10,12 +11,17 @@ export const List = styled.ul`
 export const Item = styled.li`
   position: relative;
 
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
 
   :hover p,
   :focus p {
     opacity: 1;
+  }
+
+  @media screen and (min-width: ${ScreenWidth.tablet}) {
+    width: 45px;
+    height: 45px;
   }
 `;
 
@@ -42,7 +48,7 @@ export const Reference = styled.a`
 export const Label = styled.p`
   position: absolute;
   top: 50%;
-  left: 110%;
+  right: 110%;
   transform: translateY(-50%);
 
   display: flex;
@@ -51,6 +57,7 @@ export const Label = styled.p`
 
   text-align: center;
   font-weight: 600;
+  font-size: 14px;
 
   width: 100px;
   height: 30px;
@@ -59,4 +66,8 @@ export const Label = styled.p`
   opacity: 0;
 
   transition: opacity var(--hover-effect);
+
+  @media screen and (min-width: ${ScreenWidth.tablet}) {
+    font-size: 16px;
+  }
 `;

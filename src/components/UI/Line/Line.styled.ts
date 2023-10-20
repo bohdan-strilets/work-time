@@ -7,31 +7,17 @@ export const Wrapper = styled.div`
   transform: translateY(-50%);
 `;
 
-export const LargeLine = styled.div`
-  width: 5px;
-  height: 180px;
-  margin-bottom: var(--small-indent);
+export const StyledLine = styled.div<{
+  width: string;
+  height: string;
+  background: string;
+  margin?: string;
+}>`
+  width: ${({ width }) => (width ? width : "")};
+  height: ${({ height }) => (height ? height : "")};
+  margin: ${({ margin }) => (margin ? margin : "")};
 
+  background-color: ${({ background }) => (background ? background : "")};
   border-radius: 5px;
-  background-color: var(--black-color);
-  box-shadow: var(--main-shadow);
-`;
-
-export const MediumLine = styled.div`
-  width: 5px;
-  height: 100px;
-  margin-bottom: var(--small-indent);
-
-  border-radius: 5px;
-  background-color: var(--gray-color);
-  box-shadow: var(--main-shadow);
-`;
-
-export const SmallLine = styled.div`
-  width: 5px;
-  height: var(--small-indent);
-
-  border-radius: 5px;
-  background-color: var(--accent-color);
   box-shadow: var(--main-shadow);
 `;
