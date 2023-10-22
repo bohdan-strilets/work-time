@@ -1,6 +1,7 @@
 import { useState } from "react";
 import registrationFormBg from "Assets/images/registration-form-bg.jpg";
 import loginFormBg from "Assets/images/login-form-bg.jpg";
+import RegistrationForm from "components/Forms/RegistrationForm";
 import {
   Wrapper,
   LeftSide,
@@ -45,7 +46,7 @@ const Auth: React.FC<{}> = () => {
         )}
       </LeftSide>
       <RightSide type={type}>
-        {type === "registration" ? <p>Registration form</p> : <p>Login form</p>}
+        {type === "registration" ? <RegistrationForm /> : <p>Login form</p>}
       </RightSide>
     </Wrapper>
   );
