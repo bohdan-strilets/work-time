@@ -18,8 +18,9 @@ const RegistrationForm: React.FC<{}> = () => {
     formState: { errors },
   } = useForm<RegistrationFormInputs>(validation);
 
-  const onSubmit: SubmitHandler<RegistrationFormInputs> = (data) =>
-    console.log(data);
+  const onSubmit: SubmitHandler<RegistrationFormInputs> = (data) => {
+    window.alert(`Dear ${data.firstName} ${data.lastName} wellcome to site.`);
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

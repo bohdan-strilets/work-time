@@ -2,6 +2,7 @@ import { useState } from "react";
 import registrationFormBg from "Assets/images/registration-form-bg.jpg";
 import loginFormBg from "Assets/images/login-form-bg.jpg";
 import RegistrationForm from "components/Forms/RegistrationForm";
+import LoginForm from "components/Forms/LoginForm";
 import {
   Wrapper,
   LeftSide,
@@ -59,7 +60,7 @@ const Auth: React.FC<{}> = () => {
             Sign in to Work Time
           </Title>
         )}
-        {type === "registration" ? <RegistrationForm /> : <p>Login form</p>}
+        {type === "registration" ? <RegistrationForm /> : <LoginForm />}
       </RightSide>
     </Wrapper>
   );
