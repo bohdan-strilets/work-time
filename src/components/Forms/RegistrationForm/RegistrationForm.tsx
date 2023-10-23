@@ -1,5 +1,9 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { BiSolidUser, BiSolidLock } from "react-icons/bi";
+import { MdMail } from "react-icons/md";
+import TextInput from "components/UI/TextInput";
+import Button from "components/UI/Button";
 import { RegistrationFormInputs } from "types/inputs/RegistrationFormInputs";
 import RegistrationFormSchema from "validations/RegistrationFormSchema";
 
@@ -19,39 +23,67 @@ const RegistrationForm: React.FC<{}> = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <label>
-        <input
-          type="text"
-          {...register("firstName", { required: true })}
-          placeholder="Mango"
-        />
-        {errors.firstName && <p>{errors.firstName.message}</p>}
-      </label>
-      <label>
-        <input
-          type="text"
-          {...register("lastName", { required: true })}
-          placeholder="Yellow"
-        />
-        {errors.lastName && <p>{errors.lastName.message}</p>}
-      </label>
-      <label>
-        <input
-          type="text"
-          {...register("email", { required: true })}
-          placeholder="yellow.mango@gmail.com"
-        />
-        {errors.email && <p>{errors.email.message}</p>}
-      </label>
-      <label>
-        <input type="text" {...register("password", { required: true })} />
-        {errors.password && <p>{errors.password.message}</p>}
-      </label>
-      <label>
-        <input type="text" {...register("passwordAgain", { required: true })} />
-        {errors.passwordAgain && <p>{errors.passwordAgain.message}</p>}
-      </label>
-      <button type="submit">Submit</button>
+      <TextInput
+        type="text"
+        icon={<BiSolidUser size={18} />}
+        name="firstName"
+        placeholder="First name"
+        required={true}
+        register={register}
+        errors={errors}
+        width={400}
+        height={40}
+        margin="0 0 var(--medium-indent) 0"
+      />
+      <TextInput
+        type="text"
+        icon={<BiSolidUser size={18} />}
+        name="lastName"
+        placeholder="Last name"
+        required={true}
+        register={register}
+        errors={errors}
+        width={400}
+        height={40}
+        margin="0 0 var(--medium-indent) 0"
+      />
+      <TextInput
+        type="email"
+        icon={<MdMail size={18} />}
+        name="email"
+        placeholder="Email"
+        required={true}
+        register={register}
+        errors={errors}
+        width={400}
+        height={40}
+        margin="0 0 var(--medium-indent) 0"
+      />
+      <TextInput
+        type="password"
+        icon={<BiSolidLock size={18} />}
+        name="password"
+        placeholder="Password"
+        required={true}
+        register={register}
+        errors={errors}
+        width={400}
+        height={40}
+        margin="0 0 var(--medium-indent) 0"
+      />
+      <TextInput
+        type="password"
+        icon={<BiSolidLock size={18} />}
+        name="passwordAgain"
+        placeholder="Password again"
+        required={true}
+        register={register}
+        errors={errors}
+        width={400}
+        height={40}
+        margin="0 0 var(--medium-indent) 0"
+      />
+      <Button type="submit" label="Registration" width="400px" height="40px" />
     </form>
   );
 };
