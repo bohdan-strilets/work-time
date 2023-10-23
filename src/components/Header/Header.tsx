@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import { CgMenuGridO } from "react-icons/cg";
 import Button from "components/UI/Button";
 import { Wrapper, List } from "./Header.styled";
 
 const Header: React.FC<{}> = () => {
+  const navigate = useNavigate();
+
   return (
     <Wrapper>
       <List>
@@ -15,7 +18,13 @@ const Header: React.FC<{}> = () => {
           />
         </li>
         <li>
-          <Button type="button" label="Start" width="200px" height="35px" />
+          <Button
+            type="button"
+            label="Start"
+            width="200px"
+            height="35px"
+            onClick={() => navigate("auth")}
+          />
         </li>
       </List>
     </Wrapper>
