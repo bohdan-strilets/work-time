@@ -1,15 +1,16 @@
 import styled from "@emotion/styled";
+import {
+  LeftSideProps,
+  TitleProps,
+  RightSideProps,
+} from "types/props/AuthProps";
 
 export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 
-export const LeftSide = styled.div<{
-  registrationUrl: string;
-  loginUrl: string;
-  type: "registration" | "login";
-}>`
+export const LeftSide = styled.div<LeftSideProps>`
   order: ${({ type }) => (type === "registration" ? 1 : 2)};
   min-width: 550px;
   height: 650px;
@@ -32,13 +33,13 @@ export const Overlay = styled.div`
   background-color: var(--black-transparent-color);
 `;
 
-export const Title = styled.p`
-  font-size: 42px;
+export const Title = styled.p<TitleProps>`
+  font-size: ${({ fontSize }) => (fontSize ? `${fontSize}px` : "")};
   font-family: var(--second-font);
   text-transform: uppercase;
   text-align: center;
 
-  color: var(--white-color);
+  color: ${({ color }) => (color ? color : "")};
   margin-bottom: var(--small-indent);
 `;
 
@@ -77,7 +78,7 @@ export const Button = styled.button`
   }
 `;
 
-export const RightSide = styled.div<{ type: "registration" | "login" }>`
+export const RightSide = styled.div<RightSideProps>`
   order: ${({ type }) => (type === "registration" ? 2 : 1)};
   display: flex;
   align-items: center;

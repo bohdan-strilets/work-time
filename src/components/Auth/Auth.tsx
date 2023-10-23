@@ -27,7 +27,9 @@ const Auth: React.FC<{}> = () => {
       >
         {type === "registration" ? (
           <Overlay>
-            <Title>Hello friend!</Title>
+            <Title fontSize={42} color="var(--white-color)">
+              Hello friend!
+            </Title>
             <Text>Enter your personal details and start journey with us</Text>
             <Button onClick={changeType} type="button">
               Login
@@ -35,7 +37,9 @@ const Auth: React.FC<{}> = () => {
           </Overlay>
         ) : (
           <Overlay>
-            <Title>Welcome back!</Title>
+            <Title fontSize={42} color="var(--white-color)">
+              Welcome back!
+            </Title>
             <Text>
               To keep connected with us please login with your personal info
             </Text>
@@ -46,6 +50,15 @@ const Auth: React.FC<{}> = () => {
         )}
       </LeftSide>
       <RightSide type={type}>
+        {type === "registration" ? (
+          <Title fontSize={28} color="var(--black-color)">
+            Create account
+          </Title>
+        ) : (
+          <Title fontSize={28} color="var(--black-color)">
+            Sign in to Work Time
+          </Title>
+        )}
         {type === "registration" ? <RegistrationForm /> : <p>Login form</p>}
       </RightSide>
     </Wrapper>
