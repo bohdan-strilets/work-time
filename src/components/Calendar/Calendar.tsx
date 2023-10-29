@@ -1,8 +1,10 @@
-import { weekdays } from "utilities/DefaultCalendarData";
+import { month, weekdays } from "utilities/DefaultCalendarData";
 import Controllers from "./Controllers";
 import MonthList from "./MonthList";
 import CellDay from "./CellDay";
+import ModalWindow from "components/ModalWindow";
 import useCalendar from "hooks/useCalendar";
+import useModalWindow from "hooks/useModalWindow";
 import {
   WeekdaysList,
   DayName,
@@ -26,6 +28,12 @@ const Calendar: React.FC<{}> = () => {
     selectedMonth,
     selectedYear,
   } = useCalendar();
+  const { checkQueryParam, modalsName, openModal } = useModalWindow();
+
+  const handleCellClick = () => {
+    handleDayClick(date);
+    openModal(modalsName.cellDay);
+  };
 
   return (
     <div>
@@ -50,7 +58,7 @@ const Calendar: React.FC<{}> = () => {
             date && date instanceof Date ? (
               <CellDay
                 key={index}
-                handleClick={() => handleDayClick(date)}
+                handleClick={handleCellClick}
                 date={date}
                 areEqual={areEqual}
                 selectedDate={selectedDate}
@@ -61,6 +69,11 @@ const Calendar: React.FC<{}> = () => {
             ) : (
               <CellDay key={index} />
             )
+          )}
+          {checkQueryParam(modalsName.cellDay) && (
+            <ModalWindow title={`${month[selectedMonth]} ${selectedYear}`}>
+              {selectedYear}
+            </ModalWindow>
           )}
         </List>
       ))}

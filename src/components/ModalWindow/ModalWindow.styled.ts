@@ -9,8 +9,7 @@ export const Backdrop = styled.div`
   width: 100vw;
   height: 100vh;
 
-  background-color: var(--black-transparent-color);
-  backdrop-filter: var(--blur-effect);
+  background-color: rgba(0, 0, 0, 0.2);
 `;
 
 export const Body = styled.div`
