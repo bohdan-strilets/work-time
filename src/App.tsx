@@ -6,13 +6,15 @@ import CalendarPage from "pages/CalendarPage";
 
 const App: React.FC<{}> = () => {
   return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/auth" element={<AuthPage />} />
-        <Route path="/calendar" element={<CalendarPage />} />
-      </Routes>
-    </Layout>
+    <>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/auth" element={<AuthPage />} />
+          <Route path="/calendar" element={<CalendarPage />} />
+        </Routes>
+      </Layout>
+    </>
   );
 };
 
