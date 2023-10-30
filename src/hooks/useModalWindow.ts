@@ -28,7 +28,7 @@ const useModalWindow = () => {
 
   useEffect(() => {
     const onPressEscape = (e: KeyboardEvent) => {
-      if (e.code === "Escape") navigate("/");
+      if (e.code === "Escape") navigate(-1);
     };
 
     document.addEventListener("keydown", onPressEscape);

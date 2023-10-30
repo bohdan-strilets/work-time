@@ -19,10 +19,10 @@ export const Body = styled.div`
   transform: translate(-50%, -50%);
 
   width: 600px;
-  height: 400px;
+  max-height: 500px;
+  overflow-y: auto;
 
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-radius: 5px;
   background-color: var(--white-color);
   box-shadow: var(--main-shadow);
 `;

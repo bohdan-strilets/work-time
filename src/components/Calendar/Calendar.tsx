@@ -2,6 +2,7 @@ import { month, weekdays } from "utilities/DefaultCalendarData";
 import Controllers from "./Controllers";
 import MonthList from "./MonthList";
 import CellDay from "./CellDay";
+import DayInfo from "./DayInfo";
 import ModalWindow from "components/ModalWindow";
 import useCalendar from "hooks/useCalendar";
 import useModalWindow from "hooks/useModalWindow";
@@ -72,7 +73,7 @@ const Calendar: React.FC<{}> = () => {
           )}
           {checkQueryParam(modalsName.cellDay) && (
             <ModalWindow title={`${month[selectedMonth]} ${selectedYear}`}>
-              {selectedYear}
+              <DayInfo />
             </ModalWindow>
           )}
         </List>
