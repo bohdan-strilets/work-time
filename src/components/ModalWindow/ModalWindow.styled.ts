@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import ScreenWidth from "utilities/ScreenWidth";
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -18,13 +19,23 @@ export const Body = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: 600px;
-  max-height: 500px;
+  width: 300px;
+  max-height: 600px;
   overflow-y: auto;
 
-  border-radius: 5px;
+  border-radius: 3px;
   background-color: var(--white-color);
   box-shadow: var(--main-shadow);
+
+  @media screen and (min-width: ${ScreenWidth.tablet}) {
+    width: 660px;
+    max-height: 580px;
+  }
+
+  @media screen and (min-width: ${ScreenWidth.desktop}) {
+    width: 780px;
+    max-height: 600px;
+  }
 `;
 
 export const Header = styled.div`
@@ -32,40 +43,60 @@ export const Header = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  padding: 15px;
-  border-bottom: 1px solid var(--gray-color);
+  padding: 10px;
+
+  background: var(--main-gradient);
+  box-shadow: 0px 3px 10px -1px var(--black-transparent-color);
+
+  @media screen and (min-width: ${ScreenWidth.tablet}) {
+    padding: 20px;
+  }
+
+  @media screen and (min-width: ${ScreenWidth.desktop}) {
+    padding: var(--medium-indent);
+  }
 `;
 
 export const Title = styled.p`
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
+
+  color: var(--black-color);
+  text-shadow: 2px 2px 4px var(--black-transparent-color);
+
+  @media screen and (min-width: ${ScreenWidth.tablet}) {
+    font-size: 20px;
+  }
+`;
+
+export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: transparent;
+  color: var(--black-color);
+  border: none;
+  outline: none;
+  text-shadow: 2px 2px 4px var(--black-transparent-color);
+
+  cursor: pointer;
+  transition: color var(--hover-effect);
+
+  :hover,
+  :focus {
+    color: var(--gray-color);
+  }
 `;
 
 export const Content = styled.div`
-  padding: 15px;
-`;
+  padding: var(--small-indent);
 
-export const Footer = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  transform: translateY(100%);
+  @media screen and (min-width: ${ScreenWidth.tablet}) {
+    padding: var(--medium-indent);
+  }
 
-  width: 100%;
-  height: 8px;
-
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  background: linear-gradient(to right, #ff416c, yellow, #ff4b2b);
-  background-size: 200% 100%;
-  animation: moveGradient 10s linear infinite;
-
-  @keyframes moveGradient {
-    0% {
-      background-position: 200% 0;
-    }
-    100% {
-      background-position: -200% 0;
-    }
+  @media screen and (min-width: ${ScreenWidth.desktop}) {
+    padding: var(--large-indent);
   }
 `;
