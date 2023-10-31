@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { ContainerProps, TextProps } from "types/props/DayInfoProps";
 
 export const Container = styled.div<ContainerProps>`
-  display: flex;
+  display: ${({ displayBlock }) => (displayBlock ? "block" : "flex")};
   align-items: center;
   justify-content: ${({ justifyContent }) =>
     justifyContent ? justifyContent : ""};

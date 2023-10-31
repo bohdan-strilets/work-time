@@ -1,4 +1,8 @@
-export type ContainerProps = { margin?: string; justifyContent?: string };
+export type ContainerProps = {
+  margin?: string;
+  justifyContent?: string;
+  displayBlock?: boolean;
+};
 
 export type TextProps = {
   fontSize?: string;
