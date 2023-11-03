@@ -7,6 +7,7 @@ const CellDay: React.FC<CellDayProps> = ({
   areEqual,
   selectedDate,
   children,
+  status,
 }) => {
   return (
     <Cell
@@ -14,6 +15,7 @@ const CellDay: React.FC<CellDayProps> = ({
       date={date}
       areEqual={areEqual}
       selectedDate={selectedDate}
+      status={status}
     >
       {children}
     </Cell>

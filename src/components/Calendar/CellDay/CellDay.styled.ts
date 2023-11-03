@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { CellProps } from "types/props/CellDayProps";
 import ScreenWidth from "utilities/ScreenWidth";
+import { Status } from "types/Enums/StatusEnum";
 
 export const Cell = styled.li<CellProps>`
   display: flex;
@@ -17,23 +18,35 @@ export const Cell = styled.li<CellProps>`
 
   border: 1px solid var(--gray-color);
   border-radius: 5px;
-  background-color: ${({ date, areEqual }) => {
-    if (date instanceof Date && areEqual) {
-      return areEqual(date, new Date()) ? "var(--green-color)" : "";
+  background-color: ${({ status }) => {
+    if (status && status === Status.work) {
+      return "#FF6B6B";
     }
-    if (!date) {
-      return "#f2f2f2";
+    if (status && status === Status.dayOff) {
+      return "#6BFF88";
+    }
+    if (status && status === Status.vacation) {
+      return "#6B88FF";
+    }
+    if (status && status === Status.sickLeave) {
+      return "#FFD700";
     }
   }};
   box-shadow: ${({ selectedDate, areEqual, date }) => {
     if (selectedDate && areEqual && date) {
       return areEqual(selectedDate, date)
-        ? "0px 0px 8px -1px var(--black-transparent-color)"
+        ? "5px 5px 5px 1px rgba(0,0,0,0.5) inset"
         : "";
     }
   }};
 
   cursor: pointer;
+  transition: box-shadow var(--hover-effect);
+
+  :hover,
+  :focus {
+    box-shadow: var(--main-shadow);
+  }
 
   @media screen and (min-width: ${ScreenWidth.tablet}) {
     justify-content: space-between;
@@ -46,6 +59,7 @@ export const Cell = styled.li<CellProps>`
   }
 
   @media screen and (min-width: ${ScreenWidth.desktop}) {
+    font-weight: 600;
     height: 130px;
     margin: 3px;
   }

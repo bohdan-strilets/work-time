@@ -1,89 +1,27 @@
-import { month, weekdays } from "utilities/DefaultCalendarData";
-import Controllers from "./Controllers";
-import MonthList from "./MonthList";
-import CellDay from "./CellDay";
-import DayInfo from "./DayInfo";
-import ModalWindow from "components/ModalWindow";
-import useCalendar from "hooks/useCalendar";
-import useModalWindow from "hooks/useModalWindow";
-import {
-  WeekdaysList,
-  DayName,
-  List,
-  DayOfMonth,
-  DayStatus,
-} from "./Calendar.styled";
+import Media from "react-media";
+import ScreenWidth from "utilities/ScreenWidth";
+import Mobile from "./Responsiv/Mobile";
+import Tablet from "./Responsiv/Tablet";
+import Desktop from "./Responsiv/Desktop";
 
-const Calendar: React.FC<{}> = () => {
-  const {
-    handlePrevMonth,
-    handleChangeYear,
-    handleChangeMonth,
-    date,
-    yearSelect,
-    handleNextMonth,
-    getMonthDate,
-    handleDayClick,
-    areEqual,
-    selectedDate,
-    selectedMonth,
-    selectedYear,
-  } = useCalendar();
-  const { checkQueryParam, modalsName, openModal } = useModalWindow();
-
-  const handleCellClick = () => {
-    handleDayClick(date);
-    openModal(modalsName.cellDay);
-  };
-
+const Auth: React.FC<{}> = () => {
   return (
-    <div>
-      <Controllers
-        handlePrevMonth={handlePrevMonth}
-        selectedMonth={selectedMonth}
-        selectedYear={selectedYear}
-        handleChangeYear={handleChangeYear}
-        yearSelect={yearSelect}
-        date={date}
-        handleNextMonth={handleNextMonth}
-      />
-
-      <WeekdaysList>
-        {weekdays.map((name) => (
-          <DayName key={name}>{name}</DayName>
-        ))}
-      </WeekdaysList>
-      {getMonthDate(date.getFullYear(), date.getMonth()).map((week, index) => (
-        <List key={index}>
-          {week.map((date, index) =>
-            date && date instanceof Date ? (
-              <CellDay
-                key={index}
-                handleClick={handleCellClick}
-                date={date}
-                areEqual={areEqual}
-                selectedDate={selectedDate}
-              >
-                <DayOfMonth>{date.getDate()}</DayOfMonth>
-                <DayStatus>Work</DayStatus>
-              </CellDay>
-            ) : (
-              <CellDay key={index} />
-            )
-          )}
-          {checkQueryParam(modalsName.cellDay) && (
-            <ModalWindow title={`${month[selectedMonth]} ${selectedYear}`}>
-              <DayInfo />
-            </ModalWindow>
-          )}
-        </List>
-      ))}
-      <MonthList
-        handleChangeMonth={handleChangeMonth}
-        selectedMonth={selectedMonth}
-      />
-    </div>
+    <Media
+      queries={{
+        small: `(max-width: ${ScreenWidth.preTablet})`,
+        medium: `(min-width: ${ScreenWidth.tablet}) and (max-width: ${ScreenWidth.preDesktop})`,
+        large: `(min-width: ${ScreenWidth.desktop})`,
+      }}
+    >
+      {(matches) => (
+        <>
+          {matches.small && <Mobile />}
+          {matches.medium && <Tablet />}
+          {matches.large && <Desktop />}
+        </>
+      )}
+    </Media>
   );
 };
 
-export default Calendar;
+export default Auth;

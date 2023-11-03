@@ -3,6 +3,9 @@ import { BiSolidTimeFive } from "react-icons/bi";
 import { MdOutlineWork } from "react-icons/md";
 import { GiCoins } from "react-icons/gi";
 import { ImOffice } from "react-icons/im";
+import { DayInfoProps } from "types/props/DayInfoProps";
+import { Status } from "types/Enums/StatusEnum";
+import useCalculateDay from "hooks/useCalculateDay";
 import {
   Container,
   Text,
@@ -11,7 +14,17 @@ import {
   Item,
 } from "../DayInfo.styled";
 
-const Tablet: React.FC<{}> = () => {
+const Tablet: React.FC<DayInfoProps> = ({
+  status,
+  numberHoursWorked,
+  date,
+  time,
+  workShiftNumber,
+  additionalHours,
+  dateTransform,
+}) => {
+  const { calculateEarningsDay } = useCalculateDay();
+
   return (
     <div>
       <Container
@@ -21,10 +34,15 @@ const Tablet: React.FC<{}> = () => {
         <Container>
           <ImOffice size={28} />
           <Text fontSize="24px" fontWeight={900} margin="0 0 0 10px">
-            Work day
+            {status === Status.work && "Work day"}
+            {status === Status.dayOff && "Day off"}
+            {status === Status.vacation && "Vacation"}
+            {status === Status.sickLeave && "Sick leave"}
           </Text>
         </Container>
-        <NumberHours>12h</NumberHours>
+        <NumberHours>
+          {numberHoursWorked > 0 ? `${numberHoursWorked}h` : "-"}
+        </NumberHours>
       </Container>
       <Container
         margin="0 0 var(--small-indent) 0"
@@ -32,15 +50,19 @@ const Tablet: React.FC<{}> = () => {
       >
         <Container>
           <BsFillCalendar3WeekFill size={20} />
-          <Text margin="0 0 0 10px">29 octobers 2023 - sun</Text>
+          {date && <Text margin="0 0 0 10px">{dateTransform(date)}</Text>}
         </Container>
         <Container>
           <BiSolidTimeFive size={20} />
-          <Text margin="0 0 0 10px">18:00 - 06:00</Text>
+          <Text margin="0 0 0 10px">{time !== "" ? time : "-"}</Text>
         </Container>
         <Container>
           <MdOutlineWork size={20} />
-          <Text margin="0 0 0 10px">II</Text>
+          <Text margin="0 0 0 10px">
+            {workShiftNumber === 0 && "-"}
+            {workShiftNumber === 1 && "I"}
+            {workShiftNumber === 2 && "II"}
+          </Text>
         </Container>
       </Container>
       <Container
@@ -48,20 +70,24 @@ const Tablet: React.FC<{}> = () => {
         justifyContent="space-between"
       >
         <Text>Additional hours:</Text>
-        <ExtraTimeStatus>
+        <ExtraTimeStatus additionalHours={additionalHours}>
           <BsCheckAll size={20} />
         </ExtraTimeStatus>
       </Container>
-      <Container justifyContent="space-between">
-        <Text fontWeight={700}>Earnings:</Text>
-        <Text>12h x 30zl = 500zl</Text>
-      </Container>
-      <ul>
-        <Item>- 3% = 290</Item>
-        <Item>- 5% = 230</Item>
-        <Item>- 1% = 210</Item>
-        <Item>- 15% = 160</Item>
-      </ul>
+      {status !== Status.dayOff && (
+        <Container justifyContent="space-between">
+          <Text fontWeight={700}>Earnings:</Text>
+          <Text>{calculateEarningsDay(numberHoursWorked, 33)}</Text>
+        </Container>
+      )}
+      {status !== Status.dayOff && (
+        <ul>
+          <Item>- 3% = 290</Item>
+          <Item>- 5% = 230</Item>
+          <Item>- 1% = 210</Item>
+          <Item>- 15% = 160</Item>
+        </ul>
+      )}
       <Container justifyContent="end">
         <GiCoins size={34} color="orange" />
         <Text

@@ -1,5 +1,9 @@
 import styled from "@emotion/styled";
-import { ContainerProps, TextProps } from "types/props/DayInfoProps";
+import {
+  ContainerProps,
+  TextProps,
+  ExtraTimeStatusProps,
+} from "types/props/DayInfoProps";
 
 export const Container = styled.div<ContainerProps>`
   display: ${({ displayBlock }) => (displayBlock ? "block" : "flex")};
@@ -32,7 +36,7 @@ export const NumberHours = styled.div`
   border-radius: 5px;
 `;
 
-export const ExtraTimeStatus = styled.div`
+export const ExtraTimeStatus = styled.div<ExtraTimeStatusProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,8 +44,12 @@ export const ExtraTimeStatus = styled.div`
   width: 30px;
   height: 30px;
 
-  color: var(--green-color);
-  border: 2px solid var(--green-color);
+  color: ${({ additionalHours }) =>
+    additionalHours ? "var(--green-color)" : "var(--gray-color)"};
+  border-style: solid;
+  border-width: 2px;
+  border-color: ${({ additionalHours }) =>
+    additionalHours ? "var(--green-color)" : "var(--gray-color)"};
   border-radius: 5px;
 `;
 

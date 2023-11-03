@@ -1,5 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import { Month } from "types/Enums/CalendarEnum";
+import { DayInfoType } from "types/types/WorkUserDataType";
+import { month as monthNames, weekdays } from "utilities/DefaultCalendarData";
+import useModalWindow from "hooks/useModalWindow";
+import WorkUserData from "utilities/GlobalExampleData";
 
 export const useCalendar = () => {
   const [date, setDate] = useState(new Date());
@@ -7,6 +11,9 @@ export const useCalendar = () => {
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const yearSelect = useRef<null | HTMLSelectElement>(null);
+  const [dayInfo, setDayInfo] = useState<DayInfoType | null>(null);
+
+  const { modalsName, openModal } = useModalWindow();
 
   useEffect(() => {
     const newDate = new Date(selectedYear, selectedMonth);
@@ -103,6 +110,36 @@ export const useCalendar = () => {
     }
   };
 
+  const dateTransform = (date: Date) => {
+    const dayNumber = date?.getDate();
+    const monthIndex = date?.getMonth();
+    const month = monthNames[monthIndex ? monthIndex : 0];
+    const year = date?.getFullYear();
+    const dayIndex = date?.getDay();
+    const day = weekdays[dayIndex ? dayIndex : 0];
+    return `${dayNumber} ${month} ${year} - ${day}`;
+  };
+
+  const handleCellClick = (date: Date) => {
+    const dateCell = date.toLocaleDateString().replaceAll(".", "-");
+    const informationAboutDay = WorkUserData.filter(
+      (item) => item.data[dateCell]
+    );
+    setDayInfo(informationAboutDay[0]?.data[dateCell]);
+    handleDayClick(date);
+    openModal(modalsName.cellDay);
+  };
+
+  const checkDayStatus = (date: number | Date | undefined) => {
+    if (date instanceof Date) {
+      const dateCell = date.toLocaleDateString().replaceAll(".", "-");
+      const informationAboutDay = WorkUserData.filter(
+        (item) => item.data[dateCell]
+      );
+      return informationAboutDay[0]?.data[dateCell].status;
+    }
+  };
+
   return {
     handlePrevMonth,
     handleChangeYear,
@@ -111,11 +148,14 @@ export const useCalendar = () => {
     yearSelect,
     handleNextMonth,
     getMonthDate,
-    handleDayClick,
     areEqual,
     selectedDate,
     selectedMonth,
     selectedYear,
+    dateTransform,
+    handleCellClick,
+    dayInfo,
+    checkDayStatus,
   };
 };
 
