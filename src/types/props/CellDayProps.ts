@@ -1,4 +1,4 @@
-import { Status } from "types/Enums/StatusEnum";
+import { Status } from "types/enums/StatusEnum";
 
 export type CellDayProps = {
   handleClick?: () => void;

@@ -4,6 +4,7 @@ import MonthList from "../MonthList";
 import CellDay from "../CellDay";
 import DayInfo from "../DayInfo";
 import ModalWindow from "components/ModalWindow";
+import AddInformationForm from "components/Forms/AddInformationForm";
 import useCalendar from "hooks/useCalendar";
 import useModalWindow from "hooks/useModalWindow";
 import {
@@ -85,7 +86,7 @@ const Mobile: React.FC<{}> = () => {
           )}
           {checkQueryParam(modalsName.cellDay) && !dayInfo && (
             <ModalWindow title={`${month[selectedMonth]} ${selectedYear}`}>
-              <p>Form for create day status</p>
+              <AddInformationForm />
             </ModalWindow>
           )}
         </List>

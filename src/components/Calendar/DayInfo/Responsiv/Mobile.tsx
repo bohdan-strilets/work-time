@@ -4,7 +4,7 @@ import { MdOutlineWork } from "react-icons/md";
 import { GiCoins } from "react-icons/gi";
 import { ImOffice } from "react-icons/im";
 import { DayInfoProps } from "types/props/DayInfoProps";
-import { Status } from "types/Enums/StatusEnum";
+import { Status } from "types/enums/StatusEnum";
 import useCalculateDay from "hooks/useCalculateDay";
 import {
   Container,

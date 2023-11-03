@@ -1,10 +1,11 @@
-import { Status } from "types/Enums/StatusEnum";
+import { Status } from "types/enums/StatusEnum";
+import { WorkShiftNumber } from "types/enums/WorkShiftNumber";
 
 export type DayInfoType = {
   status: Status;
   numberHoursWorked: number;
   time: string;
-  workShiftNumber: 0 | 1 | 2;
+  workShiftNumber: WorkShiftNumber;
   additionalHours: boolean;
 };
 

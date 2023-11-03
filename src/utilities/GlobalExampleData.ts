@@ -1,5 +1,5 @@
 import { WorkUserDataType } from "types/types/WorkUserDataType";
-import { Status } from "types/Enums/StatusEnum";
+import { Status } from "types/enums/StatusEnum";
 
 const WorkUserData: WorkUserDataType[] = [
   {

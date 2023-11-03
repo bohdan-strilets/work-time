@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Month } from "types/Enums/CalendarEnum";
+import { Month } from "types/enums/CalendarEnum";
 import { DayInfoType } from "types/types/WorkUserDataType";
 import { month as monthNames, weekdays } from "utilities/DefaultCalendarData";
 import useModalWindow from "hooks/useModalWindow";

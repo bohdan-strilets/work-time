@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { CellProps } from "types/props/CellDayProps";
 import ScreenWidth from "utilities/ScreenWidth";
-import { Status } from "types/Enums/StatusEnum";
+import { Status } from "types/enums/StatusEnum";
 
 export const Cell = styled.li<CellProps>`
   display: flex;
