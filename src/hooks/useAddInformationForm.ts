@@ -1,24 +1,18 @@
-import { useForm, SubmitHandler } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { AddInformationFormInputs } from "types/inputs/AddInformationFormInputs";
-import AddInformationFormSchema from "validations/AddInformationFormSchema";
 
 const useAddInformationForm = () => {
-  const validation = {
-    resolver: yupResolver<AddInformationFormInputs>(AddInformationFormSchema),
-  };
-
   const {
-    register,
     handleSubmit,
     formState: { errors },
-  } = useForm<AddInformationFormInputs>(validation);
+    control,
+  } = useForm<AddInformationFormInputs>();
 
   const onSubmit: SubmitHandler<AddInformationFormInputs> = (data) => {
     console.log(data);
   };
 
-  return { register, handleSubmit, errors, onSubmit };
+  return { handleSubmit, errors, onSubmit, Controller, control };
 };
 
 export default useAddInformationForm;

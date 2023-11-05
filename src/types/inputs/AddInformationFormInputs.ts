@@ -1,10 +1,8 @@
 import { DayInfoType } from "types/types/WorkUserDataType";
 
-export type AddInformationFormInputs = Pick<
-  DayInfoType,
-  | "status"
-  | "numberHoursWorked"
-  | "time"
-  | "workShiftNumber"
-  | "additionalHours"
->;
+export type AddInformationFormInputs = {
+  status: Pick<DayInfoType, "status">;
+  startJob?: string;
+  workShiftNumber?: Pick<DayInfoType, "workShiftNumber">;
+  additionalHours?: Pick<DayInfoType, "additionalHours">;
+};
