@@ -1,6 +1,6 @@
 import { BsFillCalendar3WeekFill, BsCheckAll } from "react-icons/bs";
 import { BiSolidTimeFive } from "react-icons/bi";
-import { MdOutlineWork } from "react-icons/md";
+import { MdOutlineWork, MdModeEditOutline, MdDelete } from "react-icons/md";
 import { GiCoins } from "react-icons/gi";
 import { ImOffice } from "react-icons/im";
 import { DayInfoProps } from "types/props/DayInfoProps";
@@ -12,6 +12,9 @@ import {
   NumberHours,
   ExtraTimeStatus,
   Item,
+  List,
+  ItemLi,
+  Button,
 } from "../DayInfo.styled";
 
 const Desktop: React.FC<DayInfoProps> = ({
@@ -90,16 +93,30 @@ const Desktop: React.FC<DayInfoProps> = ({
           <Item>- 15% = 160</Item>
         </ul>
       )}
-      <Container justifyContent="end">
-        <GiCoins size={34} color="orange" />
-        <Text
-          fontSize="24px"
-          fontWeight={700}
-          color="var(--green-color)"
-          margin="0 0 0 10px"
-        >
-          +320zl
-        </Text>
+      <Container justifyContent="space-between">
+        <List>
+          <ItemLi>
+            <Button type="button">
+              <MdModeEditOutline />
+            </Button>
+          </ItemLi>
+          <ItemLi>
+            <Button type="button">
+              <MdDelete />
+            </Button>
+          </ItemLi>
+        </List>
+        <Container justifyContent="end">
+          <GiCoins size={34} color="orange" />
+          <Text
+            fontSize="24px"
+            fontWeight={700}
+            color="var(--green-color)"
+            margin="0 0 0 10px"
+          >
+            +320zl
+          </Text>
+        </Container>
       </Container>
     </div>
   );

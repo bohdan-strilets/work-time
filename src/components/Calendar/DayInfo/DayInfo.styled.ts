@@ -4,6 +4,7 @@ import {
   TextProps,
   ExtraTimeStatusProps,
 } from "types/props/DayInfoProps";
+import ScreenWidth from "utilities/ScreenWidth";
 
 export const Container = styled.div<ContainerProps>`
   display: ${({ displayBlock }) => (displayBlock ? "block" : "flex")};
@@ -60,5 +61,64 @@ export const Item = styled.li`
 
   :last-child {
     border-bottom: none;
+  }
+`;
+
+export const List = styled.ul`
+  @media screen and (min-width: ${ScreenWidth.tablet}) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
+export const ItemLi = styled.li`
+  margin-bottom: var(--small-indent);
+
+  :last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (min-width: ${ScreenWidth.tablet}) {
+    margin-right: var(--small-indent);
+    margin-bottom: 0;
+
+    :last-child {
+      margin-right: 0;
+    }
+  }
+`;
+
+export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 30px;
+
+  background-color: var(--gray-color);
+  border: none;
+  outline: none;
+  color: var(--black-color);
+  box-shadow: var(--main-shadow);
+
+  cursor: pointer;
+  transition: background-color var(--hover-effect), color var(--hover-effect);
+
+  :hover,
+  :focus {
+    background-color: var(--black-color);
+    color: var(--gray-color);
+  }
+
+  @media screen and (min-width: ${ScreenWidth.tablet}) {
+    width: 80px;
+    height: 25px;
+  }
+
+  @media screen and (min-width: ${ScreenWidth.desktop}) {
+    width: 100px;
+    height: 30px;
   }
 `;
