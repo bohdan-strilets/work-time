@@ -25,7 +25,7 @@ const Controllers: React.FC<ControllersProps> = ({
       </CalendarButton>
       <DropdownWrapper>
         <CurrentDate>
-          {month[selectedMonth]} {selectedYear}
+          {new Date().getDate()} {month[selectedMonth]} {selectedYear}
         </CurrentDate>
         <DropdownList
           onChange={handleChangeYear}

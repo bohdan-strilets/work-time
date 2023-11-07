@@ -34,7 +34,6 @@ const DropdownList: React.FC<DropdownListProps> = ({
     selectedOption,
     selectedOptions,
     getLabelByValue,
-    pressEnterKey,
     selectOption,
     selectManyOptions,
   } = useDropdownList({ options, onChange, defaultValue, type });
@@ -73,7 +72,6 @@ const DropdownList: React.FC<DropdownListProps> = ({
                   : () => selectManyOptions(value)
               }
               tabIndex={0}
-              onKeyDown={(e) => pressEnterKey(e, value)}
             >
               <p>{label}</p>
               {type === "single" && selectedOption === value && (

@@ -67,12 +67,6 @@ const useDropdownList = ({
     return option?.label;
   };
 
-  const pressEnterKey = (e: React.KeyboardEvent, option: string) => {
-    if (e.key === "Enter" || e.key === " ") {
-      selectOption(option);
-    }
-  };
-
   return {
     divRef,
     toggle,
@@ -80,7 +74,6 @@ const useDropdownList = ({
     selectedOption,
     selectedOptions,
     getLabelByValue,
-    pressEnterKey,
     selectOption,
     selectManyOptions,
   };
