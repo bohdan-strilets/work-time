@@ -1,5 +1,6 @@
 import DropdownList from "components/UI/DropdownList";
 import Button from "components/UI/Button";
+import Checkbox from "components/UI/Checkbox";
 import useAddInformationForm from "hooks/useAddInformationForm";
 
 export const DayOptions = [
@@ -162,7 +163,7 @@ export const ShiftOptions = [
 ];
 
 const AddInformationForm: React.FC<{}> = () => {
-  const { handleSubmit, errors, onSubmit, Controller, control } =
+  const { register, handleSubmit, errors, onSubmit, Controller, control } =
     useAddInformationForm();
 
   return (
@@ -221,10 +222,21 @@ const AddInformationForm: React.FC<{}> = () => {
           />
         )}
       />
-      <label>
-        <p>Укажите если смена была дополнительной</p>
-        <input type="checkbox" />
-      </label>
+      <Controller
+        name="additionalHours"
+        control={control}
+        render={({ field }) => (
+          <Checkbox
+            name="additionalHours"
+            errors={errors}
+            register={register}
+            onChange={(value: boolean) => field.onChange(value)}
+            margin="0 0 var(--small-indent) 0"
+          >
+            <p>Укажите если смена была дополнительной</p>
+          </Checkbox>
+        )}
+      />
 
       <Button type="submit" label="Add day" width="400px" height="40px" />
     </form>

@@ -3,6 +3,7 @@ import { AddInformationFormInputs } from "types/inputs/AddInformationFormInputs"
 
 const useAddInformationForm = () => {
   const {
+    register,
     handleSubmit,
     formState: { errors },
     control,
@@ -12,7 +13,7 @@ const useAddInformationForm = () => {
     console.log(data);
   };
 
-  return { handleSubmit, errors, onSubmit, Controller, control };
+  return { register, handleSubmit, errors, onSubmit, Controller, control };
 };
 
 export default useAddInformationForm;
