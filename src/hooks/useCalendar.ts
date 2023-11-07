@@ -3,7 +3,7 @@ import { Month } from "types/enums/CalendarEnum";
 import { DayInfoType } from "types/types/WorkUserDataType";
 import { month as monthNames, weekdays } from "utilities/DefaultCalendarData";
 import useModalWindow from "hooks/useModalWindow";
-import WorkUserData from "utilities/GlobalExampleData";
+import { WorkUserDataType } from "types/types/WorkUserDataType";
 
 export const useCalendar = () => {
   const [date, setDate] = useState(new Date());
@@ -122,8 +122,10 @@ export const useCalendar = () => {
 
   const handleCellClick = (date: Date) => {
     const dateCell = date.toLocaleDateString().replaceAll(".", "-");
-    const informationAboutDay = WorkUserData.filter(
-      (item) => item.data[dateCell]
+    const dataFromLS = window.localStorage.getItem("workingDays");
+    const transformDataFromLS = dataFromLS ? JSON.parse(dataFromLS) : [];
+    const informationAboutDay = transformDataFromLS.filter(
+      (item: WorkUserDataType) => item.data[dateCell]
     );
     setDayInfo(informationAboutDay[0]?.data[dateCell]);
     handleDayClick(date);
@@ -133,8 +135,10 @@ export const useCalendar = () => {
   const checkDayStatus = (date: number | Date | undefined) => {
     if (date instanceof Date) {
       const dateCell = date.toLocaleDateString().replaceAll(".", "-");
-      const informationAboutDay = WorkUserData.filter(
-        (item) => item.data[dateCell]
+      const dataFromLS = window.localStorage.getItem("workingDays");
+      const transformDataFromLS = dataFromLS ? JSON.parse(dataFromLS) : [];
+      const informationAboutDay = transformDataFromLS.filter(
+        (item: WorkUserDataType) => item.data[dateCell]
       );
       return informationAboutDay[0]?.data[dateCell].status;
     }

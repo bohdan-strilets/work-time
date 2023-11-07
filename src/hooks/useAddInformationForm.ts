@@ -42,7 +42,7 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
 
   const onSubmit: SubmitHandler<AddInformationFormInputs> = (data) => {
     if (selectedDate) {
-      const date = `${selectedDate?.getDate()}-${
+      const date = `${selectedDate?.getDate().toString().padStart(2, "0")}-${
         selectedDate?.getMonth() + 1
       }-${selectedDate?.getFullYear()}`;
       if (data.startJob && data.finishJob) {
