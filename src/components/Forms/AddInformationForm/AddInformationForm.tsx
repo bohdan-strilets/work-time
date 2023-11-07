@@ -20,13 +20,14 @@ const AddInformationForm: React.FC<{}> = () => {
             type="single"
             name="status"
             options={DayOptions}
-            label="Выберети к какому типу принадлежит день"
-            buttonlabel="Day type"
+            label="Did you work or rest today?"
+            buttonlabel="Today"
             height="40px"
             width="100%"
             margin="0 0 var(--small-indent) 0"
             onChange={(value: string | string[]) => field.onChange(value)}
             errors={errors}
+            required={true}
           />
         )}
       />
@@ -38,7 +39,7 @@ const AddInformationForm: React.FC<{}> = () => {
             type="single"
             name="startJob"
             options={HoursOptions}
-            label="Начало смены"
+            label="What time did you arrive at work?"
             buttonlabel="Start"
             height="40px"
             width="100%"
@@ -56,7 +57,7 @@ const AddInformationForm: React.FC<{}> = () => {
             type="single"
             name="workShiftNumber"
             options={ShiftOptions}
-            label="Выберети номер смены"
+            label="Is it day or night?"
             buttonlabel="Shift"
             height="40px"
             width="100%"
@@ -77,7 +78,7 @@ const AddInformationForm: React.FC<{}> = () => {
             onChange={(value: boolean) => field.onChange(value)}
             margin="0 0 var(--small-indent) 0"
           >
-            <p>Укажите если смена была дополнительной</p>
+            <p>Is this an extra shift?</p>
           </Checkbox>
         )}
       />

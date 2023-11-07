@@ -13,7 +13,7 @@ export const Label = styled.p`
 `;
 
 export const Required = styled.span`
-  color: var(--red-color);
+  color: var(--accent-color);
 `;
 
 export const Button = styled.button<ButtonProps>`
