@@ -7,6 +7,8 @@ const useModalWindow = () => {
 
   const modalsName = {
     cellDay: "cell-day",
+    cellDayEdit: "cell-day-edit",
+    cellDayDelete: "cell-day-delete",
   };
 
   const openModal = (modalName: string) => {

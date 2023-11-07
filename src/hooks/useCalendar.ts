@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Month } from "types/enums/CalendarEnum";
 import { DayInfoType } from "types/types/WorkUserDataType";
 import { month as monthNames, weekdays } from "utilities/DefaultCalendarData";
@@ -10,10 +11,12 @@ export const useCalendar = () => {
   const [selectedDate, setSelectedDate] = useState<null | Date>(null);
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
-  const yearSelect = useRef<null | HTMLSelectElement>(null);
   const [dayInfo, setDayInfo] = useState<DayInfoType | null>(null);
+  const [dayInfoId, setDayInfoId] = useState<null | string>(null);
+  const yearSelect = useRef<null | HTMLSelectElement>(null);
 
   const { modalsName, openModal } = useModalWindow();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const newDate = new Date(selectedYear, selectedMonth);
@@ -128,6 +131,7 @@ export const useCalendar = () => {
       (item: WorkUserDataType) => item.data[dateCell]
     );
     setDayInfo(informationAboutDay[0]?.data[dateCell]);
+    setDayInfoId(informationAboutDay[0]?.id);
     handleDayClick(date);
     openModal(modalsName.cellDay);
   };
@@ -142,6 +146,16 @@ export const useCalendar = () => {
       );
       return informationAboutDay[0]?.data[dateCell].status;
     }
+  };
+
+  const deleteInformationForDay = () => {
+    const dataFromLS = window.localStorage.getItem("workingDays");
+    const transformDataFromLs: WorkUserDataType[] = dataFromLS
+      ? JSON.parse(dataFromLS)
+      : [];
+    const result = transformDataFromLs.filter((item) => item.id !== dayInfoId);
+    window.localStorage.setItem("workingDays", JSON.stringify(result));
+    navigate("/calendar");
   };
 
   return {
@@ -160,6 +174,8 @@ export const useCalendar = () => {
     handleCellClick,
     dayInfo,
     checkDayStatus,
+    deleteInformationForDay,
+    navigate,
   };
 };
 

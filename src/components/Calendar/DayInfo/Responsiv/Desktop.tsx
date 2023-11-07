@@ -26,7 +26,8 @@ const Desktop: React.FC<DayInfoProps> = ({
   additionalHours,
   dateTransform,
 }) => {
-  const { calculateEarningsDay } = useCalculateDay();
+  const { calculateEarningsDay, handleDeleteBtnClick, handleEditBtnClick } =
+    useCalculateDay();
 
   return (
     <div>
@@ -96,12 +97,12 @@ const Desktop: React.FC<DayInfoProps> = ({
       <Container justifyContent="space-between">
         <List>
           <ItemLi>
-            <Button type="button">
+            <Button type="button" onClick={handleEditBtnClick}>
               <MdModeEditOutline />
             </Button>
           </ItemLi>
           <ItemLi>
-            <Button type="button">
+            <Button type="button" onClick={handleDeleteBtnClick}>
               <MdDelete />
             </Button>
           </ItemLi>
