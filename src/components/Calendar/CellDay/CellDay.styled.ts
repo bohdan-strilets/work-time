@@ -16,7 +16,10 @@ export const Cell = styled.li<CellProps>`
   margin: 2px;
   padding: 5px;
 
-  border: 1px solid var(--gray-color);
+  border: ${({ date, areEqual }) =>
+    areEqual && date && areEqual(new Date(), date)
+      ? "5px solid var(--black-transparent-color)"
+      : "1px solid var(--gray-color)"};
   border-radius: 5px;
   background-color: ${({ status }) => {
     if (status && status === Status.work) {
@@ -32,13 +35,8 @@ export const Cell = styled.li<CellProps>`
       return "#FFD700";
     }
   }};
-  box-shadow: ${({ selectedDate, areEqual, date }) => {
-    if (selectedDate && areEqual && date) {
-      return areEqual(selectedDate, date)
-        ? "5px 5px 5px 1px rgba(0,0,0,0.5) inset"
-        : "";
-    }
-  }};
+  box-shadow: ${({ areEqual, date }) =>
+    areEqual && date && areEqual(new Date(), date) ? "var(--main-shadow)" : ""};
 
   cursor: pointer;
   transition: box-shadow var(--hover-effect);
