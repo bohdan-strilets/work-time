@@ -1,8 +1,11 @@
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { AddInformationFormInputs } from "types/inputs/AddInformationFormInputs";
 import { HookProps } from "types/props/AddInformationFormProps";
+import useModalWindow from "./useModalWindow";
 
 const useAddInformationForm = ({ selectedDate }: HookProps) => {
+  const { closeModal } = useModalWindow();
+
   const {
     register,
     handleSubmit,
@@ -56,7 +59,10 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
             },
           },
         };
-        console.log(result);
+        const dataFromLS = window.localStorage.getItem("workingDays");
+        const transformDataFromLS = dataFromLS ? JSON.parse(dataFromLS) : "";
+        const dataToLS = [...transformDataFromLS, result];
+        window.localStorage.setItem("workingDays", JSON.stringify(dataToLS));
       } else {
         const result = {
           id: Date.now(),
@@ -70,9 +76,13 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
             },
           },
         };
-        console.log(result);
+        const dataFromLS = window.localStorage.getItem("workingDays");
+        const transformDataFromLS = dataFromLS ? JSON.parse(dataFromLS) : "";
+        const dataToLS = [...transformDataFromLS, result];
+        window.localStorage.setItem("workingDays", JSON.stringify(dataToLS));
       }
     }
+    closeModal();
   };
 
   return {
