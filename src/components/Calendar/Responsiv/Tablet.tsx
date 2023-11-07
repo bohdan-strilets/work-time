@@ -87,7 +87,7 @@ const Tablet: React.FC<{}> = () => {
           )}
           {checkQueryParam(modalsName.cellDay) && !dayInfo && (
             <ModalWindow title={`${month[selectedMonth]} ${selectedYear}`}>
-              <AddInformationForm />
+              <AddInformationForm selectedDate={selectedDate} />
             </ModalWindow>
           )}
         </List>

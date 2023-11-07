@@ -5,10 +5,21 @@ import useAddInformationForm from "hooks/useAddInformationForm";
 import DayOptions from "utilities/DayOptions";
 import HoursOptions from "utilities/HoursOptions";
 import ShiftOptions from "utilities/ShiftOptions";
+import { AddInformationFormProps } from "types/props/AddInformationFormProps";
+import { Status } from "types/enums/StatusEnum";
 
-const AddInformationForm: React.FC<{}> = () => {
-  const { register, handleSubmit, errors, onSubmit, Controller, control } =
-    useAddInformationForm();
+const AddInformationForm: React.FC<AddInformationFormProps> = ({
+  selectedDate,
+}) => {
+  const {
+    register,
+    handleSubmit,
+    errors,
+    onSubmit,
+    Controller,
+    control,
+    selectedStatus,
+  } = useAddInformationForm({ selectedDate });
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -31,57 +42,79 @@ const AddInformationForm: React.FC<{}> = () => {
           />
         )}
       />
-      <Controller
-        name="startJob"
-        control={control}
-        render={({ field }) => (
-          <DropdownList
-            type="single"
+      {selectedStatus === Status.work && (
+        <>
+          <Controller
             name="startJob"
-            options={HoursOptions}
-            label="What time did you arrive at work?"
-            buttonlabel="Start"
-            height="40px"
-            width="100%"
-            margin="0 0 var(--small-indent) 0"
-            onChange={(value: string | string[]) => field.onChange(value)}
-            errors={errors}
+            control={control}
+            render={({ field }) => (
+              <DropdownList
+                type="single"
+                name="startJob"
+                options={HoursOptions}
+                label="What time did you arrive at work?"
+                buttonlabel="Start"
+                height="40px"
+                width="100%"
+                margin="0 0 var(--small-indent) 0"
+                onChange={(value: string | string[]) => field.onChange(value)}
+                errors={errors}
+              />
+            )}
           />
-        )}
-      />
-      <Controller
-        name="workShiftNumber"
-        control={control}
-        render={({ field }) => (
-          <DropdownList
-            type="single"
+          <Controller
+            name="finishJob"
+            control={control}
+            render={({ field }) => (
+              <DropdownList
+                type="single"
+                name="finishJob"
+                options={HoursOptions}
+                label="What time did you go home?"
+                buttonlabel="Finish"
+                height="40px"
+                width="100%"
+                margin="0 0 var(--small-indent) 0"
+                onChange={(value: string | string[]) => field.onChange(value)}
+                errors={errors}
+              />
+            )}
+          />
+          <Controller
             name="workShiftNumber"
-            options={ShiftOptions}
-            label="Is it day or night?"
-            buttonlabel="Shift"
-            height="40px"
-            width="100%"
-            margin="0 0 var(--small-indent) 0"
-            onChange={(value: string | string[]) => field.onChange(value)}
-            errors={errors}
+            control={control}
+            render={({ field }) => (
+              <DropdownList
+                type="single"
+                name="workShiftNumber"
+                options={ShiftOptions}
+                label="Is it day or night?"
+                buttonlabel="Shift"
+                height="40px"
+                width="100%"
+                margin="0 0 var(--small-indent) 0"
+                onChange={(value: string | string[]) => field.onChange(value)}
+                errors={errors}
+              />
+            )}
           />
-        )}
-      />
-      <Controller
-        name="additionalHours"
-        control={control}
-        render={({ field }) => (
-          <Checkbox
+          <Controller
             name="additionalHours"
-            errors={errors}
-            register={register}
-            onChange={(value: boolean) => field.onChange(value)}
-            margin="0 0 var(--small-indent) 0"
-          >
-            <p>Is this an extra shift?</p>
-          </Checkbox>
-        )}
-      />
+            control={control}
+            render={({ field }) => (
+              <Checkbox
+                name="additionalHours"
+                errors={errors}
+                register={register}
+                onChange={(value: boolean) => field.onChange(value)}
+                margin="0 0 var(--small-indent) 0"
+              >
+                <p>Is this an extra shift?</p>
+              </Checkbox>
+            )}
+          />
+        </>
+      )}
 
       <Button type="submit" label="Add day" width="400px" height="40px" />
     </form>
