@@ -6,6 +6,7 @@ import DayInfo from "../DayInfo";
 import ModalWindow from "components/ModalWindow";
 import AddInformationForm from "components/Forms/AddInformationForm";
 import DialogWindow from "components/DialogWindow";
+import EditInformationForm from "components/Forms/EditInformationForm";
 import useCalendar from "hooks/useCalendar";
 import useModalWindow from "hooks/useModalWindow";
 import { WeekdaysList, DayName, List, DayOfMonth } from "../Calendar.styled";
@@ -29,6 +30,7 @@ const Mobile: React.FC<{}> = () => {
     checkDayStatus,
     deleteInformationForDay,
     navigate,
+    dayInfoId,
   } = useCalendar();
   const { checkQueryParam, modalsName } = useModalWindow();
 
@@ -97,7 +99,10 @@ const Mobile: React.FC<{}> = () => {
         />
         {checkQueryParam(modalsName.cellDayEdit) && (
           <ModalWindow title="Edit">
-            <p>Edit modal</p>
+            <EditInformationForm
+              dayId={dayInfoId}
+              selectedDate={selectedDate}
+            />
           </ModalWindow>
         )}
         {checkQueryParam(modalsName.cellDayDelete) && (

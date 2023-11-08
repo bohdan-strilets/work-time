@@ -8,6 +8,7 @@ export type CheckboxProps = {
   errors: any;
   onChange: (value: boolean) => void;
   children?: string | React.ReactNode;
+  defaultValue?: boolean;
 };
 
 export type WrapperProps = Pick<CheckboxProps, "margin">;
@@ -16,4 +17,4 @@ export type CustomCheckboxProps = Pick<CheckboxProps, "disabled"> & {
   checked: boolean;
 };
 
-export type HookProps = Pick<CheckboxProps, "onChange">;
+export type HookProps = Pick<CheckboxProps, "onChange" | "defaultValue">;

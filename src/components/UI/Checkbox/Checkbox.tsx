@@ -19,8 +19,9 @@ const Checkbox: React.FC<CheckboxProps> = ({
   errors,
   onChange,
   children,
+  defaultValue,
 }) => {
-  const { isChecked, toggle } = useCheckbox({ onChange });
+  const { isChecked, toggle } = useCheckbox({ onChange, defaultValue });
 
   return (
     <Wrapper margin={margin}>

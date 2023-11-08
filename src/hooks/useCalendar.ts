@@ -5,6 +5,8 @@ import { DayInfoType } from "types/types/WorkUserDataType";
 import { month as monthNames, weekdays } from "utilities/DefaultCalendarData";
 import useModalWindow from "hooks/useModalWindow";
 import { WorkUserDataType } from "types/types/WorkUserDataType";
+import useLocalStorage from "./useLocalStorage";
+import { keys } from "settings/config";
 
 export const useCalendar = () => {
   const [date, setDate] = useState(new Date());
@@ -17,6 +19,7 @@ export const useCalendar = () => {
 
   const { modalsName, openModal } = useModalWindow();
   const navigate = useNavigate();
+  const { getDataFromLs, setDataToLs } = useLocalStorage();
 
   useEffect(() => {
     const newDate = new Date(selectedYear, selectedMonth);
@@ -125,10 +128,11 @@ export const useCalendar = () => {
 
   const handleCellClick = (date: Date) => {
     const dateCell = date.toLocaleDateString().replaceAll(".", "-");
-    const dataFromLS = window.localStorage.getItem("workingDays");
-    const transformDataFromLS = dataFromLS ? JSON.parse(dataFromLS) : [];
-    const informationAboutDay = transformDataFromLS.filter(
-      (item: WorkUserDataType) => item.data[dateCell]
+    const dataFromLs: WorkUserDataType[] = getDataFromLs(
+      keys.WORKING_DAYS_KEY_LS
+    );
+    const informationAboutDay = dataFromLs.filter(
+      (item) => item.data[dateCell]
     );
     setDayInfo(informationAboutDay[0]?.data[dateCell]);
     setDayInfoId(informationAboutDay[0]?.id);
@@ -139,22 +143,22 @@ export const useCalendar = () => {
   const checkDayStatus = (date: number | Date | undefined) => {
     if (date instanceof Date) {
       const dateCell = date.toLocaleDateString().replaceAll(".", "-");
-      const dataFromLS = window.localStorage.getItem("workingDays");
-      const transformDataFromLS = dataFromLS ? JSON.parse(dataFromLS) : [];
-      const informationAboutDay = transformDataFromLS.filter(
-        (item: WorkUserDataType) => item.data[dateCell]
+      const dataFromLs: WorkUserDataType[] = getDataFromLs(
+        keys.WORKING_DAYS_KEY_LS
+      );
+      const informationAboutDay = dataFromLs.filter(
+        (item) => item.data[dateCell]
       );
       return informationAboutDay[0]?.data[dateCell].status;
     }
   };
 
   const deleteInformationForDay = () => {
-    const dataFromLS = window.localStorage.getItem("workingDays");
-    const transformDataFromLs: WorkUserDataType[] = dataFromLS
-      ? JSON.parse(dataFromLS)
-      : [];
-    const result = transformDataFromLs.filter((item) => item.id !== dayInfoId);
-    window.localStorage.setItem("workingDays", JSON.stringify(result));
+    const dataFromLs: WorkUserDataType[] = getDataFromLs(
+      keys.WORKING_DAYS_KEY_LS
+    );
+    const result = dataFromLs.filter((item) => item.id !== dayInfoId);
+    setDataToLs(keys.WORKING_DAYS_KEY_LS, result);
     navigate("/calendar");
   };
 
@@ -176,6 +180,7 @@ export const useCalendar = () => {
     checkDayStatus,
     deleteInformationForDay,
     navigate,
+    dayInfoId,
   };
 };
 

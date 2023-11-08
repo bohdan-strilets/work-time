@@ -2,6 +2,10 @@ import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { AddInformationFormInputs } from "types/inputs/AddInformationFormInputs";
 import { HookProps } from "types/props/AddInformationFormProps";
 import useModalWindow from "./useModalWindow";
+import GetKeyByDate from "utilities/GetKeyByDate";
+import useLocalStorage from "./useLocalStorage";
+import { keys } from "settings/config";
+import CalculateWorkedHours from "utilities/CalculateWorkedHours";
 
 const useAddInformationForm = ({ selectedDate }: HookProps) => {
   const { closeModal } = useModalWindow();
@@ -13,44 +17,18 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
     control,
     watch,
   } = useForm<AddInformationFormInputs>();
-
+  const { getDataFromLs, setDataToLs } = useLocalStorage();
   const selectedStatus = watch("status");
-
-  const calculateWorkedHours = (start: string, finish: string): number => {
-    const startTimeParts = start.split(":");
-    const finishTimeParts = finish.split(":");
-
-    const startHour = parseInt(startTimeParts[0], 10);
-    const startMinute = parseInt(startTimeParts[1], 10);
-    const finishHour = parseInt(finishTimeParts[0], 10);
-    const finishMinute = parseInt(finishTimeParts[1], 10);
-
-    let hoursDiff = finishHour - startHour;
-    let minutesDiff = finishMinute - startMinute;
-
-    if (minutesDiff < 0) {
-      hoursDiff -= 1;
-      minutesDiff += 60;
-    }
-
-    if (hoursDiff < 0) {
-      hoursDiff += 24;
-    }
-
-    return hoursDiff + minutesDiff / 60;
-  };
 
   const onSubmit: SubmitHandler<AddInformationFormInputs> = (data) => {
     if (selectedDate) {
-      const date = `${selectedDate?.getDate().toString().padStart(2, "0")}-${
-        selectedDate?.getMonth() + 1
-      }-${selectedDate?.getFullYear()}`;
+      const key = GetKeyByDate(selectedDate);
       if (data.startJob && data.finishJob) {
-        const workedHours = calculateWorkedHours(data.startJob, data.finishJob);
+        const workedHours = CalculateWorkedHours(data.startJob, data.finishJob);
         const result = {
           id: Date.now(),
           data: {
-            [date]: {
+            [key]: {
               status: data.status,
               numberHoursWorked: workedHours,
               time: `${data.startJob}-${data.finishJob}`,
@@ -59,15 +37,14 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
             },
           },
         };
-        const dataFromLS = window.localStorage.getItem("workingDays");
-        const transformDataFromLS = dataFromLS ? JSON.parse(dataFromLS) : "";
-        const dataToLS = [...transformDataFromLS, result];
-        window.localStorage.setItem("workingDays", JSON.stringify(dataToLS));
+        const dataFromLs = getDataFromLs(keys.WORKING_DAYS_KEY_LS);
+        const dataToLs = [...dataFromLs, result];
+        setDataToLs(keys.WORKING_DAYS_KEY_LS, dataToLs);
       } else {
         const result = {
           id: Date.now(),
           data: {
-            [date]: {
+            [key]: {
               status: data.status,
               numberHoursWorked: 0,
               time: "-",
@@ -76,10 +53,9 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
             },
           },
         };
-        const dataFromLS = window.localStorage.getItem("workingDays");
-        const transformDataFromLS = dataFromLS ? JSON.parse(dataFromLS) : "";
-        const dataToLS = [...transformDataFromLS, result];
-        window.localStorage.setItem("workingDays", JSON.stringify(dataToLS));
+        const dataFromLs = getDataFromLs(keys.WORKING_DAYS_KEY_LS);
+        const dataToLs = [...dataFromLs, result];
+        setDataToLs(keys.WORKING_DAYS_KEY_LS, dataToLs);
       }
     }
     closeModal();
