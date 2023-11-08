@@ -1,4 +1,4 @@
-import { month, weekdays } from "utilities/DefaultCalendarData";
+import { weekdays } from "utilities/DefaultCalendarData";
 import Controllers from "../Controllers";
 import MonthList from "../MonthList";
 import CellDay from "../CellDay";
@@ -72,24 +72,28 @@ const Mobile: React.FC<{}> = () => {
                   <CellDay key={index} />
                 );
               })}
-              {checkQueryParam(modalsName.cellDay) && dayInfo && (
-                <ModalWindow title={`${month[selectedMonth]} ${selectedYear}`}>
-                  <DayInfo
-                    status={dayInfo.status}
-                    numberHoursWorked={dayInfo.numberHoursWorked}
-                    date={selectedDate}
-                    time={dayInfo.time}
-                    workShiftNumber={dayInfo.workShiftNumber}
-                    additionalHours={dayInfo.additionalHours}
-                    dateTransform={dateTransform}
-                  />
-                </ModalWindow>
-              )}
-              {checkQueryParam(modalsName.cellDay) && !dayInfo && (
-                <ModalWindow title={`${month[selectedMonth]} ${selectedYear}`}>
-                  <AddInformationForm selectedDate={selectedDate} />
-                </ModalWindow>
-              )}
+              {checkQueryParam(modalsName.cellDay) &&
+                dayInfo &&
+                selectedDate && (
+                  <ModalWindow title={`${dateTransform(selectedDate)}`}>
+                    <DayInfo
+                      status={dayInfo.status}
+                      numberHoursWorked={dayInfo.numberHoursWorked}
+                      date={selectedDate}
+                      time={dayInfo.time}
+                      workShiftNumber={dayInfo.workShiftNumber}
+                      additionalHours={dayInfo.additionalHours}
+                      dateTransform={dateTransform}
+                    />
+                  </ModalWindow>
+                )}
+              {checkQueryParam(modalsName.cellDay) &&
+                !dayInfo &&
+                selectedDate && (
+                  <ModalWindow title={`${dateTransform(selectedDate)}`}>
+                    <AddInformationForm selectedDate={selectedDate} />
+                  </ModalWindow>
+                )}
             </List>
           )
         )}
@@ -97,16 +101,16 @@ const Mobile: React.FC<{}> = () => {
           handleChangeMonth={handleChangeMonth}
           selectedMonth={selectedMonth}
         />
-        {checkQueryParam(modalsName.cellDayEdit) && (
-          <ModalWindow title="Edit">
+        {checkQueryParam(modalsName.cellDayEdit) && selectedDate && (
+          <ModalWindow title={`${dateTransform(selectedDate)}`}>
             <EditInformationForm
               dayId={dayInfoId}
               selectedDate={selectedDate}
             />
           </ModalWindow>
         )}
-        {checkQueryParam(modalsName.cellDayDelete) && (
-          <ModalWindow title="Delete">
+        {checkQueryParam(modalsName.cellDayDelete) && selectedDate && (
+          <ModalWindow title={`${dateTransform(selectedDate)}`}>
             <DialogWindow
               negativeBtnLabel="Cancel"
               positiveBtnLabel="Delete"

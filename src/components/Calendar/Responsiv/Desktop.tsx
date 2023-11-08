@@ -1,4 +1,4 @@
-import { month, weekdays } from "utilities/DefaultCalendarData";
+import { weekdays } from "utilities/DefaultCalendarData";
 import Controllers from "../Controllers";
 import MonthList from "../MonthList";
 import CellDay from "../CellDay";
