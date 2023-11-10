@@ -1,9 +1,16 @@
-import styled from "@emotion/styled";
-import { CellProps } from "types/props/CellDayProps";
-import ScreenWidth from "utilities/ScreenWidth";
-import { Status } from "types/enums/StatusEnum";
+import styled from '@emotion/styled';
+import { CellProps } from 'types/props/CellDayProps';
+import ScreenWidth from 'utilities/ScreenWidth';
+import { Status } from 'types/enums/StatusEnum';
+import workDayBg from 'Assets/images/work-day-bg.jpg';
+import dayOffBg from 'Assets/images/day-off-bg.jpg';
+import vacationDayBg from 'Assets/images/vacation-day-bg.jpg';
+import slickLeaveBg from 'Assets/images/sick-leave-day-bg.jpg';
 
 export const Cell = styled.li<CellProps>`
+  position: relative;
+  overflow: hidden;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,25 +25,28 @@ export const Cell = styled.li<CellProps>`
 
   border: ${({ date, areEqual }) =>
     areEqual && date && areEqual(new Date(), date)
-      ? "5px solid var(--black-transparent-color)"
-      : "1px solid var(--gray-color)"};
+      ? '5px solid var(--black-transparent-color)'
+      : '1px solid var(--gray-color)'};
   border-radius: 5px;
-  background-color: ${({ status }) => {
+  background: ${({ status }) => {
     if (status && status === Status.work) {
-      return "#FF6B6B";
+      return `url(${workDayBg})`;
     }
     if (status && status === Status.dayOff) {
-      return "#6BFF88";
+      return `url(${dayOffBg})`;
     }
     if (status && status === Status.vacation) {
-      return "#6B88FF";
+      return `url(${vacationDayBg})`;
     }
     if (status && status === Status.sickLeave) {
-      return "#FFD700";
+      return `url(${slickLeaveBg})`;
     }
   }};
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   box-shadow: ${({ areEqual, date }) =>
-    areEqual && date && areEqual(new Date(), date) ? "var(--main-shadow)" : ""};
+    areEqual && date && areEqual(new Date(), date) ? 'var(--main-shadow)' : ''};
 
   cursor: pointer;
   transition: box-shadow var(--hover-effect);
@@ -61,4 +71,21 @@ export const Cell = styled.li<CellProps>`
     height: 130px;
     margin: 3px;
   }
+`;
+
+export const Content = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+
+  background-color: rgba(255, 255, 255, 0.7);
 `;

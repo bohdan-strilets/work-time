@@ -1,5 +1,5 @@
 import { CellDayProps } from "types/props/CellDayProps";
-import { Cell } from "./CellDay.styled";
+import { Cell, Content } from "./CellDay.styled";
 
 const CellDay: React.FC<CellDayProps> = ({
   handleClick,
@@ -17,7 +17,7 @@ const CellDay: React.FC<CellDayProps> = ({
       selectedDate={selectedDate}
       status={status}
     >
-      {children}
+      {status ? <Content>{children}</Content> : <>{children}</>}
     </Cell>
   );
 };

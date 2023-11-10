@@ -131,25 +131,30 @@ export const useCalendar = () => {
     const dataFromLs: WorkUserDataType[] = getDataFromLs(
       keys.WORKING_DAYS_KEY_LS
     );
-    const informationAboutDay = dataFromLs.filter(
-      (item) => item.data[dateCell]
-    );
-    setDayInfo(informationAboutDay[0]?.data[dateCell]);
-    setDayInfoId(informationAboutDay[0]?.id);
+    if (dataFromLs) {
+      const informationAboutDay = dataFromLs.filter(
+        (item) => item.data[dateCell]
+      );
+      setDayInfo(informationAboutDay[0]?.data[dateCell]);
+      setDayInfoId(informationAboutDay[0]?.id);
+    }
+
     handleDayClick(date);
     openModal(modalsName.cellDay);
   };
 
-  const checkDayStatus = (date: number | Date | undefined) => {
+  const getInformationForDay = (date: number | Date | undefined) => {
     if (date instanceof Date) {
       const dateCell = date.toLocaleDateString().replaceAll(".", "-");
       const dataFromLs: WorkUserDataType[] = getDataFromLs(
         keys.WORKING_DAYS_KEY_LS
       );
-      const informationAboutDay = dataFromLs.filter(
-        (item) => item.data[dateCell]
-      );
-      return informationAboutDay[0]?.data[dateCell].status;
+      if (dataFromLs) {
+        const informationAboutDay = dataFromLs.filter(
+          (item) => item.data[dateCell]
+        );
+        return informationAboutDay[0]?.data[dateCell];
+      }
     }
   };
 
@@ -177,7 +182,7 @@ export const useCalendar = () => {
     dateTransform,
     handleCellClick,
     dayInfo,
-    checkDayStatus,
+    getInformationForDay,
     deleteInformationForDay,
     navigate,
     dayInfoId,

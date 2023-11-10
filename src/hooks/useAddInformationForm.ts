@@ -38,8 +38,13 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
           },
         };
         const dataFromLs = getDataFromLs(keys.WORKING_DAYS_KEY_LS);
-        const dataToLs = [...dataFromLs, result];
-        setDataToLs(keys.WORKING_DAYS_KEY_LS, dataToLs);
+        if (dataFromLs) {
+          const dataToLs = [...dataFromLs, result];
+          setDataToLs(keys.WORKING_DAYS_KEY_LS, dataToLs);
+        } else {
+          const dataToLs = [result];
+          setDataToLs(keys.WORKING_DAYS_KEY_LS, dataToLs);
+        }
       } else {
         const result = {
           id: Date.now(),
@@ -54,8 +59,13 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
           },
         };
         const dataFromLs = getDataFromLs(keys.WORKING_DAYS_KEY_LS);
-        const dataToLs = [...dataFromLs, result];
-        setDataToLs(keys.WORKING_DAYS_KEY_LS, dataToLs);
+        if (dataFromLs) {
+          const dataToLs = [...dataFromLs, result];
+          setDataToLs(keys.WORKING_DAYS_KEY_LS, dataToLs);
+        } else {
+          const dataToLs = [result];
+          setDataToLs(keys.WORKING_DAYS_KEY_LS, dataToLs);
+        }
       }
     }
     closeModal();
