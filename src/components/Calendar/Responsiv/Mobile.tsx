@@ -1,5 +1,6 @@
 import { weekdays } from 'utilities/DefaultCalendarData';
 import Controllers from '../Controllers';
+import Header from '../Header';
 import MonthList from '../MonthList';
 import CellDay from '../CellDay';
 import DayInfo from '../DayInfo';
@@ -10,8 +11,6 @@ import EditInformationForm from 'components/Forms/EditInformationForm';
 import useCalendar from 'hooks/useCalendar';
 import useModalWindow from 'hooks/useModalWindow';
 import {
-  WeekdaysList,
-  DayName,
   List,
   DayOfMonth,
   Container,
@@ -54,12 +53,7 @@ const Mobile: React.FC<{}> = () => {
           date={date}
           handleNextMonth={handleNextMonth}
         />
-
-        <WeekdaysList>
-          {weekdays.map(name => (
-            <DayName key={name}>{name}</DayName>
-          ))}
-        </WeekdaysList>
+        <Header />
         {getMonthDate(date.getFullYear(), date.getMonth()).map((week, index) => (
           <List key={index}>
             {week.map((date, index) => {

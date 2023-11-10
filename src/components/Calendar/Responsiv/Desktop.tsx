@@ -1,8 +1,8 @@
 import { MdOutlineWork } from 'react-icons/md';
 import { BiSolidTimeFive } from 'react-icons/bi';
 import { BsCheckAll } from 'react-icons/bs';
-import { weekdays } from 'utilities/DefaultCalendarData';
 import Controllers from '../Controllers';
+import Header from '../Header';
 import MonthList from '../MonthList';
 import CellDay from '../CellDay';
 import DayInfo from '../DayInfo';
@@ -15,8 +15,6 @@ import useModalWindow from 'hooks/useModalWindow';
 import { WorkShiftNumber } from 'types/enums/WorkShiftNumber';
 import { Status } from 'types/enums/StatusEnum';
 import {
-  WeekdaysList,
-  DayName,
   List,
   DayOfMonth,
   Container,
@@ -62,11 +60,7 @@ const Desktop: React.FC<{}> = () => {
           date={date}
           handleNextMonth={handleNextMonth}
         />
-        <WeekdaysList>
-          {weekdays.map(name => (
-            <DayName key={name}>{name}</DayName>
-          ))}
-        </WeekdaysList>
+        <Header />
         {getMonthDate(date.getFullYear(), date.getMonth()).map((week, index) => (
           <List key={index}>
             {week.map((date, index) => {
