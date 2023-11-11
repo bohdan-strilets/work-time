@@ -1,9 +1,8 @@
-import { BsCheckAll } from 'react-icons/bs';
-import { weekdays } from 'utilities/DefaultCalendarData';
 import Controllers from '../Controllers';
 import Header from '../Header';
 import MonthList from '../MonthList';
 import CellDay from '../CellDay';
+import CellInformation from '../CellInformation';
 import DayInfo from '../DayInfo';
 import ModalWindow from 'components/ModalWindow';
 import AddInformationForm from 'components/Forms/AddInformationForm';
@@ -11,15 +10,7 @@ import DialogWindow from 'components/DialogWindow';
 import EditInformationForm from 'components/Forms/EditInformationForm';
 import useCalendar from 'hooks/useCalendar';
 import useModalWindow from 'hooks/useModalWindow';
-import { Status } from 'types/enums/StatusEnum';
-import {
-  List,
-  DayOfMonth,
-  Container,
-  DayStatus,
-  AdditionalHours,
-  AdditionalHoursLabel,
-} from '../Calendar.styled';
+import { List } from '../Calendar.styled';
 
 const Tablet: React.FC<{}> = () => {
   const {
@@ -71,22 +62,7 @@ const Tablet: React.FC<{}> = () => {
                   selectedDate={selectedDate}
                   status={dayInfo?.status}
                 >
-                  <DayOfMonth>{date.getDate()}</DayOfMonth>
-                  {dayInfo?.status && (
-                    <Container>
-                      {dayInfo?.status === Status.work && <DayStatus>Work</DayStatus>}
-                      {dayInfo?.status === Status.dayOff && <DayStatus>Day off</DayStatus>}
-                      {dayInfo?.status === Status.vacation && <DayStatus>Vacation</DayStatus>}
-                      {dayInfo?.status === Status.sickLeave && <DayStatus>Sick leave</DayStatus>}
-                      {dayInfo?.additionalHours && (
-                        <AdditionalHours>
-                          <AdditionalHoursLabel>
-                            <BsCheckAll size={18} color="var(--white-color)" />
-                          </AdditionalHoursLabel>
-                        </AdditionalHours>
-                      )}
-                    </Container>
-                  )}
+                  <CellInformation date={date} dayInfo={dayInfo} />
                 </CellDay>
               ) : (
                 <CellDay key={index} />

@@ -1,8 +1,8 @@
-import { weekdays } from 'utilities/DefaultCalendarData';
 import Controllers from '../Controllers';
 import Header from '../Header';
 import MonthList from '../MonthList';
 import CellDay from '../CellDay';
+import CellInformation from '../CellInformation';
 import DayInfo from '../DayInfo';
 import ModalWindow from 'components/ModalWindow';
 import AddInformationForm from 'components/Forms/AddInformationForm';
@@ -10,13 +10,7 @@ import DialogWindow from 'components/DialogWindow';
 import EditInformationForm from 'components/Forms/EditInformationForm';
 import useCalendar from 'hooks/useCalendar';
 import useModalWindow from 'hooks/useModalWindow';
-import {
-  List,
-  DayOfMonth,
-  Container,
-  AdditionalHours,
-  AdditionalHoursLabel,
-} from '../Calendar.styled';
+import { List } from '../Calendar.styled';
 
 const Mobile: React.FC<{}> = () => {
   const {
@@ -67,16 +61,7 @@ const Mobile: React.FC<{}> = () => {
                   selectedDate={selectedDate}
                   status={dayInfo?.status}
                 >
-                  <DayOfMonth>{date.getDate()}</DayOfMonth>
-                  {dayInfo?.status && (
-                    <Container>
-                      {dayInfo?.additionalHours && (
-                        <AdditionalHours>
-                          <AdditionalHoursLabel />
-                        </AdditionalHours>
-                      )}
-                    </Container>
-                  )}
+                  <CellInformation date={date} dayInfo={dayInfo} />
                 </CellDay>
               ) : (
                 <CellDay key={index} />

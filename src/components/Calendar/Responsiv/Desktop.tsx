@@ -1,10 +1,8 @@
-import { MdOutlineWork } from 'react-icons/md';
-import { BiSolidTimeFive } from 'react-icons/bi';
-import { BsCheckAll } from 'react-icons/bs';
 import Controllers from '../Controllers';
 import Header from '../Header';
 import MonthList from '../MonthList';
 import CellDay from '../CellDay';
+import CellInformation from '../CellInformation';
 import DayInfo from '../DayInfo';
 import ModalWindow from 'components/ModalWindow';
 import AddInformationForm from 'components/Forms/AddInformationForm';
@@ -12,18 +10,7 @@ import DialogWindow from 'components/DialogWindow';
 import EditInformationForm from 'components/Forms/EditInformationForm';
 import useCalendar from 'hooks/useCalendar';
 import useModalWindow from 'hooks/useModalWindow';
-import { WorkShiftNumber } from 'types/enums/WorkShiftNumber';
-import { Status } from 'types/enums/StatusEnum';
-import {
-  List,
-  DayOfMonth,
-  Container,
-  DayStatus,
-  LabelWrapper,
-  Label,
-  AdditionalHours,
-  AdditionalHoursLabel,
-} from '../Calendar.styled';
+import { List } from '../Calendar.styled';
 
 const Desktop: React.FC<{}> = () => {
   const {
@@ -74,40 +61,7 @@ const Desktop: React.FC<{}> = () => {
                   selectedDate={selectedDate}
                   status={dayInfo?.status}
                 >
-                  <DayOfMonth>{date.getDate()}</DayOfMonth>
-                  {dayInfo?.status && (
-                    <Container>
-                      {dayInfo?.status === Status.work && <DayStatus>Work</DayStatus>}
-                      {dayInfo?.status === Status.dayOff && <DayStatus>Day off</DayStatus>}
-                      {dayInfo?.status === Status.vacation && <DayStatus>Vacation</DayStatus>}
-                      {dayInfo?.status === Status.sickLeave && <DayStatus>Sick leave</DayStatus>}
-                      {dayInfo.workShiftNumber === WorkShiftNumber.Shift1 && (
-                        <LabelWrapper>
-                          <MdOutlineWork />
-                          <Label>I</Label>
-                        </LabelWrapper>
-                      )}
-                      {dayInfo.workShiftNumber === WorkShiftNumber.Shift2 && (
-                        <LabelWrapper>
-                          <MdOutlineWork />
-                          <Label>II</Label>
-                        </LabelWrapper>
-                      )}
-                      {dayInfo?.numberHoursWorked > 0 && (
-                        <LabelWrapper>
-                          <BiSolidTimeFive />
-                          <Label>{dayInfo.numberHoursWorked}H</Label>
-                        </LabelWrapper>
-                      )}
-                      {dayInfo?.additionalHours && (
-                        <AdditionalHours>
-                          <AdditionalHoursLabel>
-                            <BsCheckAll size={18} color="var(--white-color)" />
-                          </AdditionalHoursLabel>
-                        </AdditionalHours>
-                      )}
-                    </Container>
-                  )}
+                  <CellInformation date={date} dayInfo={dayInfo} />
                 </CellDay>
               ) : (
                 <CellDay key={index} />
