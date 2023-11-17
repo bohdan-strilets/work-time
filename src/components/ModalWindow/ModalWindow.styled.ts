@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import ScreenWidth from "utilities/ScreenWidth";
+import styled from '@emotion/styled';
+import ScreenWidth from 'utilities/ScreenWidth';
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -91,6 +91,7 @@ export const Button = styled.button`
 
 export const Content = styled.div`
   padding: var(--small-indent);
+  min-height: 450px;
 
   @media screen and (min-width: ${ScreenWidth.tablet}) {
     padding: var(--medium-indent);
