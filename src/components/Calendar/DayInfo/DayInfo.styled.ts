@@ -1,25 +1,19 @@
-import styled from "@emotion/styled";
-import {
-  ContainerProps,
-  TextProps,
-  ExtraTimeStatusProps,
-} from "types/props/DayInfoProps";
-import ScreenWidth from "utilities/ScreenWidth";
+import styled from '@emotion/styled';
+import { ContainerProps, TextProps, ExtraTimeStatusProps } from 'types/props/DayInfoProps';
+import ScreenWidth from 'utilities/ScreenWidth';
 
 export const Container = styled.div<ContainerProps>`
-  display: ${({ displayBlock }) => (displayBlock ? "block" : "flex")};
-  align-items: center;
-  justify-content: ${({ justifyContent }) =>
-    justifyContent ? justifyContent : ""};
-
-  margin: ${({ margin }) => (margin ? margin : "")};
+  display: ${({ displayBlock }) => (displayBlock ? 'block' : 'flex')};
+  align-items: ${({ alignItems }) => (alignItems ? alignItems : 'center')};
+  justify-content: ${({ justifyContent }) => (justifyContent ? justifyContent : '')};
+  margin: ${({ margin }) => (margin ? margin : '')};
 `;
 
 export const Text = styled.p<TextProps>`
-  font-size: ${({ fontSize }) => (fontSize ? fontSize : "")};
-  font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : "")};
-  margin: ${({ margin }) => (margin ? margin : "")};
-  color: ${({ color }) => (color ? color : "")};
+  font-size: ${({ fontSize }) => (fontSize ? fontSize : '')};
+  font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : '')};
+  margin: ${({ margin }) => (margin ? margin : '')};
+  color: ${({ color }) => (color ? color : '')};
 `;
 
 export const NumberHours = styled.div`
@@ -45,23 +39,12 @@ export const ExtraTimeStatus = styled.div<ExtraTimeStatusProps>`
   width: 30px;
   height: 30px;
 
-  color: ${({ additionalHours }) =>
-    additionalHours ? "var(--green-color)" : "var(--gray-color)"};
+  color: ${({ additionalHours }) => (additionalHours ? 'var(--green-color)' : 'var(--gray-color)')};
   border-style: solid;
   border-width: 2px;
   border-color: ${({ additionalHours }) =>
-    additionalHours ? "var(--green-color)" : "var(--gray-color)"};
+    additionalHours ? 'var(--green-color)' : 'var(--gray-color)'};
   border-radius: 5px;
-`;
-
-export const Item = styled.li`
-  padding: 5px;
-  border-bottom: 1px solid var(--gray-color);
-  color: #cccccc;
-
-  :last-child {
-    border-bottom: none;
-  }
 `;
 
 export const List = styled.ul`
