@@ -1,9 +1,14 @@
-import { Text, Slogan } from "./Logo.styled";
+import { Text, Background, Icon, Slogan } from './Logo.styled';
 
 const Logo: React.FC<{}> = () => {
   return (
     <>
-      <Text>WorkTime</Text>
+      <Text>
+        WorkTime
+        <Background>
+          <Icon />
+        </Background>
+      </Text>
       <Slogan>Every second matters</Slogan>
     </>
   );
