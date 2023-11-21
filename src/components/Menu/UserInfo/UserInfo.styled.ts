@@ -7,16 +7,6 @@ export const Wrapper = styled.div`
   margin-bottom: 100px;
 `;
 
-export const Avatar = styled.img`
-  width: 100px;
-  height: 100px;
-  margin-right: var(--medium-indent);
-
-  border-radius: 4px;
-  border: 4px solid var(--gray-color);
-  box-shadow: var(--main-shadow);
-`;
-
 export const UserData = styled.div`
   width: 100%;
 `;
