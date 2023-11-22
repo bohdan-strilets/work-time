@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(rootDiv);
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+       <BrowserRouter basename="work-time">
       <App />
     </BrowserRouter>
   </React.StrictMode>
