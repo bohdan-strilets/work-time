@@ -35,7 +35,14 @@ const Tablet: React.FC<DayInfoProps> = ({
     time,
     numberHoursWorked,
   });
-  const { healthInsurance, incomeTax, socialSecurity, total } = useCalculateTax({ earningForDay });
+  const {
+    healthInsurance,
+    incomeTax,
+    total,
+    pensionContribution,
+    disabilityContribution,
+    sicknessInsuranceContribution,
+  } = useCalculateTax({ earningForDay });
 
   return (
     <div>
@@ -98,7 +105,9 @@ const Tablet: React.FC<DayInfoProps> = ({
         <ExpensesList
           healthInsurance={healthInsurance}
           incomeTax={incomeTax}
-          socialSecurity={socialSecurity}
+          pensionContribution={pensionContribution}
+          disabilityContribution={disabilityContribution}
+          sicknessInsuranceContribution={sicknessInsuranceContribution}
         />
       )}
       <Container justifyContent="space-between">

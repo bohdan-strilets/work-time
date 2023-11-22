@@ -14,13 +14,22 @@ const useCalculateTax = ({ earningForDay }: CalculateTaxProps) => {
     return Number(result);
   };
 
+  const calculatePensionContribution = (amount: number) => {
+    return calculatePercentage(taxRates.pensionContribution, amount);
+  };
+
+  const calculateDisabilityContribution = (amount: number) => {
+    return calculatePercentage(taxRates.disabilityContribution, amount);
+  };
+
+  const calculateSicknessInsuranceContribution = (amount: number) => {
+    return calculatePercentage(taxRates.sicknessInsuranceContribution, amount);
+  };
+
   const calculateSocialSecurity = (amount: number): number => {
-    const pensionContribution = calculatePercentage(taxRates.pensionContribution, amount);
-    const disabilityContribution = calculatePercentage(taxRates.disabilityContribution, amount);
-    const sicknessInsuranceContribution = calculatePercentage(
-      taxRates.sicknessInsuranceContribution,
-      amount,
-    );
+    const pensionContribution = calculatePensionContribution(amount);
+    const disabilityContribution = calculateDisabilityContribution(amount);
+    const sicknessInsuranceContribution = calculateSicknessInsuranceContribution(amount);
     return Number(
       (pensionContribution + disabilityContribution + sicknessInsuranceContribution).toFixed(2),
     );
@@ -43,6 +52,9 @@ const useCalculateTax = ({ earningForDay }: CalculateTaxProps) => {
     return Number((salary - socialSecurity - healthInsurance - incomeTax).toFixed(2));
   };
 
+  const pensionContribution = calculatePensionContribution(earningForDay);
+  const disabilityContribution = calculateDisabilityContribution(earningForDay);
+  const sicknessInsuranceContribution = calculateSicknessInsuranceContribution(earningForDay);
   const socialSecurity = calculateSocialSecurity(earningForDay);
   const earningAfterSocailSecuriy = earningForDay - socialSecurity;
   const healthInsurance = calculateHealthInsurance(earningAfterSocailSecuriy);
@@ -57,8 +69,10 @@ const useCalculateTax = ({ earningForDay }: CalculateTaxProps) => {
     calculateIncomeTax,
     healthInsurance,
     incomeTax,
-    socialSecurity,
     total,
+    pensionContribution,
+    disabilityContribution,
+    sicknessInsuranceContribution,
   };
 };
 

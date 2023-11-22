@@ -1,5 +1,7 @@
 export type ExpensesListProps = {
-  socialSecurity: number;
   healthInsurance: number;
   incomeTax: number;
+  pensionContribution: number;
+  disabilityContribution: number;
+  sicknessInsuranceContribution: number;
 };
