@@ -1,7 +1,7 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const Wrapper = styled.header`
-  padding: var(--medium-indent) 0;
+  padding: var(--medium-indent) 10px;
 `;
 
 export const List = styled.ul`

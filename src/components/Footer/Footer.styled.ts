@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
-import { keyframes } from "@emotion/react";
-import ScreenWidth from "utilities/ScreenWidth";
+import styled from '@emotion/styled';
+import { keyframes } from '@emotion/react';
+import ScreenWidth from 'utilities/ScreenWidth';
 
 const pulse = keyframes`
   0% {
@@ -19,7 +19,7 @@ export const Wrapper = styled.footer`
   align-items: center;
   justify-content: space-between;
 
-  padding: var(--large-indent) 0;
+  padding: var(--large-indent) 10px;
   margin-top: var(--large-indent);
 
   border-top: 1px solid var(--black-color);

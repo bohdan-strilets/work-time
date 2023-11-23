@@ -1,19 +1,10 @@
 import Logo from 'components/UI/Logo';
 import ContactForm from 'components/Forms/ContactForm';
-import {
-  Wrapper,
-  TopSide,
-  LogoWrapper,
-  Data,
-  LeftSide,
-  Text,
-  RightSide,
-  Title,
-} from './AboutUs.styled';
+import { TopSide, LogoWrapper, Data, LeftSide, Text, RightSide, Title } from './AboutUs.styled';
 
 const AboutUs: React.FC<{}> = () => {
   return (
-    <Wrapper>
+    <div>
       <TopSide>
         <LogoWrapper>
           <Logo />
@@ -71,7 +62,7 @@ const AboutUs: React.FC<{}> = () => {
           <ContactForm />
         </RightSide>
       </Data>
-    </Wrapper>
+    </div>
   );
 };
 

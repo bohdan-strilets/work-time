@@ -2,10 +2,6 @@ import styled from '@emotion/styled';
 import ScreenWidth from 'utilities/ScreenWidth';
 import { TextProps, TitleProps } from 'types/props/AboutUsProps';
 
-export const Wrapper = styled.div`
-  padding: 0 var(--small-indent);
-`;
-
 export const TopSide = styled.div`
   display: flex;
   align-items: center;

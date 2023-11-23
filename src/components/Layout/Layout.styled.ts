@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import ScreenWidth from "utilities/ScreenWidth";
+import styled from '@emotion/styled';
+import ScreenWidth from 'utilities/ScreenWidth';
 
 export const Wrapper = styled.div`
   position: relative;
@@ -13,4 +13,8 @@ export const Wrapper = styled.div`
   @media screen and (min-width: ${ScreenWidth.desktop}) {
     width: ${ScreenWidth.desktop};
   }
+`;
+
+export const Content = styled.div`
+  padding: 0 10px;
 `;

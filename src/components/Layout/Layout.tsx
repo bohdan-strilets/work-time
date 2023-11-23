@@ -1,13 +1,13 @@
-import Header from "components/Header";
-import Footer from "components/Footer";
-import { LayoutProps } from "types/props/LayoutProps";
-import { Wrapper } from "./Layout.styled";
+import Header from 'components/Header';
+import Footer from 'components/Footer';
+import { LayoutProps } from 'types/props/LayoutProps';
+import { Wrapper, Content } from './Layout.styled';
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <Wrapper>
       <Header />
-      <div>{children}</div>
+      <Content>{children}</Content>
       <Footer />
     </Wrapper>
   );
