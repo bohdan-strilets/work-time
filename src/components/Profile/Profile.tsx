@@ -1,41 +1,27 @@
-import UserData from './UserData';
-import Controllers from './Controllers';
-import Avatar from 'components/UI/Avatar';
-import { Wrapper, LeftSide } from './Profile.styled';
+import Media from 'react-media';
+import ScreenWidth from 'utilities/ScreenWidth';
+import Mobile from './Responsiv/Mobile';
+import Tablet from './Responsiv/Tablet';
+import Desktop from './Responsiv/Desktop';
 
-const Profile: React.FC<{}> = () => {
+const Auth: React.FC<{}> = () => {
   return (
-    <Wrapper>
-      <LeftSide>
-        <UserData
-          name="Bohdan Strilets"
-          isActivateed={true}
-          email="bohdan.striletd@gmail.com"
-          gender="Man"
-          dateBirth="02.06.1995"
-          workInfo={{
-            companyName: 'GPA Global',
-            profession: 'Full-stack developer',
-            startWork: '2019-09-01',
-            endWork: '',
-            salaryPerHour: 33,
-          }}
-        />
-      </LeftSide>
-      <div>
-        <Avatar
-          alt="User avatar"
-          url="https://cdn.pixabay.com/photo/2023/09/16/18/18/wallpaper-8257343_1280.png"
-          width="320px"
-          height="320px"
-          margin="0 0 var(--medium-indent)"
-          borderRadius="10px"
-          border="5px solid var(--white-transparent-color)"
-        />
-        <Controllers />
-      </div>
-    </Wrapper>
+    <Media
+      queries={{
+        small: `(max-width: ${ScreenWidth.preTablet})`,
+        medium: `(min-width: ${ScreenWidth.tablet}) and (max-width: ${ScreenWidth.preDesktop})`,
+        large: `(min-width: ${ScreenWidth.desktop})`,
+      }}
+    >
+      {matches => (
+        <>
+          {matches.small && <Mobile />}
+          {matches.medium && <Tablet />}
+          {matches.large && <Desktop />}
+        </>
+      )}
+    </Media>
   );
 };
 
-export default Profile;
+export default Auth;
