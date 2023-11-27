@@ -22,12 +22,23 @@ const IncomeList: React.FC<IncomeListProps> = ({
   const nightHours = calculateNightHours(time);
 
   useEffect(() => {
-    if (additional) {
+    if (additional && workShiftNumber === WorkShiftNumber.Shift1) {
+      setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
+      setFiftyPercentage(Multiplication(additional['50%'].numberHours, 16.5));
+      return setTotal(earningsForDay + fiftyPercentage);
+    } else if (additional) {
       setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
       setFiftyPercentage(Multiplication(additional['50%'].numberHours, 16.5));
       setOneHundredPercent(Multiplication(additional['100%'].numberHours, hourlyRate));
       setNightSupplement(Multiplication(nightHours, GetNightRate()));
-      setTotal(earningsForDay + fiftyPercentage + oneHundredPercent + nightSupplement);
+      return setTotal(earningsForDay + fiftyPercentage + oneHundredPercent + nightSupplement);
+    } else if (workShiftNumber === WorkShiftNumber.Shift2) {
+      setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
+      setNightSupplement(Multiplication(nightHours, GetNightRate()));
+      return setTotal(earningsForDay + nightSupplement);
+    } else {
+      setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
+      return setTotal(earningsForDay);
     }
   }, [
     additional,
@@ -37,6 +48,7 @@ const IncomeList: React.FC<IncomeListProps> = ({
     nightSupplement,
     numberHoursWorked,
     oneHundredPercent,
+    workShiftNumber,
   ]);
 
   return (

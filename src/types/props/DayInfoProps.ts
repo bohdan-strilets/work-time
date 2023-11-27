@@ -21,4 +21,7 @@ export type TextProps = {
 
 export type ExtraTimeStatusProps = Pick<DayInfoProps, 'additionalHours'>;
 
-export type HookProps = Pick<DayInfoProps, 'additionalHours' | 'time' | 'numberHoursWorked'>;
+export type HookProps = Pick<
+  DayInfoProps,
+  'additionalHours' | 'time' | 'numberHoursWorked' | 'workShiftNumber'
+>;

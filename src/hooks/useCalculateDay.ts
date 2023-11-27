@@ -1,10 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import useModalWindow from './useModalWindow';
 import { Result } from 'types/types/AdditionalHoursType';
 import { HookProps } from 'types/props/DayInfoProps';
 import GetNightRate from 'utilities/GetNightRate';
+import { WorkShiftNumber } from 'types/enums/WorkShiftNumber';
 
-const useCalculateDay = ({ additionalHours, time, numberHoursWorked }: HookProps) => {
+const useCalculateDay = ({
+  additionalHours,
+  time,
+  numberHoursWorked,
+  workShiftNumber,
+}: HookProps) => {
   const [additional, setAdditional] = useState<Result | null>(null);
   const [earningForDay, setEarningForDay] = useState(0);
   const { modalsName, openModal } = useModalWindow();
@@ -15,6 +21,47 @@ const useCalculateDay = ({ additionalHours, time, numberHoursWorked }: HookProps
       setAdditional(hours);
     }
   }, [additionalHours, time]);
+
+  const calculateEarningsDay = useCallback(
+    (
+      workingHours: number,
+      grossHourlyRate: number,
+      fiftyPercentHours?: number,
+      oneHundredPercentHours?: number,
+    ): number => {
+      const salaryForDay = workingHours * grossHourlyRate;
+      let fiftyPercentSalary = 0;
+      let oneHundredPercentSalary = 0;
+      let nightHourSalary = 0;
+
+      if (fiftyPercentHours) {
+        const additionalRatePerHour = grossHourlyRate / 2;
+        const additionalSalary = fiftyPercentHours * additionalRatePerHour;
+        fiftyPercentSalary = additionalSalary;
+      }
+      if (oneHundredPercentHours) {
+        const nightExtraRate = GetNightRate();
+        const additionalSalary = oneHundredPercentHours * grossHourlyRate;
+        const nightSupplement = nightExtraRate * oneHundredPercentHours;
+        oneHundredPercentSalary += additionalSalary;
+        nightHourSalary += nightSupplement;
+      }
+      if (workShiftNumber === WorkShiftNumber.Shift2 && oneHundredPercentHours) {
+        const nightExtraRate = GetNightRate();
+        const nightSupplement = nightExtraRate * oneHundredPercentHours;
+        nightHourSalary += nightSupplement;
+      }
+      if (workShiftNumber === WorkShiftNumber.Shift2) {
+        const nightHours = calculateNightHours(time);
+        const nightExtraRate = GetNightRate();
+        const nightSupplement = nightExtraRate * nightHours;
+        nightHourSalary += nightSupplement;
+      }
+
+      return salaryForDay + fiftyPercentSalary + oneHundredPercentSalary + nightHourSalary;
+    },
+    [time, workShiftNumber],
+  );
 
   useEffect(() => {
     if (additional && additionalHours) {
@@ -29,33 +76,7 @@ const useCalculateDay = ({ additionalHours, time, numberHoursWorked }: HookProps
       const earning = calculateEarningsDay(numberHoursWorked, 33);
       setEarningForDay(earning);
     }
-  }, [additional, additionalHours, numberHoursWorked]);
-
-  const calculateEarningsDay = (
-    workingHours: number,
-    grossHourlyRate: number,
-    fiftyPercentHours?: number,
-    oneHundredPercentHours?: number,
-  ): number => {
-    const salaryForDay = workingHours * grossHourlyRate;
-    let fiftyPercentSalary = 0;
-    let oneHundredPercentSalary = 0;
-
-    if (fiftyPercentHours) {
-      const additionalRatePerHour = grossHourlyRate / 2;
-      const additionalSalary = fiftyPercentHours * additionalRatePerHour;
-      fiftyPercentSalary = additionalSalary;
-    }
-    if (oneHundredPercentHours) {
-      const nightExtraRate = GetNightRate();
-      const additionalSalary = oneHundredPercentHours * grossHourlyRate;
-      const nightSupplement = nightExtraRate * oneHundredPercentHours;
-      oneHundredPercentSalary += additionalSalary;
-      oneHundredPercentSalary += nightSupplement;
-    }
-
-    return salaryForDay + fiftyPercentSalary + oneHundredPercentSalary;
-  };
+  }, [additional, additionalHours, calculateEarningsDay, numberHoursWorked]);
 
   const handleEditBtnClick = () => {
     openModal(modalsName.cellDayEdit);
@@ -90,8 +111,7 @@ const useCalculateDay = ({ additionalHours, time, numberHoursWorked }: HookProps
   };
 
   const calculateNightHours = (timeRange: string): number => {
-    const [endStr] = timeRange.split('-');
-    const endTime = parseInt(endStr.split(':')[0], 10);
+    const endTime = parseInt(timeRange.split('-')[1].split(':')[0], 10);
     const startNightTime = 22;
     const midnight = 24;
     return midnight - startNightTime + endTime;

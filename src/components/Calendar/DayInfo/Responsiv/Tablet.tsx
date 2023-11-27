@@ -34,6 +34,7 @@ const Tablet: React.FC<DayInfoProps> = ({
     additionalHours,
     time,
     numberHoursWorked,
+    workShiftNumber,
   });
   const {
     healthInsurance,

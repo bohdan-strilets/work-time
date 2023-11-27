@@ -35,8 +35,6 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
 
   const onSubmit: SubmitHandler<AddInformationFormInputs> = data => {
     if (selectedDate) {
-      console.log(data);
-
       const key = GetKeyByDate(selectedDate);
       if (data.startJob && data.finishJob) {
         const workedHours = CalculateWorkedHours(data.startJob, data.finishJob);
