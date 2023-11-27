@@ -1,16 +1,15 @@
-import DropdownList from "components/UI/DropdownList";
-import Button from "components/UI/Button";
-import Checkbox from "components/UI/Checkbox";
-import useAddInformationForm from "hooks/useAddInformationForm";
-import DayOptions from "utilities/DayOptions";
-import HoursOptions from "utilities/HoursOptions";
-import ShiftOptions from "utilities/ShiftOptions";
-import { AddInformationFormProps } from "types/props/AddInformationFormProps";
-import { Status } from "types/enums/StatusEnum";
+import DropdownList from 'components/UI/DropdownList';
+import Button from 'components/UI/Button';
+import Checkbox from 'components/UI/Checkbox';
+import QuickTiming from 'components/UI/QuickTiming';
+import useAddInformationForm from 'hooks/useAddInformationForm';
+import DayOptions from 'utilities/DayOptions';
+import HoursOptions from 'utilities/HoursOptions';
+import ShiftOptions from 'utilities/ShiftOptions';
+import { AddInformationFormProps } from 'types/props/AddInformationFormProps';
+import { Status } from 'types/enums/StatusEnum';
 
-const AddInformationForm: React.FC<AddInformationFormProps> = ({
-  selectedDate,
-}) => {
+const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate }) => {
   const {
     register,
     handleSubmit,
@@ -19,6 +18,10 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({
     Controller,
     control,
     selectedStatus,
+    setQuickStartTime,
+    setQuickFinishTime,
+    quickStartTime,
+    quickFinishTime,
   } = useAddInformationForm({ selectedDate });
 
   return (
@@ -57,11 +60,17 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({
                 height="40px"
                 width="100%"
                 margin="0 0 var(--small-indent) 0"
-                onChange={(value: string | string[]) => field.onChange(value)}
+                defaultValue={quickStartTime ? quickStartTime : null}
+                onChange={(value: string | string[]) => {
+                  setQuickStartTime(null);
+                  field.onChange(value);
+                }}
                 errors={errors}
               />
             )}
           />
+          <QuickTiming getQuickTime={setQuickStartTime} />
+
           <Controller
             name="finishJob"
             control={control}
@@ -75,11 +84,16 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({
                 height="40px"
                 width="100%"
                 margin="0 0 var(--small-indent) 0"
-                onChange={(value: string | string[]) => field.onChange(value)}
+                defaultValue={quickFinishTime ? quickFinishTime : null}
+                onChange={(value: string | string[]) => {
+                  setQuickFinishTime(null);
+                  field.onChange(value);
+                }}
                 errors={errors}
               />
             )}
           />
+          <QuickTiming getQuickTime={setQuickFinishTime} />
           <Controller
             name="workShiftNumber"
             control={control}

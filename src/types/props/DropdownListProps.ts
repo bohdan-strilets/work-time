@@ -1,4 +1,4 @@
-import { OptionType } from "types/types/OptionType";
+import { OptionType } from 'types/types/OptionType';
 
 export type DropdownListProps = {
   name: string;
@@ -13,14 +13,14 @@ export type DropdownListProps = {
   margin?: string;
   onChange: (value: string | string[]) => void;
   errors: any;
-  type: "single" | "multiselect";
+  type: 'single' | 'multiselect';
 };
 
 export type UseDropdownListData = Pick<
   DropdownListProps,
-  "options" | "onChange" | "defaultValue" | "type"
+  'options' | 'onChange' | 'defaultValue' | 'type'
 >;
 
-export type WrapperProps = Pick<DropdownListProps, "width" | "margin">;
+export type WrapperProps = Pick<DropdownListProps, 'width' | 'margin'>;
 
-export type ButtonProps = Pick<DropdownListProps, "height" | "disabled">;
+export type ButtonProps = Pick<DropdownListProps, 'height' | 'disabled'>;

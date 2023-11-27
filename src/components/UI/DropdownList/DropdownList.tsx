@@ -1,16 +1,8 @@
-import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
-import { FaCheck } from "react-icons/fa";
-import useDropdownList from "hooks/useDropdownList";
-import { DropdownListProps } from "types/props/DropdownListProps";
-import {
-  Wrapper,
-  Label,
-  Required,
-  Button,
-  List,
-  Item,
-  Error,
-} from "./DropdownList.styled";
+import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri';
+import { FaCheck } from 'react-icons/fa';
+import useDropdownList from 'hooks/useDropdownList';
+import { DropdownListProps } from 'types/props/DropdownListProps';
+import { Wrapper, Label, Required, Button, List, Item, Error } from './DropdownList.styled';
 
 const DropdownList: React.FC<DropdownListProps> = ({
   name,
@@ -45,17 +37,10 @@ const DropdownList: React.FC<DropdownListProps> = ({
           {label} {required && <Required>*</Required>}
         </Label>
       )}
-      <Button
-        type="button"
-        onClick={toggle}
-        height={height}
-        disabled={disabled}
-      >
-        {type === "single" && selectedOption
+      <Button type="button" onClick={toggle} height={height} disabled={disabled}>
+        {type === 'single' && selectedOption
           ? getLabelByValue(selectedOption)
-          : type === "multiselect" &&
-            selectedOptions &&
-            selectedOptions.length > 0
+          : type === 'multiselect' && selectedOptions && selectedOptions.length > 0
           ? `${selectedOptions.length} items selected`
           : buttonlabel}
         {isOpen ? <RiArrowUpSLine size={20} /> : <RiArrowDownSLine size={20} />}
@@ -67,17 +52,15 @@ const DropdownList: React.FC<DropdownListProps> = ({
               key={id}
               data-value={value}
               onClick={
-                type === "single"
-                  ? () => selectOption(value)
-                  : () => selectManyOptions(value)
+                type === 'single' ? () => selectOption(value) : () => selectManyOptions(value)
               }
               tabIndex={0}
             >
               <p>{label}</p>
-              {type === "single" && selectedOption === value && (
+              {type === 'single' && selectedOption === value && (
                 <FaCheck size={16} color="var(--accent-color)" />
               )}
-              {type === "multiselect" && selectedOptions?.includes(value) && (
+              {type === 'multiselect' && selectedOptions?.includes(value) && (
                 <FaCheck size={16} color="var(--accent-color)" />
               )}
             </Item>

@@ -1,13 +1,16 @@
-import { useForm, SubmitHandler, Controller } from "react-hook-form";
-import { AddInformationFormInputs } from "types/inputs/AddInformationFormInputs";
-import { HookProps } from "types/props/AddInformationFormProps";
-import useModalWindow from "./useModalWindow";
-import GetKeyByDate from "utilities/GetKeyByDate";
-import useLocalStorage from "./useLocalStorage";
-import { keys } from "settings/config";
-import CalculateWorkedHours from "utilities/CalculateWorkedHours";
+import { useEffect, useState } from 'react';
+import { useForm, SubmitHandler, Controller } from 'react-hook-form';
+import { AddInformationFormInputs } from 'types/inputs/AddInformationFormInputs';
+import { HookProps } from 'types/props/AddInformationFormProps';
+import useModalWindow from './useModalWindow';
+import GetKeyByDate from 'utilities/GetKeyByDate';
+import useLocalStorage from './useLocalStorage';
+import { keys } from 'settings/config';
+import CalculateWorkedHours from 'utilities/CalculateWorkedHours';
 
 const useAddInformationForm = ({ selectedDate }: HookProps) => {
+  const [quickStartTime, setQuickStartTime] = useState<string | null>(null);
+  const [quickFinishTime, setQuickFinishTime] = useState<string | null>(null);
   const { closeModal } = useModalWindow();
 
   const {
@@ -16,12 +19,24 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
     formState: { errors },
     control,
     watch,
+    setValue,
   } = useForm<AddInformationFormInputs>();
   const { getDataFromLs, setDataToLs } = useLocalStorage();
-  const selectedStatus = watch("status");
+  const selectedStatus = watch('status');
 
-  const onSubmit: SubmitHandler<AddInformationFormInputs> = (data) => {
+  useEffect(() => {
+    if (quickStartTime) {
+      setValue('startJob', quickStartTime);
+    }
+    if (quickFinishTime) {
+      setValue('finishJob', quickFinishTime);
+    }
+  }, [quickFinishTime, quickStartTime, setValue]);
+
+  const onSubmit: SubmitHandler<AddInformationFormInputs> = data => {
     if (selectedDate) {
+      console.log(data);
+
       const key = GetKeyByDate(selectedDate);
       if (data.startJob && data.finishJob) {
         const workedHours = CalculateWorkedHours(data.startJob, data.finishJob);
@@ -52,7 +67,7 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
             [key]: {
               status: data.status,
               numberHoursWorked: 0,
-              time: "-",
+              time: '-',
               workShiftNumber: 0,
               additionalHours: false,
             },
@@ -79,6 +94,10 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
     Controller,
     control,
     selectedStatus,
+    setQuickStartTime,
+    setQuickFinishTime,
+    quickStartTime,
+    quickFinishTime,
   };
 };
 
