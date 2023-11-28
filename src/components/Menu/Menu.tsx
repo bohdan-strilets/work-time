@@ -15,7 +15,7 @@ const Menu: React.FC<MenuProps> = ({ closeMenu, handleBackdropClick }) => {
           name="Bohdan Strilets"
           profession="Full-stack developer"
         />
-        <Navigation />
+        <Navigation closeMenu={closeMenu} />
         <Footer />
       </Content>
     </Backdrop>

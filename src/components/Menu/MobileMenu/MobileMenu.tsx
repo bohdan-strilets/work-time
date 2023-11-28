@@ -15,7 +15,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ closeMenu }) => {
           name="Bohdan Strilets"
           profession="Full-stack developer"
         />
-        <Navigation />
+        <Navigation closeMenu={closeMenu} />
         <Footer />
       </Content>
     </Backdrop>
