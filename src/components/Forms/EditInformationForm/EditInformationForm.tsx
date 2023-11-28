@@ -1,17 +1,15 @@
-import DropdownList from "components/UI/DropdownList";
-import Checkbox from "components/UI/Checkbox";
-import Button from "components/UI/Button";
-import DayOptions from "utilities/DayOptions";
-import HoursOptions from "utilities/HoursOptions";
-import ShiftOptions from "utilities/ShiftOptions";
-import useEditInformationForm from "hooks/useEditInformationForm";
-import { EditInformationFormProps } from "types/props/EditInformationFormProps";
-import GetLineSegment from "utilities/GetLineSegment";
+import DropdownList from 'components/UI/DropdownList';
+import Checkbox from 'components/UI/Checkbox';
+import Button from 'components/UI/Button';
+import QuickTiming from 'components/UI/QuickTiming';
+import DayOptions from 'utilities/DayOptions';
+import HoursOptions from 'utilities/HoursOptions';
+import ShiftOptions from 'utilities/ShiftOptions';
+import useEditInformationForm from 'hooks/useEditInformationForm';
+import { EditInformationFormProps } from 'types/props/EditInformationFormProps';
+import GetLineSegment from 'utilities/GetLineSegment';
 
-const EditInformationForm: React.FC<EditInformationFormProps> = ({
-  dayId,
-  selectedDate,
-}) => {
+const EditInformationForm: React.FC<EditInformationFormProps> = ({ dayId, selectedDate }) => {
   const {
     register,
     handleSubmit,
@@ -20,6 +18,10 @@ const EditInformationForm: React.FC<EditInformationFormProps> = ({
     Controller,
     control,
     dayInfo,
+    quickStartTime,
+    quickFinishTime,
+    setQuickStartTime,
+    setQuickFinishTime,
   } = useEditInformationForm({ dayId, selectedDate });
 
   return (
@@ -57,14 +59,20 @@ const EditInformationForm: React.FC<EditInformationFormProps> = ({
             height="40px"
             width="100%"
             margin="0 0 var(--small-indent) 0"
-            onChange={(value: string | string[]) => field.onChange(value)}
+            onChange={(value: string | string[]) => {
+              setQuickStartTime(null);
+              field.onChange(value);
+            }}
             errors={errors}
             defaultValue={
-              dayInfo?.time ? GetLineSegment(dayInfo?.time, 0, 5) : ""
+              dayInfo?.time && !quickStartTime
+                ? GetLineSegment(dayInfo?.time, 0, 5)
+                : quickStartTime
             }
           />
         )}
       />
+      <QuickTiming getQuickTime={setQuickStartTime} margin="0 0 var(--small-indent) 0" />
       <Controller
         name="finishJob"
         control={control}
@@ -78,16 +86,20 @@ const EditInformationForm: React.FC<EditInformationFormProps> = ({
             height="40px"
             width="100%"
             margin="0 0 var(--small-indent) 0"
-            onChange={(value: string | string[]) => field.onChange(value)}
+            onChange={(value: string | string[]) => {
+              setQuickStartTime(null);
+              field.onChange(value);
+            }}
             errors={errors}
             defaultValue={
-              dayInfo?.time
+              dayInfo?.time && !quickFinishTime
                 ? GetLineSegment(dayInfo?.time, 6, dayInfo.time.length)
-                : ""
+                : quickFinishTime
             }
           />
         )}
       />
+      <QuickTiming getQuickTime={setQuickFinishTime} margin="0 0 var(--small-indent) 0" />
       <Controller
         name="workShiftNumber"
         control={control}

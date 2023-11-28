@@ -1,9 +1,11 @@
 import styled from '@emotion/styled';
+import { ListProps } from 'types/props/QuickTimingProps';
 
-export const List = styled.ul`
+export const List = styled.ul<ListProps>`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: ${({ margin }) => (margin ? margin : '')};
 `;
 
 export const Item = styled.li`

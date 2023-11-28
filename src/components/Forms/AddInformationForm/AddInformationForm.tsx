@@ -69,8 +69,7 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
               />
             )}
           />
-          <QuickTiming getQuickTime={setQuickStartTime} />
-
+          <QuickTiming getQuickTime={setQuickStartTime} margin="0 0 var(--small-indent) 0" />
           <Controller
             name="finishJob"
             control={control}
@@ -93,7 +92,7 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
               />
             )}
           />
-          <QuickTiming getQuickTime={setQuickFinishTime} />
+          <QuickTiming getQuickTime={setQuickFinishTime} margin="0 0 var(--small-indent) 0" />
           <Controller
             name="workShiftNumber"
             control={control}

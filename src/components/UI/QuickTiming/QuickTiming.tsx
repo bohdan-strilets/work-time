@@ -1,24 +1,12 @@
-import { useEffect, useState } from 'react';
+import useQuickTiming from 'hooks/useQuickTiming';
+import { QuickTimingProps } from 'types/props/QuickTimingProps';
 import { List, Item, Button } from './QuickTiming.styled';
 
-export type QuickTimeProps = {
-  getQuickTime: (time: string | null) => void;
-};
-
-const QuickTiming: React.FC<QuickTimeProps> = ({ getQuickTime }) => {
-  const [selectedTime, setSelectedTime] = useState<null | string>(null);
-
-  const handleSelectTime = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const time = e.currentTarget.value;
-    setSelectedTime(time);
-  };
-
-  useEffect(() => {
-    getQuickTime(selectedTime);
-  }, [getQuickTime, selectedTime]);
+const QuickTiming: React.FC<QuickTimingProps> = ({ getQuickTime, margin }) => {
+  const { handleSelectTime } = useQuickTiming({ getQuickTime });
 
   return (
-    <List>
+    <List margin={margin}>
       <Item>
         <Button type="button" value="06:00" onClick={handleSelectTime}>
           06:00
