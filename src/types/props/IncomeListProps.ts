@@ -7,4 +7,6 @@ export type IncomeListProps = Pick<
 > & {
   additional: Result | null;
   calculateNightHours: (timeRange: string) => number;
+  startTime: number;
+  startNightTime: number;
 };

@@ -30,12 +30,13 @@ const Tablet: React.FC<DayInfoProps> = ({
   additionalHours,
   dateTransform,
 }) => {
-  const { earningForDay, additional, calculateNightHours } = useCalculateDay({
-    additionalHours,
-    time,
-    numberHoursWorked,
-    workShiftNumber,
-  });
+  const { earningForDay, additional, calculateNightHours, START_TIME, START_NIGHT_TIME } =
+    useCalculateDay({
+      additionalHours,
+      time,
+      numberHoursWorked,
+      workShiftNumber,
+    });
   const {
     healthInsurance,
     incomeTax,
@@ -99,6 +100,8 @@ const Tablet: React.FC<DayInfoProps> = ({
             additional={additional}
             calculateNightHours={calculateNightHours}
             time={time}
+            startTime={START_TIME}
+            startNightTime={START_NIGHT_TIME}
           />
         </Container>
       )}

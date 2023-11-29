@@ -15,12 +15,57 @@ const useCalculateDay = ({
   const [earningForDay, setEarningForDay] = useState(0);
   const { modalsName, openModal } = useModalWindow();
 
+  const [startStr, endStr] = time.split('-');
+  const START_TIME = parseInt(startStr.split(':')[0], 10);
+  const END_TIME = parseInt(endStr.split(':')[0], 10);
+  const START_NIGHT_TIME = 22;
+  const MIDNIGHT = 24;
+  const END_NIGHT_TIME = 6;
+  const FIFTY_PERCENT = '50%';
+  const ONE_HUNDRED_PERCENT = '100%';
+
+  const calculateNightHours = useCallback((): number => {
+    if (START_TIME < START_NIGHT_TIME && numberHoursWorked < 4) {
+      return 0;
+    }
+    if (END_TIME < MIDNIGHT && START_TIME < MIDNIGHT && numberHoursWorked < 4) {
+      return MIDNIGHT - START_NIGHT_TIME;
+    }
+    return MIDNIGHT - START_NIGHT_TIME + END_TIME;
+  }, [END_TIME, START_TIME, numberHoursWorked]);
+
+  const calculateAdditionalHours = useCallback((): Result => {
+    const totalHours = END_TIME < START_TIME ? 24 + END_TIME - START_TIME : END_TIME - START_TIME;
+
+    const result: Result = {
+      [FIFTY_PERCENT]: { timeRange: '', numberHours: 0 },
+      [ONE_HUNDRED_PERCENT]: { timeRange: '', numberHours: 0 },
+    };
+
+    if (START_TIME >= END_NIGHT_TIME && END_TIME <= START_NIGHT_TIME && END_TIME >= START_TIME) {
+      result[FIFTY_PERCENT] = { timeRange: time, numberHours: totalHours };
+      return result;
+    } else {
+      const hours = START_NIGHT_TIME - START_TIME;
+      result[FIFTY_PERCENT] = {
+        timeRange: `${startStr}-22:00`,
+        numberHours: START_NIGHT_TIME - START_TIME,
+      };
+
+      result[ONE_HUNDRED_PERCENT] = {
+        timeRange: '22:00-' + endStr,
+        numberHours: totalHours - hours,
+      };
+      return result;
+    }
+  }, [END_TIME, START_TIME, endStr, startStr, time]);
+
   useEffect(() => {
     if (additionalHours) {
-      const hours = calculateAdditionalHours(time);
+      const hours = calculateAdditionalHours();
       setAdditional(hours);
     }
-  }, [additionalHours, time]);
+  }, [additionalHours, calculateAdditionalHours, time]);
 
   const calculateEarningsDay = useCallback(
     (
@@ -30,37 +75,71 @@ const useCalculateDay = ({
       oneHundredPercentHours?: number,
     ): number => {
       const salaryForDay = workingHours * grossHourlyRate;
-      let fiftyPercentSalary = 0;
-      let oneHundredPercentSalary = 0;
-      let nightHourSalary = 0;
+      const nightHours = calculateNightHours();
+      const nightExtraRate = GetNightRate();
+      const additionalRatePerHour = grossHourlyRate / 2;
 
-      if (fiftyPercentHours) {
-        const additionalRatePerHour = grossHourlyRate / 2;
-        const additionalSalary = fiftyPercentHours * additionalRatePerHour;
-        fiftyPercentSalary = additionalSalary;
+      if (
+        workShiftNumber === WorkShiftNumber.Shift2 &&
+        additionalHours &&
+        fiftyPercentHours &&
+        oneHundredPercentHours
+      ) {
+        const nightHourSalary = nightExtraRate * nightHours;
+        const oneHundredPercentSalary = oneHundredPercentHours * grossHourlyRate;
+        const fiftyPercentSalary = fiftyPercentHours * additionalRatePerHour;
+        return salaryForDay + nightHourSalary + oneHundredPercentSalary + fiftyPercentSalary;
       }
-      if (oneHundredPercentHours) {
-        const nightExtraRate = GetNightRate();
-        const additionalSalary = oneHundredPercentHours * grossHourlyRate;
-        const nightSupplement = nightExtraRate * oneHundredPercentHours;
-        oneHundredPercentSalary += additionalSalary;
-        nightHourSalary += nightSupplement;
+      if (
+        workShiftNumber === WorkShiftNumber.Shift2 &&
+        !additionalHours &&
+        START_TIME >= START_NIGHT_TIME
+      ) {
+        const nightHourSalary = nightExtraRate * nightHours;
+        return salaryForDay + nightHourSalary;
       }
-      if (workShiftNumber === WorkShiftNumber.Shift2 && oneHundredPercentHours) {
-        const nightExtraRate = GetNightRate();
-        const nightSupplement = nightExtraRate * oneHundredPercentHours;
-        nightHourSalary += nightSupplement;
+      if (
+        workShiftNumber === WorkShiftNumber.Shift2 &&
+        !additionalHours &&
+        START_TIME < START_NIGHT_TIME
+      ) {
+        return salaryForDay;
       }
-      if (workShiftNumber === WorkShiftNumber.Shift2) {
-        const nightHours = calculateNightHours(time);
-        const nightExtraRate = GetNightRate();
-        const nightSupplement = nightExtraRate * nightHours;
-        nightHourSalary += nightSupplement;
+      if (
+        workShiftNumber === WorkShiftNumber.Shift2 &&
+        additionalHours &&
+        START_TIME >= START_NIGHT_TIME &&
+        oneHundredPercentHours
+      ) {
+        const nightHourSalary = nightExtraRate * nightHours;
+        const oneHundredPercentSalary = oneHundredPercentHours * grossHourlyRate;
+        return salaryForDay + nightHourSalary + oneHundredPercentSalary;
+      }
+      if (
+        workShiftNumber === WorkShiftNumber.Shift2 &&
+        additionalHours &&
+        START_TIME < START_NIGHT_TIME &&
+        fiftyPercentHours
+      ) {
+        const nightHourSalary = nightExtraRate * nightHours;
+        const fiftyPercentSalary = fiftyPercentHours * additionalRatePerHour;
+        return salaryForDay + nightHourSalary + fiftyPercentSalary;
+      }
+      if (workShiftNumber === WorkShiftNumber.Shift1 && !additionalHours) {
+        return salaryForDay;
+      }
+      if (workShiftNumber === WorkShiftNumber.Shift1 && additionalHours && fiftyPercentHours) {
+        const fiftyPercentSalary = fiftyPercentHours * additionalRatePerHour;
+        return salaryForDay + fiftyPercentSalary;
+      }
+      if (workShiftNumber === WorkShiftNumber.Shift2 && !additionalHours) {
+        const nightHourSalary = nightExtraRate * nightHours;
+        return salaryForDay + nightHourSalary;
       }
 
-      return salaryForDay + fiftyPercentSalary + oneHundredPercentSalary + nightHourSalary;
+      return 0;
     },
-    [time, workShiftNumber],
+    [START_TIME, additionalHours, calculateNightHours, workShiftNumber],
   );
 
   useEffect(() => {
@@ -68,8 +147,8 @@ const useCalculateDay = ({
       const earning = calculateEarningsDay(
         numberHoursWorked,
         33,
-        additional['50%'].numberHours,
-        additional['100%'].numberHours,
+        additional[FIFTY_PERCENT].numberHours,
+        additional[ONE_HUNDRED_PERCENT].numberHours,
       );
       setEarningForDay(earning);
     } else {
@@ -86,37 +165,6 @@ const useCalculateDay = ({
     openModal(modalsName.cellDayDelete);
   };
 
-  const calculateAdditionalHours = (timeRange: string): Result => {
-    const [startStr, endStr] = timeRange.split('-');
-    const startTime = parseInt(startStr.split(':')[0], 10);
-    const endTime = parseInt(endStr.split(':')[0], 10);
-    const totalHours = endTime < startTime ? 24 + endTime - startTime : endTime - startTime;
-    const startNightTime = 22;
-    const endNightTime = 6;
-
-    const result: Result = {
-      '50%': { timeRange: '', numberHours: 0 },
-      '100%': { timeRange: '', numberHours: 0 },
-    };
-
-    if (startTime >= endNightTime && endTime <= startNightTime && endTime >= startTime) {
-      result['50%'] = { timeRange: timeRange, numberHours: totalHours };
-      return result;
-    } else {
-      const hours = startNightTime - startTime;
-      result['50%'] = { timeRange: `${startStr}-22:00`, numberHours: startNightTime - startTime };
-      result['100%'] = { timeRange: '22:00-' + endStr, numberHours: totalHours - hours };
-      return result;
-    }
-  };
-
-  const calculateNightHours = (timeRange: string): number => {
-    const endTime = parseInt(timeRange.split('-')[1].split(':')[0], 10);
-    const startNightTime = 22;
-    const midnight = 24;
-    return midnight - startNightTime + endTime;
-  };
-
   return {
     calculateEarningsDay,
     handleEditBtnClick,
@@ -126,6 +174,8 @@ const useCalculateDay = ({
     additional,
     earningForDay,
     calculateNightHours,
+    START_TIME,
+    START_NIGHT_TIME,
   };
 };
 

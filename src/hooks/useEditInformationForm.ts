@@ -45,6 +45,17 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
     }
   }, [quickFinishTime, quickStartTime, setValue]);
 
+  useEffect(() => {
+    if (dayInfo) {
+      const [startTime, endTime] = dayInfo?.time.split('-');
+      setValue('status', dayInfo.status);
+      setValue('startJob', startTime);
+      setValue('finishJob', endTime);
+      setValue('workShiftNumber', dayInfo.workShiftNumber as any);
+      setValue('additionalHours', dayInfo.additionalHours as any);
+    }
+  }, [dayInfo, setValue]);
+
   const onSubmit: SubmitHandler<EditInformationFormInputs> = data => {
     if (selectedDate) {
       const key = GetKeyByDate(selectedDate);

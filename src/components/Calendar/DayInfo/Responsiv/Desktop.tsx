@@ -36,6 +36,8 @@ const Desktop: React.FC<DayInfoProps> = ({
     additional,
     earningForDay,
     calculateNightHours,
+    START_TIME,
+    START_NIGHT_TIME,
   } = useCalculateDay({
     additionalHours,
     time,
@@ -105,6 +107,8 @@ const Desktop: React.FC<DayInfoProps> = ({
             additional={additional}
             calculateNightHours={calculateNightHours}
             time={time}
+            startTime={START_TIME}
+            startNightTime={START_NIGHT_TIME}
           />
         </Container>
       )}

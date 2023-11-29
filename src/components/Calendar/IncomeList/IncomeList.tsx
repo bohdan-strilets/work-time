@@ -11,6 +11,8 @@ const IncomeList: React.FC<IncomeListProps> = ({
   additional,
   calculateNightHours,
   time,
+  startTime,
+  startNightTime,
 }) => {
   const [earningsForDay, setEarningsForDay] = useState(0);
   const [fiftyPercentage, setFiftyPercentage] = useState(0);
@@ -22,23 +24,42 @@ const IncomeList: React.FC<IncomeListProps> = ({
   const nightHours = calculateNightHours(time);
 
   useEffect(() => {
-    if (additional && workShiftNumber === WorkShiftNumber.Shift1) {
+    if (workShiftNumber === WorkShiftNumber.Shift1 && !additional) {
+      setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
+      return setTotal(earningsForDay);
+    } else if (
+      workShiftNumber === WorkShiftNumber.Shift1 &&
+      additional &&
+      additional?.['50%'].numberHours > 0
+    ) {
       setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
       setFiftyPercentage(Multiplication(additional['50%'].numberHours, 16.5));
       return setTotal(earningsForDay + fiftyPercentage);
-    } else if (additional) {
-      setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
-      setFiftyPercentage(Multiplication(additional['50%'].numberHours, 16.5));
-      setOneHundredPercent(Multiplication(additional['100%'].numberHours, hourlyRate));
-      setNightSupplement(Multiplication(nightHours, GetNightRate()));
-      return setTotal(earningsForDay + fiftyPercentage + oneHundredPercent + nightSupplement);
-    } else if (workShiftNumber === WorkShiftNumber.Shift2) {
-      setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
-      setNightSupplement(Multiplication(nightHours, GetNightRate()));
-      return setTotal(earningsForDay + nightSupplement);
-    } else {
-      setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
-      return setTotal(earningsForDay);
+    } else if (workShiftNumber === WorkShiftNumber.Shift2 && !additional) {
+      if (startTime >= startNightTime || numberHoursWorked > 8) {
+        setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
+        setNightSupplement(Multiplication(nightHours, GetNightRate()));
+        return setTotal(earningsForDay + nightSupplement);
+      } else {
+        setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
+        return setTotal(earningsForDay);
+      }
+    } else if (
+      workShiftNumber === WorkShiftNumber.Shift2 &&
+      additional &&
+      additional['100%'].numberHours > 0
+    ) {
+      if (startTime >= startNightTime || numberHoursWorked > 8) {
+        setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
+        setFiftyPercentage(Multiplication(additional['50%'].numberHours, 16.5));
+        setOneHundredPercent(Multiplication(additional['100%'].numberHours, hourlyRate));
+        setNightSupplement(Multiplication(nightHours, GetNightRate()));
+        return setTotal(earningsForDay + fiftyPercentage + oneHundredPercent + nightSupplement);
+      } else {
+        setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
+        setFiftyPercentage(Multiplication(additional['50%'].numberHours, 16.5));
+        return setTotal(earningsForDay + fiftyPercentage);
+      }
     }
   }, [
     additional,
@@ -48,6 +69,8 @@ const IncomeList: React.FC<IncomeListProps> = ({
     nightSupplement,
     numberHoursWorked,
     oneHundredPercent,
+    startNightTime,
+    startTime,
     workShiftNumber,
   ]);
 
@@ -59,25 +82,25 @@ const IncomeList: React.FC<IncomeListProps> = ({
         <Superscript>PLN</Superscript> = {earningsForDay}
         <Superscript>PLN</Superscript>
       </Text>
-      {additional && additional['50%'].numberHours !== 0 && (
+      {additional && additional['50%'].numberHours > 0 && (
         <Text>
           {additional['50%'].numberHours}
           <Superscript>H</Superscript> * 50% = {fiftyPercentage}
           <Superscript>PLN</Superscript>
         </Text>
       )}
-      {additional && additional['100%'].numberHours !== 0 && (
+      {additional && additional['100%'].numberHours > 0 && (
         <Text>
           {additional['100%'].numberHours}
           <Superscript>H</Superscript> * 100% = {oneHundredPercent}
           <Superscript>PLN</Superscript>
         </Text>
       )}
-      {workShiftNumber === WorkShiftNumber.Shift2 && (
+      {workShiftNumber === WorkShiftNumber.Shift2 && nightHours > 0 && (
         <Text>
           {nightHours}
           <Superscript>H</Superscript> * {GetNightRate()}
-          <Superscript>PLN</Superscript> ={nightSupplement}
+          <Superscript>PLN</Superscript> = {nightSupplement}
           <Superscript>PLN</Superscript>
         </Text>
       )}
