@@ -5,7 +5,6 @@ import QuickTiming from 'components/UI/QuickTiming';
 import useAddInformationForm from 'hooks/useAddInformationForm';
 import DayOptions from 'utilities/DayOptions';
 import HoursOptions from 'utilities/HoursOptions';
-import ShiftOptions from 'utilities/ShiftOptions';
 import { AddInformationFormProps } from 'types/props/AddInformationFormProps';
 import { Status } from 'types/enums/StatusEnum';
 
@@ -93,24 +92,6 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
             )}
           />
           <QuickTiming getQuickTime={setQuickFinishTime} margin="0 0 var(--small-indent) 0" />
-          <Controller
-            name="workShiftNumber"
-            control={control}
-            render={({ field }) => (
-              <DropdownList
-                type="single"
-                name="workShiftNumber"
-                options={ShiftOptions}
-                label="Is it day or night?"
-                buttonlabel="Shift"
-                height="40px"
-                width="100%"
-                margin="0 0 var(--small-indent) 0"
-                onChange={(value: string | string[]) => field.onChange(value)}
-                errors={errors}
-              />
-            )}
-          />
           <Controller
             name="additionalHours"
             control={control}

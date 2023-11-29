@@ -7,6 +7,7 @@ import GetKeyByDate from 'utilities/GetKeyByDate';
 import useLocalStorage from './useLocalStorage';
 import { keys } from 'settings/config';
 import CalculateWorkedHours from 'utilities/CalculateWorkedHours';
+import DetermineShiftNumber from 'utilities/DetermineShiftNumber';
 
 const useAddInformationForm = ({ selectedDate }: HookProps) => {
   const [quickStartTime, setQuickStartTime] = useState<string | null>(null);
@@ -38,14 +39,16 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
       const key = GetKeyByDate(selectedDate);
       if (data.startJob && data.finishJob) {
         const workedHours = CalculateWorkedHours(data.startJob, data.finishJob);
+        const timeRange = `${data.startJob}-${data.finishJob}`;
+        const shift = DetermineShiftNumber(timeRange, workedHours);
         const result = {
           id: Date.now(),
           data: {
             [key]: {
               status: data.status,
               numberHoursWorked: workedHours,
-              time: `${data.startJob}-${data.finishJob}`,
-              workShiftNumber: Number(data.workShiftNumber),
+              time: timeRange,
+              workShiftNumber: shift,
               additionalHours: data.additionalHours,
             },
           },

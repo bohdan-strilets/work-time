@@ -9,6 +9,7 @@ import { DayInfoType } from 'types/types/WorkUserDataType';
 import useLocalStorage from './useLocalStorage';
 import { keys } from 'settings/config';
 import CalculateWorkedHours from 'utilities/CalculateWorkedHours';
+import DetermineShiftNumber from 'utilities/DetermineShiftNumber';
 
 const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
   const [dayInfo, setDayInfo] = useState<DayInfoType | null>(null);
@@ -51,7 +52,6 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
       setValue('status', dayInfo.status);
       setValue('startJob', startTime);
       setValue('finishJob', endTime);
-      setValue('workShiftNumber', dayInfo.workShiftNumber as any);
       setValue('additionalHours', dayInfo.additionalHours as any);
     }
   }, [dayInfo, setValue]);
@@ -61,14 +61,16 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
       const key = GetKeyByDate(selectedDate);
       if (data.startJob && data.finishJob) {
         const workedHours = CalculateWorkedHours(data.startJob, data.finishJob);
+        const timeRange = `${data.startJob}-${data.finishJob}`;
+        const shift = DetermineShiftNumber(timeRange, workedHours);
         const result = {
           id: Date.now(),
           data: {
             [key]: {
               status: data.status,
               numberHoursWorked: workedHours,
-              time: `${data.startJob}-${data.finishJob}`,
-              workShiftNumber: Number(data.workShiftNumber),
+              time: timeRange,
+              workShiftNumber: shift,
               additionalHours: data.additionalHours,
             },
           },

@@ -4,7 +4,6 @@ import Button from 'components/UI/Button';
 import QuickTiming from 'components/UI/QuickTiming';
 import DayOptions from 'utilities/DayOptions';
 import HoursOptions from 'utilities/HoursOptions';
-import ShiftOptions from 'utilities/ShiftOptions';
 import useEditInformationForm from 'hooks/useEditInformationForm';
 import { EditInformationFormProps } from 'types/props/EditInformationFormProps';
 import GetLineSegment from 'utilities/GetLineSegment';
@@ -100,25 +99,6 @@ const EditInformationForm: React.FC<EditInformationFormProps> = ({ dayId, select
         )}
       />
       <QuickTiming getQuickTime={setQuickFinishTime} margin="0 0 var(--small-indent) 0" />
-      <Controller
-        name="workShiftNumber"
-        control={control}
-        render={({ field }) => (
-          <DropdownList
-            type="single"
-            name="workShiftNumber"
-            options={ShiftOptions}
-            label="Is it day or night?"
-            buttonlabel="Shift"
-            height="40px"
-            width="100%"
-            margin="0 0 var(--small-indent) 0"
-            onChange={(value: string | string[]) => field.onChange(value)}
-            errors={errors}
-            defaultValue={dayInfo?.workShiftNumber.toString()}
-          />
-        )}
-      />
       <Controller
         name="additionalHours"
         control={control}
