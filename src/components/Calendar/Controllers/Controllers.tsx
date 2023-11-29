@@ -1,20 +1,16 @@
-import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
-import CalendarButton from "../CalendarButton";
-import { years, month } from "utilities/DefaultCalendarData";
-import { ControllersProps } from "types/props/ControllersProps";
-import {
-  Wrapper,
-  CurrentDate,
-  DropdownWrapper,
-  DropdownList,
-} from "./Controllers.styled";
+import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io';
+import CalendarButton from '../CalendarButton';
+import DropdownList from 'components/UI/DropdownList';
+import { month } from 'utilities/DefaultCalendarData';
+import { ControllersProps } from 'types/props/ControllersProps';
+import YearOptions from 'utilities/YearOptions';
+import { Wrapper, CurrentDate, Group } from './Controllers.styled';
 
 const Controllers: React.FC<ControllersProps> = ({
   handlePrevMonth,
   selectedMonth,
   selectedYear,
   handleChangeYear,
-  yearSelect,
   date,
   handleNextMonth,
 }) => {
@@ -23,22 +19,21 @@ const Controllers: React.FC<ControllersProps> = ({
       <CalendarButton handleClichk={handlePrevMonth}>
         <IoMdArrowDropleft size={24} />
       </CalendarButton>
-      <DropdownWrapper>
+      <Group>
         <CurrentDate>
           {new Date().getDate()} {month[selectedMonth]} {selectedYear}
         </CurrentDate>
         <DropdownList
+          type="single"
+          name="selectedYear"
+          options={YearOptions}
+          defaultValue={date.getFullYear().toString()}
           onChange={handleChangeYear}
-          ref={yearSelect}
-          value={date.getFullYear()}
-        >
-          {years.map((year) => (
-            <option key={year} value={year}>
-              {year}
-            </option>
-          ))}
-        </DropdownList>
-      </DropdownWrapper>
+          buttonlabel={date.getFullYear().toString()}
+          height="30px"
+          width="170px"
+        />
+      </Group>
       <CalendarButton handleClichk={handleNextMonth}>
         <IoMdArrowDropright size={24} />
       </CalendarButton>

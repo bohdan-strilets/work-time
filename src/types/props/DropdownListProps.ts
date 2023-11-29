@@ -12,7 +12,7 @@ export type DropdownListProps = {
   height?: string;
   margin?: string;
   onChange: (value: string | string[]) => void;
-  errors: any;
+  errors?: any;
   type: 'single' | 'multiselect';
 };
 

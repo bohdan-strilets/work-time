@@ -55,15 +55,24 @@ const useDropdownList = ({ onChange, options, defaultValue, type }: UseDropdownL
     return option?.label;
   };
 
+  const dropdownClick = () => {
+    if (type === 'single' && selectedOption) {
+      onChange(selectedOption);
+    } else if (type === 'multiselect' && selectedOptions) {
+      onChange(selectedOptions);
+    }
+    toggle();
+  };
+
   return {
     divRef,
-    toggle,
     isOpen,
     selectedOption,
     selectedOptions,
     getLabelByValue,
     selectOption,
     selectManyOptions,
+    dropdownClick,
   };
 };
 

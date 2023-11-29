@@ -21,13 +21,13 @@ const DropdownList: React.FC<DropdownListProps> = ({
 }) => {
   const {
     divRef,
-    toggle,
     isOpen,
     selectedOption,
     selectedOptions,
     getLabelByValue,
     selectOption,
     selectManyOptions,
+    dropdownClick,
   } = useDropdownList({ options, onChange, defaultValue, type });
 
   return (
@@ -37,7 +37,7 @@ const DropdownList: React.FC<DropdownListProps> = ({
           {label} {required && <Required>*</Required>}
         </Label>
       )}
-      <Button type="button" onClick={toggle} height={height} disabled={disabled}>
+      <Button type="button" onClick={dropdownClick} height={height} disabled={disabled}>
         {type === 'single' && selectedOption
           ? getLabelByValue(selectedOption)
           : type === 'multiselect' && selectedOptions && selectedOptions.length > 0
@@ -67,7 +67,7 @@ const DropdownList: React.FC<DropdownListProps> = ({
           ))}
         </List>
       )}
-      {errors[name] && <Error role="alert">{errors[name]?.message}</Error>}
+      {errors && errors[name] && <Error role="alert">{errors[name]?.message}</Error>}
     </Wrapper>
   );
 };

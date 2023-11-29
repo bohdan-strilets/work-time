@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import ScreenWidth from "utilities/ScreenWidth";
+import styled from '@emotion/styled';
+import ScreenWidth from 'utilities/ScreenWidth';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   justify-content: space-between;
 `;
 
-export const DropdownWrapper = styled.div`
+export const Group = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,25 +26,11 @@ export const CurrentDate = styled.p`
   align-items: center;
   justify-content: center;
 
-  font-weight: 500;
-
-  width: 170px;
+  min-width: 170px;
   height: 30px;
-  padding: 5px;
+  padding: 0 10px;
 
-  border: 2px solid var(--gray-color);
-  border-radius: 5px;
-`;
-
-export const DropdownList = styled.select`
-  width: 170px;
-  height: 30px;
-  padding: 5px;
-
-  font-family: inherit;
-  font-size: inherit;
-
-  border: 2px solid var(--gray-color);
-  border-radius: 5px;
-  outline: none;
+  border: 1px solid var(--gray-color);
+  border-radius: 3px;
+  background-color: #ffffff;
 `;

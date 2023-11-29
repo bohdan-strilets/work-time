@@ -1,28 +1,29 @@
-import { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Month } from "types/enums/CalendarEnum";
-import { DayInfoType } from "types/types/WorkUserDataType";
-import { month as monthNames, weekdays } from "utilities/DefaultCalendarData";
-import useModalWindow from "hooks/useModalWindow";
-import { WorkUserDataType } from "types/types/WorkUserDataType";
-import useLocalStorage from "./useLocalStorage";
-import { keys } from "settings/config";
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Month } from 'types/enums/CalendarEnum';
+import { DayInfoType } from 'types/types/WorkUserDataType';
+import { month as monthNames, weekdays } from 'utilities/DefaultCalendarData';
+import useModalWindow from 'hooks/useModalWindow';
+import { WorkUserDataType } from 'types/types/WorkUserDataType';
+import useLocalStorage from './useLocalStorage';
+import { keys } from 'settings/config';
 
 export const useCalendar = () => {
   const [date, setDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<null | Date>(null);
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
-  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+  const [selectedYear, setSelectedYear] = useState<null | string | string[]>(
+    new Date().getFullYear().toString(),
+  );
   const [dayInfo, setDayInfo] = useState<DayInfoType | null>(null);
   const [dayInfoId, setDayInfoId] = useState<null | string>(null);
-  const yearSelect = useRef<null | HTMLSelectElement>(null);
 
   const { modalsName, openModal } = useModalWindow();
   const navigate = useNavigate();
   const { getDataFromLs, setDataToLs } = useLocalStorage();
 
   useEffect(() => {
-    const newDate = new Date(selectedYear, selectedMonth);
+    const newDate = new Date(Number(selectedYear), selectedMonth);
     setDate(newDate);
   }, [selectedMonth, selectedYear]);
 
@@ -42,11 +43,8 @@ export const useCalendar = () => {
     setSelectedMonth(month);
   };
 
-  const handleChangeYear = () => {
-    const year = yearSelect.current?.value;
-    if (year) {
-      setSelectedYear(Number(year));
-    }
+  const handleChangeYear = (year: string | string[]) => {
+    setSelectedYear(year);
   };
 
   const handleChangeMonth = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -127,14 +125,10 @@ export const useCalendar = () => {
   };
 
   const handleCellClick = (date: Date) => {
-    const dateCell = date.toLocaleDateString().replaceAll(".", "-");
-    const dataFromLs: WorkUserDataType[] = getDataFromLs(
-      keys.WORKING_DAYS_KEY_LS
-    );
+    const dateCell = date.toLocaleDateString().replaceAll('.', '-');
+    const dataFromLs: WorkUserDataType[] = getDataFromLs(keys.WORKING_DAYS_KEY_LS);
     if (dataFromLs) {
-      const informationAboutDay = dataFromLs.filter(
-        (item) => item.data[dateCell]
-      );
+      const informationAboutDay = dataFromLs.filter(item => item.data[dateCell]);
       setDayInfo(informationAboutDay[0]?.data[dateCell]);
       setDayInfoId(informationAboutDay[0]?.id);
     }
@@ -145,26 +139,20 @@ export const useCalendar = () => {
 
   const getInformationForDay = (date: number | Date | undefined) => {
     if (date instanceof Date) {
-      const dateCell = date.toLocaleDateString().replaceAll(".", "-");
-      const dataFromLs: WorkUserDataType[] = getDataFromLs(
-        keys.WORKING_DAYS_KEY_LS
-      );
+      const dateCell = date.toLocaleDateString().replaceAll('.', '-');
+      const dataFromLs: WorkUserDataType[] = getDataFromLs(keys.WORKING_DAYS_KEY_LS);
       if (dataFromLs) {
-        const informationAboutDay = dataFromLs.filter(
-          (item) => item.data[dateCell]
-        );
+        const informationAboutDay = dataFromLs.filter(item => item.data[dateCell]);
         return informationAboutDay[0]?.data[dateCell];
       }
     }
   };
 
   const deleteInformationForDay = () => {
-    const dataFromLs: WorkUserDataType[] = getDataFromLs(
-      keys.WORKING_DAYS_KEY_LS
-    );
-    const result = dataFromLs.filter((item) => item.id !== dayInfoId);
+    const dataFromLs: WorkUserDataType[] = getDataFromLs(keys.WORKING_DAYS_KEY_LS);
+    const result = dataFromLs.filter(item => item.id !== dayInfoId);
     setDataToLs(keys.WORKING_DAYS_KEY_LS, result);
-    navigate("/calendar");
+    navigate('/calendar');
   };
 
   return {
@@ -172,7 +160,6 @@ export const useCalendar = () => {
     handleChangeYear,
     handleChangeMonth,
     date,
-    yearSelect,
     handleNextMonth,
     getMonthDate,
     areEqual,

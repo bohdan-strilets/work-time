@@ -1,9 +1,8 @@
 export type ControllersProps = {
   handlePrevMonth: () => void;
   selectedMonth: number;
-  selectedYear: number;
-  handleChangeYear: () => void;
-  yearSelect: React.MutableRefObject<HTMLSelectElement | null>;
+  selectedYear: string | string[] | null;
+  handleChangeYear: (year: string | string[]) => void;
   date: Date;
   handleNextMonth: () => void;
 };

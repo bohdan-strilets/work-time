@@ -18,7 +18,6 @@ const Desktop: React.FC<{}> = () => {
     handleChangeYear,
     handleChangeMonth,
     date,
-    yearSelect,
     handleNextMonth,
     getMonthDate,
     areEqual,
@@ -43,7 +42,6 @@ const Desktop: React.FC<{}> = () => {
           selectedMonth={selectedMonth}
           selectedYear={selectedYear}
           handleChangeYear={handleChangeYear}
-          yearSelect={yearSelect}
           date={date}
           handleNextMonth={handleNextMonth}
         />
