@@ -1,10 +1,10 @@
-import styled from "@emotion/styled";
-import { WrapperProps, ButtonProps } from "types/props/DropdownListProps";
+import styled from '@emotion/styled';
+import { WrapperProps, ButtonProps } from 'types/props/DropdownListProps';
 
 export const Wrapper = styled.div<WrapperProps>`
   position: relative;
-  width: ${({ width }) => (width ? width : "")};
-  margin: ${({ margin }) => (margin ? margin : "")};
+  width: ${({ width }) => (width ? width : '')};
+  margin: ${({ margin }) => (margin ? margin : '')};
 `;
 
 export const Label = styled.p`
@@ -22,7 +22,7 @@ export const Button = styled.button<ButtonProps>`
   justify-content: space-between;
 
   width: 100%;
-  height: ${({ height }) => (height ? height : "")};
+  height: ${({ height }) => (height ? height : '')};
   padding: 0 10px;
 
   background-color: #ffffff;
@@ -30,7 +30,7 @@ export const Button = styled.button<ButtonProps>`
   border-radius: 3px;
   outline: none;
 
-  pointer-events: ${({ disabled }) => (disabled ? "none" : "")};
+  pointer-events: ${({ disabled }) => (disabled ? 'none' : '')};
   cursor: pointer;
 
   :focus {
@@ -39,11 +39,9 @@ export const Button = styled.button<ButtonProps>`
 `;
 
 export const List = styled.ul`
-  position: absolute;
-  top: 120%;
-  left: 0;
-  z-index: 9;
+  position: relative;
 
+  margin: 20px 0 0 0;
   width: 100%;
   max-height: 200px;
   overflow-y: auto;

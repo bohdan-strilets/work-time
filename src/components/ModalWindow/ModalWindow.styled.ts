@@ -91,7 +91,7 @@ export const Button = styled.button`
 
 export const Content = styled.div`
   padding: var(--small-indent);
-  min-height: 450px;
+  height: auto;
 
   @media screen and (min-width: ${ScreenWidth.tablet}) {
     padding: var(--medium-indent);
