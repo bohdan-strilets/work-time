@@ -31,7 +31,7 @@ const Controllers: React.FC<ControllersProps> = ({
           onChange={handleChangeYear}
           buttonlabel={date.getFullYear().toString()}
           height="30px"
-          width="170px"
+          width="150px"
           position="absolute"
         />
       </Group>

@@ -33,4 +33,10 @@ export const CurrentDate = styled.p`
   border: 1px solid var(--gray-color);
   border-radius: 3px;
   background-color: #ffffff;
+
+  @media screen and (max-width: ${ScreenWidth.preTablet}) {
+    min-width: 150px;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
 `;
