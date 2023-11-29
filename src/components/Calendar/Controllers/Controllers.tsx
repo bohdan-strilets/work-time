@@ -32,6 +32,7 @@ const Controllers: React.FC<ControllersProps> = ({
           buttonlabel={date.getFullYear().toString()}
           height="30px"
           width="170px"
+          position="absolute"
         />
       </Group>
       <CalendarButton handleClichk={handleNextMonth}>

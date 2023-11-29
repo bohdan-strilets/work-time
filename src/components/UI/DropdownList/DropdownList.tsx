@@ -18,6 +18,7 @@ const DropdownList: React.FC<DropdownListProps> = ({
   onChange,
   errors,
   type,
+  position,
 }) => {
   const {
     divRef,
@@ -46,7 +47,7 @@ const DropdownList: React.FC<DropdownListProps> = ({
         {isOpen ? <RiArrowUpSLine size={20} /> : <RiArrowDownSLine size={20} />}
       </Button>
       {isOpen && (
-        <List tabIndex={0}>
+        <List tabIndex={0} position={position}>
           {options.map(({ id, label, value }) => (
             <Item
               key={id}

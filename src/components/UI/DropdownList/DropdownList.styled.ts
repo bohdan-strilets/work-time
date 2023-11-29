@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { WrapperProps, ButtonProps } from 'types/props/DropdownListProps';
+import { WrapperProps, ButtonProps, ListProps } from 'types/props/DropdownListProps';
 
 export const Wrapper = styled.div<WrapperProps>`
   position: relative;
@@ -38,10 +38,13 @@ export const Button = styled.button<ButtonProps>`
   }
 `;
 
-export const List = styled.ul`
-  position: relative;
+export const List = styled.ul<ListProps>`
+  position: ${({ position }) => (position === 'relative' ? 'relative' : 'absolute')};
+  top: ${({ position }) => (position === 'absolute' ? '130%' : '')};
+  left: ${({ position }) => (position === 'absolute' ? '0' : '')};
+  z-index: ${({ position }) => (position === 'absolute' ? '99' : '')};
 
-  margin: 20px 0 0 0;
+  margin: ${({ position }) => (position === 'relative' ? '20px 0 0 0' : '')};
   width: 100%;
   max-height: 200px;
   overflow-y: auto;

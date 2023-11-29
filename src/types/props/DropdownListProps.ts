@@ -14,6 +14,7 @@ export type DropdownListProps = {
   onChange: (value: string | string[]) => void;
   errors?: any;
   type: 'single' | 'multiselect';
+  position?: 'relative' | 'absolute';
 };
 
 export type UseDropdownListData = Pick<
@@ -24,3 +25,5 @@ export type UseDropdownListData = Pick<
 export type WrapperProps = Pick<DropdownListProps, 'width' | 'margin'>;
 
 export type ButtonProps = Pick<DropdownListProps, 'height' | 'disabled'>;
+
+export type ListProps = Pick<DropdownListProps, 'position'>;

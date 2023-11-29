@@ -42,6 +42,7 @@ const EditInformationForm: React.FC<EditInformationFormProps> = ({ dayId, select
             errors={errors}
             required={true}
             defaultValue={dayInfo?.status}
+            position="relative"
           />
         )}
       />
@@ -68,6 +69,7 @@ const EditInformationForm: React.FC<EditInformationFormProps> = ({ dayId, select
                 ? GetLineSegment(dayInfo?.time, 0, 5)
                 : quickStartTime
             }
+            position="relative"
           />
         )}
       />
@@ -95,6 +97,7 @@ const EditInformationForm: React.FC<EditInformationFormProps> = ({ dayId, select
                 ? GetLineSegment(dayInfo?.time, 6, dayInfo.time.length)
                 : quickFinishTime
             }
+            position="relative"
           />
         )}
       />

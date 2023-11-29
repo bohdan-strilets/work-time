@@ -41,6 +41,7 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
             onChange={(value: string | string[]) => field.onChange(value)}
             errors={errors}
             required={true}
+            position="relative"
           />
         )}
       />
@@ -65,6 +66,7 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
                   field.onChange(value);
                 }}
                 errors={errors}
+                position="relative"
               />
             )}
           />
@@ -88,6 +90,7 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
                   field.onChange(value);
                 }}
                 errors={errors}
+                position="relative"
               />
             )}
           />
