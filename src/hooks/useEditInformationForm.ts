@@ -10,6 +10,7 @@ import useLocalStorage from './useLocalStorage';
 import { keys } from 'settings/config';
 import CalculateWorkedHours from 'utilities/CalculateWorkedHours';
 import DetermineShiftNumber from 'utilities/DetermineShiftNumber';
+import { Status } from 'types/enums/StatusEnum';
 
 const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
   const [dayInfo, setDayInfo] = useState<DayInfoType | null>(null);
@@ -62,7 +63,7 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
     if (selectedDate) {
       const key = GetKeyByDate(selectedDate);
       let result = {};
-      if (data.startJob && data.finishJob) {
+      if (data.startJob && data.finishJob && data.status === Status.work) {
         const workedHours = CalculateWorkedHours(data.startJob, data.finishJob);
         const timeRange = `${data.startJob}-${data.finishJob}`;
         const shift = DetermineShiftNumber(timeRange, workedHours);
@@ -78,7 +79,24 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
             },
           },
         };
-      } else {
+      }
+      if (data.startJob && data.finishJob && data.status === Status.vacation) {
+        const workedHours = CalculateWorkedHours(data.startJob, data.finishJob);
+        const timeRange = `${data.startJob}-${data.finishJob}`;
+        result = {
+          id: Date.now(),
+          data: {
+            [key]: {
+              status: data.status,
+              numberHoursWorked: workedHours,
+              time: timeRange,
+              workShiftNumber: 0,
+              additionalHours: data.additionalHours,
+            },
+          },
+        };
+      }
+      if (data.status !== Status.work && data.status !== Status.vacation) {
         result = {
           id: Date.now(),
           data: {
