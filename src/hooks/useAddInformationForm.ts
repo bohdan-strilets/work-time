@@ -73,7 +73,7 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
           },
         };
       }
-      if (data.status === Status.vacation) {
+      if (data.status === Status.vacation || data.status === Status.sickLeave) {
         const startVacationDay = '06:00';
         const endVacationDay = '18:00';
         const vacationHours = CalculateWorkedHours(startVacationDay, endVacationDay);
@@ -91,7 +91,11 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
           },
         };
       }
-      if (data.status !== Status.work && data.status !== Status.vacation) {
+      if (
+        data.status !== Status.work &&
+        data.status !== Status.vacation &&
+        data.status !== Status.sickLeave
+      ) {
         result = {
           id: Date.now(),
           data: {

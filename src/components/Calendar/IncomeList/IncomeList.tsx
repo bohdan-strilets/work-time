@@ -23,6 +23,7 @@ const IncomeList: React.FC<IncomeListProps> = ({
   const [total, setTotal] = useState(0);
 
   const hourlyRate = 33;
+  const sickDayPay = (33 * 80) / 100;
   const nightHours = calculateNightHours(time);
 
   useEffect(() => {
@@ -65,6 +66,9 @@ const IncomeList: React.FC<IncomeListProps> = ({
     } else if (status === Status.vacation) {
       setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
       return setTotal(earningsForDay);
+    } else if (status === Status.sickLeave) {
+      setEarningsForDay(Multiplication(numberHoursWorked, sickDayPay));
+      return setTotal(earningsForDay);
     }
   }, [
     additional,
@@ -74,6 +78,7 @@ const IncomeList: React.FC<IncomeListProps> = ({
     nightSupplement,
     numberHoursWorked,
     oneHundredPercent,
+    sickDayPay,
     startNightTime,
     startTime,
     status,
@@ -82,12 +87,22 @@ const IncomeList: React.FC<IncomeListProps> = ({
 
   return (
     <div>
-      <Text>
-        {numberHoursWorked}
-        <Superscript>H</Superscript> * {hourlyRate}
-        <Superscript>PLN</Superscript> = {earningsForDay}
-        <Superscript>PLN</Superscript>
-      </Text>
+      {status !== Status.sickLeave && (
+        <Text>
+          {numberHoursWorked}
+          <Superscript>H</Superscript> * {hourlyRate}
+          <Superscript>PLN</Superscript> = {earningsForDay}
+          <Superscript>PLN</Superscript>
+        </Text>
+      )}
+      {workShiftNumber === WorkShiftNumber.Shift0 && status === Status.sickLeave && (
+        <Text>
+          {numberHoursWorked}
+          <Superscript>H</Superscript> * {sickDayPay}
+          <Superscript>PLN</Superscript> = {earningsForDay}
+          <Superscript>PLN</Superscript>
+        </Text>
+      )}
       {additional && additional['50%'].numberHours > 0 && (
         <Text>
           {additional['50%'].numberHours}

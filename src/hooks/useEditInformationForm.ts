@@ -96,7 +96,25 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
           },
         };
       }
-      if (data.status !== Status.work && data.status !== Status.vacation) {
+      if (data.status === Status.sickLeave) {
+        result = {
+          id: Date.now(),
+          data: {
+            [key]: {
+              status: data.status,
+              numberHoursWorked: 12,
+              time: '06:00-18:00',
+              workShiftNumber: 0,
+              additionalHours: false,
+            },
+          },
+        };
+      }
+      if (
+        data.status !== Status.work &&
+        data.status !== Status.vacation &&
+        data.status !== Status.sickLeave
+      ) {
         result = {
           id: Date.now(),
           data: {
@@ -110,6 +128,8 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
           },
         };
       }
+      console.log(result);
+
       const dataFromLs: WorkUserDataType[] = getDataFromLs(keys.WORKING_DAYS_KEY_LS);
       const filtredDataFromLs = dataFromLs.filter(item => item.id !== dayId);
       const dataToLs = [...filtredDataFromLs, result];

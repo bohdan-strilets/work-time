@@ -142,6 +142,9 @@ const useCalculateDay = ({
       if (workShiftNumber === WorkShiftNumber.Shift0 && status === Status.vacation) {
         return salaryForDay;
       }
+      if (workShiftNumber === WorkShiftNumber.Shift0 && status === Status.sickLeave) {
+        return (salaryForDay * 80) / 100;
+      }
 
       return 0;
     },
