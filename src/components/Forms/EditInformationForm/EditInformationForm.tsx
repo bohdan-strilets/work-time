@@ -7,6 +7,7 @@ import HoursOptions from 'utilities/HoursOptions';
 import useEditInformationForm from 'hooks/useEditInformationForm';
 import { EditInformationFormProps } from 'types/props/EditInformationFormProps';
 import GetLineSegment from 'utilities/GetLineSegment';
+import { Status } from 'types/enums/StatusEnum';
 
 const EditInformationForm: React.FC<EditInformationFormProps> = ({ dayId, selectedDate }) => {
   const {
@@ -21,6 +22,7 @@ const EditInformationForm: React.FC<EditInformationFormProps> = ({ dayId, select
     quickFinishTime,
     setQuickStartTime,
     setQuickFinishTime,
+    selectedStatus,
   } = useEditInformationForm({ dayId, selectedDate });
 
   return (
@@ -46,78 +48,89 @@ const EditInformationForm: React.FC<EditInformationFormProps> = ({ dayId, select
           />
         )}
       />
-      <Controller
-        name="startJob"
-        control={control}
-        render={({ field }) => (
-          <DropdownList
-            type="single"
+      {(selectedStatus === Status.work || selectedStatus === Status.vacation) && (
+        <>
+          <Controller
             name="startJob"
-            options={HoursOptions}
-            label="What time did you arrive at work?"
-            buttonlabel="Start"
-            height="40px"
-            width="100%"
-            margin="0 0 var(--small-indent) 0"
-            onChange={(value: string | string[]) => {
-              setQuickStartTime(null);
-              field.onChange(value);
-            }}
-            errors={errors}
-            defaultValue={
-              dayInfo?.time && !quickStartTime
-                ? GetLineSegment(dayInfo?.time, 0, 5)
-                : quickStartTime
-            }
-            position="relative"
+            control={control}
+            render={({ field }) => (
+              <DropdownList
+                type="single"
+                name="startJob"
+                options={HoursOptions}
+                label="What time did you arrive at work?"
+                buttonlabel="Start"
+                height="40px"
+                width="100%"
+                margin="0 0 var(--small-indent) 0"
+                onChange={(value: string | string[]) => {
+                  setQuickStartTime(null);
+                  field.onChange(value);
+                }}
+                errors={errors}
+                defaultValue={
+                  dayInfo?.time && !quickStartTime
+                    ? GetLineSegment(dayInfo?.time, 0, 5)
+                    : quickStartTime
+                }
+                position="relative"
+              />
+            )}
           />
-        )}
-      />
-      <QuickTiming getQuickTime={setQuickStartTime} margin="0 0 var(--small-indent) 0" />
-      <Controller
-        name="finishJob"
-        control={control}
-        render={({ field }) => (
-          <DropdownList
-            type="single"
+          <QuickTiming getQuickTime={setQuickStartTime} margin="0 0 var(--small-indent) 0" />
+        </>
+      )}
+      {(selectedStatus === Status.work || selectedStatus === Status.vacation) && (
+        <>
+          <Controller
             name="finishJob"
-            options={HoursOptions}
-            label="What time did you go home?"
-            buttonlabel="Finish"
-            height="40px"
-            width="100%"
-            margin="0 0 var(--small-indent) 0"
-            onChange={(value: string | string[]) => {
-              setQuickStartTime(null);
-              field.onChange(value);
-            }}
-            errors={errors}
-            defaultValue={
-              dayInfo?.time && !quickFinishTime
-                ? GetLineSegment(dayInfo?.time, 6, dayInfo.time.length)
-                : quickFinishTime
-            }
-            position="relative"
+            control={control}
+            render={({ field }) => (
+              <DropdownList
+                type="single"
+                name="finishJob"
+                options={HoursOptions}
+                label="What time did you go home?"
+                buttonlabel="Finish"
+                height="40px"
+                width="100%"
+                margin="0 0 var(--small-indent) 0"
+                onChange={(value: string | string[]) => {
+                  setQuickStartTime(null);
+                  field.onChange(value);
+                }}
+                errors={errors}
+                defaultValue={
+                  dayInfo?.time && !quickFinishTime
+                    ? GetLineSegment(dayInfo?.time, 6, dayInfo.time.length)
+                    : quickFinishTime
+                }
+                position="relative"
+              />
+            )}
           />
-        )}
-      />
-      <QuickTiming getQuickTime={setQuickFinishTime} margin="0 0 var(--small-indent) 0" />
-      <Controller
-        name="additionalHours"
-        control={control}
-        render={({ field }) => (
-          <Checkbox
-            name="additionalHours"
-            errors={errors}
-            register={register}
-            onChange={(value: boolean) => field.onChange(value)}
-            margin="0 0 var(--small-indent) 0"
-            defaultValue={dayInfo?.additionalHours}
-          >
-            <p>Is this an extra shift?</p>
-          </Checkbox>
-        )}
-      />
+          <QuickTiming getQuickTime={setQuickFinishTime} margin="0 0 var(--small-indent) 0" />
+        </>
+      )}
+      {selectedStatus === Status.work && (
+        <Controller
+          name="additionalHours"
+          control={control}
+          render={({ field }) => (
+            <Checkbox
+              name="additionalHours"
+              errors={errors}
+              register={register}
+              onChange={(value: boolean) => field.onChange(value)}
+              margin="0 0 var(--small-indent) 0"
+              defaultValue={dayInfo?.additionalHours}
+            >
+              <p>Is this an extra shift?</p>
+            </Checkbox>
+          )}
+        />
+      )}
+
       <Button type="submit" label="Changed day" width="400px" height="40px" />
     </form>
   );

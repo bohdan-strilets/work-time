@@ -1,5 +1,5 @@
-import { Status } from "types/enums/StatusEnum";
-import { WorkShiftNumber } from "types/enums/WorkShiftNumber";
+import { Status } from 'types/enums/StatusEnum';
+import { WorkShiftNumber } from 'types/enums/WorkShiftNumber';
 
 export type DayInfoType = {
   status: Status;

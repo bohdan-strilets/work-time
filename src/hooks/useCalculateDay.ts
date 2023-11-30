@@ -4,12 +4,14 @@ import { Result } from 'types/types/AdditionalHoursType';
 import { HookProps } from 'types/props/DayInfoProps';
 import GetNightRate from 'utilities/GetNightRate';
 import { WorkShiftNumber } from 'types/enums/WorkShiftNumber';
+import { Status } from 'types/enums/StatusEnum';
 
 const useCalculateDay = ({
   additionalHours,
   time,
   numberHoursWorked,
   workShiftNumber,
+  status,
 }: HookProps) => {
   const [additional, setAdditional] = useState<Result | null>(null);
   const [earningForDay, setEarningForDay] = useState(0);
@@ -71,6 +73,7 @@ const useCalculateDay = ({
     (
       workingHours: number,
       grossHourlyRate: number,
+      status: Status,
       fiftyPercentHours?: number,
       oneHundredPercentHours?: number,
     ): number => {
@@ -136,6 +139,9 @@ const useCalculateDay = ({
         const nightHourSalary = nightExtraRate * nightHours;
         return salaryForDay + nightHourSalary;
       }
+      if (workShiftNumber === WorkShiftNumber.Shift0 && status === Status.vacation) {
+        return salaryForDay;
+      }
 
       return 0;
     },
@@ -147,15 +153,16 @@ const useCalculateDay = ({
       const earning = calculateEarningsDay(
         numberHoursWorked,
         33,
+        status,
         additional[FIFTY_PERCENT].numberHours,
         additional[ONE_HUNDRED_PERCENT].numberHours,
       );
       setEarningForDay(earning);
     } else {
-      const earning = calculateEarningsDay(numberHoursWorked, 33);
+      const earning = calculateEarningsDay(numberHoursWorked, 33, status);
       setEarningForDay(earning);
     }
-  }, [additional, additionalHours, calculateEarningsDay, numberHoursWorked]);
+  }, [additional, additionalHours, calculateEarningsDay, numberHoursWorked, status]);
 
   const handleEditBtnClick = () => {
     openModal(modalsName.cellDayEdit);
@@ -163,6 +170,10 @@ const useCalculateDay = ({
 
   const handleDeleteBtnClick = () => {
     openModal(modalsName.cellDayDelete);
+  };
+
+  const calculateProfitForVacation = (hours: number, grossHourlyRate: number) => {
+    return hours * grossHourlyRate;
   };
 
   return {
@@ -176,6 +187,7 @@ const useCalculateDay = ({
     calculateNightHours,
     START_TIME,
     START_NIGHT_TIME,
+    calculateProfitForVacation,
   };
 };
 

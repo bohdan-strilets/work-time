@@ -43,6 +43,7 @@ const Desktop: React.FC<DayInfoProps> = ({
     time,
     numberHoursWorked,
     workShiftNumber,
+    status,
   });
   const {
     healthInsurance,
@@ -109,6 +110,7 @@ const Desktop: React.FC<DayInfoProps> = ({
             time={time}
             startTime={START_TIME}
             startNightTime={START_NIGHT_TIME}
+            status={status}
           />
         </Container>
       )}

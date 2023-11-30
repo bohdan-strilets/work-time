@@ -21,6 +21,7 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
     setQuickFinishTime,
     quickStartTime,
     quickFinishTime,
+    selectedVacationHours,
   } = useAddInformationForm({ selectedDate });
 
   return (
@@ -45,7 +46,8 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
           />
         )}
       />
-      {selectedStatus === Status.work && (
+      {(selectedStatus === Status.work ||
+        (selectedStatus === Status.vacation && selectedVacationHours)) && (
         <>
           <Controller
             name="startJob"
@@ -71,6 +73,11 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
             )}
           />
           <QuickTiming getQuickTime={setQuickStartTime} margin="0 0 var(--small-indent) 0" />
+        </>
+      )}
+      {(selectedStatus === Status.work ||
+        (selectedStatus === Status.vacation && selectedVacationHours)) && (
+        <>
           <Controller
             name="finishJob"
             control={control}
@@ -95,22 +102,43 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
             )}
           />
           <QuickTiming getQuickTime={setQuickFinishTime} margin="0 0 var(--small-indent) 0" />
-          <Controller
-            name="additionalHours"
-            control={control}
-            render={({ field }) => (
-              <Checkbox
-                name="additionalHours"
-                errors={errors}
-                register={register}
-                onChange={(value: boolean) => field.onChange(value)}
-                margin="0 0 var(--small-indent) 0"
-              >
-                <p>Is this an extra shift?</p>
-              </Checkbox>
-            )}
-          />
         </>
+      )}
+      {selectedStatus === Status.work && (
+        <Controller
+          name="additionalHours"
+          control={control}
+          render={({ field }) => (
+            <Checkbox
+              name="additionalHours"
+              errors={errors}
+              register={register}
+              onChange={(value: boolean) => field.onChange(value)}
+              margin="0 0 var(--small-indent) 0"
+            >
+              <p>Is this an extra shift?</p>
+            </Checkbox>
+          )}
+        />
+      )}
+      {selectedStatus === Status.vacation && (
+        <Controller
+          name="selectVacationHours"
+          control={control}
+          render={({ field }) => (
+            <Checkbox
+              name="selectVacationHours"
+              errors={errors}
+              register={register}
+              onChange={(value: boolean) => field.onChange(value)}
+              margin="0 0 var(--small-indent) 0"
+            >
+              <p>
+                Do you want to set your own vacation time? (Default will be selected 06:00 - 18:00)
+              </p>
+            </Checkbox>
+          )}
+        />
       )}
 
       <Button type="submit" label="Add day" width="400px" height="40px" />

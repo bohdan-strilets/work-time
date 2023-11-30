@@ -3,6 +3,7 @@ import { WorkShiftNumber } from 'types/enums/WorkShiftNumber';
 import { IncomeListProps } from 'types/props/IncomeListProps';
 import Multiplication from 'utilities/Multiplication';
 import GetNightRate from 'utilities/GetNightRate';
+import { Status } from 'types/enums/StatusEnum';
 import { Text, Superscript, Result } from './IncomeList.styled';
 
 const IncomeList: React.FC<IncomeListProps> = ({
@@ -13,6 +14,7 @@ const IncomeList: React.FC<IncomeListProps> = ({
   time,
   startTime,
   startNightTime,
+  status,
 }) => {
   const [earningsForDay, setEarningsForDay] = useState(0);
   const [fiftyPercentage, setFiftyPercentage] = useState(0);
@@ -60,6 +62,9 @@ const IncomeList: React.FC<IncomeListProps> = ({
         setFiftyPercentage(Multiplication(additional['50%'].numberHours, 16.5));
         return setTotal(earningsForDay + fiftyPercentage);
       }
+    } else if (status === Status.vacation) {
+      setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
+      return setTotal(earningsForDay);
     }
   }, [
     additional,
@@ -71,6 +76,7 @@ const IncomeList: React.FC<IncomeListProps> = ({
     oneHundredPercent,
     startNightTime,
     startTime,
+    status,
     workShiftNumber,
   ]);
 

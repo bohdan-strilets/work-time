@@ -6,4 +6,5 @@ export type AddInformationFormInputs = {
   startJob?: string;
   finishJob?: string;
   additionalHours?: Pick<DayInfoType, 'additionalHours'>;
+  selectVacationHours?: boolean;
 };

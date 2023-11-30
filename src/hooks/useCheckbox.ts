@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
-import { HookProps } from "types/props/CheckboxProps";
+import { useState, useEffect } from 'react';
+import { HookProps } from 'types/props/CheckboxProps';
 
 const useCheckbox = ({ onChange, defaultValue }: HookProps) => {
   const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
     onChange(isChecked);
-  }, [isChecked, onChange]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isChecked]);
 
   useEffect(() => {
     if (defaultValue) {
@@ -14,7 +15,7 @@ const useCheckbox = ({ onChange, defaultValue }: HookProps) => {
     }
   }, [defaultValue]);
 
-  const toggle = () => setIsChecked((state) => !state);
+  const toggle = () => setIsChecked(state => !state);
 
   return { isChecked, toggle };
 };

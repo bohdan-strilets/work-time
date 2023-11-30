@@ -23,5 +23,5 @@ export type ExtraTimeStatusProps = Pick<DayInfoProps, 'additionalHours'>;
 
 export type HookProps = Pick<
   DayInfoProps,
-  'additionalHours' | 'time' | 'numberHoursWorked' | 'workShiftNumber'
+  'additionalHours' | 'time' | 'numberHoursWorked' | 'workShiftNumber' | 'status'
 >;

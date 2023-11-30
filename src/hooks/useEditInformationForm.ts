@@ -22,9 +22,11 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
     formState: { errors },
     control,
     setValue,
+    watch,
   } = useForm<EditInformationFormInputs>();
   const { getDataFromLs, setDataToLs } = useLocalStorage();
   const navigate = useNavigate();
+  const selectedStatus = watch('status');
 
   useEffect(() => {
     const dataFromLs: WorkUserDataType[] = getDataFromLs(keys.WORKING_DAYS_KEY_LS);
@@ -59,11 +61,12 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
   const onSubmit: SubmitHandler<EditInformationFormInputs> = data => {
     if (selectedDate) {
       const key = GetKeyByDate(selectedDate);
+      let result = {};
       if (data.startJob && data.finishJob) {
         const workedHours = CalculateWorkedHours(data.startJob, data.finishJob);
         const timeRange = `${data.startJob}-${data.finishJob}`;
         const shift = DetermineShiftNumber(timeRange, workedHours);
-        const result = {
+        result = {
           id: Date.now(),
           data: {
             [key]: {
@@ -75,12 +78,8 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
             },
           },
         };
-        const dataFromLs: WorkUserDataType[] = getDataFromLs(keys.WORKING_DAYS_KEY_LS);
-        const filtredDataFromLs = dataFromLs.filter(item => item.id !== dayId);
-        const dataToLs = [...filtredDataFromLs, result];
-        setDataToLs(keys.WORKING_DAYS_KEY_LS, dataToLs);
       } else {
-        const result = {
+        result = {
           id: Date.now(),
           data: {
             [key]: {
@@ -92,11 +91,11 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
             },
           },
         };
-        const dataFromLs: WorkUserDataType[] = getDataFromLs(keys.WORKING_DAYS_KEY_LS);
-        const filtredDataFromLs = dataFromLs.filter(item => item.id !== dayId);
-        const dataToLs = [...filtredDataFromLs, result];
-        setDataToLs(keys.WORKING_DAYS_KEY_LS, dataToLs);
       }
+      const dataFromLs: WorkUserDataType[] = getDataFromLs(keys.WORKING_DAYS_KEY_LS);
+      const filtredDataFromLs = dataFromLs.filter(item => item.id !== dayId);
+      const dataToLs = [...filtredDataFromLs, result];
+      setDataToLs(keys.WORKING_DAYS_KEY_LS, dataToLs);
     }
     navigate('/calendar');
   };
@@ -113,6 +112,7 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
     quickFinishTime,
     setQuickStartTime,
     setQuickFinishTime,
+    selectedStatus,
   };
 };
 

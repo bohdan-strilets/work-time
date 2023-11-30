@@ -8,6 +8,7 @@ import useLocalStorage from './useLocalStorage';
 import { keys } from 'settings/config';
 import CalculateWorkedHours from 'utilities/CalculateWorkedHours';
 import DetermineShiftNumber from 'utilities/DetermineShiftNumber';
+import { Status } from 'types/enums/StatusEnum';
 
 const useAddInformationForm = ({ selectedDate }: HookProps) => {
   const [quickStartTime, setQuickStartTime] = useState<string | null>(null);
@@ -24,6 +25,7 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
   } = useForm<AddInformationFormInputs>();
   const { getDataFromLs, setDataToLs } = useLocalStorage();
   const selectedStatus = watch('status');
+  const selectedVacationHours = watch('selectVacationHours');
 
   useEffect(() => {
     if (quickStartTime) {
@@ -37,11 +39,12 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
   const onSubmit: SubmitHandler<AddInformationFormInputs> = data => {
     if (selectedDate) {
       const key = GetKeyByDate(selectedDate);
-      if (data.startJob && data.finishJob) {
+      let result = {};
+      if (data.startJob && data.finishJob && data.status === Status.work) {
         const workedHours = CalculateWorkedHours(data.startJob, data.finishJob);
         const timeRange = `${data.startJob}-${data.finishJob}`;
         const shift = DetermineShiftNumber(timeRange, workedHours);
-        const result = {
+        result = {
           id: Date.now(),
           data: {
             [key]: {
@@ -53,16 +56,43 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
             },
           },
         };
-        const dataFromLs = getDataFromLs(keys.WORKING_DAYS_KEY_LS);
-        if (dataFromLs) {
-          const dataToLs = [...dataFromLs, result];
-          setDataToLs(keys.WORKING_DAYS_KEY_LS, dataToLs);
-        } else {
-          const dataToLs = [result];
-          setDataToLs(keys.WORKING_DAYS_KEY_LS, dataToLs);
-        }
-      } else {
-        const result = {
+      }
+      if (data.startJob && data.finishJob && data.status === Status.vacation) {
+        const vacationHours = CalculateWorkedHours(data.startJob, data.finishJob);
+        const timeRange = `${data.startJob}-${data.finishJob}`;
+        result = {
+          id: Date.now(),
+          data: {
+            [key]: {
+              status: data.status,
+              numberHoursWorked: vacationHours,
+              time: timeRange,
+              workShiftNumber: 0,
+              additionalHours: false,
+            },
+          },
+        };
+      }
+      if (data.status === Status.vacation) {
+        const startVacationDay = '06:00';
+        const endVacationDay = '18:00';
+        const vacationHours = CalculateWorkedHours(startVacationDay, endVacationDay);
+        const timeRange = `${startVacationDay}-${endVacationDay}`;
+        result = {
+          id: Date.now(),
+          data: {
+            [key]: {
+              status: data.status,
+              numberHoursWorked: vacationHours,
+              time: timeRange,
+              workShiftNumber: 0,
+              additionalHours: false,
+            },
+          },
+        };
+      }
+      if (data.status !== Status.work && data.status !== Status.vacation) {
+        result = {
           id: Date.now(),
           data: {
             [key]: {
@@ -74,14 +104,14 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
             },
           },
         };
-        const dataFromLs = getDataFromLs(keys.WORKING_DAYS_KEY_LS);
-        if (dataFromLs) {
-          const dataToLs = [...dataFromLs, result];
-          setDataToLs(keys.WORKING_DAYS_KEY_LS, dataToLs);
-        } else {
-          const dataToLs = [result];
-          setDataToLs(keys.WORKING_DAYS_KEY_LS, dataToLs);
-        }
+      }
+      const dataFromLs = getDataFromLs(keys.WORKING_DAYS_KEY_LS);
+      if (dataFromLs) {
+        const dataToLs = [...dataFromLs, result];
+        setDataToLs(keys.WORKING_DAYS_KEY_LS, dataToLs);
+      } else {
+        const dataToLs = [result];
+        setDataToLs(keys.WORKING_DAYS_KEY_LS, dataToLs);
       }
     }
     closeModal();
@@ -99,6 +129,7 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
     setQuickFinishTime,
     quickStartTime,
     quickFinishTime,
+    selectedVacationHours,
   };
 };
 
