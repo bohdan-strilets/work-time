@@ -128,8 +128,6 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
           },
         };
       }
-      console.log(result);
-
       const dataFromLs: WorkUserDataType[] = getDataFromLs(keys.WORKING_DAYS_KEY_LS);
       const filtredDataFromLs = dataFromLs.filter(item => item.id !== dayId);
       const dataToLs = [...filtredDataFromLs, result];
