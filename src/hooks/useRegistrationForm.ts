@@ -9,10 +9,12 @@ import operations from '../redux/user/userOperations';
 import { UserResponseType } from 'types/types/UserResponseType';
 import { UserType } from 'types/types/UserType';
 import { TokensType } from 'types/types/TokensType';
+import useModalWindow from './useModalWindow';
 
 const useRegistrationForm = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const { modalsName } = useModalWindow();
 
   const validation = {
     resolver: yupResolver<RegistrationFormInputs>(RegistrationFormSchema),
@@ -35,7 +37,7 @@ const useRegistrationForm = () => {
     const response = await dispatch(operations.registration(user));
     const data = response.payload as UserResponseType<UserType, TokensType>;
     if (data && data.success) {
-      navigate('/calendar');
+      navigate(`/calendar?modal=${modalsName.greetings}`);
     } else {
       navigate('/auth');
       toast.warning('Something went wrong, please check the entered data and try again.');

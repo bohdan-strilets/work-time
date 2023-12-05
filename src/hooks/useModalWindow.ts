@@ -1,26 +1,27 @@
-import { useEffect, useCallback } from "react";
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useEffect, useCallback } from 'react';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 
 const useModalWindow = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
   const modalsName = {
-    cellDay: "cell-day",
-    cellDayEdit: "cell-day-edit",
-    cellDayDelete: "cell-day-delete",
+    cellDay: 'cell-day',
+    cellDayEdit: 'cell-day-edit',
+    cellDayDelete: 'cell-day-delete',
+    greetings: 'greetings',
   };
 
   const openModal = (modalName: string) => {
     const updatedParams = new URLSearchParams(searchParams);
-    updatedParams.set("modal", modalName);
+    updatedParams.set('modal', modalName);
     setSearchParams(updatedParams);
   };
 
   const closeModal = useCallback(() => navigate(-1), [navigate]);
 
   const checkQueryParam = (modalName: string) => {
-    const modal = searchParams.get("modal");
+    const modal = searchParams.get('modal');
     return modal === modalName;
   };
 
@@ -30,11 +31,11 @@ const useModalWindow = () => {
 
   useEffect(() => {
     const onPressEscape = (e: KeyboardEvent) => {
-      if (e.code === "Escape") navigate(-1);
+      if (e.code === 'Escape') navigate(-1);
     };
 
-    document.addEventListener("keydown", onPressEscape);
-    return () => document.removeEventListener("keydown", onPressEscape);
+    document.addEventListener('keydown', onPressEscape);
+    return () => document.removeEventListener('keydown', onPressEscape);
   }, [navigate]);
 
   return {

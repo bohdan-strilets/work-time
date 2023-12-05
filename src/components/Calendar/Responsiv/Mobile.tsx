@@ -8,6 +8,7 @@ import ModalWindow from 'components/ModalWindow';
 import AddInformationForm from 'components/Forms/AddInformationForm';
 import DialogWindow from 'components/DialogWindow';
 import EditInformationForm from 'components/Forms/EditInformationForm';
+import Greetings from 'components/Greetings';
 import useCalendar from 'hooks/useCalendar';
 import useModalWindow from 'hooks/useModalWindow';
 import { List } from '../Calendar.styled';
@@ -100,6 +101,11 @@ const Mobile: React.FC<{}> = () => {
               handlePositiveClick={deleteInformationForDay}
               handleNegativeClick={() => navigate(-1)}
             />
+          </ModalWindow>
+        )}
+        {checkQueryParam(modalsName.greetings) && (
+          <ModalWindow title="Welcome">
+            <Greetings />
           </ModalWindow>
         )}
       </div>
