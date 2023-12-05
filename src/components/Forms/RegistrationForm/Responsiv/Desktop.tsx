@@ -1,8 +1,8 @@
-import { BiSolidUser, BiSolidLock } from "react-icons/bi";
-import { MdMail } from "react-icons/md";
-import TextInput from "components/UI/TextInput";
-import Button from "components/UI/Button";
-import useRegistrationForm from "hooks/useRegistrationForm";
+import { BiSolidUser, BiSolidLock } from 'react-icons/bi';
+import { MdMail } from 'react-icons/md';
+import TextInput from 'components/UI/TextInput';
+import Button from 'components/UI/Button';
+import useRegistrationForm from 'hooks/useRegistrationForm';
 
 const Desktop: React.FC<{}> = () => {
   const { register, handleSubmit, errors, onSubmit } = useRegistrationForm();
