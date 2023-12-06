@@ -5,6 +5,7 @@ import Button from 'components/UI/Button';
 import Checkbox from 'components/UI/Checkbox';
 import ModalWindow from 'components/ModalWindow';
 import PrivacyPolicy from 'components/Auth/PrivacyPolicy';
+import TermsUseSite from 'components/Auth/TermsUseSite';
 import useRegistrationForm from 'hooks/useRegistrationForm';
 import useModalWindow from 'hooks/useModalWindow';
 import { ReferenceBtn } from '../RegistrationForm.styled';
@@ -107,6 +108,11 @@ const Mobile: React.FC<{}> = () => {
       {checkQueryParam(modalsName.privacyPolicy) && (
         <ModalWindow title="Privacy policy">
           <PrivacyPolicy />
+        </ModalWindow>
+      )}
+      {checkQueryParam(modalsName.termsUseSite) && (
+        <ModalWindow title="Terms of use of the site">
+          <TermsUseSite />
         </ModalWindow>
       )}
     </>
