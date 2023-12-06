@@ -25,6 +25,7 @@ const useRegistrationForm = () => {
     handleSubmit,
     formState: { errors },
     control,
+    setError,
   } = useForm<RegistrationFormInputs>(validation);
 
   const onSubmit: SubmitHandler<RegistrationFormInputs> = async value => {
@@ -35,13 +36,19 @@ const useRegistrationForm = () => {
       password: value.password,
     };
 
-    const response = await dispatch(operations.registration(user));
-    const data = response.payload as UserResponseType<UserType, TokensType>;
-    if (data && data.success) {
-      navigate(`/calendar?modal=${modalsName.greetings}`);
+    if (value.rules) {
+      const response = await dispatch(operations.registration(user));
+      const data = response.payload as UserResponseType<UserType, TokensType>;
+      if (data && data.success) {
+        navigate(`/calendar?modal=${modalsName.greetings}`);
+      } else {
+        navigate('/auth');
+        toast.warning('Something went wrong, please check the entered data and try again.');
+      }
     } else {
-      navigate('/auth');
-      toast.warning('Something went wrong, please check the entered data and try again.');
+      setError('rules', {
+        message: 'Read the privacy policy and site rules and if you agree, check the box.',
+      });
     }
   };
 
