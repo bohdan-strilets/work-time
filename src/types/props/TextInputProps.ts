@@ -1,5 +1,5 @@
 export type TextInputProps = {
-  type: "text" | "tel" | "email" | "password";
+  type: 'text' | 'tel' | 'email' | 'password';
   label?: string;
   icon?: React.ReactNode;
   name: string;
@@ -11,11 +11,9 @@ export type TextInputProps = {
   width?: number;
   height?: number;
   margin?: string;
+  children?: React.ReactNode;
 };
 
-export type WrapperProps = Pick<
-  TextInputProps,
-  "width" | "margin" | "disabled"
->;
+export type WrapperProps = Pick<TextInputProps, 'width' | 'margin' | 'disabled'>;
 
-export type InputProps = Pick<TextInputProps, "height">;
+export type InputProps = Pick<TextInputProps, 'height'>;

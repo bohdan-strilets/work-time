@@ -1,8 +1,9 @@
-import { BiSolidLock } from "react-icons/bi";
-import { MdMail } from "react-icons/md";
-import TextInput from "components/UI/TextInput";
-import Button from "components/UI/Button";
-import useLoginForm from "hooks/useLoginForm";
+import { BiSolidLock } from 'react-icons/bi';
+import { MdMail } from 'react-icons/md';
+import TextInput from 'components/UI/TextInput';
+import Button from 'components/UI/Button';
+import PasswordInput from 'components/UI/PasswordInput';
+import useLoginForm from 'hooks/useLoginForm';
 
 const Tablet: React.FC<{}> = () => {
   const { register, handleSubmit, errors, onSubmit } = useLoginForm();
@@ -21,8 +22,7 @@ const Tablet: React.FC<{}> = () => {
         height={40}
         margin="0 0 var(--medium-indent) 0"
       />
-      <TextInput
-        type="password"
+      <PasswordInput
         icon={<BiSolidLock size={18} />}
         name="password"
         placeholder="Password"

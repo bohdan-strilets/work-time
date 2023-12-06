@@ -6,6 +6,7 @@ import Checkbox from 'components/UI/Checkbox';
 import ModalWindow from 'components/ModalWindow';
 import PrivacyPolicy from 'components/Auth/PrivacyPolicy';
 import TermsUseSite from 'components/Auth/TermsUseSite';
+import PasswordInput from 'components/UI/PasswordInput';
 import useRegistrationForm from 'hooks/useRegistrationForm';
 import useModalWindow from 'hooks/useModalWindow';
 import { ReferenceBtn } from '../RegistrationForm.styled';
@@ -53,8 +54,7 @@ const Desktop: React.FC<{}> = () => {
           height={40}
           margin="0 0 var(--medium-indent) 0"
         />
-        <TextInput
-          type="password"
+        <PasswordInput
           icon={<BiSolidLock size={18} />}
           name="password"
           placeholder="Password"
@@ -65,8 +65,7 @@ const Desktop: React.FC<{}> = () => {
           height={40}
           margin="0 0 var(--medium-indent) 0"
         />
-        <TextInput
-          type="password"
+        <PasswordInput
           icon={<BiSolidLock size={18} />}
           name="passwordAgain"
           placeholder="Password again"

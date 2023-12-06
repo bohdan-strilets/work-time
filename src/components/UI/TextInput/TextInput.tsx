@@ -1,13 +1,5 @@
-import { TextInputProps } from "types/props/TextInputProps";
-import {
-  Wrapper,
-  Label,
-  Required,
-  InputWrapper,
-  Icon,
-  Input,
-  Error,
-} from "./TextInput.styled";
+import { TextInputProps } from 'types/props/TextInputProps';
+import { Wrapper, Label, Required, InputWrapper, Icon, Input, Error } from './TextInput.styled';
 
 const TextInput: React.FC<TextInputProps> = ({
   type,
@@ -22,6 +14,7 @@ const TextInput: React.FC<TextInputProps> = ({
   width,
   height,
   margin,
+  children,
 }) => {
   return (
     <Wrapper width={width} margin={margin} disabled={disabled}>
@@ -40,6 +33,7 @@ const TextInput: React.FC<TextInputProps> = ({
           placeholder={placeholder}
           height={height}
         />
+        {children && children}
       </InputWrapper>
       {errors[name] && <Error>{errors[name].message}</Error>}
     </Wrapper>
