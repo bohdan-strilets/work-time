@@ -4,5 +4,5 @@ export type RegistrationFormInputs = {
   email: string;
   password: string;
   passwordAgain: string;
-  // rules: boolean;
+  rules: boolean;
 };

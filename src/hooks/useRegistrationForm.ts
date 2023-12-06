@@ -1,4 +1,4 @@
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -24,6 +24,7 @@ const useRegistrationForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    control,
   } = useForm<RegistrationFormInputs>(validation);
 
   const onSubmit: SubmitHandler<RegistrationFormInputs> = async value => {
@@ -44,7 +45,7 @@ const useRegistrationForm = () => {
     }
   };
 
-  return { register, handleSubmit, errors, onSubmit };
+  return { register, handleSubmit, errors, onSubmit, Controller, control };
 };
 
 export default useRegistrationForm;

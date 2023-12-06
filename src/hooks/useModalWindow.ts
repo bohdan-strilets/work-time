@@ -10,6 +10,8 @@ const useModalWindow = () => {
     cellDayEdit: 'cell-day-edit',
     cellDayDelete: 'cell-day-delete',
     greetings: 'greetings',
+    termsUseSite: 'terms-use-site',
+    privacyPolicy: 'privacy-policy',
   };
 
   const openModal = (modalName: string) => {

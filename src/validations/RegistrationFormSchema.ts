@@ -26,10 +26,10 @@ const RegistrationFormSchema = yup.object().shape({
     .string()
     .oneOf([yup.ref('password')], 'Passwords must match')
     .required('Password confirmation is required'),
-  // rules: yup
-  //   .boolean()
-  //   .oneOf([true], 'You must accept the rules')
-  //   .required('You must accept the rules'),
+  rules: yup
+    .boolean()
+    .oneOf([true], 'You must accept the rules')
+    .required('You must accept the rules'),
 });
 
 export default RegistrationFormSchema;
