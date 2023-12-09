@@ -7,6 +7,7 @@ import { RegistrationDto } from 'types/dto/RegistrationDto';
 import { UserType } from 'types/types/UserType';
 import { TokensType } from 'types/types/TokensType';
 import { ENTITY_NAME, OPERATION_NAME, ENDPOINTS_PATH } from './config';
+import { LoginDto } from 'types/dto/LoginDto';
 
 const registration = createAsyncThunk<
   UserResponseType<UserType, TokensType> | undefined,
@@ -82,10 +83,36 @@ const logout = createAsyncThunk<UserResponseType | undefined>(
   },
 );
 
+const login = createAsyncThunk<UserResponseType<UserType, TokensType> | undefined, LoginDto>(
+  `${ENTITY_NAME}/${OPERATION_NAME.Login}`,
+  async loginDto => {
+    try {
+      const { data } = await api.post(ENDPOINTS_PATH.Login, loginDto);
+      if (data) {
+        const response = data as UserResponseType<UserType, TokensType>;
+        return response;
+      }
+      return undefined;
+    } catch (error: any) {
+      if (error.response) {
+        const err = error.response.data as UserResponseType;
+        toast.error(`${err.code} - ${err.message}`);
+      } else if (error.request) {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      } else {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      }
+    }
+  },
+);
+
 const operations = {
   registration,
   googleAuth,
   logout,
+  login,
 };
 
 export default operations;
