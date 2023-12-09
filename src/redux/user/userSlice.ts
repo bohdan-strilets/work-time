@@ -32,10 +32,16 @@ export const userSlice = createSlice({
         }
       })
       .addCase(operations.googleAuth.fulfilled, (state, action) => {
-        if (action.payload && action.payload.data) {
+        if (action.payload && action.payload.tokens && action.payload.data) {
           state.user = action.payload.data;
+          state.token = action.payload?.tokens?.accessToken;
           state.isLoggedIn = true;
         }
+      })
+      .addCase(operations.logout.fulfilled, state => {
+        state.user = null;
+        state.token = null;
+        state.isLoggedIn = false;
       });
   },
 });

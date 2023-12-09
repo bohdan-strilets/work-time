@@ -9,3 +9,4 @@ export const getEmail = (state: RootState) => state.user.user?.email;
 export const getFirstName = (state: RootState) => state.user.user?.firstName;
 export const getLastName = (state: RootState) => state.user.user?.lastName;
 export const getAvatarUrl = (state: RootState) => state.user.user?.avatarUrl;
+export const getCompanyInfo = (state: RootState) => state.user.user?.companyInfo;

@@ -33,13 +33,37 @@ const registration = createAsyncThunk<
   }
 });
 
-const googleAuth = createAsyncThunk<UserResponseType<UserType> | undefined, string>(
+const googleAuth = createAsyncThunk<UserResponseType<UserType, TokensType> | undefined, string>(
   `${ENTITY_NAME}/${OPERATION_NAME.GoogleAuth}`,
   async token => {
     try {
       const { data } = await api.post(ENDPOINTS_PATH.GoogleAuth, { token });
       if (data) {
-        const response = data as UserResponseType<UserType>;
+        const response = data as UserResponseType<UserType, TokensType>;
+        return response;
+      }
+      return undefined;
+    } catch (error: any) {
+      if (error.response) {
+        const err = error.response.data as UserResponseType;
+        toast.error(`${err.code} - ${err.message}`);
+      } else if (error.request) {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      } else {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      }
+    }
+  },
+);
+const logout = createAsyncThunk<UserResponseType | undefined>(
+  `${ENTITY_NAME}/${OPERATION_NAME.Logout}`,
+  async () => {
+    try {
+      const { data } = await api.get(ENDPOINTS_PATH.Logout);
+      if (data) {
+        const response = data as UserResponseType;
         return response;
       }
       return undefined;
@@ -61,6 +85,7 @@ const googleAuth = createAsyncThunk<UserResponseType<UserType> | undefined, stri
 const operations = {
   registration,
   googleAuth,
+  logout,
 };
 
 export default operations;

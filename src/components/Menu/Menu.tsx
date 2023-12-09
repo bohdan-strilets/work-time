@@ -3,18 +3,35 @@ import UserInfo from './UserInfo';
 import Navigation from './Navigation';
 import Header from './Header';
 import Footer from './Footer';
+import { useAppSelector } from 'hooks/useAppSelector';
+import {
+  getFirstName,
+  getLastName,
+  getAvatarUrl,
+  getCompanyInfo,
+  getIsLoggedIn,
+} from '../../redux/user/userSelectors';
 import { Backdrop, Content } from './Menu.styled';
 
 const Menu: React.FC<MenuProps> = ({ closeMenu, handleBackdropClick }) => {
+  const firstName = useAppSelector(getFirstName);
+  const lastName = useAppSelector(getLastName);
+  const name = `${firstName} ${lastName}`;
+  const avatarUrl = useAppSelector(getAvatarUrl);
+  const companyInfo = useAppSelector(getCompanyInfo);
+  const isLoggedIn = useAppSelector(getIsLoggedIn);
+
   return (
     <Backdrop onClick={handleBackdropClick}>
       <Content>
         <Header closeMenu={closeMenu} />
-        <UserInfo
-          avatarUrl="https://cdn.pixabay.com/photo/2023/09/16/18/18/wallpaper-8257343_1280.png"
-          name="Bohdan Strilets"
-          profession="Full-stack developer"
-        />
+        {isLoggedIn && (
+          <UserInfo
+            avatarUrl={avatarUrl ? avatarUrl : ''}
+            name={name}
+            profession={companyInfo?.profession ? companyInfo?.profession : 'profession'}
+          />
+        )}
         <Navigation closeMenu={closeMenu} />
         <Footer />
       </Content>
