@@ -4,13 +4,17 @@ import { CgMenuGridO } from 'react-icons/cg';
 import Button from 'components/UI/Button';
 import Menu from 'components/Menu';
 import MobileMenu from 'components/Menu/MobileMenu';
+import UserInformation from 'components/UserInformation';
 import useMenu from 'hooks/useMenu';
+import { useAppSelector } from 'hooks/useAppSelector';
+import { getIsLoggedIn } from '../../redux/user/userSelectors';
 import ScreenWidth from 'utilities/ScreenWidth';
 import { Wrapper, List } from './Header.styled';
 
 const Header: React.FC<{}> = () => {
   const navigate = useNavigate();
   const { openMenu, isOpen, closeMenu, handleBackdropClick } = useMenu();
+  const isLoggedIn = useAppSelector(getIsLoggedIn);
 
   return (
     <>
@@ -26,13 +30,17 @@ const Header: React.FC<{}> = () => {
             />
           </li>
           <li>
-            <Button
-              type="button"
-              label="Start"
-              width="200px"
-              height="35px"
-              onClick={() => navigate('auth')}
-            />
+            {isLoggedIn ? (
+              <UserInformation />
+            ) : (
+              <Button
+                type="button"
+                label="Start"
+                width="200px"
+                height="35px"
+                onClick={() => navigate('auth')}
+              />
+            )}
           </li>
         </List>
       </Wrapper>
