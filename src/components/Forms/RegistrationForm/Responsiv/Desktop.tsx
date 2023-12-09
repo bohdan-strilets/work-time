@@ -89,6 +89,7 @@ const Desktop: React.FC<{}> = () => {
               required={true}
               onChange={(value: boolean) => field.onChange(value)}
               margin="0 0 var(--small-indent) 0"
+              childrenWidth="365px"
             >
               <p>
                 I have read the
@@ -96,7 +97,6 @@ const Desktop: React.FC<{}> = () => {
                   terms of use of the site
                 </ReferenceBtn>
                 and the
-                <tr />
                 <ReferenceBtn type="button" onClick={() => openModal(modalsName.privacyPolicy)}>
                   privacy policy
                 </ReferenceBtn>

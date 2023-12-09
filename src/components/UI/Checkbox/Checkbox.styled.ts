@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { WrapperProps, CustomCheckboxProps } from 'types/props/CheckboxProps';
+import { WrapperProps, CustomCheckboxProps, ChildrenWrapperProps } from 'types/props/CheckboxProps';
 
 export const Wrapper = styled.label<WrapperProps>`
   display: flex;
@@ -37,6 +37,10 @@ export const CustomCheckbox = styled.div<CustomCheckboxProps>`
   border-radius: 3px;
 
   opacity: ${({ disabled }) => (disabled ? 0.3 : 1)};
+`;
+
+export const ChildrenWrapper = styled.div<ChildrenWrapperProps>`
+  width: ${({ childrenWidth }) => (childrenWidth ? childrenWidth : '')};
 `;
 
 export const Label = styled.p`

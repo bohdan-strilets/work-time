@@ -1,13 +1,7 @@
-import { HiCheck } from "react-icons/hi";
-import { CheckboxProps } from "types/props/CheckboxProps";
-import useCheckbox from "hooks/useCheckbox";
-import {
-  Wrapper,
-  Input,
-  CustomCheckbox,
-  Label,
-  Error,
-} from "./Checkbox.styled";
+import { HiCheck } from 'react-icons/hi';
+import { CheckboxProps } from 'types/props/CheckboxProps';
+import useCheckbox from 'hooks/useCheckbox';
+import { Wrapper, Input, CustomCheckbox, ChildrenWrapper, Label, Error } from './Checkbox.styled';
 
 const Checkbox: React.FC<CheckboxProps> = ({
   name,
@@ -19,6 +13,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
   errors,
   onChange,
   children,
+  childrenWidth,
   defaultValue,
 }) => {
   const { isChecked, toggle } = useCheckbox({ onChange, defaultValue });
@@ -34,14 +29,12 @@ const Checkbox: React.FC<CheckboxProps> = ({
         disabled={disabled}
         onClick={toggle}
       />
-      <CustomCheckbox
-        checked={isChecked}
-        disabled={disabled}
-        className="checkbox"
-      >
+      <CustomCheckbox checked={isChecked} disabled={disabled} className="checkbox">
         {isChecked && <HiCheck size={20} />}
       </CustomCheckbox>
-      {children && !label && children}
+      {children && !label && (
+        <ChildrenWrapper childrenWidth={childrenWidth}>{children}</ChildrenWrapper>
+      )}
       {label && !children && <Label>{label}</Label>}
       {errors[name] && <Error role="alert">{errors[name]?.message}</Error>}
     </Wrapper>
