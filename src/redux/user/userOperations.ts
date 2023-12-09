@@ -108,11 +108,37 @@ const login = createAsyncThunk<UserResponseType<UserType, TokensType> | undefine
   },
 );
 
+const refreshUser = createAsyncThunk<UserResponseType<UserType> | undefined>(
+  `${ENTITY_NAME}/${OPERATION_NAME.Refresh}`,
+  async () => {
+    try {
+      const { data } = await api.get(ENDPOINTS_PATH.Refresh);
+      if (data) {
+        const response = data as UserResponseType<UserType>;
+        return response;
+      }
+      return undefined;
+    } catch (error: any) {
+      if (error.response) {
+        const err = error.response.data as UserResponseType;
+        toast.error(`${err.code} - ${err.message}`);
+      } else if (error.request) {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      } else {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      }
+    }
+  },
+);
+
 const operations = {
   registration,
   googleAuth,
   logout,
   login,
+  refreshUser,
 };
 
 export default operations;

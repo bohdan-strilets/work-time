@@ -5,6 +5,7 @@ export const OPERATION_NAME = {
   GoogleAuth: 'google-auth',
   Logout: 'logout',
   Login: 'login',
+  Refresh: 'refresh',
 };
 
 export const ENDPOINTS_PATH = {
@@ -12,4 +13,5 @@ export const ENDPOINTS_PATH = {
   GoogleAuth: 'api/v1/auth/google-auth',
   Logout: 'api/v1/auth/logout',
   Login: 'api/v1/auth/login',
+  Refresh: 'api/v1/users/current-user',
 };

@@ -49,6 +49,21 @@ export const userSlice = createSlice({
           state.token = action.payload?.tokens?.accessToken;
           state.isLoggedIn = true;
         }
+      })
+      .addCase(operations.refreshUser.pending, state => {
+        state.isRefreshing = true;
+      })
+      .addCase(operations.refreshUser.rejected, state => {
+        state.isRefreshing = true;
+      })
+      .addCase(operations.refreshUser.fulfilled, (state, action) => {
+        if (action.payload && action.payload.data) {
+          state.user = action.payload.data;
+          state.isLoggedIn = true;
+          state.isRefreshing = false;
+        } else {
+          state.isRefreshing = false;
+        }
       });
   },
 });
