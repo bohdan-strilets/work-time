@@ -1,8 +1,10 @@
+import { BiSolidLogIn } from 'react-icons/bi';
 import { MenuProps } from 'types/props/MenuProps';
 import UserInfo from './UserInfo';
 import Navigation from './Navigation';
 import Header from './Header';
 import Footer from './Footer';
+import Button from './Button';
 import { useAppSelector } from 'hooks/useAppSelector';
 import {
   getFirstName,
@@ -13,7 +15,7 @@ import {
 } from '../../redux/user/userSelectors';
 import { Backdrop, Content } from './Menu.styled';
 
-const Menu: React.FC<MenuProps> = ({ closeMenu, handleBackdropClick }) => {
+const Menu: React.FC<MenuProps> = ({ closeMenu, handleBackdropClick, handleStartClick }) => {
   const firstName = useAppSelector(getFirstName);
   const lastName = useAppSelector(getLastName);
   const name = `${firstName} ${lastName}`;
@@ -25,15 +27,23 @@ const Menu: React.FC<MenuProps> = ({ closeMenu, handleBackdropClick }) => {
     <Backdrop onClick={handleBackdropClick}>
       <Content>
         <Header closeMenu={closeMenu} />
-        {isLoggedIn && (
+        {isLoggedIn ? (
           <UserInfo
             avatarUrl={avatarUrl ? avatarUrl : ''}
             name={name}
             profession={companyInfo?.profession ? companyInfo?.profession : 'profession'}
           />
+        ) : (
+          <Button
+            label="Start"
+            height={40}
+            handleClick={handleStartClick}
+            margin="40px 0 70px 0"
+            icon={<BiSolidLogIn />}
+          />
         )}
         <Navigation closeMenu={closeMenu} />
-        <Footer />
+        <Footer closeMenu={closeMenu} />
       </Content>
     </Backdrop>
   );

@@ -13,7 +13,7 @@ import { Wrapper, List } from './Header.styled';
 
 const Header: React.FC<{}> = () => {
   const navigate = useNavigate();
-  const { openMenu, isOpen, closeMenu, handleBackdropClick } = useMenu();
+  const { openMenu, isOpen, closeMenu, handleBackdropClick, handleStartClick } = useMenu();
   const isLoggedIn = useAppSelector(getIsLoggedIn);
 
   return (
@@ -44,10 +44,20 @@ const Header: React.FC<{}> = () => {
           </li>
         </List>
       </Wrapper>
-      {isOpen && <Menu closeMenu={closeMenu} handleBackdropClick={handleBackdropClick} />}
+      {isOpen && (
+        <Menu
+          closeMenu={closeMenu}
+          handleBackdropClick={handleBackdropClick}
+          handleStartClick={handleStartClick}
+        />
+      )}
       <Media
         query={`(max-width: ${ScreenWidth.preTablet})`}
-        render={() => (isOpen ? <MobileMenu closeMenu={closeMenu} /> : undefined)}
+        render={() =>
+          isOpen ? (
+            <MobileMenu closeMenu={closeMenu} handleStartClick={handleStartClick} />
+          ) : undefined
+        }
       />
     </>
   );

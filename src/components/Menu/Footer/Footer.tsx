@@ -6,9 +6,10 @@ import { useAppDispatch } from 'hooks/useAppDispatch';
 import operations from '../../../redux/user/userOperations';
 import { getIsLoggedIn } from '../../../redux/user/userSelectors';
 import { UserResponseType } from 'types/types/UserResponseType';
+import { FooterMenuProps } from 'types/props/FooterMenuProps';
 import { Copyright } from './Footer.styled';
 
-const Footer: React.FC<{}> = () => {
+const Footer: React.FC<FooterMenuProps> = ({ closeMenu }) => {
   const isLoggedIn = useAppSelector(getIsLoggedIn);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ const Footer: React.FC<{}> = () => {
     const data = response.payload as UserResponseType;
     if (data && data.success) {
       navigate('/');
+      closeMenu();
     }
   };
 
