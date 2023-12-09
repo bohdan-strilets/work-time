@@ -7,6 +7,8 @@ import ModalWindow from 'components/ModalWindow';
 import PrivacyPolicy from 'components/Auth/PrivacyPolicy';
 import TermsUseSite from 'components/Auth/TermsUseSite';
 import PasswordInput from 'components/UI/PasswordInput';
+import GoogleAuthBtn from 'components/UI/GoogleAuthBtn';
+import LineWithText from 'components/UI/LineWithText';
 import useRegistrationForm from 'hooks/useRegistrationForm';
 import useModalWindow from 'hooks/useModalWindow';
 import { ReferenceBtn } from '../RegistrationForm.styled';
@@ -102,7 +104,15 @@ const Mobile: React.FC<{}> = () => {
             </Checkbox>
           )}
         />
-        <Button type="submit" label="Registration" width="300px" height="40px" />
+        <Button
+          type="submit"
+          label="Registration"
+          width="300px"
+          height="40px"
+          margin="0 0 var(--small-indent) 0"
+        />
+        <LineWithText label="Or use Google" />
+        <GoogleAuthBtn width={300} />
       </form>
       {checkQueryParam(modalsName.privacyPolicy) && (
         <ModalWindow title="Privacy policy">

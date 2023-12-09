@@ -23,13 +23,20 @@ export const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
-    builder.addCase(operations.registration.fulfilled, (state, action) => {
-      if (action.payload && action.payload.tokens && action.payload.data) {
-        state.user = action.payload.data;
-        state.token = action.payload?.tokens?.accessToken;
-        state.isLoggedIn = true;
-      }
-    });
+    builder
+      .addCase(operations.registration.fulfilled, (state, action) => {
+        if (action.payload && action.payload.tokens && action.payload.data) {
+          state.user = action.payload.data;
+          state.token = action.payload?.tokens?.accessToken;
+          state.isLoggedIn = true;
+        }
+      })
+      .addCase(operations.googleAuth.fulfilled, (state, action) => {
+        if (action.payload && action.payload.data) {
+          state.user = action.payload.data;
+          state.isLoggedIn = true;
+        }
+      });
   },
 });
 

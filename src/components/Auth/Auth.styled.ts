@@ -1,10 +1,6 @@
-import styled from "@emotion/styled";
-import ScreenWidth from "utilities/ScreenWidth";
-import {
-  LeftSideProps,
-  TitleProps,
-  RightSideProps,
-} from "types/props/AuthProps";
+import styled from '@emotion/styled';
+import ScreenWidth from 'utilities/ScreenWidth';
+import { LeftSideProps, TitleProps, RightSideProps } from 'types/props/AuthProps';
 
 export const Wrapper = styled.div`
   @media screen and (min-width: ${ScreenWidth.tablet}) {
@@ -14,12 +10,12 @@ export const Wrapper = styled.div`
 `;
 
 export const LeftSide = styled.div<LeftSideProps>`
-  order: ${({ type }) => (type === "registration" ? 1 : 2)};
+  order: ${({ type }) => (type === 'registration' ? 1 : 2)};
   min-width: 100%;
   height: 460px;
 
   background: ${({ registrationUrl, loginUrl, type }) =>
-    type === "registration" ? `url(${registrationUrl})` : `url(${loginUrl})`};
+    type === 'registration' ? `url(${registrationUrl})` : `url(${loginUrl})`};
   transition: background ease-in-out 0.5s;
 
   @media screen and (min-width: ${ScreenWidth.tablet}) {
@@ -54,12 +50,12 @@ export const Overlay = styled.div`
 `;
 
 export const Title = styled.p<TitleProps>`
-  font-size: ${({ fontSize }) => (fontSize ? `${fontSize}px` : "")};
+  font-size: ${({ fontSize }) => (fontSize ? `${fontSize}px` : '')};
   font-family: var(--second-font);
   text-transform: uppercase;
   text-align: center;
 
-  color: ${({ color }) => (color ? color : "")};
+  color: ${({ color }) => (color ? color : '')};
   margin-bottom: var(--small-indent);
 `;
 
@@ -92,8 +88,7 @@ export const Button = styled.button`
   outline: none;
 
   cursor: pointer;
-  transition: background-color var(--hover-effect),
-    border-color var(--hover-effect);
+  transition: background-color var(--hover-effect), border-color var(--hover-effect);
 
   :hover,
   :focus {
@@ -107,11 +102,12 @@ export const Button = styled.button`
 `;
 
 export const RightSide = styled.div<RightSideProps>`
-  order: ${({ type }) => (type === "registration" ? 2 : 1)};
+  order: ${({ type }) => (type === 'registration' ? 2 : 1)};
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 
   width: 100%;
+  padding: 10px;
 `;

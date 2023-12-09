@@ -47,7 +47,7 @@ const useRegistrationForm = () => {
       }
     } else {
       setError('rules', {
-        message: 'Read the privacy policy and site rules and if you agree, check the box.',
+        message: 'Read the pr    ivacy policy and site rules and if you agree, check the box.',
       });
     }
   };
