@@ -64,6 +64,11 @@ export const userSlice = createSlice({
         } else {
           state.isRefreshing = false;
         }
+      })
+      .addCase(operations.changeProfile.fulfilled, (state, action) => {
+        if (action.payload && action.payload.data) {
+          state.user = action.payload.data;
+        }
       });
   },
 });

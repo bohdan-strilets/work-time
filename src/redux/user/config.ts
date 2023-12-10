@@ -6,6 +6,7 @@ export const OPERATION_NAME = {
   Logout: 'logout',
   Login: 'login',
   Refresh: 'refresh',
+  ChangeProfile: 'change-profile',
 };
 
 export const ENDPOINTS_PATH = {
@@ -14,4 +15,5 @@ export const ENDPOINTS_PATH = {
   Logout: 'api/v1/auth/logout',
   Login: 'api/v1/auth/login',
   Refresh: 'api/v1/users/current-user',
+  ChangeProfile: 'api/v1/users/change-profile',
 };
