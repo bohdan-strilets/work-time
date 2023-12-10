@@ -8,8 +8,7 @@ export const Wrapper = styled.div<WrapperProps>`
 `;
 
 export const Label = styled.p`
-  margin-bottom: 10px;
-  font-weight: 500;
+  margin-bottom: 5px;
 `;
 
 export const Required = styled.span`

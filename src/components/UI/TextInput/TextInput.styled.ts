@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { WrapperProps, InputProps } from "types/props/TextInputProps";
+import styled from '@emotion/styled';
+import { WrapperProps, InputProps } from 'types/props/TextInputProps';
 
 export const Wrapper = styled.label<WrapperProps>`
   display: flex;
@@ -7,8 +7,8 @@ export const Wrapper = styled.label<WrapperProps>`
   justify-content: center;
   flex-direction: column;
 
-  width: ${({ width }) => (width ? `${width}px` : "100%")};
-  margin: ${({ margin }) => (margin ? margin : "")};
+  width: ${({ width }) => (width ? `${width}px` : '100%')};
+  margin: ${({ margin }) => (margin ? margin : '')};
 
   opacity: ${({ disabled }) => (disabled ? 0.4 : 1)};
 `;
@@ -40,8 +40,8 @@ export const Icon = styled.div`
 
 export const Input = styled.input<InputProps>`
   width: 100%;
-  height: ${({ height }) => (height ? `${height}px` : "100%")};
-  padding: 0 10px 0 35px;
+  height: ${({ height }) => (height ? `${height}px` : '100%')};
+  padding: ${({ icon }) => (icon ? '0 10px 0 35px' : '0 10px')};
 
   background-color: #f0f0f0;
   border: none;

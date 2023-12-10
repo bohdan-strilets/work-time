@@ -12,6 +12,7 @@ const useModalWindow = () => {
     greetings: 'greetings',
     termsUseSite: 'terms-use-site',
     privacyPolicy: 'privacy-policy',
+    editProfile: 'edit-profile',
   };
 
   const openModal = (modalName: string) => {
