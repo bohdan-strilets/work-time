@@ -159,6 +159,31 @@ const changeProfile = createAsyncThunk<UserResponseType<UserType> | undefined, C
   },
 );
 
+const uploadAvatar = createAsyncThunk<UserResponseType<UserType> | undefined, FormData>(
+  `${ENTITY_NAME}/${OPERATION_NAME.UploadAvatar}`,
+  async avatar => {
+    try {
+      const { data } = await api.post(ENDPOINTS_PATH.UploadAvatar, avatar);
+      if (data) {
+        const response = data as UserResponseType;
+        toast.success('The avatar has been successfully changed.');
+        return response;
+      }
+    } catch (error: any) {
+      if (error.response) {
+        const err = error.response.data as UserResponseType;
+        toast.error(`${err.code} - ${err.message}`);
+      } else if (error.request) {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      } else {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      }
+    }
+  },
+);
+
 const operations = {
   registration,
   googleAuth,
@@ -166,6 +191,7 @@ const operations = {
   login,
   refreshUser,
   changeProfile,
+  uploadAvatar,
 };
 
 export default operations;

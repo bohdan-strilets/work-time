@@ -69,7 +69,8 @@ export const userSlice = createSlice({
         if (action.payload && action.payload.data) {
           state.user = action.payload.data;
         }
-      });
+      })
+      .addCase(operations.uploadAvatar.fulfilled, () => {});
   },
 });
 

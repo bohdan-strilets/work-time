@@ -12,6 +12,9 @@ import GenderOptions from 'utilities/GenderOptions';
 import useModalWindow from 'hooks/useModalWindow';
 import ModalWindow from 'components/ModalWindow';
 import EditProfileForm from 'components/Forms/EditProfileForm';
+import UploadFile from 'components/UploadFile';
+import operations from '../../redux/user/userOperations';
+import { imageValidation } from 'validations/FileValidation';
 
 const Auth: React.FC<{}> = () => {
   const user = useAppSelector(getUser);
@@ -113,6 +116,19 @@ const Auth: React.FC<{}> = () => {
             profession={profession}
             startWork={user?.companyInfo.startWork}
             salaryPerHour={salaryPerHour}
+          />
+        </ModalWindow>
+      )}
+      {checkQueryParam(modalsName.uploadAvatar) && (
+        <ModalWindow title="Upload avatar">
+          <UploadFile
+            fileName="avatar"
+            text="The selected file must be in one of the following formats '.jpg .png .gif .webp'. The file must not exceed 8MB."
+            operation={operations.uploadAvatar}
+            buttonLabel="Change avatar"
+            acceptTypes={imageValidation.types}
+            validationSize={imageValidation.size}
+            type="image"
           />
         </ModalWindow>
       )}

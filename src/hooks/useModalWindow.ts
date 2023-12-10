@@ -13,6 +13,7 @@ const useModalWindow = () => {
     termsUseSite: 'terms-use-site',
     privacyPolicy: 'privacy-policy',
     editProfile: 'edit-profile',
+    uploadAvatar: 'upload-avatar',
   };
 
   const openModal = (modalName: string) => {

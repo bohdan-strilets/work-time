@@ -1,8 +1,10 @@
+import { FiUploadCloud } from 'react-icons/fi';
 import UserData from '../UserData';
 import Controllers from '../Controllers';
 import Avatar from 'components/UI/Avatar';
 import { ProfileProps } from 'types/props/ProfileProps';
-import { Wrapper, LeftSide } from '../Profile.styled';
+import useModalWindow from 'hooks/useModalWindow';
+import { Wrapper, LeftSide, Button, ButtonHover } from '../Profile.styled';
 
 const Desktop: React.FC<ProfileProps> = ({
   name,
@@ -19,6 +21,8 @@ const Desktop: React.FC<ProfileProps> = ({
   alt,
   avatarUrl,
 }) => {
+  const { modalsName, openModal } = useModalWindow();
+
   return (
     <Wrapper>
       <LeftSide>
@@ -39,15 +43,20 @@ const Desktop: React.FC<ProfileProps> = ({
         />
       </LeftSide>
       <div>
-        <Avatar
-          alt={alt}
-          url={avatarUrl}
-          width="320px"
-          height="320px"
-          margin="0 0 var(--medium-indent)"
-          borderRadius="10px"
-          border="5px solid var(--white-transparent-color)"
-        />
+        <Button type="button" onClick={() => openModal(modalsName.uploadAvatar)}>
+          <Avatar
+            alt={alt}
+            url={avatarUrl}
+            width="320px"
+            height="320px"
+            margin="0 0 var(--medium-indent)"
+            borderRadius="10px"
+            border="5px solid var(--white-transparent-color)"
+          />
+          <ButtonHover className="hover-effect">
+            <FiUploadCloud color="var(--white-color)" size={90} />
+          </ButtonHover>
+        </Button>
         <Controllers />
       </div>
     </Wrapper>
