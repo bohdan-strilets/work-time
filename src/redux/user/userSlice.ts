@@ -70,7 +70,8 @@ export const userSlice = createSlice({
           state.user = action.payload.data;
         }
       })
-      .addCase(operations.uploadAvatar.fulfilled, () => {});
+      .addCase(operations.uploadAvatar.fulfilled, () => {})
+      .addCase(operations.changeEmail.fulfilled, () => {});
   },
 });
 

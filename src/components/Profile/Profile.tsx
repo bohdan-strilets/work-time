@@ -15,6 +15,7 @@ import EditProfileForm from 'components/Forms/EditProfileForm';
 import UploadFile from 'components/UploadFile';
 import operations from '../../redux/user/userOperations';
 import { imageValidation } from 'validations/FileValidation';
+import ChangeEmailForm from 'components/Forms/ChangeEmailForm';
 
 const Auth: React.FC<{}> = () => {
   const user = useAppSelector(getUser);
@@ -130,6 +131,11 @@ const Auth: React.FC<{}> = () => {
             validationSize={imageValidation.size}
             type="image"
           />
+        </ModalWindow>
+      )}
+      {checkQueryParam(modalsName.editEmail) && (
+        <ModalWindow title="Change email">
+          <ChangeEmailForm />
         </ModalWindow>
       )}
     </>

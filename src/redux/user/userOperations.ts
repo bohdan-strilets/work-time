@@ -9,6 +9,7 @@ import { TokensType } from 'types/types/TokensType';
 import { ENTITY_NAME, OPERATION_NAME, ENDPOINTS_PATH } from './config';
 import { LoginDto } from 'types/dto/LoginDto';
 import { ChangeProfileDto } from 'types/dto/ChangeProfileDto';
+import { EmailDto } from 'types/dto/EmailDto';
 
 const registration = createAsyncThunk<
   UserResponseType<UserType, TokensType> | undefined,
@@ -184,6 +185,30 @@ const uploadAvatar = createAsyncThunk<UserResponseType<UserType> | undefined, Fo
   },
 );
 
+const changeEmail = createAsyncThunk<UserResponseType | undefined, EmailDto>(
+  `${ENTITY_NAME}/${OPERATION_NAME.ChangedEmail}`,
+  async emailDto => {
+    try {
+      const { data } = await api.patch(ENDPOINTS_PATH.ChangedEmail, emailDto);
+      if (data) {
+        const response = data as UserResponseType;
+        return response;
+      }
+    } catch (error: any) {
+      if (error.response) {
+        const err = error.response.data as UserResponseType;
+        toast.error(`${err.code} - ${err.message}`);
+      } else if (error.request) {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      } else {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      }
+    }
+  },
+);
+
 const operations = {
   registration,
   googleAuth,
@@ -192,6 +217,7 @@ const operations = {
   refreshUser,
   changeProfile,
   uploadAvatar,
+  changeEmail,
 };
 
 export default operations;

@@ -1,4 +1,4 @@
-import { BsFillImageFill } from 'react-icons/bs';
+import { MdEmail } from 'react-icons/md';
 import { RiLockFill } from 'react-icons/ri';
 import { RiEdit2Fill } from 'react-icons/ri';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
@@ -10,9 +10,9 @@ const Controllers: React.FC<{}> = () => {
 
   return (
     <ul>
-      <Item>
-        <BsFillImageFill />
-        <Label>Changed photo</Label>
+      <Item onClick={() => openModal(modalsName.editEmail)}>
+        <MdEmail />
+        <Label>Changed email</Label>
       </Item>
       <Item>
         <RiLockFill />

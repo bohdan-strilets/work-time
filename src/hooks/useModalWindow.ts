@@ -14,6 +14,7 @@ const useModalWindow = () => {
     privacyPolicy: 'privacy-policy',
     editProfile: 'edit-profile',
     uploadAvatar: 'upload-avatar',
+    editEmail: 'edit-email',
   };
 
   const openModal = (modalName: string) => {

@@ -8,6 +8,7 @@ export const OPERATION_NAME = {
   Refresh: 'refresh',
   ChangeProfile: 'change-profile',
   UploadAvatar: 'upload-avatar',
+  ChangedEmail: 'change-email',
 };
 
 export const ENDPOINTS_PATH = {
@@ -18,4 +19,5 @@ export const ENDPOINTS_PATH = {
   Refresh: 'api/v1/users/current-user',
   ChangeProfile: 'api/v1/users/change-profile',
   UploadAvatar: 'api/v1/users/upload-avatar',
+  ChangedEmail: 'api/v1/users/change-email',
 };
