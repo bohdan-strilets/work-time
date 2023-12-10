@@ -1,7 +1,7 @@
 import { useAppSelector } from 'hooks/useAppSelector';
 import Avatar from 'components/UI/Avatar';
 import { getFirstName, getLastName, getAvatarUrl, getEmail } from '../../redux/user/userSelectors';
-import { Wrapper, Name, Email } from './UserInformation.styled';
+import { Wrapper, Data, Name, Email } from './UserInformation.styled';
 
 const UserInformation: React.FC<{}> = () => {
   const firstName = useAppSelector(getFirstName);
@@ -22,12 +22,12 @@ const UserInformation: React.FC<{}> = () => {
           border="2px solid #ffffff"
         />
       )}
-      <div>
+      <Data>
         <Name>
           {firstName} {lastName}
         </Name>
         <Email>{email}</Email>
-      </div>
+      </Data>
     </Wrapper>
   );
 };
