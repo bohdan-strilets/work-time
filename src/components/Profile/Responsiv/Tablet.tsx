@@ -1,31 +1,47 @@
 import UserData from '../UserData';
 import Controllers from '../Controllers';
 import Avatar from 'components/UI/Avatar';
+import { ProfileProps } from 'types/props/ProfileProps';
 import { Wrapper, LeftSide } from '../Profile.styled';
 
-const Tablet: React.FC<{}> = () => {
+const Tablet: React.FC<ProfileProps> = ({
+  name,
+  isActivated,
+  email,
+  gender,
+  dateBirth,
+  age,
+  companyName,
+  profession,
+  startWork,
+  workExperience,
+  salaryPerHour,
+  alt,
+  avatarUrl,
+}) => {
   return (
     <Wrapper>
       <LeftSide>
         <UserData
-          name="Bohdan Strilets"
-          isActivateed={true}
-          email="bohdan.striletd@gmail.com"
-          gender="Man"
-          dateBirth="02.06.1995"
+          name={name}
+          isActivateed={isActivated}
+          email={email}
+          gender={gender}
+          dateBirth={dateBirth}
+          age={age}
           workInfo={{
-            companyName: 'GPA Global',
-            profession: 'Full-stack developer',
-            startWork: '2019-09-01',
-            endWork: '',
-            salaryPerHour: 33,
+            companyName: companyName,
+            profession: profession,
+            startWork: startWork,
+            workExperience: workExperience,
+            salaryPerHour: salaryPerHour,
           }}
         />
       </LeftSide>
       <div>
         <Avatar
-          alt="User avatar"
-          url="https://cdn.pixabay.com/photo/2023/09/16/18/18/wallpaper-8257343_1280.png"
+          alt={alt}
+          url={avatarUrl}
           width="220px"
           height="220px"
           margin="0 0 var(--medium-indent)"

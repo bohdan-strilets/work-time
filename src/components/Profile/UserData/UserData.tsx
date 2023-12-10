@@ -7,6 +7,7 @@ const UserData: React.FC<UserDataProps> = ({
   email,
   gender,
   dateBirth,
+  age,
   workInfo,
 }) => {
   return (
@@ -30,7 +31,9 @@ const UserData: React.FC<UserDataProps> = ({
         </Item>
         <Item>
           <Property>Date of birth:</Property>
-          <Value>{dateBirth} | 28 year</Value>
+          <Value>
+            {dateBirth} | {age} year
+          </Value>
         </Item>
         <Item>
           <Property>Company name:</Property>
@@ -42,7 +45,9 @@ const UserData: React.FC<UserDataProps> = ({
         </Item>
         <Item>
           <Property>Start work:</Property>
-          <Value>{workInfo.startWork} | 4 year</Value>
+          <Value>
+            {workInfo.startWork} | {workInfo.workExperience} year
+          </Value>
         </Item>
         <Item>
           <Property>Salary per hour:</Property>

@@ -4,11 +4,12 @@ export type UserDataProps = {
   email?: string;
   gender?: string;
   dateBirth?: string;
+  age?: number;
   workInfo: {
     companyName?: string;
     profession?: string;
     startWork?: string;
-    endWork?: string;
+    workExperience?: number;
     salaryPerHour?: number;
   };
 };
