@@ -14,7 +14,7 @@ const Controllers: React.FC<{}> = () => {
         <MdEmail />
         <Label>Changed email</Label>
       </Item>
-      <Item>
+      <Item onClick={() => openModal(modalsName.editPassword)}>
         <RiLockFill />
         <Label>Changed password</Label>
       </Item>

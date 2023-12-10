@@ -59,7 +59,7 @@ const Desktop: React.FC<{}> = () => {
         <PasswordInput
           icon={<BiSolidLock size={18} />}
           name="password"
-          placeholder="Password"
+          placeholder="Least one letter, one digit, and one special character  ! @ # $ % &"
           required={true}
           register={register}
           errors={errors}
@@ -70,7 +70,7 @@ const Desktop: React.FC<{}> = () => {
         <PasswordInput
           icon={<BiSolidLock size={18} />}
           name="passwordAgain"
-          placeholder="Password again"
+          placeholder="Least one letter, one digit, and one special character  ! @ # $ % &"
           required={true}
           register={register}
           errors={errors}

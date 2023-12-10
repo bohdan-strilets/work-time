@@ -71,7 +71,8 @@ export const userSlice = createSlice({
         }
       })
       .addCase(operations.uploadAvatar.fulfilled, () => {})
-      .addCase(operations.changeEmail.fulfilled, () => {});
+      .addCase(operations.changeEmail.fulfilled, () => {})
+      .addCase(operations.changePassword.fulfilled, () => {});
   },
 });
 

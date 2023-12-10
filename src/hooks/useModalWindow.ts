@@ -15,6 +15,7 @@ const useModalWindow = () => {
     editProfile: 'edit-profile',
     uploadAvatar: 'upload-avatar',
     editEmail: 'edit-email',
+    editPassword: 'edit-password',
   };
 
   const openModal = (modalName: string) => {
