@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import Media from 'react-media';
 import ScreenWidth from 'utilities/ScreenWidth';
 import Mobile from './Responsiv/Mobile';
@@ -13,10 +14,13 @@ import useModalWindow from 'hooks/useModalWindow';
 import ModalWindow from 'components/ModalWindow';
 import EditProfileForm from 'components/Forms/EditProfileForm';
 import UploadFile from 'components/UploadFile';
+import DialogWindow from 'components/DialogWindow';
 import operations from '../../redux/user/userOperations';
 import { imageValidation } from 'validations/FileValidation';
 import ChangeEmailForm from 'components/Forms/ChangeEmailForm';
 import ChangePasswordForm from 'components/Forms/ChangePasswordForm';
+import { useAppDispatch } from 'hooks/useAppDispatch';
+import { UserResponseType } from 'types/types/UserResponseType';
 
 const Auth: React.FC<{}> = () => {
   const user = useAppSelector(getUser);
@@ -40,6 +44,16 @@ const Auth: React.FC<{}> = () => {
   const alt = `Profile avatar by ${name}`;
 
   const { checkQueryParam, modalsName } = useModalWindow();
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const deleteProfile = async () => {
+    const response = await dispatch(operations.deleteProfile());
+    const data = response.payload as UserResponseType;
+    if (data && data.success) {
+      navigate('/');
+    }
+  };
 
   return (
     <>
@@ -142,6 +156,17 @@ const Auth: React.FC<{}> = () => {
       {checkQueryParam(modalsName.editPassword) && (
         <ModalWindow title="Change password">
           <ChangePasswordForm />
+        </ModalWindow>
+      )}
+      {checkQueryParam(modalsName.deleteProfile) && (
+        <ModalWindow title="Delete profile">
+          <DialogWindow
+            negativeBtnLabel="Cancel"
+            positiveBtnLabel="Delete"
+            text="Are you sure you want to permanently delete your profile and all associated data? Please be aware that this action is irreversible, and we will not be able to recover your account and information after deletion. All your personal information, uploaded files, and activity history will be lost forever."
+            handlePositiveClick={deleteProfile}
+            handleNegativeClick={() => navigate(-1)}
+          />
         </ModalWindow>
       )}
     </>

@@ -310,6 +310,30 @@ const repeatConfirmEmail = createAsyncThunk<UserResponseType | undefined, EmailD
   },
 );
 
+const deleteProfile = createAsyncThunk<UserResponseType | undefined>(
+  `${ENTITY_NAME}/${OPERATION_NAME.DeleteProfile}`,
+  async () => {
+    try {
+      const { data } = await api.delete(ENDPOINTS_PATH.DeleteProfile);
+      if (data) {
+        const response = data as UserResponseType;
+        return response;
+      }
+    } catch (error: any) {
+      if (error.response) {
+        const err = error.response.data as UserResponseType;
+        toast.error(`${err.code} - ${err.message}`);
+      } else if (error.request) {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      } else {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      }
+    }
+  },
+);
+
 const operations = {
   registration,
   googleAuth,
@@ -323,6 +347,7 @@ const operations = {
   requestResetPassword,
   resetPassword,
   repeatConfirmEmail,
+  deleteProfile,
 };
 
 export default operations;

@@ -22,7 +22,7 @@ const Controllers: React.FC<{}> = () => {
         <RiEdit2Fill />
         <Label>Edit profile</Label>
       </Item>
-      <Item>
+      <Item onClick={() => openModal(modalsName.deleteProfile)}>
         <RiDeleteBin6Fill />
         <Label>Delete profile</Label>
       </Item>
