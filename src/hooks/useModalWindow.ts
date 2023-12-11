@@ -17,6 +17,7 @@ const useModalWindow = () => {
     editEmail: 'edit-email',
     editPassword: 'edit-password',
     requestPasswordReset: 'request-password-reset',
+    repeatActivationEmail: 'repeat-activation-email',
   };
 
   const openModal = (modalName: string) => {

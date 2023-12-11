@@ -1,6 +1,10 @@
+import LinkButton from 'components/UI/LinkButton';
+import useModalWindow from 'hooks/useModalWindow';
 import { Text } from './Greetings.styled';
 
 const Greetings: React.FC<{}> = () => {
+  const { openModal, modalsName } = useModalWindow();
+
   return (
     <>
       <Text>
@@ -24,6 +28,13 @@ const Greetings: React.FC<{}> = () => {
       <Text>
         Thank you for your understanding, and welcome to the world of efficient time tracking with
         WorkTime!
+      </Text>
+      <Text>
+        Didn't receive an activation email?
+        <LinkButton onClick={() => openModal(modalsName.repeatActivationEmail)}>
+          send again
+        </LinkButton>
+        .
       </Text>
     </>
   );

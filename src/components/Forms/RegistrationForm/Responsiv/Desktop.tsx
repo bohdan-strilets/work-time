@@ -6,9 +6,9 @@ import Checkbox from 'components/UI/Checkbox';
 import PasswordInput from 'components/UI/PasswordInput';
 import GoogleAuthBtn from 'components/UI/GoogleAuthBtn';
 import LineWithText from 'components/UI/LineWithText';
+import LinkButton from 'components/UI/LinkButton';
 import useRegistrationForm from 'hooks/useRegistrationForm';
 import useModalWindow from 'hooks/useModalWindow';
-import { ReferenceBtn } from '../../Forms.styled';
 
 const Desktop: React.FC<{}> = () => {
   const { register, handleSubmit, errors, onSubmit, Controller, control } = useRegistrationForm();
@@ -89,13 +89,13 @@ const Desktop: React.FC<{}> = () => {
           >
             <p>
               I have read the
-              <ReferenceBtn type="button" onClick={() => openModal(modalsName.termsUseSite)}>
+              <LinkButton onClick={() => openModal(modalsName.termsUseSite)}>
                 terms of use of the site
-              </ReferenceBtn>
+              </LinkButton>
               and the
-              <ReferenceBtn type="button" onClick={() => openModal(modalsName.privacyPolicy)}>
+              <LinkButton onClick={() => openModal(modalsName.privacyPolicy)}>
                 privacy policy
-              </ReferenceBtn>
+              </LinkButton>
               and agree to them.
             </p>
           </Checkbox>

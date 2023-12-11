@@ -5,9 +5,9 @@ import Button from 'components/UI/Button';
 import PasswordInput from 'components/UI/PasswordInput';
 import GoogleAuthBtn from 'components/UI/GoogleAuthBtn';
 import LineWithText from 'components/UI/LineWithText';
+import LinkButton from 'components/UI/LinkButton';
 import useLoginForm from 'hooks/useLoginForm';
 import useModalWindow from 'hooks/useModalWindow';
-import { ReferenceBtn } from '../../Forms.styled';
 
 const Mobile: React.FC<{}> = () => {
   const { register, handleSubmit, errors, onSubmit } = useLoginForm();
@@ -46,9 +46,9 @@ const Mobile: React.FC<{}> = () => {
         height="40px"
         margin="0 0 var(--small-indent) 0"
       />
-      <ReferenceBtn type="button" onClick={() => openModal(modalsName.requestPasswordReset)}>
+      <LinkButton onClick={() => openModal(modalsName.requestPasswordReset)}>
         Forgot your password?
-      </ReferenceBtn>
+      </LinkButton>
       <LineWithText label="Or use Google" />
       <GoogleAuthBtn width={300} />
     </form>
