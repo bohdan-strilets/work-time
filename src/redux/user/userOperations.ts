@@ -285,6 +285,31 @@ const resetPassword = createAsyncThunk<UserResponseType | undefined, ResetPasswo
   },
 );
 
+const repeatConfirmEmail = createAsyncThunk<UserResponseType | undefined, EmailDto>(
+  `${ENTITY_NAME}/${OPERATION_NAME.RepeatConfirmEmail}`,
+  async emailDto => {
+    try {
+      const { data } = await api.post(ENDPOINTS_PATH.RepeatConfirmEmail, emailDto);
+      if (data) {
+        const response = data as UserResponseType;
+        return response;
+      }
+      return undefined;
+    } catch (error: any) {
+      if (error.response) {
+        const err = error.response.data as UserResponseType;
+        toast.error(`${err.code} - ${err.message}`);
+      } else if (error.request) {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      } else {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      }
+    }
+  },
+);
+
 const operations = {
   registration,
   googleAuth,
@@ -297,6 +322,7 @@ const operations = {
   changePassword,
   requestResetPassword,
   resetPassword,
+  repeatConfirmEmail,
 };
 
 export default operations;

@@ -12,6 +12,7 @@ export const OPERATION_NAME = {
   ChangedPassword: 'change-password',
   RequestResetPassword: 'request-reset-password',
   ResetPassword: 'reset-password',
+  RepeatConfirmEmail: 'repeat-confirm-email',
 };
 
 export const ENDPOINTS_PATH = {
@@ -26,4 +27,5 @@ export const ENDPOINTS_PATH = {
   ChangedPassword: 'api/v1/users/change-password',
   RequestResetPassword: 'api/v1/users/request-reset-password',
   ResetPassword: 'api/v1/users/reset-password',
+  RepeatConfirmEmail: 'api/v1/users/repeat-activation-email',
 };

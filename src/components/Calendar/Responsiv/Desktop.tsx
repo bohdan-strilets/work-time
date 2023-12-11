@@ -9,6 +9,7 @@ import AddInformationForm from 'components/Forms/AddInformationForm';
 import DialogWindow from 'components/DialogWindow';
 import EditInformationForm from 'components/Forms/EditInformationForm';
 import Greetings from 'components/Greetings';
+import RepeatConfirmEmailForm from 'components/Forms/RepeatConfirmEmailForm';
 import useCalendar from 'hooks/useCalendar';
 import useModalWindow from 'hooks/useModalWindow';
 import { List } from '../Calendar.styled';
@@ -107,6 +108,11 @@ const Desktop: React.FC<{}> = () => {
       {checkQueryParam(modalsName.greetings) && (
         <ModalWindow title="Welcome">
           <Greetings />
+        </ModalWindow>
+      )}
+      {checkQueryParam(modalsName.repeatActivationEmail) && (
+        <ModalWindow title="Send the activation email again">
+          <RepeatConfirmEmailForm />
         </ModalWindow>
       )}
     </>

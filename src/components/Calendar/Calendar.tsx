@@ -1,8 +1,8 @@
-import Media from "react-media";
-import ScreenWidth from "utilities/ScreenWidth";
-import Mobile from "./Responsiv/Mobile";
-import Tablet from "./Responsiv/Tablet";
-import Desktop from "./Responsiv/Desktop";
+import Media from 'react-media';
+import ScreenWidth from 'utilities/ScreenWidth';
+import Mobile from './Responsiv/Mobile';
+import Tablet from './Responsiv/Tablet';
+import Desktop from './Responsiv/Desktop';
 
 const Auth: React.FC<{}> = () => {
   return (
@@ -13,7 +13,7 @@ const Auth: React.FC<{}> = () => {
         large: `(min-width: ${ScreenWidth.desktop})`,
       }}
     >
-      {(matches) => (
+      {matches => (
         <>
           {matches.small && <Mobile />}
           {matches.medium && <Tablet />}

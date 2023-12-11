@@ -74,7 +74,8 @@ export const userSlice = createSlice({
       .addCase(operations.changeEmail.fulfilled, () => {})
       .addCase(operations.changePassword.fulfilled, () => {})
       .addCase(operations.requestResetPassword.fulfilled, () => {})
-      .addCase(operations.resetPassword.fulfilled, () => {});
+      .addCase(operations.resetPassword.fulfilled, () => {})
+      .addCase(operations.repeatConfirmEmail.fulfilled, () => {});
   },
 });
 
