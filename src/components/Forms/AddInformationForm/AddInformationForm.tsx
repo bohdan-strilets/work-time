@@ -141,7 +141,7 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
         />
       )}
 
-      <Button type="submit" label="Add day" width="400px" height="40px" />
+      <Button type="submit" label="Add day" width="270px" height="40px" />
     </form>
   );
 };

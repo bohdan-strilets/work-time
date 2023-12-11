@@ -1,29 +1,17 @@
-import registrationFormBg from "Assets/images/registration-form-bg.jpg";
-import loginFormBg from "Assets/images/login-form-bg.jpg";
-import RegistrationForm from "components/Forms/RegistrationForm";
-import LoginForm from "components/Forms/LoginForm";
-import useAuth from "hooks/useAuth";
-import {
-  Wrapper,
-  LeftSide,
-  Overlay,
-  Title,
-  Text,
-  Button,
-  RightSide,
-} from "../Auth.styled";
+import registrationFormBg from 'Assets/images/registration-form-bg.jpg';
+import loginFormBg from 'Assets/images/login-form-bg.jpg';
+import RegistrationForm from 'components/Forms/RegistrationForm';
+import LoginForm from 'components/Forms/LoginForm';
+import useAuth from 'hooks/useAuth';
+import { Wrapper, LeftSide, Overlay, Title, Text, Button, RightSide } from '../Auth.styled';
 
 const Tablet: React.FC<{}> = () => {
   const { changeType, type } = useAuth();
 
   return (
     <Wrapper>
-      <LeftSide
-        registrationUrl={registrationFormBg}
-        loginUrl={loginFormBg}
-        type={type}
-      >
-        {type === "registration" ? (
+      <LeftSide registrationUrl={registrationFormBg} loginUrl={loginFormBg} type={type}>
+        {type === 'registration' ? (
           <Overlay>
             <Title fontSize={32} color="var(--white-color)">
               Hello friend!
@@ -38,9 +26,7 @@ const Tablet: React.FC<{}> = () => {
             <Title fontSize={32} color="var(--white-color)">
               Welcome back!
             </Title>
-            <Text>
-              To keep connected with us please login with your personal info
-            </Text>
+            <Text>To keep connected with us please login with your personal info</Text>
             <Button onClick={changeType} type="button">
               Registration
             </Button>
@@ -48,7 +34,7 @@ const Tablet: React.FC<{}> = () => {
         )}
       </LeftSide>
       <RightSide type={type}>
-        {type === "registration" ? (
+        {type === 'registration' ? (
           <Title fontSize={24} color="var(--black-color)">
             Create account
           </Title>
@@ -57,7 +43,7 @@ const Tablet: React.FC<{}> = () => {
             Sign in to Work Time
           </Title>
         )}
-        {type === "registration" ? <RegistrationForm /> : <LoginForm />}
+        {type === 'registration' ? <RegistrationForm /> : <LoginForm />}
       </RightSide>
     </Wrapper>
   );

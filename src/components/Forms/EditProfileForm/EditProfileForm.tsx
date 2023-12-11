@@ -128,7 +128,7 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
         margin="0 0 var(--medium-indent) 0"
         defaultValue={salaryPerHour}
       />
-      <Button type="submit" label="Edit profile" width="400px" height="40px" />
+      <Button type="submit" label="Edit profile" width="270px" height="40px" />
     </form>
   );
 };

@@ -6,9 +6,12 @@ import PasswordInput from 'components/UI/PasswordInput';
 import GoogleAuthBtn from 'components/UI/GoogleAuthBtn';
 import LineWithText from 'components/UI/LineWithText';
 import useLoginForm from 'hooks/useLoginForm';
+import useModalWindow from 'hooks/useModalWindow';
+import { ReferenceBtn } from '../../Forms.styled';
 
 const Tablet: React.FC<{}> = () => {
   const { register, handleSubmit, errors, onSubmit } = useLoginForm();
+  const { openModal, modalsName } = useModalWindow();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -43,6 +46,9 @@ const Tablet: React.FC<{}> = () => {
         height="40px"
         margin="0 0 var(--small-indent) 0"
       />
+      <ReferenceBtn type="button" onClick={() => openModal(modalsName.requestPasswordReset)}>
+        Forgot your password?
+      </ReferenceBtn>
       <LineWithText label="Or use Google" />
       <GoogleAuthBtn width={330} />
     </form>

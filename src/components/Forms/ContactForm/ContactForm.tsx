@@ -41,7 +41,7 @@ const ContactForm: React.FC<{}> = () => {
         height={180}
         margin="0 0 var(--medium-indent) 0"
       />
-      <Button type="submit" label="Send" width="280px" height="40px" />
+      <Button type="submit" label="Send" width="300px" height="40px" />
     </form>
   );
 };

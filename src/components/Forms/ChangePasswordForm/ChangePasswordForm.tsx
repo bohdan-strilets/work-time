@@ -39,7 +39,7 @@ const ChangePasswordForm: React.FC<{}> = () => {
           required={true}
           margin="0 0 var(--small-indent) 0"
         />
-        <Button type="submit" label="Change password" height="40px" width="300px" />
+        <Button type="submit" label="Change password" height="40px" width="270px" />
       </form>
     </>
   );

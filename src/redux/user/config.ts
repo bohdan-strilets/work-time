@@ -10,6 +10,8 @@ export const OPERATION_NAME = {
   UploadAvatar: 'upload-avatar',
   ChangedEmail: 'change-email',
   ChangedPassword: 'change-password',
+  RequestResetPassword: 'request-reset-password',
+  ResetPassword: 'reset-password',
 };
 
 export const ENDPOINTS_PATH = {
@@ -22,4 +24,6 @@ export const ENDPOINTS_PATH = {
   UploadAvatar: 'api/v1/users/upload-avatar',
   ChangedEmail: 'api/v1/users/change-email',
   ChangedPassword: 'api/v1/users/change-password',
+  RequestResetPassword: 'api/v1/users/request-reset-password',
+  ResetPassword: 'api/v1/users/reset-password',
 };

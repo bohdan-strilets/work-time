@@ -6,6 +6,7 @@ import AuthPage from 'pages/AuthPage';
 import CalendarPage from 'pages/CalendarPage';
 import ProfilePage from 'pages/ProfilePage';
 import AboutPage from 'pages/AboutPage';
+import ResetPasswordPage from 'pages/ResetPasswordPage';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { getIsRefreshing } from './redux/user/userSelectors';
@@ -29,6 +30,7 @@ const App: React.FC<{}> = () => {
             <Route path="/calendar" element={<CalendarPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/about-us" element={<AboutPage />} />
+            <Route path="/auth/reset-password" element={<ResetPasswordPage />} />
           </Routes>
         </Layout>
       ) : null}

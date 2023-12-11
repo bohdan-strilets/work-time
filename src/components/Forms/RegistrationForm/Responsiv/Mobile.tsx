@@ -3,22 +3,19 @@ import { MdMail } from 'react-icons/md';
 import TextInput from 'components/UI/TextInput';
 import Button from 'components/UI/Button';
 import Checkbox from 'components/UI/Checkbox';
-import ModalWindow from 'components/ModalWindow';
-import PrivacyPolicy from 'components/Auth/PrivacyPolicy';
-import TermsUseSite from 'components/Auth/TermsUseSite';
 import PasswordInput from 'components/UI/PasswordInput';
 import GoogleAuthBtn from 'components/UI/GoogleAuthBtn';
 import LineWithText from 'components/UI/LineWithText';
 import useRegistrationForm from 'hooks/useRegistrationForm';
 import useModalWindow from 'hooks/useModalWindow';
-import { ReferenceBtn } from '../RegistrationForm.styled';
+import { ReferenceBtn } from '../../Forms.styled';
 
 const Mobile: React.FC<{}> = () => {
   const { register, handleSubmit, errors, onSubmit, Controller, control } = useRegistrationForm();
-  const { modalsName, openModal, checkQueryParam } = useModalWindow();
+  const { modalsName, openModal } = useModalWindow();
 
   return (
-    <>
+
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextInput
           type="text"
@@ -114,17 +111,7 @@ const Mobile: React.FC<{}> = () => {
         <LineWithText label="Or use Google" />
         <GoogleAuthBtn width={300} />
       </form>
-      {checkQueryParam(modalsName.privacyPolicy) && (
-        <ModalWindow title="Privacy policy">
-          <PrivacyPolicy />
-        </ModalWindow>
-      )}
-      {checkQueryParam(modalsName.termsUseSite) && (
-        <ModalWindow title="Terms of use of the site">
-          <TermsUseSite />
-        </ModalWindow>
-      )}
-    </>
+
   );
 };
 

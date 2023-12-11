@@ -4,7 +4,7 @@ import Mobile from './Responsiv/Mobile';
 import Tablet from './Responsiv/Tablet';
 import Desktop from './Responsiv/Desktop';
 
-const Auth: React.FC<{}> = () => {
+const LoginForm: React.FC<{}> = () => {
   return (
     <Media
       queries={{
@@ -24,4 +24,4 @@ const Auth: React.FC<{}> = () => {
   );
 };
 
-export default Auth;
+export default LoginForm;

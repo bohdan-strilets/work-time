@@ -131,7 +131,7 @@ const EditInformationForm: React.FC<EditInformationFormProps> = ({ dayId, select
         />
       )}
 
-      <Button type="submit" label="Changed day" width="400px" height="40px" />
+      <Button type="submit" label="Changed day" width="270px" height="40px" />
     </form>
   );
 };

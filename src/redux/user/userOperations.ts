@@ -11,6 +11,7 @@ import { LoginDto } from 'types/dto/LoginDto';
 import { ChangeProfileDto } from 'types/dto/ChangeProfileDto';
 import { EmailDto } from 'types/dto/EmailDto';
 import { ChangePasswordDto } from 'types/dto/ChangePasswordDto';
+import { ResetPasswordDto } from 'types/dto/resetPasswordDto';
 
 const registration = createAsyncThunk<
   UserResponseType<UserType, TokensType> | undefined,
@@ -234,6 +235,56 @@ const changePassword = createAsyncThunk<UserResponseType | undefined, ChangePass
   },
 );
 
+const requestResetPassword = createAsyncThunk<UserResponseType | undefined, EmailDto>(
+  `${ENTITY_NAME}/${OPERATION_NAME.RequestResetPassword}`,
+  async emailDto => {
+    try {
+      const { data } = await api.post(ENDPOINTS_PATH.RequestResetPassword, emailDto);
+      if (data) {
+        const response = data as UserResponseType;
+        return response;
+      }
+      return undefined;
+    } catch (error: any) {
+      if (error.response) {
+        const err = error.response.data as UserResponseType;
+        toast.error(`${err.code} - ${err.message}`);
+      } else if (error.request) {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      } else {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      }
+    }
+  },
+);
+
+const resetPassword = createAsyncThunk<UserResponseType | undefined, ResetPasswordDto>(
+  `${ENTITY_NAME}/${OPERATION_NAME.ResetPassword}`,
+  async resetPasswordDto => {
+    try {
+      const { data } = await api.post(ENDPOINTS_PATH.ResetPassword, resetPasswordDto);
+      if (data) {
+        const response = data as UserResponseType;
+        return response;
+      }
+      return undefined;
+    } catch (error: any) {
+      if (error.response) {
+        const err = error.response.data as UserResponseType;
+        toast.error(`${err.code} - ${err.message}`);
+      } else if (error.request) {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      } else {
+        const err = error as AxiosError;
+        toast.error(err.message);
+      }
+    }
+  },
+);
+
 const operations = {
   registration,
   googleAuth,
@@ -244,6 +295,8 @@ const operations = {
   uploadAvatar,
   changeEmail,
   changePassword,
+  requestResetPassword,
+  resetPassword,
 };
 
 export default operations;
