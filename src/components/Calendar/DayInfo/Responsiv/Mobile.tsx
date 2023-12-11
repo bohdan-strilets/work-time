@@ -30,14 +30,21 @@ const Mobile: React.FC<DayInfoProps> = ({
   additionalHours,
   dateTransform,
 }) => {
-  const { earningForDay, additional, calculateNightHours, START_TIME, START_NIGHT_TIME } =
-    useCalculateDay({
-      additionalHours,
-      time,
-      numberHoursWorked,
-      workShiftNumber,
-      status,
-    });
+  const {
+    earningForDay,
+    additional,
+    calculateNightHours,
+    START_TIME,
+    START_NIGHT_TIME,
+    handleDeleteBtnClick,
+    handleEditBtnClick,
+  } = useCalculateDay({
+    additionalHours,
+    time,
+    numberHoursWorked,
+    workShiftNumber,
+    status,
+  });
   const {
     healthInsurance,
     incomeTax,
@@ -121,12 +128,12 @@ const Mobile: React.FC<DayInfoProps> = ({
         </Container>
         <List>
           <ItemLi>
-            <Button type="button">
+            <Button type="button" onClick={handleEditBtnClick}>
               <MdModeEditOutline />
             </Button>
           </ItemLi>
           <ItemLi>
-            <Button type="button">
+            <Button type="button" onClick={handleDeleteBtnClick}>
               <MdDelete />
             </Button>
           </ItemLi>
