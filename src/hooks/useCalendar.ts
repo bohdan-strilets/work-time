@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Month } from 'types/enums/CalendarEnum';
-import { DayInfoType } from 'types/types/WorkUserDataType';
 import { month as monthNames, weekdays } from 'utilities/DefaultCalendarData';
 import useModalWindow from 'hooks/useModalWindow';
 import { WorkUserDataType } from 'types/types/WorkUserDataType';
 import useLocalStorage from './useLocalStorage';
 import { keys } from 'settings/config';
+import { useGetAllDaysInfoQuery } from '../redux/calendar/calendarApi';
+import { DayInfoType, DayDataType } from 'types/types/DayType';
 
 export const useCalendar = () => {
   const [date, setDate] = useState(new Date());
@@ -15,12 +16,20 @@ export const useCalendar = () => {
   const [selectedYear, setSelectedYear] = useState<null | string | string[]>(
     new Date().getFullYear().toString(),
   );
-  const [dayInfo, setDayInfo] = useState<DayInfoType | null>(null);
+  const [dayInfo, setDayInfo] = useState<DayDataType | null>(null);
   const [dayInfoId, setDayInfoId] = useState<null | string>(null);
+  const [allDays, setAllDays] = useState<DayInfoType[] | null>(null);
 
   const { modalsName, openModal } = useModalWindow();
   const navigate = useNavigate();
   const { getDataFromLs, setDataToLs } = useLocalStorage();
+  const { data } = useGetAllDaysInfoQuery();
+
+  useEffect(() => {
+    if (data && data.data) {
+      setAllDays(data.data);
+    }
+  }, [data, data?.data]);
 
   useEffect(() => {
     const newDate = new Date(Number(selectedYear), selectedMonth);
@@ -126,11 +135,10 @@ export const useCalendar = () => {
 
   const handleCellClick = (date: Date) => {
     const dateCell = date.toLocaleDateString().replaceAll('.', '-');
-    const dataFromLs: WorkUserDataType[] = getDataFromLs(keys.WORKING_DAYS_KEY_LS);
-    if (dataFromLs) {
-      const informationAboutDay = dataFromLs.filter(item => item.data[dateCell]);
+    const informationAboutDay = allDays?.filter(item => item.data[dateCell]);
+    if (informationAboutDay) {
       setDayInfo(informationAboutDay[0]?.data[dateCell]);
-      setDayInfoId(informationAboutDay[0]?.id);
+      setDayInfoId(informationAboutDay[0]?._id);
     }
 
     handleDayClick(date);
@@ -140,9 +148,8 @@ export const useCalendar = () => {
   const getInformationForDay = (date: number | Date | undefined) => {
     if (date instanceof Date) {
       const dateCell = date.toLocaleDateString().replaceAll('.', '-');
-      const dataFromLs: WorkUserDataType[] = getDataFromLs(keys.WORKING_DAYS_KEY_LS);
-      if (dataFromLs) {
-        const informationAboutDay = dataFromLs.filter(item => item.data[dateCell]);
+      const informationAboutDay = allDays?.filter(item => item.data[dateCell]);
+      if (informationAboutDay) {
         return informationAboutDay[0]?.data[dateCell];
       }
     }
