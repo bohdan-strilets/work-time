@@ -3,6 +3,9 @@ import { RootState } from 'redux/store';
 import { API_URL } from 'api';
 import { CalendarResponseType } from 'types/types/CalendarResponseType';
 import { DayInfoType } from 'types/types/DayType';
+import { CreateDayDto } from 'types/dto/CreateDayDto';
+
+const tags = { Calendars: 'calendars' };
 
 export const calendarApi = createApi({
   reducerPath: 'calendarApi',
@@ -16,17 +19,25 @@ export const calendarApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ['calendars'],
+  tagTypes: [tags.Calendars],
   endpoints: builder => ({
     getAllDaysInfo: builder.query<CalendarResponseType<DayInfoType[]>, void>({
       query: () => ({ url: 'all-days' }),
-      providesTags: ['calendars'],
+      providesTags: [tags.Calendars],
     }),
     getOneDayInfo: builder.query<CalendarResponseType<DayInfoType>, string>({
       query: dayId => ({ url: `one-day/${dayId}` }),
-      providesTags: ['calendars'],
+      providesTags: [tags.Calendars],
+    }),
+    createDay: builder.mutation<CalendarResponseType<DayInfoType>, CreateDayDto>({
+      query: createDayDto => ({
+        url: 'create-day',
+        method: 'POST',
+        body: createDayDto,
+      }),
+      invalidatesTags: [tags.Calendars],
     }),
   }),
 });
 
-export const { useGetAllDaysInfoQuery, useGetOneDayInfoQuery } = calendarApi;
+export const { useGetAllDaysInfoQuery, useGetOneDayInfoQuery, useCreateDayMutation } = calendarApi;

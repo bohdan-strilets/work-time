@@ -12,7 +12,7 @@ export type DayDataType = {
 export type DayInfoType = {
   _id: string;
   owner: string;
-  data: Map<string, DayDataType>;
+  data: { [key: string]: DayDataType };
   createdAt: Date;
   updatedAt: Date;
 };
