@@ -18,8 +18,8 @@ root.render(
       <Provider store={store}>
         <GoogleOAuthProvider clientId={googleClientId}>
           <App />
+          <Toastify />
         </GoogleOAuthProvider>
-        <Toastify />
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,
