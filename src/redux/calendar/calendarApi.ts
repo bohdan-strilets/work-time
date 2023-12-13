@@ -4,6 +4,7 @@ import { API_URL } from 'api';
 import { CalendarResponseType } from 'types/types/CalendarResponseType';
 import { DayInfoType } from 'types/types/DayType';
 import { CreateDayDto } from 'types/dto/CreateDayDto';
+import { UpdateDayDto } from 'types/dto/UpdateDayDto';
 
 const tags = { Calendars: 'calendars' };
 
@@ -37,7 +38,20 @@ export const calendarApi = createApi({
       }),
       invalidatesTags: [tags.Calendars],
     }),
+    updateDay: builder.mutation<CalendarResponseType<DayInfoType>, UpdateDayDto>({
+      query: ({ dayId, updateDayDto }) => ({
+        url: `update-day/${dayId}`,
+        method: 'PATCH',
+        body: updateDayDto,
+      }),
+      invalidatesTags: [tags.Calendars],
+    }),
   }),
 });
 
-export const { useGetAllDaysInfoQuery, useGetOneDayInfoQuery, useCreateDayMutation } = calendarApi;
+export const {
+  useGetAllDaysInfoQuery,
+  useGetOneDayInfoQuery,
+  useCreateDayMutation,
+  useUpdateDayMutation,
+} = calendarApi;
