@@ -14,7 +14,7 @@ const googleClientId = '1066070095414-aiovio3vb4llh46v7ou3stti9gvej03p.apps.goog
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename="work-time">
+    <BrowserRouter>
       <Provider store={store}>
         <GoogleOAuthProvider clientId={googleClientId}>
           <App />
