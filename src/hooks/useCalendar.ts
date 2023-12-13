@@ -3,11 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { Month } from 'types/enums/CalendarEnum';
 import { month as monthNames, weekdays } from 'utilities/DefaultCalendarData';
 import useModalWindow from 'hooks/useModalWindow';
-import { WorkUserDataType } from 'types/types/WorkUserDataType';
-import useLocalStorage from './useLocalStorage';
-import { keys } from 'settings/config';
 import { useGetAllDaysInfoQuery } from '../redux/calendar/calendarApi';
 import { DayInfoType, DayDataType } from 'types/types/DayType';
+import { useDeleteDayMutation } from '../redux/calendar/calendarApi';
 
 export const useCalendar = () => {
   const [date, setDate] = useState(new Date());
@@ -20,10 +18,10 @@ export const useCalendar = () => {
   const [dayInfoId, setDayInfoId] = useState<null | string>(null);
   const [allDays, setAllDays] = useState<DayInfoType[] | null>(null);
 
-  const { modalsName, openModal } = useModalWindow();
   const navigate = useNavigate();
-  const { getDataFromLs, setDataToLs } = useLocalStorage();
+  const { modalsName, openModal } = useModalWindow();
   const { data } = useGetAllDaysInfoQuery();
+  const [deleteDay] = useDeleteDayMutation();
 
   useEffect(() => {
     if (data && data.data) {
@@ -156,9 +154,7 @@ export const useCalendar = () => {
   };
 
   const deleteInformationForDay = () => {
-    const dataFromLs: WorkUserDataType[] = getDataFromLs(keys.WORKING_DAYS_KEY_LS);
-    const result = dataFromLs.filter(item => item.id !== dayInfoId);
-    setDataToLs(keys.WORKING_DAYS_KEY_LS, result);
+    if (dayInfoId) deleteDay(dayInfoId);
     navigate('/calendar');
   };
 

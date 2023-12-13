@@ -46,6 +46,13 @@ export const calendarApi = createApi({
       }),
       invalidatesTags: [tags.Calendars],
     }),
+    deleteDay: builder.mutation<CalendarResponseType<DayInfoType>, string>({
+      query: dayId => ({
+        url: `delete-day/${dayId}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: [tags.Calendars],
+    }),
   }),
 });
 
@@ -54,4 +61,5 @@ export const {
   useGetOneDayInfoQuery,
   useCreateDayMutation,
   useUpdateDayMutation,
+  useDeleteDayMutation,
 } = calendarApi;
