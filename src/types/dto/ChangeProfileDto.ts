@@ -1,4 +1,4 @@
-import Gender from 'types/enums/GenderEnum';
+import { Gender } from 'types/enums/GenderEnum';
 
 export type ChangeProfileDto = {
   firstName?: string | null;

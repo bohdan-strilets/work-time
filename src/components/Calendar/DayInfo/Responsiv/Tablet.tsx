@@ -8,7 +8,7 @@ import { BsHospitalFill } from 'react-icons/bs';
 import ExpensesList from 'components/Calendar/ExpensesList';
 import IncomeList from 'components/Calendar/IncomeList';
 import { DayInfoProps } from 'types/props/DayInfoProps';
-import { Status } from 'types/enums/StatusEnum';
+import { StatusValue } from 'types/enums/StatusEnum';
 import useCalculateDay from 'hooks/useCalculateDay';
 import useCalculateTax from 'hooks/useCalculateTax';
 import {
@@ -58,15 +58,15 @@ const Tablet: React.FC<DayInfoProps> = ({
     <div>
       <Container margin="0 0 var(--small-indent) 0" justifyContent="space-between">
         <Container>
-          {status === Status.work && <ImOffice size={28} />}
-          {status === Status.vacation && <MdSunny size={28} />}
-          {status === Status.dayOff && <PiBeerSteinFill size={28} />}
-          {status === Status.sickLeave && <BsHospitalFill size={28} />}
+          {status === StatusValue.work && <ImOffice size={28} />}
+          {status === StatusValue.vacation && <MdSunny size={28} />}
+          {status === StatusValue.dayOff && <PiBeerSteinFill size={28} />}
+          {status === StatusValue.sickLeave && <BsHospitalFill size={28} />}
           <Text fontSize="24px" fontWeight={900} margin="0 0 0 10px">
-            {status === Status.work && 'Work day'}
-            {status === Status.dayOff && 'Day off'}
-            {status === Status.vacation && 'Vacation'}
-            {status === Status.sickLeave && 'Sick leave'}
+            {status === StatusValue.work && 'Work day'}
+            {status === StatusValue.dayOff && 'Day off'}
+            {status === StatusValue.vacation && 'Vacation'}
+            {status === StatusValue.sickLeave && 'Sick leave'}
           </Text>
         </Container>
         <NumberHours>{numberHoursWorked > 0 ? `${numberHoursWorked}h` : '-'}</NumberHours>
@@ -95,7 +95,7 @@ const Tablet: React.FC<DayInfoProps> = ({
           <BsCheckAll size={20} />
         </ExtraTimeStatus>
       </Container>
-      {status !== Status.dayOff && (
+      {status !== StatusValue.dayOff && (
         <Container
           justifyContent="space-between"
           alignItems="flex-start"
@@ -114,7 +114,7 @@ const Tablet: React.FC<DayInfoProps> = ({
           />
         </Container>
       )}
-      {status !== Status.dayOff && (
+      {status !== StatusValue.dayOff && (
         <ExpensesList
           healthInsurance={healthInsurance}
           incomeTax={incomeTax}

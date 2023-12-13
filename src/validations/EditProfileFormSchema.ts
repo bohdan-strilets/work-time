@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import Gender from 'types/enums/GenderEnum';
+import { Gender } from 'types/enums/GenderEnum';
 
 const EditProfileFormSchema = yup.object().shape({
   firstName: yup

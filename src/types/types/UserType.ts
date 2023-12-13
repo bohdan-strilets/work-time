@@ -1,5 +1,5 @@
 import { CompanyInfoType } from './CompanyInfoType';
-import Gender from 'types/enums/GenderEnum';
+import { Gender } from 'types/enums/GenderEnum';
 
 export type UserType = {
   _id: string;

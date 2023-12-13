@@ -7,7 +7,7 @@ import HoursOptions from 'utilities/HoursOptions';
 import useEditInformationForm from 'hooks/useEditInformationForm';
 import { EditInformationFormProps } from 'types/props/EditInformationFormProps';
 import GetLineSegment from 'utilities/GetLineSegment';
-import { Status } from 'types/enums/StatusEnum';
+import { StatusValue } from 'types/enums/StatusEnum';
 
 const EditInformationForm: React.FC<EditInformationFormProps> = ({ dayId, selectedDate }) => {
   const {
@@ -48,7 +48,7 @@ const EditInformationForm: React.FC<EditInformationFormProps> = ({ dayId, select
           />
         )}
       />
-      {(selectedStatus === Status.work || selectedStatus === Status.vacation) && (
+      {(selectedStatus === StatusValue.work || selectedStatus === StatusValue.vacation) && (
         <>
           <Controller
             name="startJob"
@@ -80,7 +80,7 @@ const EditInformationForm: React.FC<EditInformationFormProps> = ({ dayId, select
           <QuickTiming getQuickTime={setQuickStartTime} margin="0 0 var(--small-indent) 0" />
         </>
       )}
-      {(selectedStatus === Status.work || selectedStatus === Status.vacation) && (
+      {(selectedStatus === StatusValue.work || selectedStatus === StatusValue.vacation) && (
         <>
           <Controller
             name="finishJob"
@@ -112,7 +112,7 @@ const EditInformationForm: React.FC<EditInformationFormProps> = ({ dayId, select
           <QuickTiming getQuickTime={setQuickFinishTime} margin="0 0 var(--small-indent) 0" />
         </>
       )}
-      {selectedStatus === Status.work && (
+      {selectedStatus === StatusValue.work && (
         <Controller
           name="additionalHours"
           control={control}

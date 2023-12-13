@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { WorkShiftNumber } from 'types/enums/WorkShiftNumber';
+import { WorkShiftNumberValue } from 'types/enums/WorkShiftNumber';
 import { IncomeListProps } from 'types/props/IncomeListProps';
 import Multiplication from 'utilities/Multiplication';
 import GetNightRate from 'utilities/GetNightRate';
-import { Status } from 'types/enums/StatusEnum';
+import { StatusValue } from 'types/enums/StatusEnum';
 import { Text, Superscript, Result } from './IncomeList.styled';
 
 const IncomeList: React.FC<IncomeListProps> = ({
@@ -27,18 +27,18 @@ const IncomeList: React.FC<IncomeListProps> = ({
   const nightHours = calculateNightHours(time);
 
   useEffect(() => {
-    if (workShiftNumber === WorkShiftNumber.Shift1 && !additional) {
+    if (workShiftNumber === WorkShiftNumberValue.Shift1 && !additional) {
       setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
       return setTotal(earningsForDay);
     } else if (
-      workShiftNumber === WorkShiftNumber.Shift1 &&
+      workShiftNumber === WorkShiftNumberValue.Shift1 &&
       additional &&
       additional?.['50%'].numberHours > 0
     ) {
       setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
       setFiftyPercentage(Multiplication(additional['50%'].numberHours, 16.5));
       return setTotal(earningsForDay + fiftyPercentage);
-    } else if (workShiftNumber === WorkShiftNumber.Shift2 && !additional) {
+    } else if (workShiftNumber === WorkShiftNumberValue.Shift2 && !additional) {
       if (startTime >= startNightTime || numberHoursWorked > 8) {
         setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
         setNightSupplement(Multiplication(nightHours, GetNightRate()));
@@ -48,7 +48,7 @@ const IncomeList: React.FC<IncomeListProps> = ({
         return setTotal(earningsForDay);
       }
     } else if (
-      workShiftNumber === WorkShiftNumber.Shift2 &&
+      workShiftNumber === WorkShiftNumberValue.Shift2 &&
       additional &&
       additional['100%'].numberHours > 0
     ) {
@@ -63,10 +63,10 @@ const IncomeList: React.FC<IncomeListProps> = ({
         setFiftyPercentage(Multiplication(additional['50%'].numberHours, 16.5));
         return setTotal(earningsForDay + fiftyPercentage);
       }
-    } else if (status === Status.vacation) {
+    } else if (status === StatusValue.vacation) {
       setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
       return setTotal(earningsForDay);
-    } else if (status === Status.sickLeave) {
+    } else if (status === StatusValue.sickLeave) {
       setEarningsForDay(Multiplication(numberHoursWorked, sickDayPay));
       return setTotal(earningsForDay);
     }
@@ -87,7 +87,7 @@ const IncomeList: React.FC<IncomeListProps> = ({
 
   return (
     <div>
-      {status !== Status.sickLeave && (
+      {status !== StatusValue.sickLeave && (
         <Text>
           {numberHoursWorked}
           <Superscript>H</Superscript> * {hourlyRate}
@@ -95,7 +95,7 @@ const IncomeList: React.FC<IncomeListProps> = ({
           <Superscript>PLN</Superscript>
         </Text>
       )}
-      {workShiftNumber === WorkShiftNumber.Shift0 && status === Status.sickLeave && (
+      {workShiftNumber === WorkShiftNumberValue.Shift0 && status === StatusValue.sickLeave && (
         <Text>
           {numberHoursWorked}
           <Superscript>H</Superscript> * {sickDayPay}
@@ -117,7 +117,7 @@ const IncomeList: React.FC<IncomeListProps> = ({
           <Superscript>PLN</Superscript>
         </Text>
       )}
-      {workShiftNumber === WorkShiftNumber.Shift2 && nightHours > 0 && (
+      {workShiftNumber === WorkShiftNumberValue.Shift2 && nightHours > 0 && (
         <Text>
           {nightHours}
           <Superscript>H</Superscript> * {GetNightRate()}

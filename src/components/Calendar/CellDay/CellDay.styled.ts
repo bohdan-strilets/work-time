@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { CellProps } from 'types/props/CellDayProps';
 import ScreenWidth from 'utilities/ScreenWidth';
-import { Status } from 'types/enums/StatusEnum';
+import { StatusValue } from 'types/enums/StatusEnum';
 import workDayBg from 'Assets/images/work-day-bg.jpg';
 import dayOffBg from 'Assets/images/day-off-bg.jpg';
 import vacationDayBg from 'Assets/images/vacation-day-bg.jpg';
@@ -29,16 +29,16 @@ export const Cell = styled.li<CellProps>`
       : '1px solid var(--gray-color)'};
   border-radius: 5px;
   background: ${({ status }) => {
-    if (status && status === Status.work) {
+    if (status && status === StatusValue.work) {
       return `url(${workDayBg})`;
     }
-    if (status && status === Status.dayOff) {
+    if (status && status === StatusValue.dayOff) {
       return `url(${dayOffBg})`;
     }
-    if (status && status === Status.vacation) {
+    if (status && status === StatusValue.vacation) {
       return `url(${vacationDayBg})`;
     }
-    if (status && status === Status.sickLeave) {
+    if (status && status === StatusValue.sickLeave) {
       return `url(${slickLeaveBg})`;
     }
   }};

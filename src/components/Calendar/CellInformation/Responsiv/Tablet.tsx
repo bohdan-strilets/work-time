@@ -1,6 +1,6 @@
 import { BsCheckAll } from 'react-icons/bs';
 import { CellInformationProps } from 'types/props/CellInformationProps';
-import { Status } from 'types/enums/StatusEnum';
+import { StatusValue } from 'types/enums/StatusEnum';
 import {
   DayOfMonth,
   Container,
@@ -15,10 +15,10 @@ const Tablet: React.FC<CellInformationProps> = ({ dayInfo, date }) => {
       <DayOfMonth>{date.getDate()}</DayOfMonth>
       {dayInfo?.status && (
         <Container>
-          {dayInfo?.status === Status.work && <DayStatus>Work</DayStatus>}
-          {dayInfo?.status === Status.dayOff && <DayStatus>Day off</DayStatus>}
-          {dayInfo?.status === Status.vacation && <DayStatus>Vacation</DayStatus>}
-          {dayInfo?.status === Status.sickLeave && <DayStatus>Sick leave</DayStatus>}
+          {dayInfo?.status === StatusValue.work && <DayStatus>Work</DayStatus>}
+          {dayInfo?.status === StatusValue.dayOff && <DayStatus>Day off</DayStatus>}
+          {dayInfo?.status === StatusValue.vacation && <DayStatus>Vacation</DayStatus>}
+          {dayInfo?.status === StatusValue.sickLeave && <DayStatus>Sick leave</DayStatus>}
           {dayInfo?.additionalHours && (
             <AdditionalHours>
               <AdditionalHoursLabel>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Month } from 'types/enums/CalendarEnum';
+import { MonthValue } from 'types/enums/CalendarEnum';
 import { month as monthNames, weekdays } from 'utilities/DefaultCalendarData';
 import useModalWindow from 'hooks/useModalWindow';
 import { useGetAllDaysInfoQuery } from '../redux/calendar/calendarApi';
@@ -75,7 +75,7 @@ export const useCalendar = () => {
     const year = date.getFullYear();
     const daysInMonth = DAYS_IN_MONTH[month];
 
-    if (isLeapYear(year) && month === Month.February) {
+    if (isLeapYear(year) && month === MonthValue.February) {
       return daysInMonth + 1;
     } else {
       return daysInMonth;

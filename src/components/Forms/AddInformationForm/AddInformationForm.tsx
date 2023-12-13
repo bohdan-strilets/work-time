@@ -6,7 +6,7 @@ import useAddInformationForm from 'hooks/useAddInformationForm';
 import DayOptions from 'utilities/DayOptions';
 import HoursOptions from 'utilities/HoursOptions';
 import { AddInformationFormProps } from 'types/props/AddInformationFormProps';
-import { Status } from 'types/enums/StatusEnum';
+import { StatusValue } from 'types/enums/StatusEnum';
 
 const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate }) => {
   const {
@@ -46,8 +46,8 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
           />
         )}
       />
-      {(selectedStatus === Status.work ||
-        (selectedStatus === Status.vacation && selectedVacationHours)) && (
+      {(selectedStatus === StatusValue.work ||
+        (selectedStatus === StatusValue.vacation && selectedVacationHours)) && (
         <>
           <Controller
             name="startJob"
@@ -75,8 +75,8 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
           <QuickTiming getQuickTime={setQuickStartTime} margin="0 0 var(--small-indent) 0" />
         </>
       )}
-      {(selectedStatus === Status.work ||
-        (selectedStatus === Status.vacation && selectedVacationHours)) && (
+      {(selectedStatus === StatusValue.work ||
+        (selectedStatus === StatusValue.vacation && selectedVacationHours)) && (
         <>
           <Controller
             name="finishJob"
@@ -104,7 +104,7 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
           <QuickTiming getQuickTime={setQuickFinishTime} margin="0 0 var(--small-indent) 0" />
         </>
       )}
-      {selectedStatus === Status.work && (
+      {selectedStatus === StatusValue.work && (
         <Controller
           name="additionalHours"
           control={control}
@@ -121,7 +121,7 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
           )}
         />
       )}
-      {selectedStatus === Status.vacation && (
+      {selectedStatus === StatusValue.vacation && (
         <Controller
           name="selectVacationHours"
           control={control}

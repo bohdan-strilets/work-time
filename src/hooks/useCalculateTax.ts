@@ -1,5 +1,5 @@
 import { CalculateTaxProps } from 'types/props/CalculateTaxProps';
-import { TaxThreshold } from 'types/enums/TaxThreshold';
+import { TaxThreshold, TaxThresholdValue } from 'types/enums/TaxThreshold';
 
 const useCalculateTax = ({ earningForDay }: CalculateTaxProps) => {
   const taxRates = {
@@ -48,7 +48,7 @@ const useCalculateTax = ({ earningForDay }: CalculateTaxProps) => {
     const salaryAfterSocialSecurity = salary - socialSecurity;
     const healthInsurance = calculateHealthInsurance(salaryAfterSocialSecurity);
     const salaryAfterHealthInsurance = salaryAfterSocialSecurity - healthInsurance;
-    const incomeTax = calculateIncomeTax(salaryAfterHealthInsurance, TaxThreshold.low);
+    const incomeTax = calculateIncomeTax(salaryAfterHealthInsurance, TaxThresholdValue.low);
     return Number((salary - socialSecurity - healthInsurance - incomeTax).toFixed(2));
   };
 
@@ -59,7 +59,7 @@ const useCalculateTax = ({ earningForDay }: CalculateTaxProps) => {
   const earningAfterSocailSecuriy = earningForDay - socialSecurity;
   const healthInsurance = calculateHealthInsurance(earningAfterSocailSecuriy);
   const aerningAfterHealthInsurance = earningAfterSocailSecuriy - healthInsurance;
-  const incomeTax = calculateIncomeTax(aerningAfterHealthInsurance, TaxThreshold.low);
+  const incomeTax = calculateIncomeTax(aerningAfterHealthInsurance, TaxThresholdValue.low);
   const total = calculateTotal(earningForDay);
 
   return {
