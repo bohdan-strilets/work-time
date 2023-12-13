@@ -1,5 +1,5 @@
 import { ExpensesListProps } from 'types/props/ExpensesListProps';
-import { TaxThresholdValue } from 'types/enums/TaxThreshold';
+import { TaxThreshold } from 'types/enums/TaxThreshold';
 import { List, Item, Value } from './ExpensesList.styled';
 
 const ExpensesList: React.FC<ExpensesListProps> = ({
@@ -28,7 +28,7 @@ const ExpensesList: React.FC<ExpensesListProps> = ({
         <Value>- {healthInsurance} PLN</Value>
       </Item>
       <Item>
-        <p>Advance payment of income tax ({TaxThresholdValue.low}%)</p>
+        <p>Advance payment of income tax ({TaxThreshold.low}%)</p>
         <Value>- {incomeTax} PLN</Value>
       </Item>
     </List>

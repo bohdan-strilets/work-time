@@ -1,4 +1,4 @@
-import { Status } from "types/enums/StatusEnum";
+import { Status } from 'types/enums/StatusEnum';
 
 export type CellDayProps = {
   handleClick?: () => void;
@@ -9,7 +9,4 @@ export type CellDayProps = {
   status?: Status;
 };
 
-export type CellProps = Pick<
-  CellDayProps,
-  "date" | "areEqual" | "selectedDate" | "status"
->;
+export type CellProps = Pick<CellDayProps, 'date' | 'areEqual' | 'selectedDate' | 'status'>;

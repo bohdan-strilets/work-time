@@ -6,7 +6,7 @@ import { HookProps } from 'types/props/EditInformationFormProps';
 import GetKeyByDate from 'utilities/GetKeyByDate';
 import CalculateWorkedHours from 'utilities/CalculateWorkedHours';
 import DetermineShiftNumber from 'utilities/DetermineShiftNumber';
-import { StatusValue } from 'types/enums/StatusEnum';
+import { Status } from 'types/enums/StatusEnum';
 import { useGetOneDayInfoQuery } from '../redux/calendar/calendarApi';
 import { DayDataType } from 'types/types/DayType';
 import { useUpdateDayMutation } from '../redux/calendar/calendarApi';
@@ -59,7 +59,7 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
   const onSubmit: SubmitHandler<EditInformationFormInputs> = data => {
     if (selectedDate) {
       const key = GetKeyByDate(selectedDate);
-      if (data.startJob && data.finishJob && data.status === StatusValue.work) {
+      if (data.startJob && data.finishJob && data.status === Status.work) {
         const workedHours = CalculateWorkedHours(data.startJob, data.finishJob);
         const timeRange = `${data.startJob}-${data.finishJob}`;
         const shift = DetermineShiftNumber(timeRange, workedHours);
@@ -78,7 +78,7 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
           updateDay({ dayId, updateDayDto });
         }
       }
-      if (data.startJob && data.finishJob && data.status === StatusValue.vacation) {
+      if (data.startJob && data.finishJob && data.status === Status.vacation) {
         const workedHours = CalculateWorkedHours(data.startJob, data.finishJob);
         const timeRange = `${data.startJob}-${data.finishJob}`;
         const updateDayDto = {
@@ -96,7 +96,7 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
           updateDay({ dayId, updateDayDto });
         }
       }
-      if (data.status === StatusValue.sickLeave) {
+      if (data.status === Status.sickLeave) {
         const updateDayDto = {
           data: {
             [key]: {
@@ -113,9 +113,9 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
         }
       }
       if (
-        data.status !== StatusValue.work &&
-        data.status !== StatusValue.vacation &&
-        data.status !== StatusValue.sickLeave
+        data.status !== Status.work &&
+        data.status !== Status.vacation &&
+        data.status !== Status.sickLeave
       ) {
         const updateDayDto = {
           data: {

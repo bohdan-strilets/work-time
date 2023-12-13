@@ -3,8 +3,8 @@ import useModalWindow from './useModalWindow';
 import { Result } from 'types/types/AdditionalHoursType';
 import { HookProps } from 'types/props/DayInfoProps';
 import GetNightRate from 'utilities/GetNightRate';
-import { WorkShiftNumberValue } from 'types/enums/WorkShiftNumber';
-import { StatusValue, Status } from 'types/enums/StatusEnum';
+import { WorkShiftNumber } from 'types/enums/WorkShiftNumber';
+import { Status } from 'types/enums/StatusEnum';
 
 const useCalculateDay = ({
   additionalHours,
@@ -83,7 +83,7 @@ const useCalculateDay = ({
       const additionalRatePerHour = grossHourlyRate / 2;
 
       if (
-        workShiftNumber === WorkShiftNumberValue.Shift2 &&
+        workShiftNumber === WorkShiftNumber.Shift2 &&
         additionalHours &&
         fiftyPercentHours &&
         oneHundredPercentHours
@@ -94,7 +94,7 @@ const useCalculateDay = ({
         return salaryForDay + nightHourSalary + oneHundredPercentSalary + fiftyPercentSalary;
       }
       if (
-        workShiftNumber === WorkShiftNumberValue.Shift2 &&
+        workShiftNumber === WorkShiftNumber.Shift2 &&
         !additionalHours &&
         START_TIME >= START_NIGHT_TIME
       ) {
@@ -102,14 +102,14 @@ const useCalculateDay = ({
         return salaryForDay + nightHourSalary;
       }
       if (
-        workShiftNumber === WorkShiftNumberValue.Shift2 &&
+        workShiftNumber === WorkShiftNumber.Shift2 &&
         !additionalHours &&
         START_TIME < START_NIGHT_TIME
       ) {
         return salaryForDay;
       }
       if (
-        workShiftNumber === WorkShiftNumberValue.Shift2 &&
+        workShiftNumber === WorkShiftNumber.Shift2 &&
         additionalHours &&
         START_TIME >= START_NIGHT_TIME &&
         oneHundredPercentHours
@@ -119,7 +119,7 @@ const useCalculateDay = ({
         return salaryForDay + nightHourSalary + oneHundredPercentSalary;
       }
       if (
-        workShiftNumber === WorkShiftNumberValue.Shift2 &&
+        workShiftNumber === WorkShiftNumber.Shift2 &&
         additionalHours &&
         START_TIME < START_NIGHT_TIME &&
         fiftyPercentHours
@@ -128,21 +128,21 @@ const useCalculateDay = ({
         const fiftyPercentSalary = fiftyPercentHours * additionalRatePerHour;
         return salaryForDay + nightHourSalary + fiftyPercentSalary;
       }
-      if (workShiftNumber === WorkShiftNumberValue.Shift1 && !additionalHours) {
+      if (workShiftNumber === WorkShiftNumber.Shift1 && !additionalHours) {
         return salaryForDay;
       }
-      if (workShiftNumber === WorkShiftNumberValue.Shift1 && additionalHours && fiftyPercentHours) {
+      if (workShiftNumber === WorkShiftNumber.Shift1 && additionalHours && fiftyPercentHours) {
         const fiftyPercentSalary = fiftyPercentHours * additionalRatePerHour;
         return salaryForDay + fiftyPercentSalary;
       }
-      if (workShiftNumber === WorkShiftNumberValue.Shift2 && !additionalHours) {
+      if (workShiftNumber === WorkShiftNumber.Shift2 && !additionalHours) {
         const nightHourSalary = nightExtraRate * nightHours;
         return salaryForDay + nightHourSalary;
       }
-      if (workShiftNumber === WorkShiftNumberValue.Shift0 && status === StatusValue.vacation) {
+      if (workShiftNumber === WorkShiftNumber.Shift0 && status === Status.vacation) {
         return salaryForDay;
       }
-      if (workShiftNumber === WorkShiftNumberValue.Shift0 && status === StatusValue.sickLeave) {
+      if (workShiftNumber === WorkShiftNumber.Shift0 && status === Status.sickLeave) {
         return (salaryForDay * 80) / 100;
       }
 

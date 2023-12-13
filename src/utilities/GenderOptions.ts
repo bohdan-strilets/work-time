@@ -1,20 +1,20 @@
-import { GenderValue } from 'types/enums/GenderEnum';
+import { Gender } from 'types/enums/GenderEnum';
 
 const GenderOptions = [
   {
     id: 1,
     label: 'Other',
-    value: GenderValue.Other,
+    value: Gender.Other,
   },
   {
     id: 2,
     label: 'Man',
-    value: GenderValue.Man,
+    value: Gender.Man,
   },
   {
     id: 3,
     label: 'Woman',
-    value: GenderValue.Woman,
+    value: Gender.Woman,
   },
 ];
 

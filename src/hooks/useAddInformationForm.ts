@@ -6,7 +6,7 @@ import useModalWindow from './useModalWindow';
 import GetKeyByDate from 'utilities/GetKeyByDate';
 import CalculateWorkedHours from 'utilities/CalculateWorkedHours';
 import DetermineShiftNumber from 'utilities/DetermineShiftNumber';
-import { StatusValue } from 'types/enums/StatusEnum';
+import { Status } from 'types/enums/StatusEnum';
 import { useCreateDayMutation } from '../redux/calendar/calendarApi';
 
 const useAddInformationForm = ({ selectedDate }: HookProps) => {
@@ -39,7 +39,7 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
   const onSubmit: SubmitHandler<AddInformationFormInputs> = data => {
     if (selectedDate) {
       const key = GetKeyByDate(selectedDate);
-      if (data.startJob && data.finishJob && data.status === StatusValue.work) {
+      if (data.startJob && data.finishJob && data.status === Status.work) {
         const workedHours = CalculateWorkedHours(data.startJob, data.finishJob);
         const timeRange = `${data.startJob}-${data.finishJob}`;
         const shift = DetermineShiftNumber(timeRange, workedHours);
@@ -56,7 +56,7 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
         };
         createDay(result);
       }
-      if (data.startJob && data.finishJob && data.status === StatusValue.vacation) {
+      if (data.startJob && data.finishJob && data.status === Status.vacation) {
         const vacationHours = CalculateWorkedHours(data.startJob, data.finishJob);
         const timeRange = `${data.startJob}-${data.finishJob}`;
         const result = {
@@ -72,7 +72,7 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
         };
         createDay(result);
       }
-      if (data.status === StatusValue.vacation || data.status === StatusValue.sickLeave) {
+      if (data.status === Status.vacation || data.status === Status.sickLeave) {
         const startVacationDay = '06:00';
         const endVacationDay = '18:00';
         const vacationHours = CalculateWorkedHours(startVacationDay, endVacationDay);
@@ -91,9 +91,9 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
         createDay(result);
       }
       if (
-        data.status !== StatusValue.work &&
-        data.status !== StatusValue.vacation &&
-        data.status !== StatusValue.sickLeave
+        data.status !== Status.work &&
+        data.status !== Status.vacation &&
+        data.status !== Status.sickLeave
       ) {
         const result = {
           data: {
