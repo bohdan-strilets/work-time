@@ -57,8 +57,8 @@ export const userSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(operations.refreshUser.fulfilled, (state, action) => {
-        if (action.payload && action.payload.data) {
-          state.user = action.payload.data;
+        if (action.payload && action.payload.tokens) {
+          state.token = action.payload?.tokens?.accessToken;
           state.isLoggedIn = true;
           state.isRefreshing = false;
         } else {
@@ -80,6 +80,11 @@ export const userSlice = createSlice({
         state.user = null;
         state.token = null;
         state.isLoggedIn = false;
+      })
+      .addCase(operations.currentUser.fulfilled, (state, action) => {
+        if (action.payload && action.payload.data) {
+          state.user = action.payload.data;
+        }
       });
   },
 });

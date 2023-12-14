@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from 'components/Layout';
 import HomePage from 'pages/HomePage';
@@ -8,18 +7,10 @@ import ProfilePage from 'pages/ProfilePage';
 import AboutPage from 'pages/AboutPage';
 import ResetPasswordPage from 'pages/ResetPasswordPage';
 import StatisticsPage from 'pages/StatisticsPage';
-import { useAppDispatch } from 'hooks/useAppDispatch';
-import { useAppSelector } from 'hooks/useAppSelector';
-import { getIsRefreshing } from './redux/user/userSelectors';
-import operations from './redux/user/userOperations';
+import useRefresh from 'hooks/useRefresh';
 
 const App: React.FC<{}> = () => {
-  const dispatch = useAppDispatch();
-  const isRefreshing = useAppSelector(getIsRefreshing);
-
-  useEffect(() => {
-    dispatch(operations.refreshUser());
-  }, [dispatch]);
+  const { isRefreshing } = useRefresh();
 
   return (
     <>

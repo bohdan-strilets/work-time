@@ -14,6 +14,7 @@ export const OPERATION_NAME = {
   ResetPassword: 'reset-password',
   RepeatConfirmEmail: 'repeat-confirm-email',
   DeleteProfile: 'delete-profile',
+  CurrentUser: 'current-user',
 };
 
 export const ENDPOINTS_PATH = {
@@ -21,7 +22,7 @@ export const ENDPOINTS_PATH = {
   GoogleAuth: 'api/v1/auth/google-auth',
   Logout: 'api/v1/auth/logout',
   Login: 'api/v1/auth/login',
-  Refresh: 'api/v1/users/current-user',
+  Refresh: 'api/v1/users/refresh-user',
   ChangeProfile: 'api/v1/users/change-profile',
   UploadAvatar: 'api/v1/users/upload-avatar',
   ChangedEmail: 'api/v1/users/change-email',
@@ -30,4 +31,5 @@ export const ENDPOINTS_PATH = {
   ResetPassword: 'api/v1/users/reset-password',
   RepeatConfirmEmail: 'api/v1/users/repeat-activation-email',
   DeleteProfile: 'api/v1/users/delete-profile',
+  CurrentUser: 'api/v1/users/current-user',
 };
