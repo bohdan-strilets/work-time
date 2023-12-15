@@ -19,6 +19,10 @@ const useModalWindow = () => {
     requestPasswordReset: 'request-password-reset',
     repeatActivationEmail: 'repeat-activation-email',
     deleteProfile: 'delete-profile',
+    chartByDays: 'chart-by-days',
+    chartByHours: 'chart-by-hours',
+    chartByShifts: 'chart-by-shifts',
+    chartByMoney: 'chart-by-money',
   };
 
   const openModal = (modalName: string) => {
