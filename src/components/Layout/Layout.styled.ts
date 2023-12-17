@@ -3,7 +3,7 @@ import ScreenWidth from 'utilities/ScreenWidth';
 
 export const Wrapper = styled.div`
   position: relative;
-  width: ${ScreenWidth.mobile};
+  width: 100%;
   margin: 0 auto;
 
   @media screen and (min-width: ${ScreenWidth.tablet}) {
