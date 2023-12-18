@@ -4,6 +4,8 @@ import { IncomeListProps } from 'types/props/IncomeListProps';
 import Multiplication from 'utilities/Multiplication';
 import GetNightRate from 'utilities/GetNightRate';
 import { Status } from 'types/enums/StatusEnum';
+import { useAppSelector } from 'hooks/useAppSelector';
+import { getSalaryPerHour } from '../../../redux/user/userSelectors';
 import { Text, Superscript, Result } from './IncomeList.styled';
 
 const IncomeList: React.FC<IncomeListProps> = ({
@@ -22,29 +24,30 @@ const IncomeList: React.FC<IncomeListProps> = ({
   const [nightSupplement, setNightSupplement] = useState(0);
   const [total, setTotal] = useState(0);
 
-  const hourlyRate = 33;
-  const sickDayPay = (33 * 80) / 100;
+  const salaryPerHour = useAppSelector(getSalaryPerHour) ?? 0;
+  const sickDayPayPercentage = 80;
+  const sickDayPay = (salaryPerHour * sickDayPayPercentage) / 100;
   const nightHours = calculateNightHours(time);
 
   useEffect(() => {
     if (workShiftNumber === WorkShiftNumber.Shift1 && !additional) {
-      setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
+      setEarningsForDay(Multiplication(numberHoursWorked, salaryPerHour));
       return setTotal(earningsForDay);
     } else if (
       workShiftNumber === WorkShiftNumber.Shift1 &&
       additional &&
       additional?.['50%'].numberHours > 0
     ) {
-      setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
+      setEarningsForDay(Multiplication(numberHoursWorked, salaryPerHour));
       setFiftyPercentage(Multiplication(additional['50%'].numberHours, 16.5));
       return setTotal(earningsForDay + fiftyPercentage);
     } else if (workShiftNumber === WorkShiftNumber.Shift2 && !additional) {
       if (startTime >= startNightTime || numberHoursWorked > 8) {
-        setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
+        setEarningsForDay(Multiplication(numberHoursWorked, salaryPerHour));
         setNightSupplement(Multiplication(nightHours, GetNightRate()));
         return setTotal(earningsForDay + nightSupplement);
       } else {
-        setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
+        setEarningsForDay(Multiplication(numberHoursWorked, salaryPerHour));
         return setTotal(earningsForDay);
       }
     } else if (
@@ -53,18 +56,18 @@ const IncomeList: React.FC<IncomeListProps> = ({
       additional['100%'].numberHours > 0
     ) {
       if (startTime >= startNightTime || numberHoursWorked > 8) {
-        setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
+        setEarningsForDay(Multiplication(numberHoursWorked, salaryPerHour));
         setFiftyPercentage(Multiplication(additional['50%'].numberHours, 16.5));
-        setOneHundredPercent(Multiplication(additional['100%'].numberHours, hourlyRate));
+        setOneHundredPercent(Multiplication(additional['100%'].numberHours, salaryPerHour));
         setNightSupplement(Multiplication(nightHours, GetNightRate()));
         return setTotal(earningsForDay + fiftyPercentage + oneHundredPercent + nightSupplement);
       } else {
-        setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
+        setEarningsForDay(Multiplication(numberHoursWorked, salaryPerHour));
         setFiftyPercentage(Multiplication(additional['50%'].numberHours, 16.5));
         return setTotal(earningsForDay + fiftyPercentage);
       }
     } else if (status === Status.vacation) {
-      setEarningsForDay(Multiplication(numberHoursWorked, hourlyRate));
+      setEarningsForDay(Multiplication(numberHoursWorked, salaryPerHour));
       return setTotal(earningsForDay);
     } else if (status === Status.sickLeave) {
       setEarningsForDay(Multiplication(numberHoursWorked, sickDayPay));
@@ -78,6 +81,7 @@ const IncomeList: React.FC<IncomeListProps> = ({
     nightSupplement,
     numberHoursWorked,
     oneHundredPercent,
+    salaryPerHour,
     sickDayPay,
     startNightTime,
     startTime,
@@ -90,7 +94,7 @@ const IncomeList: React.FC<IncomeListProps> = ({
       {status !== Status.sickLeave && (
         <Text>
           {numberHoursWorked}
-          <Superscript>H</Superscript> * {hourlyRate}
+          <Superscript>H</Superscript> * {salaryPerHour}
           <Superscript>PLN</Superscript> = {earningsForDay}
           <Superscript>PLN</Superscript>
         </Text>

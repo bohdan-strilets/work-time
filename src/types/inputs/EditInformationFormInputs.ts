@@ -5,5 +5,5 @@ export type EditInformationFormInputs = {
   status: Status;
   startJob?: string;
   finishJob?: string;
-  additionalHours?: Pick<DayInfoType, 'additionalHours'>;
+  additionalHours?: boolean;
 };

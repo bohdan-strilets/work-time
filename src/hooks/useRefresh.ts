@@ -10,10 +10,8 @@ const useRefresh = () => {
   const isLoggedIn = useAppSelector(getIsLoggedIn);
 
   useEffect(() => {
-    if (isLoggedIn) {
-      dispatch(operations.refreshUser());
-      dispatch(operations.currentUser());
-    }
+    dispatch(operations.refreshUser());
+    dispatch(operations.currentUser());
   }, [dispatch, isLoggedIn]);
 
   return { isRefreshing };
