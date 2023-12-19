@@ -10,12 +10,10 @@ const api = axios.create({
 
 api.interceptors.request.use(config => {
   const token = JSON.parse(localStorage.getItem('persist:user') as string);
-
   if (token) {
     const parsedToken = token.token.replaceAll('"', '');
     config.headers.Authorization = `Bearer ${parsedToken}`;
   }
-
   return config;
 });
 
@@ -46,7 +44,7 @@ api.interceptors.response.use(
         refreshAttempts = 0;
         return api.request(originalRequest);
       } catch (error) {
-        toast.error('Something went wrong, try logging in again.');
+        toast.error('Something went wrong, try logging in again in.');
       }
     }
 

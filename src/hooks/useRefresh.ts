@@ -1,18 +1,21 @@
 import { useEffect } from 'react';
 import operations from '../redux/user/userOperations';
-import { getIsRefreshing, getIsLoggedIn } from '../redux/user/userSelectors';
+import { getIsRefreshing } from '../redux/user/userSelectors';
 import { useAppDispatch } from './useAppDispatch';
 import { useAppSelector } from './useAppSelector';
 
 const useRefresh = () => {
   const dispatch = useAppDispatch();
   const isRefreshing = useAppSelector(getIsRefreshing);
-  const isLoggedIn = useAppSelector(getIsLoggedIn);
+  const dataByLs = localStorage.getItem('persist:user');
+  const parsedData = JSON.parse(dataByLs ?? '');
+  const token = parsedData.token;
 
   useEffect(() => {
-    dispatch(operations.refreshUser());
-    dispatch(operations.currentUser());
-  }, [dispatch, isLoggedIn]);
+    if (token !== null && token !== 'null') {
+      dispatch(operations.currentUser());
+    }
+  }, [dispatch, token]);
 
   return { isRefreshing };
 };

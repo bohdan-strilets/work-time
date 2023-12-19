@@ -84,6 +84,7 @@ export const userSlice = createSlice({
       .addCase(operations.currentUser.fulfilled, (state, action) => {
         if (action.payload && action.payload.data) {
           state.user = action.payload.data;
+          state.isLoggedIn = true;
         }
       });
   },
