@@ -5,6 +5,8 @@ import { HookProps } from 'types/props/DayInfoProps';
 import GetNightRate from 'utilities/GetNightRate';
 import { WorkShiftNumber } from 'types/enums/WorkShiftNumber';
 import { Status } from 'types/enums/StatusEnum';
+import { useAppSelector } from './useAppSelector';
+import { getSalaryPerHour } from '../redux/user/userSelectors';
 
 const useCalculateDay = ({
   additionalHours,
@@ -25,6 +27,7 @@ const useCalculateDay = ({
   const END_NIGHT_TIME = 6;
   const FIFTY_PERCENT = '50%';
   const ONE_HUNDRED_PERCENT = '100%';
+  const salaryPerHour = useAppSelector(getSalaryPerHour) ?? 0;
 
   const calculateNightHours = useCallback((): number => {
     if (START_TIME < START_NIGHT_TIME && numberHoursWorked < 4) {
@@ -155,17 +158,17 @@ const useCalculateDay = ({
     if (additional && additionalHours) {
       const earning = calculateEarningsDay(
         numberHoursWorked,
-        33,
+        salaryPerHour,
         status,
         additional[FIFTY_PERCENT].numberHours,
         additional[ONE_HUNDRED_PERCENT].numberHours,
       );
       setEarningForDay(earning);
     } else {
-      const earning = calculateEarningsDay(numberHoursWorked, 33, status);
+      const earning = calculateEarningsDay(numberHoursWorked, salaryPerHour, status);
       setEarningForDay(earning);
     }
-  }, [additional, additionalHours, calculateEarningsDay, numberHoursWorked, status]);
+  }, [additional, additionalHours, calculateEarningsDay, numberHoursWorked, salaryPerHour, status]);
 
   const handleEditBtnClick = () => {
     openModal(modalsName.cellDayEdit);
