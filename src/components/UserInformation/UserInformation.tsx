@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from 'hooks/useAppSelector';
 import Avatar from 'components/UI/Avatar';
 import { getFirstName, getLastName, getAvatarUrl, getEmail } from '../../redux/user/userSelectors';
@@ -8,9 +9,10 @@ const UserInformation: React.FC<{}> = () => {
   const lastName = useAppSelector(getLastName);
   const avatarUrl = useAppSelector(getAvatarUrl);
   const email = useAppSelector(getEmail);
+  const navigate = useNavigate();
 
   return (
-    <Wrapper>
+    <Wrapper onClick={() => navigate('/profile')}>
       {avatarUrl && (
         <Avatar
           url={avatarUrl}

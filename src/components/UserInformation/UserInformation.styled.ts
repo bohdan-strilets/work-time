@@ -1,9 +1,15 @@
 import styled from '@emotion/styled';
 import ScreenWidth from 'utilities/ScreenWidth';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.button`
   display: flex;
   align-items: center;
+
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  cursor: pointer;
 `;
 
 export const Data = styled.div`
