@@ -55,7 +55,7 @@ export const calendarApi = createApi({
         query: createDayDto => ({
           url: 'create-day',
           method: 'POST',
-          body: createDayDto,
+          data: createDayDto,
         }),
         invalidatesTags: [tags.Calendars],
       }),
@@ -63,7 +63,7 @@ export const calendarApi = createApi({
         query: ({ dayId, updateDayDto }) => ({
           url: `update-day/${dayId}`,
           method: 'PATCH',
-          body: updateDayDto,
+          data: updateDayDto,
         }),
         invalidatesTags: [tags.Calendars],
       }),
