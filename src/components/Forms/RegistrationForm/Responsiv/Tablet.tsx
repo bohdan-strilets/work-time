@@ -62,6 +62,7 @@ const Tablet: React.FC<{}> = () => {
         width={330}
         height={40}
         margin="0 0 var(--medium-indent) 0"
+        padding="0 45px 0 35px"
       />
       <PasswordInput
         icon={<BiSolidLock size={18} />}
@@ -73,6 +74,7 @@ const Tablet: React.FC<{}> = () => {
         width={330}
         height={40}
         margin="0 0 var(--medium-indent) 0"
+        padding="0 45px 0 35px"
       />
       <Controller
         name="rules"

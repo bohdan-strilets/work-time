@@ -37,6 +37,7 @@ const Mobile: React.FC<{}> = () => {
         width={300}
         height={40}
         margin="0 0 var(--medium-indent) 0"
+        padding="0 45px 0 35px"
       />
 
       <Button

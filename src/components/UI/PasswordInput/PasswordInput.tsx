@@ -16,6 +16,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
   width,
   height,
   margin,
+  padding,
 }) => {
   const [type, setType] = useState<'text' | 'password'>('password');
 
@@ -37,6 +38,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
       width={width}
       height={height}
       margin={margin}
+      padding={padding}
     >
       <Button type="button" onClick={toggle}>
         {type === 'password' ? <IoMdEye size={20} /> : <IoIosEyeOff size={20} />}

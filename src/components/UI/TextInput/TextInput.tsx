@@ -16,6 +16,7 @@ const TextInput: React.FC<TextInputProps> = ({
   margin,
   children,
   defaultValue,
+  padding,
 }) => {
   return (
     <Wrapper width={width} margin={margin} disabled={disabled}>
@@ -35,6 +36,7 @@ const TextInput: React.FC<TextInputProps> = ({
           height={height}
           icon={icon}
           defaultValue={defaultValue}
+          padding={padding}
         />
         {children && children}
       </InputWrapper>

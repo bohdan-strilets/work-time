@@ -18,6 +18,7 @@ const ChangePasswordForm: React.FC<{}> = () => {
             height={40}
             required={true}
             margin="0 0 var(--small-indent) 0"
+            padding="0 45px 0 35px"
           />
         )}
         <PasswordInput
@@ -29,6 +30,7 @@ const ChangePasswordForm: React.FC<{}> = () => {
           height={40}
           required={true}
           margin="0 0 var(--small-indent) 0"
+          padding="0 45px 0 35px"
         />
         <PasswordInput
           name="passwordAgain"
@@ -38,6 +40,7 @@ const ChangePasswordForm: React.FC<{}> = () => {
           height={40}
           required={true}
           margin="0 0 var(--small-indent) 0"
+          padding="0 45px 0 35px"
         />
         <Button type="submit" label="Change password" height="40px" width="270px" />
       </form>

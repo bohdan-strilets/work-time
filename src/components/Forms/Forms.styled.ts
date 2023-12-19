@@ -15,6 +15,7 @@ export const Wrapper = styled.form`
 export const Text = styled.p<TextProps>`
   margin: ${({ margin }) => (margin ? margin : '')};
   color: ${({ color }) => (color ? color : '')};
+  width: ${({ width }) => (width ? width : '')};
 `;
 
 export const ReferenceBtn = styled.button`

@@ -13,4 +13,5 @@ export type PasswordInputProps = Pick<
   | 'width'
   | 'height'
   | 'margin'
+  | 'padding'
 >;

@@ -9,6 +9,7 @@ import LineWithText from 'components/UI/LineWithText';
 import LinkButton from 'components/UI/LinkButton';
 import useRegistrationForm from 'hooks/useRegistrationForm';
 import useModalWindow from 'hooks/useModalWindow';
+import { Text } from '../../Forms.styled';
 
 const Mobile: React.FC<{}> = () => {
   const { register, handleSubmit, errors, onSubmit, Controller, control } = useRegistrationForm();
@@ -62,6 +63,7 @@ const Mobile: React.FC<{}> = () => {
         width={300}
         height={40}
         margin="0 0 var(--medium-indent) 0"
+        padding="0 45px 0 35px"
       />
       <PasswordInput
         icon={<BiSolidLock size={16} />}
@@ -73,6 +75,7 @@ const Mobile: React.FC<{}> = () => {
         width={300}
         height={40}
         margin="0 0 var(--medium-indent) 0"
+        padding="0 45px 0 35px"
       />
       <Controller
         name="rules"
@@ -86,7 +89,7 @@ const Mobile: React.FC<{}> = () => {
             onChange={(value: boolean) => field.onChange(value)}
             margin="0 0 var(--small-indent) 0"
           >
-            <p>
+            <Text width="250px">
               I have read the
               <LinkButton onClick={() => openModal(modalsName.termsUseSite)}>
                 terms of use of the site
@@ -96,7 +99,7 @@ const Mobile: React.FC<{}> = () => {
                 privacy policy
               </LinkButton>
               and agree to them.
-            </p>
+            </Text>
           </Checkbox>
         )}
       />

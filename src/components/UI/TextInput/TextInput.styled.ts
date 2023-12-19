@@ -41,7 +41,18 @@ export const Icon = styled.div`
 export const Input = styled.input<InputProps>`
   width: 100%;
   height: ${({ height }) => (height ? `${height}px` : '100%')};
-  padding: ${({ icon }) => (icon ? '0 10px 0 35px' : '0 10px')};
+  padding: ${({ icon, padding }) => {
+    if (icon && padding) {
+      return padding;
+    }
+    if (padding) {
+      return padding;
+    }
+    if (icon) {
+      return '0 10px 0 35px';
+    }
+    return '0 10px';
+  }};
 
   background-color: #f0f0f0;
   border: none;

@@ -37,6 +37,7 @@ const Desktop: React.FC<{}> = () => {
         width={400}
         height={40}
         margin="0 0 var(--medium-indent) 0"
+        padding="0 45px 0 35px"
       />
 
       <Button
