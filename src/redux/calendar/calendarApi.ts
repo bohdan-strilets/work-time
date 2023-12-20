@@ -1,46 +1,16 @@
-import type { AxiosRequestConfig, AxiosError } from 'axios';
-import type { BaseQueryFn } from '@reduxjs/toolkit/query';
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { CalendarResponseType } from 'types/types/CalendarResponseType';
-import api, { API_URL } from 'api';
 import { DayInfoType } from 'types/types/DayType';
 import { CreateDayDto } from 'types/dto/CreateDayDto';
 import { UpdateDayDto } from 'types/dto/UpdateDayDto';
+import axiosBaseQuery from 'api/axiosBaseQuery';
 
 const tags = { Calendars: 'calendars' };
-
-const axiosBaseQuery =
-  (): BaseQueryFn<
-    {
-      url: string;
-      method: AxiosRequestConfig['method'];
-      data?: AxiosRequestConfig['data'];
-      params?: AxiosRequestConfig['params'];
-      headers?: AxiosRequestConfig['headers'];
-    },
-    unknown,
-    unknown
-  > =>
-  async ({ url, method, data, params, headers }) => {
-    try {
-      const result = await api({
-        url: `${API_URL}api/v1/calendars/${url}`,
-        method,
-        data,
-        params,
-        headers,
-      });
-      return { data: result.data };
-    } catch (axiosError) {
-      const err = axiosError as AxiosError;
-      return { error: { status: err.response?.status, data: err.response?.data || err.message } };
-    }
-  };
 
 export const calendarApi = createApi({
   reducerPath: 'calendarApi',
   tagTypes: [tags.Calendars],
-  baseQuery: axiosBaseQuery(),
+  baseQuery: axiosBaseQuery('calendars'),
   endpoints(build) {
     return {
       getAllDaysInfo: build.query<CalendarResponseType<DayInfoType[]>, void>({
