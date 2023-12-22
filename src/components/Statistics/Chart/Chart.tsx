@@ -10,8 +10,9 @@ import {
 import { Bar } from 'react-chartjs-2';
 import { ChartProps } from 'types/props/ChartProps';
 
-const Chart: React.FC<ChartProps> = ({ settings }) => {
+const Chart: React.FC<ChartProps> = ({ title, labels, datasets }) => {
   ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+  const data = { labels, datasets };
 
   const options = {
     responsive: true,
@@ -21,14 +22,9 @@ const Chart: React.FC<ChartProps> = ({ settings }) => {
       },
       title: {
         display: true,
-        text: settings.title,
+        text: title,
       },
     },
-  };
-
-  const data = {
-    labels: settings.labels,
-    datasets: settings.datasets,
   };
 
   return <Bar options={options} data={data} />;

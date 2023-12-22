@@ -1,14 +1,16 @@
 import { IoStatsChartSharp } from 'react-icons/io5';
-import { Data } from './data';
 import Button from 'components/UI/Button';
+import Loader from 'components/UI/Loader';
 import useModalWindow from 'hooks/useModalWindow';
+import { StatisticsProps } from 'types/props/StatisticsProps';
 import { List, Item, Property, Value, HeaderWrapper, Title } from './Statistics.styled';
 
-const Statistics: React.FC<{}> = () => {
+const Statistics: React.FC<StatisticsProps> = ({ generalStatistics, isLoading }) => {
   const { openModal, modalsName } = useModalWindow();
 
   return (
     <>
+      {isLoading && <Loader />}
       <HeaderWrapper>
         <Title>Days</Title>
         <Button
@@ -22,27 +24,27 @@ const Statistics: React.FC<{}> = () => {
       <List>
         <Item>
           <Property>Number of working days:</Property>
-          <Value>{Data.statistics.numberWorkingDays}</Value>
+          <Value>{Math.round(generalStatistics?.numberWorkingDays ?? 0)}</Value>
         </Item>
         <Item>
           <Property>Number of days off:</Property>
-          <Value>{Data.statistics.numberDaysOff}</Value>
+          <Value>{Math.round(generalStatistics?.numberDaysOff ?? 0)}</Value>
         </Item>
         <Item>
           <Property>Number of vacation days:</Property>
-          <Value>{Data.statistics.numberVacationDays}</Value>
+          <Value>{Math.round(generalStatistics?.numberVacationDays ?? 0)}</Value>
         </Item>
         <Item>
           <Property>Number of sick days:</Property>
-          <Value>{Data.statistics.numberSickDays}</Value>
+          <Value>{Math.round(generalStatistics?.numberSickDays ?? 0)}</Value>
         </Item>
         <Item>
           <Property>Number of additional working days:</Property>
-          <Value>{Data.statistics.numberAdditionalWorkingDays}</Value>
+          <Value>{Math.round(generalStatistics?.numberAdditionalWorkingDays ?? 0)}</Value>
         </Item>
         <Item>
           <Property>Total days (except weekends):</Property>
-          <Value>{Data.statistics.totalDays}</Value>
+          <Value>{Math.round(generalStatistics?.totalDays ?? 0)}</Value>
         </Item>
       </List>
       <HeaderWrapper>
@@ -58,27 +60,27 @@ const Statistics: React.FC<{}> = () => {
       <List>
         <Item>
           <Property>Number of working hours:</Property>
-          <Value>{Data.statistics.numberWorkingHours}</Value>
+          <Value>{Math.round(generalStatistics?.numberWorkingHours ?? 0)}</Value>
         </Item>
         <Item>
           <Property>Number of free hours:</Property>
-          <Value>{Data.statistics.numberFreeHours}</Value>
+          <Value>{Math.round(generalStatistics?.numberFreeHours ?? 0)}</Value>
         </Item>
         <Item>
           <Property>Number of vacation hours:</Property>
-          <Value>{Data.statistics.numberVacationHours}</Value>
+          <Value>{Math.round(generalStatistics?.numberVacationHours ?? 0)}</Value>
         </Item>
         <Item>
           <Property>Number of sick leave hours:</Property>
-          <Value>{Data.statistics.numberSickHours}</Value>
+          <Value>{Math.round(generalStatistics?.numberSickHours ?? 0)}</Value>
         </Item>
         <Item>
           <Property>Number of additional working hours:</Property>
-          <Value>{Data.statistics.numberAdditionalWorkingHours}</Value>
+          <Value>{Math.round(generalStatistics?.numberAdditionalWorkingHours ?? 0)}</Value>
         </Item>
         <Item>
           <Property>Total hours (except weekends):</Property>
-          <Value>{Data.statistics.totalHours}</Value>
+          <Value>{Math.round(generalStatistics?.totalHours ?? 0)}</Value>
         </Item>
       </List>
       <HeaderWrapper>
@@ -94,15 +96,15 @@ const Statistics: React.FC<{}> = () => {
       <List>
         <Item>
           <Property>Number of first shifts:</Property>
-          <Value>{Data.statistics.numberFirstShifts}</Value>
+          <Value>{Math.round(generalStatistics?.numberFirstShifts ?? 0)}</Value>
         </Item>
         <Item>
           <Property>Number of second shifts:</Property>
-          <Value>{Data.statistics.numberSecondShifts}</Value>
+          <Value>{Math.round(generalStatistics?.numberSecondShifts ?? 0)}</Value>
         </Item>
         <Item>
           <Property>Number of night hours:</Property>
-          <Value>{Data.statistics.numberNightHours}</Value>
+          <Value>{Math.round(generalStatistics?.numberNightHours ?? 0)}</Value>
         </Item>
       </List>
       <HeaderWrapper>
@@ -118,39 +120,39 @@ const Statistics: React.FC<{}> = () => {
       <List>
         <Item>
           <Property>Gross amount of money received during working days:</Property>
-          <Value>{Data.statistics.grossAmountMoneyForWorkingDays}</Value>
+          <Value>{Math.round(generalStatistics?.grossAmountMoneyForWorkingDays ?? 0)}</Value>
         </Item>
         <Item>
           <Property>Net amount of money received during working days:</Property>
-          <Value>{Data.statistics.nettoAmountMoneyForWorkingDays}</Value>
+          <Value>{Math.round(generalStatistics?.nettoAmountMoneyForWorkingDays ?? 0)}</Value>
         </Item>
         <Item>
           <Property>Gross amount of money received for vacation days:</Property>
-          <Value>{Data.statistics.grossAmountMoneyForVacationDays}</Value>
+          <Value>{Math.round(generalStatistics?.grossAmountMoneyForVacationDays ?? 0)}</Value>
         </Item>
         <Item>
           <Property>Net amount of money received for vacation days:</Property>
-          <Value>{Data.statistics.nettoAmountMoneyForVacationDays}</Value>
+          <Value>{Math.round(generalStatistics?.nettoAmountMoneyForVacationDays ?? 0)}</Value>
         </Item>
         <Item>
           <Property>Gross amount of money received for sick days:</Property>
-          <Value>{Data.statistics.grossAmountMoneyForSickDays}</Value>
+          <Value>{Math.round(generalStatistics?.grossAmountMoneyForSickDays ?? 0)}</Value>
         </Item>
         <Item>
           <Property>Net amount of money received for sick days:</Property>
-          <Value>{Data.statistics.nettoAmountMoneyForSickDays}</Value>
+          <Value>{Math.round(generalStatistics?.nettoAmountMoneyForSickDays ?? 0)}</Value>
         </Item>
         <Item>
           <Property>Total money received gross:</Property>
-          <Value>{Data.statistics.totalMoneyEarnedGross}</Value>
+          <Value>{Math.round(generalStatistics?.totalMoneyEarnedGross ?? 0)}</Value>
         </Item>
         <Item>
           <Property>Total money received net:</Property>
-          <Value>{Data.statistics.totalMoneyEarnedNetto}</Value>
+          <Value>{Math.round(generalStatistics?.totalMoneyEarnedNetto ?? 0)}</Value>
         </Item>
         <Item>
           <Property>Total tax paid:</Property>
-          <Value>{Data.statistics.totalTaxPaid}</Value>
+          <Value>{Math.round(generalStatistics?.totalTaxPaid ?? 0)}</Value>
         </Item>
       </List>
     </>

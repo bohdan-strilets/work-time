@@ -2,157 +2,120 @@ import Statistics from 'components/Statistics';
 import Chart from 'components/Statistics/Chart';
 import ModalWindow from 'components/ModalWindow';
 import useModalWindow from 'hooks/useModalWindow';
-import { DataByMonth } from 'components/Statistics/data';
 import { month } from 'utilities/DefaultCalendarData';
-import getRandomColor from 'utilities/getRandomColor';
+import { useGetStatisticsQuery } from '../redux/statistics/statisticsApi';
+import useChart from 'hooks/useChart';
 
 const StatisticsPage: React.FC<{}> = () => {
   const { checkQueryParam, modalsName } = useModalWindow();
+  const { data, isLoading } = useGetStatisticsQuery();
+  const generalStatistics = data?.data?.generalStatistics;
+  const statisticsByMonths = data?.data?.statisticsByMonths;
+  const { createDataForChart, getLabelForChart } = useChart();
 
-  const settingsForDays = {
-    title: 'Statistics by day for the period from January to December 2023',
-    labels: month,
-    datasets: [
-      {
-        label: 'Working',
-        data: DataByMonth.numberWorkingDays.map(item => item.value),
-        backgroundColor: getRandomColor(0.5),
-      },
-      {
-        label: 'Day off',
-        data: DataByMonth.numberDaysOff.map(item => item.value),
-        backgroundColor: getRandomColor(0.5),
-      },
-      {
-        label: 'Vacation',
-        data: DataByMonth.numberVacationDays.map(item => item.value),
-        backgroundColor: getRandomColor(0.5),
-      },
-      {
-        label: 'Sick',
-        data: DataByMonth.numberSickDays.map(item => item.value),
-        backgroundColor: getRandomColor(0.5),
-      },
-      {
-        label: 'Additional',
-        data: DataByMonth.numberAdditionalWorkingDays.map(item => item.value),
-        backgroundColor: getRandomColor(0.5),
-      },
-    ],
-  };
+  const dataForDays = [
+    createDataForChart('Working', 'numberWorkingDays', statisticsByMonths),
+    createDataForChart('Day off', 'numberDaysOff', statisticsByMonths),
+    createDataForChart('Vacation', 'numberVacationDays', statisticsByMonths),
+    createDataForChart('Sick', 'numberSickDays', statisticsByMonths),
+    createDataForChart('Additional', 'numberAdditionalWorkingDays', statisticsByMonths),
+  ];
 
-  const settingsForHours = {
-    title: 'Statistics by hour for the period from January to December 2023',
-    labels: month,
-    datasets: [
-      {
-        label: 'Working',
-        data: DataByMonth.numberWorkingHours.map(item => item.value),
-        backgroundColor: getRandomColor(0.5),
-      },
-      {
-        label: 'Day off',
-        data: DataByMonth.numberFreeHours.map(item => item.value),
-        backgroundColor: getRandomColor(0.5),
-      },
-      {
-        label: 'Vacation',
-        data: DataByMonth.numberVacationHours.map(item => item.value),
-        backgroundColor: getRandomColor(0.5),
-      },
-      {
-        label: 'Sick',
-        data: DataByMonth.numberSickHours.map(item => item.value),
-        backgroundColor: getRandomColor(0.5),
-      },
-      {
-        label: 'Additional',
-        data: DataByMonth.numberAdditionalWorkingHours.map(item => item.value),
-        backgroundColor: getRandomColor(0.5),
-      },
-    ],
-  };
+  const dataForHours = [
+    createDataForChart('Working', 'numberWorkingHours', statisticsByMonths),
+    createDataForChart('Day off', 'numberFreeHours', statisticsByMonths),
+    createDataForChart('Vacation', 'numberVacationHours', statisticsByMonths),
+    createDataForChart('Sick', 'numberSickHours', statisticsByMonths),
+    createDataForChart('Additional', 'numberAdditionalWorkingHours', statisticsByMonths),
+  ];
 
-  const settingsForShifts = {
-    title: 'Statistics by shifts for the period from January to December 2023',
-    labels: month,
-    datasets: [
-      {
-        label: 'First shift',
-        data: DataByMonth.numberFirstShifts.map(item => item.value),
-        backgroundColor: getRandomColor(0.5),
-      },
-      {
-        label: 'Second shift',
-        data: DataByMonth.numberSecondShifts.map(item => item.value),
-        backgroundColor: getRandomColor(0.5),
-      },
-      {
-        label: 'Night hours',
-        data: DataByMonth.numberNightHours.map(item => item.value),
-        backgroundColor: getRandomColor(0.5),
-      },
-    ],
-  };
+  const dataForShifts = [
+    createDataForChart('First shifts', 'numberFirstShifts', statisticsByMonths),
+    createDataForChart('Second shifts', 'numberSecondShifts', statisticsByMonths),
+    createDataForChart('Night hours', 'numberNightHours', statisticsByMonths),
+  ];
 
-  const settingsForMoney = {
-    title: 'Statistics by money for the period from January to December 2023',
-    labels: month,
-    datasets: [
-      {
-        label: 'Work day gross',
-        data: DataByMonth.grossAmountMoneyForWorkingDays.map(item => item.value),
-        backgroundColor: getRandomColor(0.5),
-      },
-      {
-        label: 'Work day netto',
-        data: DataByMonth.nettoAmountMoneyForWorkingDays.map(item => item.value),
-        backgroundColor: getRandomColor(0.5),
-      },
-      {
-        label: 'Vacation day brutto',
-        data: DataByMonth.grossAmountMoneyForVacationDays.map(item => item.value),
-        backgroundColor: getRandomColor(0.5),
-      },
-      {
-        label: 'Vacation day netto',
-        data: DataByMonth.nettoAmountMoneyForVacationDays.map(item => item.value),
-        backgroundColor: getRandomColor(0.5),
-      },
-      {
-        label: 'Sick day brutto',
-        data: DataByMonth.grossAmountMoneyForSickDays.map(item => item.value),
-        backgroundColor: getRandomColor(0.5),
-      },
-      {
-        label: 'Sick day netto',
-        data: DataByMonth.nettoAmountMoneyForSickDays.map(item => item.value),
-        backgroundColor: getRandomColor(0.5),
-      },
-    ],
-  };
+  const dataForMoney = [
+    createDataForChart('Work day gross', 'grossAmountMoneyForWorkingDays', statisticsByMonths),
+    createDataForChart('Work day netto', 'nettoAmountMoneyForWorkingDays', statisticsByMonths),
+    createDataForChart('Vacation day gross', 'grossAmountMoneyForVacationDays', statisticsByMonths),
+    createDataForChart('Vacation day netto', 'nettoAmountMoneyForVacationDays', statisticsByMonths),
+    createDataForChart('Sick day gross', 'grossAmountMoneyForSickDays', statisticsByMonths),
+    createDataForChart('Sick day netto', 'nettoAmountMoneyForSickDays', statisticsByMonths),
+  ];
 
   return (
     <>
-      <Statistics />
+      <Statistics generalStatistics={generalStatistics} isLoading={isLoading} />
       {checkQueryParam(modalsName.chartByDays) && (
         <ModalWindow title="Statistics by day">
-          <Chart settings={settingsForDays} />
+          <Chart
+            title="Statistics by days 2023"
+            labels={getLabelForChart(
+              month,
+              [
+                'numberWorkingDays',
+                'numberDaysOff',
+                'numberVacationDays',
+                'numberSickDays',
+                'numberAdditionalWorkingDays',
+              ],
+              statisticsByMonths,
+            )}
+            datasets={dataForDays}
+          />
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.chartByHours) && (
         <ModalWindow title="Statistics by hour">
-          <Chart settings={settingsForHours} />
+          <Chart
+            title="Statistics by hour for 2023"
+            labels={getLabelForChart(
+              month,
+              [
+                'numberWorkingHours',
+                'numberFreeHours',
+                'numberVacationHours',
+                'numberSickHours',
+                'numberAdditionalWorkingHours',
+              ],
+              statisticsByMonths,
+            )}
+            datasets={dataForHours}
+          />
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.chartByShifts) && (
         <ModalWindow title="Work shift statistics">
-          <Chart settings={settingsForShifts} />
+          <Chart
+            title="Statistics by shifts 2023"
+            labels={getLabelForChart(
+              month,
+              ['numberFirstShifts', 'numberSecondShifts', 'numberNightHours'],
+              statisticsByMonths,
+            )}
+            datasets={dataForShifts}
+          />
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.chartByMoney) && (
         <ModalWindow title="Money statistics">
-          <Chart settings={settingsForMoney} />
+          <Chart
+            title="Statistics by money 2023"
+            labels={getLabelForChart(
+              month,
+              [
+                'grossAmountMoneyForWorkingDays',
+                'nettoAmountMoneyForWorkingDays',
+                'grossAmountMoneyForVacationDays',
+                'nettoAmountMoneyForVacationDays',
+                'grossAmountMoneyForSickDays',
+                'nettoAmountMoneyForSickDays',
+              ],
+              statisticsByMonths,
+            )}
+            datasets={dataForMoney}
+          />
         </ModalWindow>
       )}
     </>
