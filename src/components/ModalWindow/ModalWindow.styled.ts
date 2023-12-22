@@ -19,7 +19,7 @@ export const Body = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: 300px;
+  width: 80‰;
   max-height: 600px;
   overflow-y: auto;
 
