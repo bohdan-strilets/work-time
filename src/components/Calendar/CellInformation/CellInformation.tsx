@@ -5,7 +5,7 @@ import Tablet from './Responsiv/Tablet';
 import Desktop from './Responsiv/Desktop';
 import { CellInformationProps } from 'types/props/CellInformationProps';
 
-const Auth: React.FC<CellInformationProps> = ({ dayInfo, date }) => {
+const CellInformation: React.FC<CellInformationProps> = ({ dayInfo, date }) => {
   return (
     <Media
       queries={{
@@ -25,4 +25,4 @@ const Auth: React.FC<CellInformationProps> = ({ dayInfo, date }) => {
   );
 };
 
-export default Auth;
+export default CellInformation;

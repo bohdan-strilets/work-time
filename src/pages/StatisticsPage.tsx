@@ -1,5 +1,6 @@
 import Statistics from 'components/Statistics';
 import Chart from 'components/Statistics/Chart';
+import Controllers from 'components/Statistics/Controllers';
 import ModalWindow from 'components/ModalWindow';
 import useModalWindow from 'hooks/useModalWindow';
 import { month } from 'utilities/DefaultCalendarData';
@@ -9,9 +10,9 @@ import useChart from 'hooks/useChart';
 const StatisticsPage: React.FC<{}> = () => {
   const { checkQueryParam, modalsName } = useModalWindow();
   const { data, isLoading } = useGetStatisticsQuery();
-  const generalStatistics = data?.data?.generalStatistics;
   const statisticsByMonths = data?.data?.statisticsByMonths;
-  const { createDataForChart, getLabelForChart } = useChart();
+  const { createDataForChart, getLabelForChart, getFilterDate, calculateStatisticsByMonth } =
+    useChart();
 
   const dataForDays = [
     createDataForChart('Working', 'numberWorkingDays', statisticsByMonths),
@@ -46,7 +47,12 @@ const StatisticsPage: React.FC<{}> = () => {
 
   return (
     <>
-      <Statistics generalStatistics={generalStatistics} isLoading={isLoading} />
+      <Controllers getFilterDate={getFilterDate} />
+      <Statistics
+        statisticsByMonths={statisticsByMonths}
+        calculateStatisticsByMonth={calculateStatisticsByMonth}
+        isLoading={isLoading}
+      />
       {checkQueryParam(modalsName.chartByDays) && (
         <ModalWindow title="Statistics by day">
           <Chart

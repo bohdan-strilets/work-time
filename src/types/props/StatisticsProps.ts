@@ -1,6 +1,7 @@
-import { GeneralStatistics } from 'types/types/StatisticsType';
+import { StatisticsByMonths, ValueByMonth } from 'types/types/StatisticsType';
 
 export type StatisticsProps = {
-  generalStatistics?: GeneralStatistics;
+  statisticsByMonths?: StatisticsByMonths;
+  calculateStatisticsByMonth: (stats?: ValueByMonth[]) => number;
   isLoading: boolean;
 };

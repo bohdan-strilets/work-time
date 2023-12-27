@@ -22,7 +22,7 @@ import ChangePasswordForm from 'components/Forms/ChangePasswordForm';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { UserResponseType } from 'types/types/UserResponseType';
 
-const Auth: React.FC<{}> = () => {
+const Profile: React.FC<{}> = () => {
   const user = useAppSelector(getUser);
   const firstName = user?.firstName;
   const lastName = user?.lastName;
@@ -173,4 +173,4 @@ const Auth: React.FC<{}> = () => {
   );
 };
 
-export default Auth;
+export default Profile;

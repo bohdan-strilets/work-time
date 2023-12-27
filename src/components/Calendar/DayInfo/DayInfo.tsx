@@ -1,11 +1,11 @@
-import Media from "react-media";
-import ScreenWidth from "utilities/ScreenWidth";
-import Mobile from "./Responsiv/Mobile";
-import Tablet from "./Responsiv/Tablet";
-import Desktop from "./Responsiv/Desktop";
-import { DayInfoProps } from "types/props/DayInfoProps";
+import Media from 'react-media';
+import ScreenWidth from 'utilities/ScreenWidth';
+import Mobile from './Responsiv/Mobile';
+import Tablet from './Responsiv/Tablet';
+import Desktop from './Responsiv/Desktop';
+import { DayInfoProps } from 'types/props/DayInfoProps';
 
-const Auth: React.FC<DayInfoProps> = ({
+const DayInfo: React.FC<DayInfoProps> = ({
   status,
   numberHoursWorked,
   date,
@@ -22,7 +22,7 @@ const Auth: React.FC<DayInfoProps> = ({
         large: `(min-width: ${ScreenWidth.desktop})`,
       }}
     >
-      {(matches) => (
+      {matches => (
         <>
           {matches.small && (
             <Mobile
@@ -63,4 +63,4 @@ const Auth: React.FC<DayInfoProps> = ({
   );
 };
 
-export default Auth;
+export default DayInfo;

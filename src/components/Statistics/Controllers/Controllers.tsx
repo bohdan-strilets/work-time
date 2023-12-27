@@ -3,8 +3,9 @@ import ScreenWidth from 'utilities/ScreenWidth';
 import Mobile from './Responsiv/Mobile';
 import Tablet from './Responsiv/Tablet';
 import Desktop from './Responsiv/Desktop';
+import { ControllersForStatsProps } from 'types/props/ControllersForStatsProps';
 
-const ResetPasswordForm: React.FC<{}> = () => {
+const Controllers: React.FC<ControllersForStatsProps> = ({ getFilterDate }) => {
   return (
     <Media
       queries={{
@@ -15,13 +16,13 @@ const ResetPasswordForm: React.FC<{}> = () => {
     >
       {matches => (
         <>
-          {matches.small && <Mobile />}
-          {matches.medium && <Tablet />}
-          {matches.large && <Desktop />}
+          {matches.small && <Mobile getFilterDate={getFilterDate} />}
+          {matches.medium && <Tablet getFilterDate={getFilterDate} />}
+          {matches.large && <Desktop getFilterDate={getFilterDate} />}
         </>
       )}
     </Media>
   );
 };
 
-export default ResetPasswordForm;
+export default Controllers;
