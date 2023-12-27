@@ -1,30 +1,3 @@
-export type GeneralStatistics = {
-  numberWorkingDays: number;
-  numberDaysOff: number;
-  numberVacationDays: number;
-  numberSickDays: number;
-  numberAdditionalWorkingDays: number;
-  numberWorkingHours: number;
-  numberFreeHours: number;
-  numberVacationHours: number;
-  numberSickHours: number;
-  numberAdditionalWorkingHours: number;
-  totalDays: number;
-  totalHours: number;
-  numberFirstShifts: number;
-  numberSecondShifts: number;
-  numberNightHours: number;
-  grossAmountMoneyForWorkingDays: number;
-  nettoAmountMoneyForWorkingDays: number;
-  grossAmountMoneyForVacationDays: number;
-  nettoAmountMoneyForVacationDays: number;
-  grossAmountMoneyForSickDays: number;
-  nettoAmountMoneyForSickDays: number;
-  totalMoneyEarnedGross: number;
-  totalMoneyEarnedNetto: number;
-  totalTaxPaid: number;
-};
-
 export type InformationAboutStatisticsDay = {
   dayId: string;
   value: number;
@@ -66,7 +39,6 @@ export type StatisticsByMonths = {
 export type StatisticsType = {
   _id: string;
   owner: string;
-  generalStatistics: GeneralStatistics;
   statisticsByMonths: StatisticsByMonths;
   createdAt: string;
   updatedAt: string;
