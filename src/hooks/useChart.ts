@@ -174,7 +174,7 @@ export const useChart = ({ statisticsByMonths }: HookProps) => {
         borderWidth: 0,
       },
     ],
-    forMonays: [
+    forMonay: [
       {
         label: 'Amount',
         data: [

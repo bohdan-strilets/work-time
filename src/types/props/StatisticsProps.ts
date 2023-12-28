@@ -9,7 +9,7 @@ export type StatisticsProps = {
     forDays: DiagramData[];
     forHours: DiagramData[];
     forShifts: DiagramData[];
-    forMonays: DiagramData[];
+    forMonay: DiagramData[];
   };
 };
 

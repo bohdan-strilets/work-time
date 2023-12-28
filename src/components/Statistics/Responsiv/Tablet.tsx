@@ -67,11 +67,13 @@ const Tablet: React.FC<StatisticsProps> = ({
             </Item>
           </List>
         </Data>
-        <Diagram
-          labels={['Work', 'Day off', 'Vacation', 'Sick leave', 'Additional work']}
-          datasets={dataForChartGraph.forDays}
-          width="400px"
-        />
+        {dataForChartGraph.forDays[0].data.length > 0 && (
+          <Diagram
+            labels={['Work', 'Day off', 'Vacation', 'Sick leave', 'Additional work']}
+            datasets={dataForChartGraph.forDays}
+            width="400px"
+          />
+        )}
       </Group>
       <Group>
         <Data>
@@ -114,11 +116,13 @@ const Tablet: React.FC<StatisticsProps> = ({
             </Item>
           </List>
         </Data>
-        <Diagram
-          labels={['Work', 'Day off', 'Vacation', 'Sick leave', 'Additional work']}
-          datasets={dataForChartGraph.forHours}
-          width="400px"
-        />
+        {dataForChartGraph.forHours[0].data.length > 0 && (
+          <Diagram
+            labels={['Work', 'Day off', 'Vacation', 'Sick leave', 'Additional work']}
+            datasets={dataForChartGraph.forHours}
+            width="400px"
+          />
+        )}
       </Group>
       <Group>
         <Data>
@@ -147,11 +151,13 @@ const Tablet: React.FC<StatisticsProps> = ({
             </Item>
           </List>
         </Data>
-        <Diagram
-          labels={['First shifts', 'Second shifts', 'Night hours']}
-          datasets={dataForChartGraph.forShifts}
-          width="400px"
-        />
+        {dataForChartGraph.forShifts[0].data.length > 0 && (
+          <Diagram
+            labels={['First shifts', 'Second shifts', 'Night hours']}
+            datasets={dataForChartGraph.forShifts}
+            width="400px"
+          />
+        )}
       </Group>
       <Group>
         <Data>
@@ -216,11 +222,13 @@ const Tablet: React.FC<StatisticsProps> = ({
             </Item>
           </List>
         </Data>
-        <Diagram
-          labels={['Work', 'Day off', 'Vacation', 'Sick leave', 'Additional work']}
-          datasets={dataForChartGraph.forMonays}
-          width="400px"
-        />
+        {dataForChartGraph.forMonay[0].data.length > 0 && (
+          <Diagram
+            labels={['Work', 'Day off', 'Vacation', 'Sick leave', 'Additional work']}
+            datasets={dataForChartGraph.forMonay}
+            width="400px"
+          />
+        )}
       </Group>
     </>
   );
