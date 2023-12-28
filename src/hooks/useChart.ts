@@ -3,8 +3,9 @@ import { StatisticsByMonths } from 'types/types/StatisticsType';
 import getRandomColor from 'utilities/getRandomColor';
 import { FilterDateType } from 'types/types/FilterDateType';
 import { ValueByMonth } from 'types/types/StatisticsType';
+import { HookProps } from 'types/props/StatisticsProps';
 
-export const useChart = () => {
+export const useChart = ({ statisticsByMonths }: HookProps) => {
   const [startFilter, setStartFilter] = useState<null | FilterDateType>(null);
   const [endFilter, setEndFilter] = useState<null | FilterDateType>(null);
 
@@ -82,6 +83,121 @@ export const useChart = () => {
     return Math.round(result ?? 0);
   };
 
+  const barGraphData = {
+    forDays: [
+      createDataForChart('Working', 'numberWorkingDays', statisticsByMonths),
+      createDataForChart('Day off', 'numberDaysOff', statisticsByMonths),
+      createDataForChart('Vacation', 'numberVacationDays', statisticsByMonths),
+      createDataForChart('Sick', 'numberSickDays', statisticsByMonths),
+      createDataForChart('Additional', 'numberAdditionalWorkingDays', statisticsByMonths),
+    ],
+    forHours: [
+      createDataForChart('Working', 'numberWorkingHours', statisticsByMonths),
+      createDataForChart('Day off', 'numberFreeHours', statisticsByMonths),
+      createDataForChart('Vacation', 'numberVacationHours', statisticsByMonths),
+      createDataForChart('Sick', 'numberSickHours', statisticsByMonths),
+      createDataForChart('Additional', 'numberAdditionalWorkingHours', statisticsByMonths),
+    ],
+    forShifts: [
+      createDataForChart('First shifts', 'numberFirstShifts', statisticsByMonths),
+      createDataForChart('Second shifts', 'numberSecondShifts', statisticsByMonths),
+      createDataForChart('Night hours', 'numberNightHours', statisticsByMonths),
+    ],
+    forMoney: [
+      createDataForChart('Work day gross', 'grossAmountMoneyForWorkingDays', statisticsByMonths),
+      createDataForChart('Work day netto', 'nettoAmountMoneyForWorkingDays', statisticsByMonths),
+      createDataForChart(
+        'Vacation day gross',
+        'grossAmountMoneyForVacationDays',
+        statisticsByMonths,
+      ),
+      createDataForChart(
+        'Vacation day netto',
+        'nettoAmountMoneyForVacationDays',
+        statisticsByMonths,
+      ),
+      createDataForChart('Sick day gross', 'grossAmountMoneyForSickDays', statisticsByMonths),
+      createDataForChart('Sick day netto', 'nettoAmountMoneyForSickDays', statisticsByMonths),
+    ],
+  };
+
+  const dataForChartGraph = {
+    forDays: [
+      {
+        label: 'Amount',
+        data: [
+          calculateStatisticsByMonth(statisticsByMonths?.numberWorkingDays),
+          calculateStatisticsByMonth(statisticsByMonths?.numberDaysOff),
+          calculateStatisticsByMonth(statisticsByMonths?.numberVacationDays),
+          calculateStatisticsByMonth(statisticsByMonths?.numberSickDays),
+          calculateStatisticsByMonth(statisticsByMonths?.numberAdditionalWorkingDays),
+        ],
+        backgroundColor: [
+          getRandomColor(0.5),
+          getRandomColor(0.5),
+          getRandomColor(0.5),
+          getRandomColor(0.5),
+          getRandomColor(0.5),
+        ],
+        borderWidth: 0,
+      },
+    ],
+    forHours: [
+      {
+        label: 'Amount',
+        data: [
+          calculateStatisticsByMonth(statisticsByMonths?.numberWorkingHours),
+          calculateStatisticsByMonth(statisticsByMonths?.numberFreeHours),
+          calculateStatisticsByMonth(statisticsByMonths?.numberVacationHours),
+          calculateStatisticsByMonth(statisticsByMonths?.numberSickHours),
+          calculateStatisticsByMonth(statisticsByMonths?.numberAdditionalWorkingHours),
+        ],
+        backgroundColor: [
+          getRandomColor(0.5),
+          getRandomColor(0.5),
+          getRandomColor(0.5),
+          getRandomColor(0.5),
+          getRandomColor(0.5),
+        ],
+        borderWidth: 0,
+      },
+    ],
+    forShifts: [
+      {
+        label: 'Amount',
+        data: [
+          calculateStatisticsByMonth(statisticsByMonths?.numberFirstShifts),
+          calculateStatisticsByMonth(statisticsByMonths?.numberSecondShifts),
+          calculateStatisticsByMonth(statisticsByMonths?.numberNightHours),
+        ],
+        backgroundColor: [getRandomColor(0.5), getRandomColor(0.5), getRandomColor(0.5)],
+        borderWidth: 0,
+      },
+    ],
+    forMonays: [
+      {
+        label: 'Amount',
+        data: [
+          calculateStatisticsByMonth(statisticsByMonths?.grossAmountMoneyForWorkingDays),
+          calculateStatisticsByMonth(statisticsByMonths?.nettoAmountMoneyForWorkingDays),
+          calculateStatisticsByMonth(statisticsByMonths?.grossAmountMoneyForVacationDays),
+          calculateStatisticsByMonth(statisticsByMonths?.nettoAmountMoneyForVacationDays),
+          calculateStatisticsByMonth(statisticsByMonths?.grossAmountMoneyForSickDays),
+          calculateStatisticsByMonth(statisticsByMonths?.nettoAmountMoneyForSickDays),
+        ],
+        backgroundColor: [
+          getRandomColor(0.5),
+          getRandomColor(0.5),
+          getRandomColor(0.5),
+          getRandomColor(0.5),
+          getRandomColor(0.5),
+          getRandomColor(0.5),
+        ],
+        borderWidth: 0,
+      },
+    ],
+  };
+
   return {
     createDataForChart,
     getLabelForChart,
@@ -89,6 +205,8 @@ export const useChart = () => {
     startFilter,
     endFilter,
     calculateStatisticsByMonth,
+    barGraphData,
+    dataForChartGraph,
   };
 };
 

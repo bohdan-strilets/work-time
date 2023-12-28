@@ -11,39 +11,15 @@ const StatisticsPage: React.FC<{}> = () => {
   const { checkQueryParam, modalsName } = useModalWindow();
   const { data, isLoading } = useGetStatisticsQuery();
   const statisticsByMonths = data?.data?.statisticsByMonths;
-  const { createDataForChart, getLabelForChart, getFilterDate, calculateStatisticsByMonth } =
-    useChart();
-
-  const dataForDays = [
-    createDataForChart('Working', 'numberWorkingDays', statisticsByMonths),
-    createDataForChart('Day off', 'numberDaysOff', statisticsByMonths),
-    createDataForChart('Vacation', 'numberVacationDays', statisticsByMonths),
-    createDataForChart('Sick', 'numberSickDays', statisticsByMonths),
-    createDataForChart('Additional', 'numberAdditionalWorkingDays', statisticsByMonths),
-  ];
-
-  const dataForHours = [
-    createDataForChart('Working', 'numberWorkingHours', statisticsByMonths),
-    createDataForChart('Day off', 'numberFreeHours', statisticsByMonths),
-    createDataForChart('Vacation', 'numberVacationHours', statisticsByMonths),
-    createDataForChart('Sick', 'numberSickHours', statisticsByMonths),
-    createDataForChart('Additional', 'numberAdditionalWorkingHours', statisticsByMonths),
-  ];
-
-  const dataForShifts = [
-    createDataForChart('First shifts', 'numberFirstShifts', statisticsByMonths),
-    createDataForChart('Second shifts', 'numberSecondShifts', statisticsByMonths),
-    createDataForChart('Night hours', 'numberNightHours', statisticsByMonths),
-  ];
-
-  const dataForMoney = [
-    createDataForChart('Work day gross', 'grossAmountMoneyForWorkingDays', statisticsByMonths),
-    createDataForChart('Work day netto', 'nettoAmountMoneyForWorkingDays', statisticsByMonths),
-    createDataForChart('Vacation day gross', 'grossAmountMoneyForVacationDays', statisticsByMonths),
-    createDataForChart('Vacation day netto', 'nettoAmountMoneyForVacationDays', statisticsByMonths),
-    createDataForChart('Sick day gross', 'grossAmountMoneyForSickDays', statisticsByMonths),
-    createDataForChart('Sick day netto', 'nettoAmountMoneyForSickDays', statisticsByMonths),
-  ];
+  const {
+    getLabelForChart,
+    getFilterDate,
+    calculateStatisticsByMonth,
+    barGraphData,
+    dataForChartGraph,
+  } = useChart({
+    statisticsByMonths,
+  });
 
   return (
     <>
@@ -52,11 +28,12 @@ const StatisticsPage: React.FC<{}> = () => {
         statisticsByMonths={statisticsByMonths}
         calculateStatisticsByMonth={calculateStatisticsByMonth}
         isLoading={isLoading}
+        dataForChartGraph={dataForChartGraph}
       />
       {checkQueryParam(modalsName.chartByDays) && (
-        <ModalWindow title="Statistics by day">
+        <ModalWindow title="Statistics by days">
           <Chart
-            title="Statistics by days 2023"
+            title="Statistics by days"
             labels={getLabelForChart(
               month,
               [
@@ -68,14 +45,14 @@ const StatisticsPage: React.FC<{}> = () => {
               ],
               statisticsByMonths,
             )}
-            datasets={dataForDays}
+            datasets={barGraphData.forDays}
           />
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.chartByHours) && (
-        <ModalWindow title="Statistics by hour">
+        <ModalWindow title="Statistics by hours">
           <Chart
-            title="Statistics by hour for 2023"
+            title="Statistics by hours"
             labels={getLabelForChart(
               month,
               [
@@ -87,27 +64,27 @@ const StatisticsPage: React.FC<{}> = () => {
               ],
               statisticsByMonths,
             )}
-            datasets={dataForHours}
+            datasets={barGraphData.forHours}
           />
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.chartByShifts) && (
         <ModalWindow title="Work shift statistics">
           <Chart
-            title="Statistics by shifts 2023"
+            title="Statistics by shifts"
             labels={getLabelForChart(
               month,
               ['numberFirstShifts', 'numberSecondShifts', 'numberNightHours'],
               statisticsByMonths,
             )}
-            datasets={dataForShifts}
+            datasets={barGraphData.forShifts}
           />
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.chartByMoney) && (
         <ModalWindow title="Money statistics">
           <Chart
-            title="Statistics by money 2023"
+            title="Statistics by moneys"
             labels={getLabelForChart(
               month,
               [
@@ -120,7 +97,7 @@ const StatisticsPage: React.FC<{}> = () => {
               ],
               statisticsByMonths,
             )}
-            datasets={dataForMoney}
+            datasets={barGraphData.forMoney}
           />
         </ModalWindow>
       )}

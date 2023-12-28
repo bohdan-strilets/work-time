@@ -1,11 +1,57 @@
 import styled from '@emotion/styled';
 import ScreenWidth from 'utilities/ScreenWidth';
 
-export const List = styled.ul`
-  margin-bottom: var(--large-indent);
+export const HeaderWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--medium-indent);
 
-  :last-child {
-    margin-bottom: 0;
+  @media screen and (min-width: ${ScreenWidth.desktop}) {
+    margin-bottom: var(--large-indent);
+  }
+`;
+
+export const Title = styled.p`
+  font-size: 24px;
+  font-weight: 900;
+
+  @media screen and (min-width: ${ScreenWidth.tablet}) {
+    font-size: 30px;
+  }
+`;
+
+export const Group = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-bottom: var(--medium-indent);
+  padding: var(--small-indent);
+
+  border-radius: 5px;
+  box-shadow: var(--main-shadow);
+
+  @media screen and (min-width: ${ScreenWidth.desktop}) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: var(--medium-indent);
+  }
+`;
+
+export const Data = styled.div`
+  width: 100%;
+
+  @media screen and (min-width: ${ScreenWidth.desktop}) {
+    width: 60%;
+  }
+`;
+
+export const List = styled.ul`
+  margin-bottom: var(--small-indent);
+
+  @media screen and (min-width: ${ScreenWidth.tablet}) {
+    margin-bottom: var(--medium-indent);
   }
 `;
 
@@ -40,21 +86,5 @@ export const Value = styled.p`
 
   @media screen and (max-width: ${ScreenWidth.preTablet}) {
     padding: 0 0 0 var(--medium-indent);
-  }
-`;
-
-export const HeaderWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-export const Title = styled.p`
-  font-size: 24px;
-  font-weight: 900;
-  margin-bottom: var(--small-indent);
-
-  @media screen and (min-width: ${ScreenWidth.tablet}) {
-    font-size: 30px;
   }
 `;
