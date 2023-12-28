@@ -2,6 +2,8 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from 'components/Layout';
 import Loader from 'components/UI/Loader';
+import PrivateRoute from 'components/PrivateRoute';
+import PublicRoute from 'components/PublicRoute';
 import useRefresh from 'hooks/useRefresh';
 
 const HomePage = lazy(() => import('pages/HomePage'));
@@ -22,14 +24,70 @@ const App: React.FC<{}> = () => {
         <Layout>
           <Suspense fallback={<Loader />}>
             <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/auth" element={<AuthPage />} />
-              <Route path="/calendar" element={<CalendarPage />} />
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path="/about-us" element={<AboutPage />} />
-              <Route path="/auth/reset-password" element={<ResetPasswordPage />} />
-              <Route path="/statistics" element={<StatisticsPage />} />
-              <Route path="*" element={<NotFoundPage />} />
+              <Route
+                path="/"
+                element={
+                  <PublicRoute>
+                    <HomePage />
+                  </PublicRoute>
+                }
+              />
+              <Route
+                path="/auth"
+                element={
+                  <PublicRoute restricted={true}>
+                    <AuthPage />
+                  </PublicRoute>
+                }
+              />
+              <Route
+                path="/calendar"
+                element={
+                  <PrivateRoute>
+                    <CalendarPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <PrivateRoute>
+                    <ProfilePage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/about-us"
+                element={
+                  <PrivateRoute>
+                    <AboutPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/auth/reset-password"
+                element={
+                  <PublicRoute restricted={true}>
+                    <ResetPasswordPage />
+                  </PublicRoute>
+                }
+              />
+              <Route
+                path="/statistics"
+                element={
+                  <PrivateRoute>
+                    <StatisticsPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="*"
+                element={
+                  <PublicRoute>
+                    <NotFoundPage />
+                  </PublicRoute>
+                }
+              />
             </Routes>
           </Suspense>
         </Layout>
