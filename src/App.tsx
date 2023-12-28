@@ -11,6 +11,7 @@ const ProfilePage = lazy(() => import('pages/ProfilePage'));
 const AboutPage = lazy(() => import('pages/AboutPage'));
 const ResetPasswordPage = lazy(() => import('pages/ResetPasswordPage'));
 const StatisticsPage = lazy(() => import('pages/StatisticsPage'));
+const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
 const App: React.FC<{}> = () => {
   const { isRefreshing } = useRefresh();
@@ -28,6 +29,7 @@ const App: React.FC<{}> = () => {
               <Route path="/about-us" element={<AboutPage />} />
               <Route path="/auth/reset-password" element={<ResetPasswordPage />} />
               <Route path="/statistics" element={<StatisticsPage />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </Suspense>
         </Layout>
