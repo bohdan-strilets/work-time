@@ -3,12 +3,14 @@ import { persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 
 import { persisteUserReducer } from './user/userSlice';
 import { calendarApi } from './calendar/calendarApi';
 import { statisticsApi } from './statistics/statisticsApi';
+import { persisteSettingsReducer } from './settings/settingsSlice';
 
 export const store = configureStore({
   reducer: {
     user: persisteUserReducer,
     [calendarApi.reducerPath]: calendarApi.reducer,
     [statisticsApi.reducerPath]: statisticsApi.reducer,
+    settings: persisteSettingsReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

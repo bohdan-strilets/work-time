@@ -9,3 +9,9 @@ export const List = styled.ul`
   align-items: center;
   justify-content: space-between;
 `;
+
+export const Item = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

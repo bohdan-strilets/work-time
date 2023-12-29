@@ -2,39 +2,33 @@ import styled from '@emotion/styled';
 import ScreenWidth from 'utilities/ScreenWidth';
 
 export const Button = styled.button`
-  position: fixed;
-  bottom: 12px;
-  right: 12px;
-
   display: flex;
   align-items: center;
   justify-content: center;
 
   width: 50px;
   height: 30px;
+  margin-right: 10px;
+  padding: 0;
 
-  background-color: var(--gray-color);
-  border: none;
-  box-shadow: var(--main-shadow);
   outline: none;
-  border-radius: 3px;
+  border: none;
+  background-color: transparent;
+  color: var(--black-color);
 
+  transition: color var(--hover-effect);
   cursor: pointer;
-  transition: background-color var(--hover-effect), color var(--hover-effect);
 
   :hover,
   :focus {
-    background-color: var(--accent-color);
-    color: var(--white-color);
+    color: var(--accent-color);
   }
 
   @media screen and (min-width: ${ScreenWidth.tablet}) {
-    bottom: 18px;
-    right: 18px;
+    margin-right: var(--small-indent);
   }
 
   @media screen and (min-width: ${ScreenWidth.desktop}) {
-    bottom: 25px;
-    right: 25px;
+    margin-right: var(--medium-indent);
   }
 `;

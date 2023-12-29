@@ -5,11 +5,12 @@ import Button from 'components/UI/Button';
 import Menu from 'components/Menu';
 import MobileMenu from 'components/Menu/MobileMenu';
 import UserInformation from 'components/UserInformation';
+import ThemeChangeBtn from 'components/UI/ThemeChangeBtn';
 import useMenu from 'hooks/useMenu';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { getIsLoggedIn } from '../../redux/user/userSelectors';
 import ScreenWidth from 'utilities/ScreenWidth';
-import { Wrapper, List } from './Header.styled';
+import { Wrapper, List, Item } from './Header.styled';
 
 const Header: React.FC<{}> = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const Header: React.FC<{}> = () => {
     <>
       <Wrapper>
         <List>
-          <li>
+          <Item>
             <Button
               type="button"
               icon={<CgMenuGridO size={24} />}
@@ -28,8 +29,9 @@ const Header: React.FC<{}> = () => {
               height="35px"
               onClick={openMenu}
             />
-          </li>
-          <li>
+          </Item>
+          <Item>
+            <ThemeChangeBtn />
             {isLoggedIn ? (
               <UserInformation />
             ) : (
@@ -41,7 +43,7 @@ const Header: React.FC<{}> = () => {
                 onClick={() => navigate('auth')}
               />
             )}
-          </li>
+          </Item>
         </List>
       </Wrapper>
       {isOpen && (
