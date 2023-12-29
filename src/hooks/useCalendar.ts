@@ -162,6 +162,13 @@ export const useCalendar = () => {
     navigate('/calendar');
   };
 
+  const backToCurrentDate = () => {
+    const year = new Date().getFullYear();
+    const month = new Date().getMonth();
+    setSelectedMonth(month);
+    setSelectedYear(year.toString());
+  };
+
   return {
     handlePrevMonth,
     handleChangeYear,
@@ -180,6 +187,7 @@ export const useCalendar = () => {
     deleteInformationForDay,
     navigate,
     dayInfoId,
+    backToCurrentDate,
   };
 };
 

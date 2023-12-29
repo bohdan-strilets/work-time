@@ -10,7 +10,7 @@ import useMenu from 'hooks/useMenu';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { getIsLoggedIn } from '../../redux/user/userSelectors';
 import ScreenWidth from 'utilities/ScreenWidth';
-import { Wrapper, List, Item } from './Header.styled';
+import { Wrapper, Line, List, Item } from './Header.styled';
 
 const Header: React.FC<{}> = () => {
   const navigate = useNavigate();
@@ -46,6 +46,7 @@ const Header: React.FC<{}> = () => {
           </Item>
         </List>
       </Wrapper>
+      <Line />
       {isOpen && (
         <Menu
           closeMenu={closeMenu}

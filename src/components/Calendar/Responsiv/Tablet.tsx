@@ -33,6 +33,7 @@ const Tablet: React.FC<{}> = () => {
     deleteInformationForDay,
     navigate,
     dayInfoId,
+    backToCurrentDate,
   } = useCalendar();
   const { checkQueryParam, modalsName } = useModalWindow();
 
@@ -46,6 +47,7 @@ const Tablet: React.FC<{}> = () => {
           handleChangeYear={handleChangeYear}
           date={date}
           handleNextMonth={handleNextMonth}
+          backToCurrentDate={backToCurrentDate}
         />
 
         <Header />

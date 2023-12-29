@@ -1,10 +1,9 @@
-import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io';
-import CalendarButton from '../CalendarButton';
-import DropdownList from 'components/UI/DropdownList';
-import { month } from 'utilities/DefaultCalendarData';
+import Media from 'react-media';
+import ScreenWidth from 'utilities/ScreenWidth';
+import Mobile from './Responsiv/Mobile';
+import Tablet from './Responsiv/Tablet';
+import Desktop from './Responsiv/Desktop';
 import { ControllersProps } from 'types/props/ControllersProps';
-import YearOptions from 'utilities/YearOptions';
-import { Wrapper, CurrentDate, Group } from './Controllers.styled';
 
 const Controllers: React.FC<ControllersProps> = ({
   handlePrevMonth,
@@ -13,42 +12,54 @@ const Controllers: React.FC<ControllersProps> = ({
   handleChangeYear,
   date,
   handleNextMonth,
+  backToCurrentDate,
 }) => {
   return (
-    <Wrapper>
-      <CalendarButton
-        handleClichk={handlePrevMonth}
-        width="100px"
-        background="var(--black-color)"
-        color="var(--white-color)"
-      >
-        <IoMdArrowDropleft size={24} />
-      </CalendarButton>
-      <Group>
-        <CurrentDate>
-          {month[selectedMonth]} {selectedYear}
-        </CurrentDate>
-        <DropdownList
-          type="single"
-          name="selectedYear"
-          options={YearOptions}
-          defaultValue={date.getFullYear().toString()}
-          onChange={handleChangeYear}
-          buttonlabel={date.getFullYear().toString()}
-          height="30px"
-          width="150px"
-          position="absolute"
-        />
-      </Group>
-      <CalendarButton
-        handleClichk={handleNextMonth}
-        width="100px"
-        background="var(--black-color)"
-        color="var(--white-color)"
-      >
-        <IoMdArrowDropright size={24} />
-      </CalendarButton>
-    </Wrapper>
+    <Media
+      queries={{
+        small: `(max-width: ${ScreenWidth.preTablet})`,
+        medium: `(min-width: ${ScreenWidth.tablet}) and (max-width: ${ScreenWidth.preDesktop})`,
+        large: `(min-width: ${ScreenWidth.desktop})`,
+      }}
+    >
+      {matches => (
+        <>
+          {matches.small && (
+            <Mobile
+              handlePrevMonth={handlePrevMonth}
+              selectedMonth={selectedMonth}
+              selectedYear={selectedYear}
+              handleChangeYear={handleChangeYear}
+              date={date}
+              handleNextMonth={handleNextMonth}
+              backToCurrentDate={backToCurrentDate}
+            />
+          )}
+          {matches.medium && (
+            <Tablet
+              handlePrevMonth={handlePrevMonth}
+              selectedMonth={selectedMonth}
+              selectedYear={selectedYear}
+              handleChangeYear={handleChangeYear}
+              date={date}
+              handleNextMonth={handleNextMonth}
+              backToCurrentDate={backToCurrentDate}
+            />
+          )}
+          {matches.large && (
+            <Desktop
+              handlePrevMonth={handlePrevMonth}
+              selectedMonth={selectedMonth}
+              selectedYear={selectedYear}
+              handleChangeYear={handleChangeYear}
+              date={date}
+              handleNextMonth={handleNextMonth}
+              backToCurrentDate={backToCurrentDate}
+            />
+          )}
+        </>
+      )}
+    </Media>
   );
 };
 

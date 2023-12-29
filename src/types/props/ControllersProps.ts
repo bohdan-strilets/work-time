@@ -5,4 +5,10 @@ export type ControllersProps = {
   handleChangeYear: (year: string | string[]) => void;
   date: Date;
   handleNextMonth: () => void;
+  backToCurrentDate: () => void;
+};
+
+export type DateWindowProps = {
+  width?: string;
+  margin?: string;
 };
