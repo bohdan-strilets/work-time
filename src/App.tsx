@@ -1,10 +1,13 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from 'components/Layout';
 import Loader from 'components/UI/Loader';
 import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
 import useRefresh from 'hooks/useRefresh';
+import { ThemeEnum } from 'types/enums/ThemeEnum';
+import { useAppSelector } from 'hooks/useAppSelector';
+import { getTheme } from './redux/settings/settingsSelectors';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 const AuthPage = lazy(() => import('pages/AuthPage'));
@@ -17,6 +20,11 @@ const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
 const App: React.FC<{}> = () => {
   const { isRefreshing } = useRefresh();
+  const theme = useAppSelector(getTheme);
+
+  useEffect(() => {
+    document.body.className = theme === ThemeEnum.Dark ? 'dark' : '';
+  }, [theme]);
 
   return (
     <>

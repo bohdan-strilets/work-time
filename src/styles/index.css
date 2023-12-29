@@ -18,8 +18,20 @@
   --medium-indent: 30px;
   --large-indent: 50px;
 
-  --main-font: "Montserrat", sans-serif;
-  --second-font: "Young Serif", serif;
+  --main-font: 'Montserrat', sans-serif;
+  --second-font: 'Young Serif', serif;
+}
+body.dark {
+  --white-color: #1c1c1c;
+  --black-color: #dedede;
+  --gray-color: #b5b5b5;
+  --green-color: #16913b;
+  --accent-color: #a12f49;
+  --black-transparent-color: rgba(255, 255, 255, 0.5);
+  --white-transparent-color: rgba(0, 0, 0, 0.5);
+
+  --main-shadow: 1px 1px 3px 0px var(--white-transparent-color);
+  --main-gradient: linear-gradient(to right, var(--accent-color), #ab2e18);
 }
 
 * {

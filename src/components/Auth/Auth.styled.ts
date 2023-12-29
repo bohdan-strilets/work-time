@@ -82,9 +82,9 @@ export const Button = styled.button`
   width: 280px;
   height: 35px;
 
-  background-color: transparent;
-  border: 1px solid var(--gray-color);
-  color: var(--white-color);
+  background-color: var(--white-color);
+  border: none;
+  color: var(--black-color);
   outline: none;
 
   cursor: pointer;

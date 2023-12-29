@@ -1,5 +1,6 @@
 import { StatisticsByMonths, ValueByMonth } from 'types/types/StatisticsType';
 import { DiagramData } from './DiagramProps';
+import { ThemeEnum } from 'types/enums/ThemeEnum';
 
 export type StatisticsProps = {
   statisticsByMonths?: StatisticsByMonths;
@@ -14,3 +15,7 @@ export type StatisticsProps = {
 };
 
 export type HookProps = Pick<StatisticsProps, 'statisticsByMonths'>;
+
+export type ItemProps = {
+  theme: ThemeEnum;
+};

@@ -12,6 +12,7 @@ import {
   getCompanyInfo,
   getIsLoggedIn,
 } from '../../../redux/user/userSelectors';
+import { getTheme } from '../../../redux/settings/settingsSelectors';
 import { MobileMenuProps } from 'types/props/MobileMenuProps';
 import { Backdrop, Content } from './MobileMenu.styled';
 
@@ -22,10 +23,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ closeMenu, handleStartClick }) 
   const avatarUrl = useAppSelector(getAvatarUrl);
   const companyInfo = useAppSelector(getCompanyInfo);
   const isLoggedIn = useAppSelector(getIsLoggedIn);
+  const theme = useAppSelector(getTheme);
 
   return (
     <Backdrop>
-      <Content>
+      <Content theme={theme}>
         <Header closeMenu={closeMenu} />
         {isLoggedIn ? (
           <UserInfo

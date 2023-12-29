@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 import ScreenWidth from 'utilities/ScreenWidth';
+import { ItemProps } from 'types/props/StatisticsProps';
+import { ThemeEnum } from 'types/enums/ThemeEnum';
 
 export const HeaderWrapper = styled.div`
   display: flex;
@@ -55,7 +57,7 @@ export const List = styled.ul`
   }
 `;
 
-export const Item = styled.li`
+export const Item = styled.li<ItemProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -63,7 +65,7 @@ export const Item = styled.li`
   padding: 5px 10px;
 
   :nth-of-type(odd) {
-    background-color: #f2f2f2;
+    background-color: ${({ theme }) => (theme === ThemeEnum.Dark ? '#424242' : '#f2f2f2')};
     border-radius: 5px;
   }
 

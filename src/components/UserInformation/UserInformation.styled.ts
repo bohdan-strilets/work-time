@@ -8,6 +8,7 @@ export const Wrapper = styled.button`
   background-color: transparent;
   border: none;
   outline: none;
+  color: inherit;
 
   cursor: pointer;
 `;

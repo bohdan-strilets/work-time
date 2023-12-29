@@ -1,7 +1,7 @@
-import { DayInfoType } from 'types/types/WorkUserDataType';
+import { DayDataType } from 'types/types/DayType';
 
 export type DayInfoProps = Pick<
-  DayInfoType,
+  DayDataType,
   'status' | 'numberHoursWorked' | 'time' | 'workShiftNumber' | 'additionalHours'
 > & { date: Date | null; dateTransform: (date: Date) => string };
 

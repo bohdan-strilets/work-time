@@ -4,6 +4,8 @@ import Loader from 'components/UI/Loader';
 import Diagram from '../Diagram';
 import useModalWindow from 'hooks/useModalWindow';
 import { StatisticsProps } from 'types/props/StatisticsProps';
+import { useAppSelector } from 'hooks/useAppSelector';
+import { getTheme } from '../../../redux/settings/settingsSelectors';
 import {
   HeaderWrapper,
   Title,
@@ -22,6 +24,7 @@ const Desktop: React.FC<StatisticsProps> = ({
   dataForChartGraph,
 }) => {
   const { openModal, modalsName } = useModalWindow();
+  const theme = useAppSelector(getTheme);
 
   return (
     <>
@@ -39,29 +42,29 @@ const Desktop: React.FC<StatisticsProps> = ({
             />
           </HeaderWrapper>
           <List>
-            <Item>
+            <Item theme={theme}>
               <Property>Number of working days:</Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberWorkingDays)}</Value>
             </Item>
-            <Item>
+            <Item theme={theme}>
               <Property>Number of days off:</Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberDaysOff)}</Value>
             </Item>
-            <Item>
+            <Item theme={theme}>
               <Property>Number of vacation days:</Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberVacationDays)}</Value>
             </Item>
-            <Item>
+            <Item theme={theme}>
               <Property>Number of sick days:</Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberSickDays)}</Value>
             </Item>
-            <Item>
+            <Item theme={theme}>
               <Property>Number of additional working days:</Property>
               <Value>
                 {calculateStatisticsByMonth(statisticsByMonths?.numberAdditionalWorkingDays)}
               </Value>
             </Item>
-            <Item>
+            <Item theme={theme}>
               <Property>Total days (except weekends):</Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.totalDays)}</Value>
             </Item>
@@ -88,29 +91,29 @@ const Desktop: React.FC<StatisticsProps> = ({
             />
           </HeaderWrapper>
           <List>
-            <Item>
+            <Item theme={theme}>
               <Property>Number of working hours:</Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberWorkingHours)}</Value>
             </Item>
-            <Item>
+            <Item theme={theme}>
               <Property>Number of free hours:</Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberFreeHours)}</Value>
             </Item>
-            <Item>
+            <Item theme={theme}>
               <Property>Number of vacation hours:</Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberVacationHours)}</Value>
             </Item>
-            <Item>
+            <Item theme={theme}>
               <Property>Number of sick leave hours:</Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberSickHours)}</Value>
             </Item>
-            <Item>
+            <Item theme={theme}>
               <Property>Number of additional working hours:</Property>
               <Value>
                 {calculateStatisticsByMonth(statisticsByMonths?.numberAdditionalWorkingHours)}
               </Value>
             </Item>
-            <Item>
+            <Item theme={theme}>
               <Property>Total hours (except weekends):</Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.totalHours)}</Value>
             </Item>
@@ -137,15 +140,15 @@ const Desktop: React.FC<StatisticsProps> = ({
             />
           </HeaderWrapper>
           <List>
-            <Item>
+            <Item theme={theme}>
               <Property>Number of first shifts:</Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberFirstShifts)}</Value>
             </Item>
-            <Item>
+            <Item theme={theme}>
               <Property>Number of second shifts:</Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberSecondShifts)}</Value>
             </Item>
-            <Item>
+            <Item theme={theme}>
               <Property>Number of night hours:</Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberNightHours)}</Value>
             </Item>
@@ -172,51 +175,51 @@ const Desktop: React.FC<StatisticsProps> = ({
             />
           </HeaderWrapper>
           <List>
-            <Item>
+            <Item theme={theme}>
               <Property>Gross amount of money received during working days:</Property>
               <Value>
                 {calculateStatisticsByMonth(statisticsByMonths?.grossAmountMoneyForWorkingDays)}
               </Value>
             </Item>
-            <Item>
+            <Item theme={theme}>
               <Property>Net amount of money received during working days:</Property>
               <Value>
                 {calculateStatisticsByMonth(statisticsByMonths?.nettoAmountMoneyForWorkingDays)}
               </Value>
             </Item>
-            <Item>
+            <Item theme={theme}>
               <Property>Gross amount of money received for vacation days:</Property>
               <Value>
                 {calculateStatisticsByMonth(statisticsByMonths?.grossAmountMoneyForVacationDays)}
               </Value>
             </Item>
-            <Item>
+            <Item theme={theme}>
               <Property>Net amount of money received for vacation days:</Property>
               <Value>
                 {calculateStatisticsByMonth(statisticsByMonths?.nettoAmountMoneyForVacationDays)}
               </Value>
             </Item>
-            <Item>
+            <Item theme={theme}>
               <Property>Gross amount of money received for sick days:</Property>
               <Value>
                 {calculateStatisticsByMonth(statisticsByMonths?.grossAmountMoneyForSickDays)}
               </Value>
             </Item>
-            <Item>
+            <Item theme={theme}>
               <Property>Net amount of money received for sick days:</Property>
               <Value>
                 {calculateStatisticsByMonth(statisticsByMonths?.nettoAmountMoneyForSickDays)}
               </Value>
             </Item>
-            <Item>
+            <Item theme={theme}>
               <Property>Total money received gross:</Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.totalMoneyEarnedGross)}</Value>
             </Item>
-            <Item>
+            <Item theme={theme}>
               <Property>Total money received net:</Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.totalMoneyEarnedNetto)}</Value>
             </Item>
-            <Item>
+            <Item theme={theme}>
               <Property>Total tax paid:</Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.totalTaxPaid)}</Value>
             </Item>

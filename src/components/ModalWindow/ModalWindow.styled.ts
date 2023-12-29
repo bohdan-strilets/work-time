@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 import ScreenWidth from 'utilities/ScreenWidth';
+import { HeaderProps, TitleProps } from 'types/props/ModalWindowProps';
+import { ThemeEnum } from 'types/enums/ThemeEnum';
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -38,7 +40,7 @@ export const Body = styled.div`
   }
 `;
 
-export const Header = styled.div`
+export const Header = styled.div<HeaderProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -46,7 +48,8 @@ export const Header = styled.div`
   padding: 10px;
 
   background: var(--main-gradient);
-  box-shadow: 0px 3px 10px -1px var(--black-transparent-color);
+  box-shadow: ${({ theme }) =>
+    theme === ThemeEnum.Dark ? '' : '0px 3px 10px -1px var(--black-transparent-color)'};
 
   @media screen and (min-width: ${ScreenWidth.tablet}) {
     padding: 20px;
@@ -57,12 +60,16 @@ export const Header = styled.div`
   }
 `;
 
-export const Title = styled.p`
+export const Title = styled.p<TitleProps>`
   font-weight: 700;
   font-size: 18px;
 
   color: var(--black-color);
-  text-shadow: 2px 2px 4px var(--black-transparent-color);
+  text-shadow: 2px 2px 4px
+    ${({ theme }) =>
+      theme === ThemeEnum.Dark
+        ? 'var(--white-transparent-color)'
+        : 'var(--black-transparent-color)'};
 
   @media screen and (min-width: ${ScreenWidth.tablet}) {
     font-size: 20px;

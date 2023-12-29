@@ -13,6 +13,7 @@ import {
   getCompanyInfo,
   getIsLoggedIn,
 } from '../../redux/user/userSelectors';
+import { getTheme } from '../../redux/settings/settingsSelectors';
 import { Backdrop, Content } from './Menu.styled';
 
 const Menu: React.FC<MenuProps> = ({ closeMenu, handleBackdropClick, handleStartClick }) => {
@@ -22,10 +23,11 @@ const Menu: React.FC<MenuProps> = ({ closeMenu, handleBackdropClick, handleStart
   const avatarUrl = useAppSelector(getAvatarUrl);
   const companyInfo = useAppSelector(getCompanyInfo);
   const isLoggedIn = useAppSelector(getIsLoggedIn);
+  const theme = useAppSelector(getTheme);
 
   return (
     <Backdrop onClick={handleBackdropClick}>
-      <Content>
+      <Content theme={theme}>
         <Header closeMenu={closeMenu} />
         {isLoggedIn ? (
           <UserInfo
