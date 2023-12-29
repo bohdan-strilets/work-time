@@ -1,7 +1,5 @@
 import styled from '@emotion/styled';
 import ScreenWidth from 'utilities/ScreenWidth';
-import { DayStatusProps } from 'types/props/CellInformationProps';
-import { ThemeEnum } from 'types/enums/ThemeEnum';
 
 export const DayOfMonth = styled.p`
   display: flex;
@@ -20,11 +18,10 @@ export const Container = styled.div`
   justify-content: space-between;
 `;
 
-export const DayStatus = styled.p<DayStatusProps>`
+export const DayStatus = styled.p`
   padding: 0 5px;
-  color: ${({ theme }) => (theme === ThemeEnum.Dark ? 'var(--black-color)' : 'var(--white-color)')};
-  background-color: ${({ theme }) =>
-    theme === ThemeEnum.Dark ? 'var(--white-color)' : 'var(--black-color)'};
+  background-color: var(--black-color);
+  color: var(--white-color);
 
   @media screen and (min-width: ${ScreenWidth.tablet}) {
     font-weight: 500;

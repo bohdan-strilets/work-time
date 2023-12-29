@@ -1,4 +1,5 @@
 import { Status } from 'types/enums/StatusEnum';
+import { ThemeEnum } from 'types/enums/ThemeEnum';
 
 export type CellDayProps = {
   handleClick?: () => void;
@@ -10,3 +11,7 @@ export type CellDayProps = {
 };
 
 export type CellProps = Pick<CellDayProps, 'date' | 'areEqual' | 'selectedDate' | 'status'>;
+
+export type ContentProps = {
+  theme: ThemeEnum;
+};

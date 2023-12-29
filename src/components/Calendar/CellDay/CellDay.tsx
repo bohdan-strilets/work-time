@@ -1,5 +1,7 @@
-import { CellDayProps } from "types/props/CellDayProps";
-import { Cell, Content } from "./CellDay.styled";
+import { CellDayProps } from 'types/props/CellDayProps';
+import { useAppSelector } from 'hooks/useAppSelector';
+import { getTheme } from '../../../redux/settings/settingsSelectors';
+import { Cell, Content } from './CellDay.styled';
 
 const CellDay: React.FC<CellDayProps> = ({
   handleClick,
@@ -9,6 +11,8 @@ const CellDay: React.FC<CellDayProps> = ({
   children,
   status,
 }) => {
+  const theme = useAppSelector(getTheme);
+
   return (
     <Cell
       onClick={handleClick}
@@ -17,7 +21,7 @@ const CellDay: React.FC<CellDayProps> = ({
       selectedDate={selectedDate}
       status={status}
     >
-      {status ? <Content>{children}</Content> : <>{children}</>}
+      {status ? <Content theme={theme}>{children}</Content> : <>{children}</>}
     </Cell>
   );
 };

@@ -6,6 +6,8 @@ import workDayBg from 'Assets/images/work-day-bg.jpg';
 import dayOffBg from 'Assets/images/day-off-bg.jpg';
 import vacationDayBg from 'Assets/images/vacation-day-bg.jpg';
 import slickLeaveBg from 'Assets/images/sick-leave-day-bg.jpg';
+import { ContentProps } from 'types/props/CellDayProps';
+import { ThemeEnum } from 'types/enums/ThemeEnum';
 
 export const Cell = styled.li<CellProps>`
   position: relative;
@@ -73,7 +75,7 @@ export const Cell = styled.li<CellProps>`
   }
 `;
 
-export const Content = styled.div`
+export const Content = styled.div<ContentProps>`
   position: absolute;
   top: 0;
   left: 0;
@@ -87,5 +89,6 @@ export const Content = styled.div`
   height: 100%;
   padding: 5px;
 
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: ${({ theme }) =>
+    theme === ThemeEnum.Dark ? 'rgba(0, 0, 0, 0.7)' : 'rgba(255, 255, 255, 0.7)'};
 `;
