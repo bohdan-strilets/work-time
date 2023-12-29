@@ -69,6 +69,8 @@ export const Item = styled.li`
 
   outline: none;
   border-bottom: 1px solid var(--gray-color);
+  color: #000000;
+
   cursor: pointer;
   transition: background-color var(--hover-effect);
 

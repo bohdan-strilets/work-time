@@ -88,4 +88,5 @@ export const Icon = styled(FaCalendarAlt)`
   right: 10px;
   z-index: 99;
   transform: translateY(-50%);
+  color: #000000;
 `;
