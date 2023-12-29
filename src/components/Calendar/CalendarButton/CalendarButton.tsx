@@ -5,17 +5,18 @@ const CalendarButton: React.FC<CalendarButtonProps> = ({
   handleClichk,
   children,
   value,
-  selectedMonth,
-  index,
+  background,
+  color,
+  width,
 }) => {
   return (
     <Button
       type="button"
       onClick={handleClichk}
       value={value}
-      selectedMonth={selectedMonth}
-      index={index}
-      width="100px"
+      background={background}
+      color={color}
+      width={width}
     >
       {children}
     </Button>

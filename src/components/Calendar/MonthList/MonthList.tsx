@@ -12,8 +12,9 @@ const MonthList: React.FC<MonthListProps> = ({ handleChangeMonth, selectedMonth 
             <CalendarButton
               value={index}
               handleClichk={handleChangeMonth}
-              selectedMonth={selectedMonth}
-              index={index}
+              width="100px"
+              background={selectedMonth === index ? 'var(--green-color)' : 'var(--black-color)'}
+              color={selectedMonth === index ? 'var(--black-color)' : 'var(--white-color)'}
             >
               {name}
             </CalendarButton>

@@ -16,7 +16,12 @@ const Controllers: React.FC<ControllersProps> = ({
 }) => {
   return (
     <Wrapper>
-      <CalendarButton handleClichk={handlePrevMonth}>
+      <CalendarButton
+        handleClichk={handlePrevMonth}
+        width="100px"
+        background="var(--black-color)"
+        color="var(--white-color)"
+      >
         <IoMdArrowDropleft size={24} />
       </CalendarButton>
       <Group>
@@ -35,7 +40,12 @@ const Controllers: React.FC<ControllersProps> = ({
           position="absolute"
         />
       </Group>
-      <CalendarButton handleClichk={handleNextMonth}>
+      <CalendarButton
+        handleClichk={handleNextMonth}
+        width="100px"
+        background="var(--black-color)"
+        color="var(--white-color)"
+      >
         <IoMdArrowDropright size={24} />
       </CalendarButton>
     </Wrapper>

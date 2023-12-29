@@ -15,12 +15,8 @@ export const Button = styled.button<ButtonProps>`
   outline: none;
   border-radius: 5px;
   box-shadow: var(--main-shadow);
-  background-color: ${({ selectedMonth = 0, index = 0 }) => {
-    return selectedMonth === index ? 'var(--green-color)' : 'var(--black-color)';
-  }};
-  color: ${({ selectedMonth = 0, index = 0 }) => {
-    return selectedMonth === index ? 'var(--black-color)' : 'var(--gray-color)';
-  }};
+  background-color: ${({ background }) => (background ? background : '')};
+  color: ${({ color }) => (color ? color : '')};
 
   cursor: pointer;
   transition: background-color var(--hover-effect), color var(--hover-effect);
