@@ -21,7 +21,7 @@ const Controllers: React.FC<ControllersProps> = ({
       </CalendarButton>
       <Group>
         <CurrentDate>
-          {new Date().getDate()} {month[selectedMonth]} {selectedYear}
+          {month[selectedMonth]} {selectedYear}
         </CurrentDate>
         <DropdownList
           type="single"

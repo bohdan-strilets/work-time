@@ -38,16 +38,20 @@ export const useCalendar = () => {
     const year = date.getFullYear();
     const month = date.getMonth() - 1;
     const newDate = new Date(year, month);
-    setDate(newDate);
-    setSelectedMonth(month);
+    if (month <= 11 && month >= 0) {
+      setDate(newDate);
+      setSelectedMonth(month);
+    }
   };
 
   const handleNextMonth = () => {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const newDate = new Date(year, month);
-    setDate(newDate);
-    setSelectedMonth(month);
+    if (month <= 11 && month >= 0) {
+      setDate(newDate);
+      setSelectedMonth(month);
+    }
   };
 
   const handleChangeYear = (year: string | string[]) => {

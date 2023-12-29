@@ -1,12 +1,9 @@
-import { month } from "utilities/DefaultCalendarData";
-import CalendarButton from "../CalendarButton";
-import { MonthListProps } from "types/props/MonthListProps";
-import { Wrapper, List, Item } from "./MonthList.styled";
+import { month } from 'utilities/DefaultCalendarData';
+import CalendarButton from '../CalendarButton';
+import { MonthListProps } from 'types/props/MonthListProps';
+import { Wrapper, List, Item } from './MonthList.styled';
 
-const MonthList: React.FC<MonthListProps> = ({
-  handleChangeMonth,
-  selectedMonth,
-}) => {
+const MonthList: React.FC<MonthListProps> = ({ handleChangeMonth, selectedMonth }) => {
   return (
     <Wrapper>
       <List>

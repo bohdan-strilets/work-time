@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import ScreenWidth from "utilities/ScreenWidth";
+import styled from '@emotion/styled';
+import ScreenWidth from 'utilities/ScreenWidth';
 
 export const Wrapper = styled.div`
   margin-top: var(--medium-indent);
@@ -21,6 +21,10 @@ export const List = styled.ul`
 `;
 
 export const Item = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: calc((100% - 6 * 2px) / 3);
   margin: 2px;
 

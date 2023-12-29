@@ -1,5 +1,5 @@
-import { CalendarButtonProps } from "types/props/CalendarButtonProps";
-import { Button } from "./CalendarButton.styled";
+import { CalendarButtonProps } from 'types/props/CalendarButtonProps';
+import { Button } from './CalendarButton.styled';
 
 const CalendarButton: React.FC<CalendarButtonProps> = ({
   handleClichk,

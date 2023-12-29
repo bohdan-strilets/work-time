@@ -5,6 +5,7 @@ export const Button = styled.button`
   position: fixed;
   bottom: 12px;
   right: 12px;
+  z-index: 99;
 
   display: flex;
   align-items: center;
