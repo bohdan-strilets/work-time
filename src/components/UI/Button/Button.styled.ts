@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { WrapperProps } from "types/props/ButtonProps";
+import styled from '@emotion/styled';
+import { WrapperProps } from 'types/props/ButtonProps';
 
 export const Wrapper = styled.button<WrapperProps>`
   position: relative;
@@ -10,9 +10,9 @@ export const Wrapper = styled.button<WrapperProps>`
 
   font-weight: 700;
 
-  width: ${({ width }) => (width ? width : "")};
-  height: ${({ height }) => (height ? height : "")};
-  margin: ${({ margin }) => (margin ? margin : "")};
+  width: ${({ width }) => (width ? width : '')};
+  height: ${({ height }) => (height ? height : '')};
+  margin: ${({ margin }) => (margin ? margin : '')};
 
   color: var(--white-color);
   background: var(--black-color);
@@ -20,11 +20,11 @@ export const Wrapper = styled.button<WrapperProps>`
   outline: none;
   border-radius: 3px;
   box-shadow: var(--main-shadow);
-  opacity: ${({ disabled }) => (disabled ? "0.3" : "1")};
+  opacity: ${({ disabled }) => (disabled ? '0.3' : '1')};
 
   cursor: pointer;
   overflow: hidden;
-  pointer-events: ${({ disabled }) => (disabled ? "none" : "")};
+  pointer-events: ${({ disabled }) => (disabled ? 'none' : '')};
 
   :hover::before,
   :focus::before {
@@ -32,7 +32,7 @@ export const Wrapper = styled.button<WrapperProps>`
   }
 
   ::before {
-    content: "";
+    content: '';
 
     position: absolute;
     top: 0;
@@ -52,9 +52,15 @@ export const Wrapper = styled.button<WrapperProps>`
 `;
 
 export const Label = styled.p`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 1;
 `;
 
 export const Icon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 1;
 `;
