@@ -1,6 +1,4 @@
 import { CellInformationProps } from 'types/props/CellInformationProps';
-import { useAppSelector } from 'hooks/useAppSelector';
-import { getTheme } from '../../../../redux/settings/settingsSelectors';
 import {
   DayOfMonth,
   Container,
@@ -9,8 +7,6 @@ import {
 } from '../CellInformation.styled';
 
 const Mobile: React.FC<CellInformationProps> = ({ dayInfo, date }) => {
-  const theme = useAppSelector(getTheme);
-
   return (
     <>
       <DayOfMonth>{date.getDate()}</DayOfMonth>
