@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import ScreenWidth from 'utilities/ScreenWidth';
 
 export const Button = styled.button`
   display: flex;
@@ -8,7 +7,6 @@ export const Button = styled.button`
 
   width: 50px;
   height: 30px;
-  margin-right: 10px;
   padding: 0;
 
   outline: none;
@@ -22,13 +20,5 @@ export const Button = styled.button`
   :hover,
   :focus {
     color: var(--accent-color);
-  }
-
-  @media screen and (min-width: ${ScreenWidth.tablet}) {
-    margin-right: var(--small-indent);
-  }
-
-  @media screen and (min-width: ${ScreenWidth.desktop}) {
-    margin-right: var(--medium-indent);
   }
 `;

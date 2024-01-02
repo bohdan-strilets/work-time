@@ -4,9 +4,11 @@ import { persistReducer } from 'redux-persist';
 import { ThemeEnum } from 'types/enums/ThemeEnum';
 import { SettingsSliceState } from 'types/types/SettingsSliceState';
 import { ENTITY_NAME } from './config';
+import { LanguageEnum } from 'types/enums/LanguageEnum';
 
 const initialState: SettingsSliceState = {
   theme: ThemeEnum.Light,
+  language: LanguageEnum.en,
 };
 
 const settingsPersistConfig = {
@@ -21,8 +23,11 @@ export const settingsSlice = createSlice({
     changeTheme(state, action: PayloadAction<ThemeEnum>) {
       state.theme = action.payload;
     },
+    changeLanguage(state, action: PayloadAction<LanguageEnum>) {
+      state.language = action.payload;
+    },
   },
 });
 
-export const { changeTheme } = settingsSlice.actions;
+export const { changeTheme, changeLanguage } = settingsSlice.actions;
 export const persisteSettingsReducer = persistReducer(settingsPersistConfig, settingsSlice.reducer);
