@@ -13,6 +13,7 @@ const Controllers: React.FC<ControllersProps> = ({
   date,
   handleNextMonth,
   backToCurrentDate,
+  handleChangeCalendarType,
 }) => {
   return (
     <Media
@@ -33,6 +34,7 @@ const Controllers: React.FC<ControllersProps> = ({
               date={date}
               handleNextMonth={handleNextMonth}
               backToCurrentDate={backToCurrentDate}
+              handleChangeCalendarType={handleChangeCalendarType}
             />
           )}
           {matches.medium && (
@@ -44,6 +46,7 @@ const Controllers: React.FC<ControllersProps> = ({
               date={date}
               handleNextMonth={handleNextMonth}
               backToCurrentDate={backToCurrentDate}
+              handleChangeCalendarType={handleChangeCalendarType}
             />
           )}
           {matches.large && (
@@ -55,6 +58,7 @@ const Controllers: React.FC<ControllersProps> = ({
               date={date}
               handleNextMonth={handleNextMonth}
               backToCurrentDate={backToCurrentDate}
+              handleChangeCalendarType={handleChangeCalendarType}
             />
           )}
         </>

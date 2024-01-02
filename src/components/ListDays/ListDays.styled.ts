@@ -8,6 +8,20 @@ import { IsAdditionalProps, ImageProps } from 'types/props/ListDaysProps';
 import { Status } from 'types/enums/StatusEnum';
 import ScreenWidth from 'utilities/ScreenWidth';
 
+export const Title = styled.p`
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 10px;
+`;
+
+export const List = styled.ul`
+  margin-bottom: var(--large-indent);
+
+  :last-child {
+    margin-bottom: 0;
+  }
+`;
+
 export const Item = styled.li`
   position: relative;
 

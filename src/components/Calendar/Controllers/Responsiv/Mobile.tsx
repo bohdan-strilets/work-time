@@ -5,6 +5,8 @@ import { month } from 'utilities/DefaultCalendarData';
 import { ControllersProps } from 'types/props/ControllersProps';
 import YearOptions from 'utilities/YearOptions';
 import useTime from 'hooks/useTime';
+import TypeCalendarOptions from 'utilities/TypeCalendarOptions';
+import { CalendarTypeEnum } from 'types/enums/CalendarTypeEnum';
 import { Wrapper, DateWindow, Group } from '../Controllers.styled';
 
 const Mobile: React.FC<ControllersProps> = ({
@@ -15,11 +17,24 @@ const Mobile: React.FC<ControllersProps> = ({
   date,
   handleNextMonth,
   backToCurrentDate,
+  handleChangeCalendarType,
 }) => {
   const currentDateAndTime = useTime();
 
   return (
     <Wrapper>
+      <DropdownList
+        type="single"
+        name="selectedType"
+        options={TypeCalendarOptions}
+        defaultValue={CalendarTypeEnum.Calendar}
+        onChange={handleChangeCalendarType}
+        buttonlabel="Show how"
+        height="30px"
+        width="100%"
+        position="absolute"
+        margin="0 0 var(--small-indent) 0"
+      />
       <Group>
         <DateWindow width="48%">
           {month[selectedMonth]} {selectedYear}

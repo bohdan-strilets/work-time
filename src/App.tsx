@@ -12,7 +12,6 @@ import { getTheme } from './redux/settings/settingsSelectors';
 const HomePage = lazy(() => import('pages/HomePage'));
 const AuthPage = lazy(() => import('pages/AuthPage'));
 const CalendarPage = lazy(() => import('pages/CalendarPage'));
-const ListPage = lazy(() => import('pages/ListPage'));
 const ProfilePage = lazy(() => import('pages/ProfilePage'));
 const AboutPage = lazy(() => import('pages/AboutPage'));
 const ResetPasswordPage = lazy(() => import('pages/ResetPasswordPage'));
@@ -54,14 +53,6 @@ const App: React.FC<{}> = () => {
                 element={
                   <PrivateRoute>
                     <CalendarPage />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/list"
-                element={
-                  <PrivateRoute>
-                    <ListPage />
                   </PrivateRoute>
                 }
               />

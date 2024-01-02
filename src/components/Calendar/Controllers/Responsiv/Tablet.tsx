@@ -5,6 +5,8 @@ import { month } from 'utilities/DefaultCalendarData';
 import { ControllersProps } from 'types/props/ControllersProps';
 import YearOptions from 'utilities/YearOptions';
 import useTime from 'hooks/useTime';
+import TypeCalendarOptions from 'utilities/TypeCalendarOptions';
+import { CalendarTypeEnum } from 'types/enums/CalendarTypeEnum';
 import { Wrapper, DateWindow, Group } from '../Controllers.styled';
 
 const Tablet: React.FC<ControllersProps> = ({
@@ -15,13 +17,14 @@ const Tablet: React.FC<ControllersProps> = ({
   date,
   handleNextMonth,
   backToCurrentDate,
+  handleChangeCalendarType,
 }) => {
   const currentDateAndTime = useTime();
 
   return (
     <Wrapper>
       <Group>
-        <DateWindow width="48%">
+        <DateWindow width="30%">
           {month[selectedMonth]} {selectedYear}
         </DateWindow>
         <DropdownList
@@ -32,7 +35,18 @@ const Tablet: React.FC<ControllersProps> = ({
           onChange={handleChangeYear}
           buttonlabel={date.getFullYear().toString()}
           height="30px"
-          width="48%"
+          width="30%"
+          position="absolute"
+        />
+        <DropdownList
+          type="single"
+          name="selectedType"
+          options={TypeCalendarOptions}
+          defaultValue={CalendarTypeEnum.Calendar}
+          onChange={handleChangeCalendarType}
+          buttonlabel="Show how"
+          height="30px"
+          width="30%"
           position="absolute"
         />
       </Group>

@@ -6,6 +6,7 @@ export type ControllersProps = {
   date: Date;
   handleNextMonth: () => void;
   backToCurrentDate: () => void;
+  handleChangeCalendarType: (type: string | string[]) => void;
 };
 
 export type DateWindowProps = {

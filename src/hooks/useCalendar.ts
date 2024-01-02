@@ -6,6 +6,7 @@ import useModalWindow from 'hooks/useModalWindow';
 import { useGetAllDaysInfoQuery } from '../redux/calendar/calendarApi';
 import { DayInfoType, DayDataType } from 'types/types/DayType';
 import { useDeleteDayMutation } from '../redux/calendar/calendarApi';
+import { CalendarTypeEnum } from 'types/enums/CalendarTypeEnum';
 
 export const useCalendar = () => {
   const [date, setDate] = useState(new Date());
@@ -17,6 +18,7 @@ export const useCalendar = () => {
   const [dayInfo, setDayInfo] = useState<DayDataType | null>(null);
   const [dayInfoId, setDayInfoId] = useState<null | string>(null);
   const [allDays, setAllDays] = useState<DayInfoType[] | null>(null);
+  const [calendarType, setCalendarType] = useState<string | string[]>(CalendarTypeEnum.Calendar);
 
   const navigate = useNavigate();
   const { modalsName, openModal } = useModalWindow();
@@ -169,6 +171,10 @@ export const useCalendar = () => {
     setSelectedYear(year.toString());
   };
 
+  const handleChangeCalendarType = (type: string | string[]) => {
+    setCalendarType(type);
+  };
+
   return {
     handlePrevMonth,
     handleChangeYear,
@@ -188,6 +194,8 @@ export const useCalendar = () => {
     navigate,
     dayInfoId,
     backToCurrentDate,
+    handleChangeCalendarType,
+    calendarType,
   };
 };
 
