@@ -1,70 +1,60 @@
+import { useTranslation } from 'react-i18next';
+import { TranslationKeys } from 'types/enums/TranslationKeys';
 import { Title, Text, Accent, List } from './PrivacyPolicy.styled';
 
 const PrivacyPolicy: React.FC<{}> = () => {
+  const { t } = useTranslation();
+
   return (
     <>
-      <Title>Privacy Policy for WorkTime</Title>
       <Text margin="var(--small-indent) 0 var(--small-indent) 0">
-        Last Updated: <Accent>06.01.2023</Accent>
+        {t(TranslationKeys.LastUpdated)}: <Accent>06.01.2023</Accent>
       </Text>
-      <Title>Collected Personal Information</Title>
-      <Text margin="0 0 5px 0">WorkTime collects the following personal information:</Text>
+      <Title>{t(TranslationKeys.CollectedPersonalInformation)}</Title>
+      <Text margin="0 0 5px 0">{t(TranslationKeys.PrivacPolicy1_1)}</Text>
       <List margin="0 0 var(--small-indent) var(--medium-indent)">
         <li>
-          <p>Full Name</p>
+          <p>{t(TranslationKeys.FullName)}</p>
         </li>
         <li>
-          <p>Password</p>
+          <p>{t(TranslationKeys.Password)}</p>
         </li>
         <li>
-          <p>Email Address</p>
+          <p>{t(TranslationKeys.EmailAddress)}</p>
         </li>
         <li>
-          <p>Gender</p>
+          <p>{t(TranslationKeys.Gender)}</p>
         </li>
         <li>
-          <p>Work-related information, including company name, position, and salary</p>
+          <p>{t(TranslationKeys.WorkInformation)}</p>
         </li>
         <li>
-          <p>Personal photo</p>
+          <p>{t(TranslationKeys.PersonalPhoto)}</p>
         </li>
         <li>
-          <p>Information regarding work shifts</p>
+          <p>{t(TranslationKeys.InformationWorkShifts)}</p>
         </li>
       </List>
-      <Title>Purpose of Data Collection</Title>
-      <Text margin="0 0 5px 0">The collected data is used solely for the following purposes:</Text>
+      <Title>{t(TranslationKeys.PurposeOfDataCollection)}</Title>
+      <Text margin="0 0 5px 0">{t(TranslationKeys.PrivacyPolicy2_1)}</Text>
       <List margin="0 0 var(--small-indent) var(--medium-indent)">
         <li>
-          <p>Time tracking of work and shifts</p>
+          <p>{t(TranslationKeys.PrivacyPolicy2_2)}</p>
         </li>
         <li>
-          <p>Sending notifications related to the site's functionality</p>
+          <p>{t(TranslationKeys.PrivacyPolicy2_3)}</p>
         </li>
       </List>
-      <Title>Third-Party Data Sharing</Title>
-      <Text margin="0 0 var(--small-indent) 0">
-        At present, user data is not shared with any third parties.
-      </Text>
-      <Title>Data Security</Title>
-      <Text margin="0 0 var(--small-indent) 0">
-        We implement security measures to protect your personal data. (Include additional details
-        about security measures, e.g., data encryption.)
-      </Text>
-      <Title>Management of Personal Data</Title>
-      <Text margin="0 0 var(--small-indent) 0">
-        You have the right to modify and delete your personal data through your user account on our
-        website.
-      </Text>
-      <Title>Cookie Usage</Title>
-      <Text margin="0 0 var(--small-indent) 0">
-        WorkTime uses cookies only for transmitting the refresh token.
-      </Text>
-      <Title>Privacy Policy Updates</Title>
-      <Text>
-        The privacy policy may be periodically updated. The latest update is reflected at the top of
-        the document.
-      </Text>
+      <Title>{t(TranslationKeys.ThirdPartyDataSharing)}</Title>
+      <Text margin="0 0 var(--small-indent) 0">{t(TranslationKeys.PrivacyPolicy3_1)}</Text>
+      <Title>{t(TranslationKeys.DataSecurity)}</Title>
+      <Text margin="0 0 var(--small-indent) 0">{t(TranslationKeys.PrivacyPolicy4_1)}</Text>
+      <Title>{t(TranslationKeys.ManagementOfPersonalData)}</Title>
+      <Text margin="0 0 var(--small-indent) 0">{t(TranslationKeys.PrivacyPolicy5_1)}</Text>
+      <Title>{t(TranslationKeys.CookieUsage)}</Title>
+      <Text margin="0 0 var(--small-indent) 0">{t(TranslationKeys.PrivacyPolicy6_1)}</Text>
+      <Title>{t(TranslationKeys.PrivacyPolicyUpdates)}</Title>
+      <Text>{t(TranslationKeys.PrivacyPolicy7_1)}</Text>
     </>
   );
 };

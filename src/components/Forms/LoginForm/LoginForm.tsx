@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import Media from 'react-media';
 import ScreenWidth from 'utilities/ScreenWidth';
 import Mobile from './Responsiv/Mobile';
@@ -6,9 +7,11 @@ import Desktop from './Responsiv/Desktop';
 import ModalWindow from 'components/ModalWindow';
 import useModalWindow from 'hooks/useModalWindow';
 import RequestPasswordResetForm from '../RequestPasswordResetForm';
+import { TranslationKeys } from 'types/enums/TranslationKeys';
 
 const LoginForm: React.FC<{}> = () => {
   const { modalsName, checkQueryParam } = useModalWindow();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -28,7 +31,7 @@ const LoginForm: React.FC<{}> = () => {
         )}
       </Media>
       {checkQueryParam(modalsName.requestPasswordReset) && (
-        <ModalWindow title="Request password reset">
+        <ModalWindow title={t(TranslationKeys.RequestPasswordReset)}>
           <RequestPasswordResetForm />
         </ModalWindow>
       )}
