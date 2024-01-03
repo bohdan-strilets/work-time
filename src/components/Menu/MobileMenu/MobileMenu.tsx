@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { BiSolidLogIn } from 'react-icons/bi';
 import Header from '../Header';
 import UserInfo from '../UserInfo';
@@ -14,6 +15,7 @@ import {
 } from '../../../redux/user/userSelectors';
 import { getTheme } from '../../../redux/settings/settingsSelectors';
 import { MobileMenuProps } from 'types/props/MobileMenuProps';
+import { TranslationKeys } from 'types/enums/TranslationKeys';
 import { Backdrop, Content } from './MobileMenu.styled';
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ closeMenu, handleStartClick }) => {
@@ -24,6 +26,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ closeMenu, handleStartClick }) 
   const companyInfo = useAppSelector(getCompanyInfo);
   const isLoggedIn = useAppSelector(getIsLoggedIn);
   const theme = useAppSelector(getTheme);
+  const { t } = useTranslation();
 
   return (
     <Backdrop>
@@ -31,13 +34,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ closeMenu, handleStartClick }) 
         <Header closeMenu={closeMenu} />
         {isLoggedIn ? (
           <UserInfo
-            avatarUrl={avatarUrl ? avatarUrl : ''}
+            avatarUrl={avatarUrl ?? ''}
             name={name}
-            profession={companyInfo?.profession ? companyInfo?.profession : 'profession'}
+            profession={companyInfo?.profession ?? t(TranslationKeys.Profession)}
           />
         ) : (
           <Button
-            label="Start"
+            label={t(TranslationKeys.Start)}
             height={40}
             handleClick={handleStartClick}
             margin="40px 0 70px 0"

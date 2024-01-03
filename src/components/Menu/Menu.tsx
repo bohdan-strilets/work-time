@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { BiSolidLogIn } from 'react-icons/bi';
 import { MenuProps } from 'types/props/MenuProps';
 import UserInfo from './UserInfo';
@@ -14,6 +15,7 @@ import {
   getIsLoggedIn,
 } from '../../redux/user/userSelectors';
 import { getTheme } from '../../redux/settings/settingsSelectors';
+import { TranslationKeys } from 'types/enums/TranslationKeys';
 import { Backdrop, Content } from './Menu.styled';
 
 const Menu: React.FC<MenuProps> = ({ closeMenu, handleBackdropClick, handleStartClick }) => {
@@ -24,6 +26,7 @@ const Menu: React.FC<MenuProps> = ({ closeMenu, handleBackdropClick, handleStart
   const companyInfo = useAppSelector(getCompanyInfo);
   const isLoggedIn = useAppSelector(getIsLoggedIn);
   const theme = useAppSelector(getTheme);
+  const { t } = useTranslation();
 
   return (
     <Backdrop onClick={handleBackdropClick}>
@@ -31,13 +34,13 @@ const Menu: React.FC<MenuProps> = ({ closeMenu, handleBackdropClick, handleStart
         <Header closeMenu={closeMenu} />
         {isLoggedIn ? (
           <UserInfo
-            avatarUrl={avatarUrl ? avatarUrl : ''}
+            avatarUrl={avatarUrl ?? ''}
             name={name}
-            profession={companyInfo?.profession ? companyInfo?.profession : 'profession'}
+            profession={companyInfo?.profession ?? t(TranslationKeys.Profession)}
           />
         ) : (
           <Button
-            label="Start"
+            label={t(TranslationKeys.Start)}
             height={40}
             handleClick={handleStartClick}
             margin="40px 0 70px 0"

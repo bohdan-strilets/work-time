@@ -5,6 +5,7 @@ import { ThemeEnum } from 'types/enums/ThemeEnum';
 import { SettingsSliceState } from 'types/types/SettingsSliceState';
 import { ENTITY_NAME } from './config';
 import { LanguageEnum } from 'types/enums/LanguageEnum';
+import { changeLang } from 'locales/config';
 
 const initialState: SettingsSliceState = {
   theme: ThemeEnum.Light,
@@ -25,6 +26,7 @@ export const settingsSlice = createSlice({
     },
     changeLanguage(state, action: PayloadAction<LanguageEnum>) {
       state.language = action.payload;
+      changeLang(action.payload);
     },
   },
 });

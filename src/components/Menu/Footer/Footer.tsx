@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { IoMdExit } from 'react-icons/io';
 import Button from '../Button';
 import { useAppSelector } from 'hooks/useAppSelector';
@@ -7,12 +8,14 @@ import operations from '../../../redux/user/userOperations';
 import { getIsLoggedIn } from '../../../redux/user/userSelectors';
 import { UserResponseType } from 'types/types/UserResponseType';
 import { FooterMenuProps } from 'types/props/FooterMenuProps';
+import { TranslationKeys } from 'types/enums/TranslationKeys';
 import { Copyright } from './Footer.styled';
 
 const Footer: React.FC<FooterMenuProps> = ({ closeMenu }) => {
   const isLoggedIn = useAppSelector(getIsLoggedIn);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const logout = async () => {
     const response = await dispatch(operations.logout());
@@ -30,7 +33,7 @@ const Footer: React.FC<FooterMenuProps> = ({ closeMenu }) => {
           height={40}
           margin="0 0 var(--large-indent) 0"
           icon={<IoMdExit size={18} />}
-          label="Exit"
+          label={t(TranslationKeys.Exit)}
           handleClick={logout}
         />
       )}

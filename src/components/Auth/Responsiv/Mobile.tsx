@@ -1,63 +1,52 @@
-import registrationFormBg from "Assets/images/registration-form-bg.jpg";
-import loginFormBg from "Assets/images/login-form-bg.jpg";
-import RegistrationForm from "components/Forms/RegistrationForm";
-import LoginForm from "components/Forms/LoginForm";
-import useAuth from "hooks/useAuth";
-import {
-  Wrapper,
-  LeftSide,
-  Overlay,
-  Title,
-  Text,
-  Button,
-  RightSide,
-} from "../Auth.styled";
+import { useTranslation } from 'react-i18next';
+import registrationFormBg from 'Assets/images/registration-form-bg.jpg';
+import loginFormBg from 'Assets/images/login-form-bg.jpg';
+import RegistrationForm from 'components/Forms/RegistrationForm';
+import LoginForm from 'components/Forms/LoginForm';
+import useAuth from 'hooks/useAuth';
+import { TranslationKeys } from 'types/enums/TranslationKeys';
+import { Wrapper, LeftSide, Overlay, Title, Text, Button, RightSide } from '../Auth.styled';
 
 const Mobile: React.FC<{}> = () => {
   const { changeType, type } = useAuth();
+  const { t } = useTranslation();
 
   return (
     <Wrapper>
-      <LeftSide
-        registrationUrl={registrationFormBg}
-        loginUrl={loginFormBg}
-        type={type}
-      >
-        {type === "registration" ? (
+      <LeftSide registrationUrl={registrationFormBg} loginUrl={loginFormBg} type={type}>
+        {type === 'registration' ? (
           <Overlay>
             <Title fontSize={24} color="var(--white-color)">
-              Hello friend!
+              {t(TranslationKeys.GreetingRegistration)}
             </Title>
-            <Text>Enter your personal details and start journey with us</Text>
+            <Text>{t(TranslationKeys.RegistrationSlogan)}</Text>
             <Button onClick={changeType} type="button">
-              Login
+              {t(TranslationKeys.Login)}
             </Button>
           </Overlay>
         ) : (
           <Overlay>
             <Title fontSize={24} color="var(--white-color)">
-              Welcome back!
+              {t(TranslationKeys.GreetingLogin)}
             </Title>
-            <Text>
-              To keep connected with us please login with your personal info
-            </Text>
+            <Text>{t(TranslationKeys.LoginSlogan)}</Text>
             <Button onClick={changeType} type="button">
-              Registration
+              {t(TranslationKeys.Registration)}
             </Button>
           </Overlay>
         )}
       </LeftSide>
       <RightSide type={type}>
-        {type === "registration" ? (
+        {type === 'registration' ? (
           <Title fontSize={20} color="var(--black-color)">
-            Create account
+            {t(TranslationKeys.CreateAccount)}
           </Title>
         ) : (
           <Title fontSize={20} color="var(--black-color)">
-            Sign in to Work Time
+            {t(TranslationKeys.SignInTo)} Work Time
           </Title>
         )}
-        {type === "registration" ? <RegistrationForm /> : <LoginForm />}
+        {type === 'registration' ? <RegistrationForm /> : <LoginForm />}
       </RightSide>
     </Wrapper>
   );

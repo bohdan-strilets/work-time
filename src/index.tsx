@@ -7,6 +7,7 @@ import App from './App';
 import { store } from './redux/store';
 import Toastify from 'components/Toastify';
 import './styles/index.css';
+import './locales/config';
 
 const rootDiv = document.getElementById('root') as HTMLDivElement;
 const root = ReactDOM.createRoot(rootDiv);

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { BiSolidUser, BiSolidLock } from 'react-icons/bi';
 import { MdMail } from 'react-icons/md';
 import TextInput from 'components/UI/TextInput';
@@ -10,10 +11,12 @@ import LinkButton from 'components/UI/LinkButton';
 import useRegistrationForm from 'hooks/useRegistrationForm';
 import useModalWindow from 'hooks/useModalWindow';
 import { Text } from '../../Forms.styled';
+import { TranslationKeys } from 'types/enums/TranslationKeys';
 
 const Mobile: React.FC<{}> = () => {
   const { register, handleSubmit, errors, onSubmit, Controller, control } = useRegistrationForm();
   const { modalsName, openModal } = useModalWindow();
+  const { t } = useTranslation();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -21,7 +24,7 @@ const Mobile: React.FC<{}> = () => {
         type="text"
         icon={<BiSolidUser size={16} />}
         name="firstName"
-        placeholder="First name"
+        placeholder={t(TranslationKeys.FirstName)}
         required={true}
         register={register}
         errors={errors}
@@ -33,7 +36,7 @@ const Mobile: React.FC<{}> = () => {
         type="text"
         icon={<BiSolidUser size={16} />}
         name="lastName"
-        placeholder="Last name"
+        placeholder={t(TranslationKeys.LastName)}
         required={true}
         register={register}
         errors={errors}
@@ -45,7 +48,7 @@ const Mobile: React.FC<{}> = () => {
         type="email"
         icon={<MdMail size={16} />}
         name="email"
-        placeholder="Email"
+        placeholder={t(TranslationKeys.Email)}
         required={true}
         register={register}
         errors={errors}
@@ -56,7 +59,7 @@ const Mobile: React.FC<{}> = () => {
       <PasswordInput
         icon={<BiSolidLock size={16} />}
         name="password"
-        placeholder="Least one letter, one digit, and one special character  ! @ # $ % &"
+        placeholder={t(TranslationKeys.PasswordPlaceholder)}
         required={true}
         register={register}
         errors={errors}
@@ -68,7 +71,7 @@ const Mobile: React.FC<{}> = () => {
       <PasswordInput
         icon={<BiSolidLock size={16} />}
         name="passwordAgain"
-        placeholder="Least one letter, one digit, and one special character  ! @ # $ % &"
+        placeholder={t(TranslationKeys.PasswordPlaceholder)}
         required={true}
         register={register}
         errors={errors}
@@ -90,27 +93,27 @@ const Mobile: React.FC<{}> = () => {
             margin="0 0 var(--small-indent) 0"
           >
             <Text width="250px">
-              I have read the
+              {t(TranslationKeys.IHaveReadThe)}
               <LinkButton onClick={() => openModal(modalsName.termsUseSite)}>
-                terms of use of the site
+                {t(TranslationKeys.TermsOfUseOfTheSite)}
               </LinkButton>
-              and the
+              {t(TranslationKeys.AndThe)}
               <LinkButton onClick={() => openModal(modalsName.privacyPolicy)}>
-                privacy policy
+                {t(TranslationKeys.PrivacyPolicy)}
               </LinkButton>
-              and agree to them.
+              {t(TranslationKeys.AndAgreeToThem)}
             </Text>
           </Checkbox>
         )}
       />
       <Button
         type="submit"
-        label="Registration"
+        label={t(TranslationKeys.Registration)}
         width="300px"
         height="40px"
         margin="0 0 var(--small-indent) 0"
       />
-      <LineWithText label="Or use Google" />
+      <LineWithText label={t(TranslationKeys.UseGoogle)} />
       <GoogleAuthBtn width={300} />
     </form>
   );

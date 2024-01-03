@@ -1,6 +1,10 @@
+import { useTranslation } from 'react-i18next';
+import { TranslationKeys } from 'types/enums/TranslationKeys';
 import { Text, Background, Icon, Slogan } from './Logo.styled';
 
 const Logo: React.FC<{}> = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <Text>
@@ -9,7 +13,7 @@ const Logo: React.FC<{}> = () => {
           <Icon />
         </Background>
       </Text>
-      <Slogan>Every second matters</Slogan>
+      <Slogan>{t(TranslationKeys.LogoSlogan)}</Slogan>
     </>
   );
 };

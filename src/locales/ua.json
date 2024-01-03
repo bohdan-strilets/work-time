@@ -1,0 +1,32 @@
+{
+  "translation": {
+    "Logo slogan": "Кожна секунда має значення",
+    "Home": "Головна",
+    "Calendar": "Календар",
+    "Profile": "Профіль",
+    "Statistics": "Статистика",
+    "About us": "Про нас",
+    "Exit": "Вихід",
+    "Start": "Почати",
+    "Profession": "Професія",
+    "Greeting registration": "Привіт, друг!",
+    "Registration slogan": "Введіть свої особисті дані та розпочніть подорож з нами",
+    "Login": "Увійти",
+    "Create account": "Створити обліковий запис",
+    "First name": "Ім'я",
+    "Last name": "Прізвище",
+    "Email": "Електронна пошта",
+    "Password placeholder": "Принаймні одна літера, одна цифра і один спеціальний символ  ! @ # $ % &",
+    "Registration": "Реєстрація",
+    "Use google": "Або Google",
+    "Terms of use of the site": "Умови використання сайту",
+    "Privacy policy": "Політика конфіденційності",
+    "I have read the": "Я прочитав(ла)",
+    "And agree to them": "і згоден(на) з ними.",
+    "And the": "і",
+    "Sign in to": "Увійти в",
+    "Forgot your password": "Забули пароль",
+    "Greeting login": "Ласкаво просимо назад!",
+    "Login slogan": "Щоб залишатися з нами на зв'язку, будь ласка, увійдіть за допомогою своєї особистої інформації"
+  }
+}
