@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import Media from 'react-media';
+import { useTranslation } from 'react-i18next';
 import ScreenWidth from 'utilities/ScreenWidth';
 import Mobile from './Responsiv/Mobile';
 import Tablet from './Responsiv/Tablet';
@@ -21,26 +22,28 @@ import ChangeEmailForm from 'components/Forms/ChangeEmailForm';
 import ChangePasswordForm from 'components/Forms/ChangePasswordForm';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { UserResponseType } from 'types/types/UserResponseType';
+import { TranslationKeys } from 'types/enums/TranslationKeys';
 
 const Profile: React.FC<{}> = () => {
+  const { t } = useTranslation();
   const user = useAppSelector(getUser);
   const firstName = user?.firstName;
   const lastName = user?.lastName;
-  const name = firstName && lastName ? `${firstName} ${lastName}` : 'Name';
-  const isActivated = user?.isActivated ? user?.isActivated : false;
-  const email = user?.email ? user?.email : 'E-mail';
-  const gender = user?.gender ? user?.gender : '';
+  const name = firstName && lastName ? `${firstName} ${lastName}` : t(TranslationKeys.Name);
+  const isActivated = user?.isActivated ?? false;
+  const email = user?.email ?? 'E-mail';
+  const gender = user?.gender ?? '';
   const genderLabel = FindLabelByValeu(gender, GenderOptions);
   const dateBirth = user?.dateBirth.toString();
-  const formatedDateBirth = FormatDateTime(dateBirth ? dateBirth : '');
-  const age = CalculateAge(dateBirth ? dateBirth : '');
-  const companyName = user?.companyInfo.companyName ? user?.companyInfo.companyName : 'Company';
-  const profession = user?.companyInfo.profession ? user?.companyInfo.profession : 'Profession';
+  const formatedDateBirth = FormatDateTime(dateBirth ?? '');
+  const age = CalculateAge(dateBirth ?? '');
+  const companyName = user?.companyInfo.companyName ?? t(TranslationKeys.CompanyName);
+  const profession = user?.companyInfo.profession ?? t(TranslationKeys.Profession);
   const startWork = user?.companyInfo.startWork.toString();
-  const formatedStartWork = FormatDateTime(startWork ? startWork : '');
-  const workExperience = CalculateAge(startWork ? startWork : '');
-  const salaryPerHour = user?.companyInfo.salaryPerHour ? user?.companyInfo.salaryPerHour : 0;
-  const avatarUrl = user?.avatarUrl ? user?.avatarUrl : '';
+  const formatedStartWork = FormatDateTime(startWork ?? '');
+  const workExperience = CalculateAge(startWork ?? '');
+  const salaryPerHour = user?.companyInfo.salaryPerHour ?? 0;
+  const avatarUrl = user?.avatarUrl ?? '';
   const alt = `Profile avatar by ${name}`;
 
   const { checkQueryParam, modalsName } = useModalWindow();
@@ -122,7 +125,7 @@ const Profile: React.FC<{}> = () => {
       </Media>
 
       {checkQueryParam(modalsName.editProfile) && (
-        <ModalWindow title="Edit profile">
+        <ModalWindow title={t(TranslationKeys.EditProfile)}>
           <EditProfileForm
             firstName={firstName}
             lastName={lastName}
@@ -136,12 +139,12 @@ const Profile: React.FC<{}> = () => {
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.uploadAvatar) && (
-        <ModalWindow title="Upload avatar">
+        <ModalWindow title={t(TranslationKeys.UploadAvatar)}>
           <UploadFile
             fileName="avatar"
-            text="The selected file must be in one of the following formats '.jpg .png .gif .webp'. The file must not exceed 8MB."
+            text={t(TranslationKeys.UploadAvatar1_1)}
             operation={operations.uploadAvatar}
-            buttonLabel="Change avatar"
+            buttonLabel={t(TranslationKeys.ChangeAvatar)}
             acceptTypes={imageValidation.types}
             validationSize={imageValidation.size}
             type="image"
@@ -149,21 +152,21 @@ const Profile: React.FC<{}> = () => {
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.editEmail) && (
-        <ModalWindow title="Change email">
+        <ModalWindow title={t(TranslationKeys.ChangedEmail)}>
           <ChangeEmailForm />
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.editPassword) && (
-        <ModalWindow title="Change password">
+        <ModalWindow title={t(TranslationKeys.ChangedPassword)}>
           <ChangePasswordForm />
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.deleteProfile) && (
-        <ModalWindow title="Delete profile">
+        <ModalWindow title={t(TranslationKeys.DeleteProfile)}>
           <DialogWindow
-            negativeBtnLabel="Cancel"
-            positiveBtnLabel="Delete"
-            text="Are you sure you want to permanently delete your profile and all associated data? Please be aware that this action is irreversible, and we will not be able to recover your account and information after deletion. All your personal information, uploaded files, and activity history will be lost forever."
+            negativeBtnLabel={t(TranslationKeys.Cancel)}
+            positiveBtnLabel={t(TranslationKeys.Delete)}
+            text={t(TranslationKeys.DeleteProfileText)}
             handlePositiveClick={deleteProfile}
             handleNegativeClick={() => navigate(-1)}
           />

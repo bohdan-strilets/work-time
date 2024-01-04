@@ -1,4 +1,6 @@
+import { useTranslation } from 'react-i18next';
 import { UserDataProps } from 'types/props/UserDataProps';
+import { TranslationKeys } from 'types/enums/TranslationKeys';
 import { Group, Name, Status, Item, Property, Value } from './UserData.styled';
 
 const UserData: React.FC<UserDataProps> = ({
@@ -10,6 +12,8 @@ const UserData: React.FC<UserDataProps> = ({
   age,
   workInfo,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <>
       <Group>
@@ -18,39 +22,39 @@ const UserData: React.FC<UserDataProps> = ({
       </Group>
       <ul>
         <Item>
-          <Property>Email:</Property>
+          <Property>{t(TranslationKeys.Email)}:</Property>
           <Value>{email}</Value>
         </Item>
         <Item>
-          <Property>Password:</Property>
+          <Property>{t(TranslationKeys.Password)}:</Property>
           <Value>**********</Value>
         </Item>
         <Item>
-          <Property>Gender:</Property>
+          <Property>{t(TranslationKeys.Gender)}:</Property>
           <Value>{gender}</Value>
         </Item>
         <Item>
-          <Property>Date of birth:</Property>
+          <Property>{t(TranslationKeys.DateBirth)}:</Property>
           <Value>
             {dateBirth} | {age} year
           </Value>
         </Item>
         <Item>
-          <Property>Company name:</Property>
+          <Property>{t(TranslationKeys.CompanyName)}:</Property>
           <Value>{workInfo.companyName}</Value>
         </Item>
         <Item>
-          <Property>Profession:</Property>
+          <Property>{t(TranslationKeys.Profession)}:</Property>
           <Value>{workInfo.profession}</Value>
         </Item>
         <Item>
-          <Property>Start work:</Property>
+          <Property>{t(TranslationKeys.StartWork)}:</Property>
           <Value>
-            {workInfo.startWork} | {workInfo.workExperience} year
+            {workInfo.startWork} | {workInfo.workExperience} {t(TranslationKeys.Year)}
           </Value>
         </Item>
         <Item>
-          <Property>Salary per hour:</Property>
+          <Property>{t(TranslationKeys.SalaryPerHour)}:</Property>
           <Value>{workInfo.salaryPerHour} PLN</Value>
         </Item>
       </ul>

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { IoMdCloudUpload } from 'react-icons/io';
 import Button from 'components/UI/Button';
 import Loader from 'components/UI/Loader';
@@ -5,6 +6,7 @@ import Preview from './Preview';
 import useModalWindow from 'hooks/useModalWindow';
 import useUploadFile from 'hooks/useUploadFile';
 import { UploadFileProps } from 'types/props/UploadFileProps';
+import { TranslationKeys } from 'types/enums/TranslationKeys';
 import { Text, Label, Input, UploadButton, UploadButtonLabel } from './UploadFile.styled';
 
 const UploadFile: React.FC<UploadFileProps> = ({
@@ -28,6 +30,7 @@ const UploadFile: React.FC<UploadFileProps> = ({
     previewSource,
     selectedFile,
   } = useUploadFile(closeModal, fileName, operation, uploadFoo);
+  const { t } = useTranslation();
 
   return (
     <form encType="multipart/from-data" onSubmit={handleSubmit}>
@@ -44,7 +47,7 @@ const UploadFile: React.FC<UploadFileProps> = ({
         />
         <UploadButton type="button" onClick={handleClick}>
           <IoMdCloudUpload size={50} />
-          <UploadButtonLabel>{`Select ${fileName}`}</UploadButtonLabel>
+          <UploadButtonLabel>{t(TranslationKeys.Select)}</UploadButtonLabel>
         </UploadButton>
       </Label>
       {previewSource && (

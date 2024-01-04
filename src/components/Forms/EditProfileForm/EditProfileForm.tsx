@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import GenderOptions from 'utilities/GenderOptions';
 import TextInput from 'components/UI/TextInput';
 import DropdownList from 'components/UI/DropdownList';
@@ -5,6 +6,7 @@ import Button from 'components/UI/Button';
 import DateInput from 'components/UI/DateInput';
 import useEditProfileForm from 'hooks/useEditProfileForm';
 import { EditProfileFormProps } from 'types/props/EditProfileFormProps';
+import { TranslationKeys } from 'types/enums/TranslationKeys';
 
 const EditProfileForm: React.FC<EditProfileFormProps> = ({
   firstName,
@@ -18,14 +20,15 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
 }) => {
   const { register, errors, Controller, control, setValue, handleSubmit, onSubmit } =
     useEditProfileForm();
+  const { t } = useTranslation();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <TextInput
         type="text"
         name="firstName"
-        label="What are you first name?"
-        placeholder="First name"
+        label={t(TranslationKeys.WhatAreYouFirstName)}
+        placeholder={t(TranslationKeys.FirstName)}
         register={register}
         errors={errors}
         height={40}
@@ -35,8 +38,8 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
       <TextInput
         type="text"
         name="lastName"
-        label="What are you last name?"
-        placeholder="Last name"
+        label={t(TranslationKeys.WhatAreYouLastName)}
+        placeholder={t(TranslationKeys.LastName)}
         register={register}
         errors={errors}
         height={40}
@@ -51,8 +54,8 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
             type="single"
             name="gender"
             options={GenderOptions}
-            label="Choose your gender."
-            buttonlabel="Gender"
+            label={t(TranslationKeys.ChooseYourGender)}
+            buttonlabel={t(TranslationKeys.Gender)}
             height="40px"
             width="100%"
             margin="0 0 var(--small-indent) 0"
@@ -70,7 +73,9 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
         render={({ field }) => (
           <DateInput
             name="dateBirth"
-            label="Will you choose your date of birth?"
+            label={`${t(TranslationKeys.WillYouChooseYourDateBirth)} ${t(
+              TranslationKeys.DateBirthFormat,
+            )}`}
             selected={field.value}
             onChange={date => setValue('dateBirth', date)}
             height="40px"
@@ -82,8 +87,8 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
       <TextInput
         type="text"
         name="companyName"
-        label="What is the name of the company?"
-        placeholder="Company name"
+        label={t(TranslationKeys.WhatNameCompany)}
+        placeholder={t(TranslationKeys.CompanyName)}
         register={register}
         errors={errors}
         height={40}
@@ -93,8 +98,8 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
       <TextInput
         type="text"
         name="profession"
-        label="What is the name of your profession?"
-        placeholder="Profession"
+        label={t(TranslationKeys.WhatNameYourProfession)}
+        placeholder={t(TranslationKeys.Profession)}
         register={register}
         errors={errors}
         height={40}
@@ -104,11 +109,13 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
       <Controller
         name="startWork"
         control={control}
-        defaultValue={new Date(startWork ? startWork : '')}
+        defaultValue={new Date(startWork ?? '')}
         render={({ field }) => (
           <DateInput
             name="startWork"
-            label="Will you choose a start date for working for this company?"
+            label={`${t(TranslationKeys.StartDateForWorking)} ${t(
+              TranslationKeys.DateBirthFormat,
+            )}`}
             selected={field.value}
             onChange={date => setValue('startWork', date)}
             height="40px"
@@ -120,15 +127,15 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
       <TextInput
         type="number"
         name="salaryPerHour"
-        label="Your rate per hour of work?"
-        placeholder="Salary per hour"
+        label={t(TranslationKeys.YourRatePerHourWork)}
+        placeholder={t(TranslationKeys.SalaryPerHour)}
         register={register}
         errors={errors}
         height={40}
         margin="0 0 var(--medium-indent) 0"
         defaultValue={salaryPerHour}
       />
-      <Button type="submit" label="Edit profile" width="270px" height="40px" />
+      <Button type="submit" label={t(TranslationKeys.EditProfile)} width="270px" height="40px" />
     </form>
   );
 };
