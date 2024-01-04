@@ -10,9 +10,11 @@ export const changeLang = (lng: LanguageEnum) => {
 };
 
 const resources = { en, pl, ua };
+const settings = JSON.parse(localStorage.getItem('persist:settings') ?? '');
+const defaultLng = settings.language.replaceAll('"', '');
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: 'en',
+  lng: defaultLng,
   interpolation: { escapeValue: false },
 });
