@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-export const API_URL = 'http://localhost:5050/';
+export const API_URL = 'https://work-time-api.vercel.app/';
 
 const api = axios.create({
   withCredentials: true,
