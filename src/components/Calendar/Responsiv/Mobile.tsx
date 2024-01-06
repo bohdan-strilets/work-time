@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import Controllers from '../Controllers';
 import Header from '../Header';
 import MonthList from '../MonthList';
@@ -14,6 +15,9 @@ import ListDays from 'components/ListDays';
 import useCalendar from 'hooks/useCalendar';
 import useModalWindow from 'hooks/useModalWindow';
 import { CalendarTypeEnum } from 'types/enums/CalendarTypeEnum';
+import { CalendarLngKeys } from 'types/locales/CalendarLngKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { List } from '../Calendar.styled';
 
 const Mobile: React.FC<{}> = () => {
@@ -40,6 +44,7 @@ const Mobile: React.FC<{}> = () => {
     calendarType,
   } = useCalendar();
   const { checkQueryParam, modalsName } = useModalWindow();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -109,9 +114,9 @@ const Mobile: React.FC<{}> = () => {
         {checkQueryParam(modalsName.cellDayDelete) && selectedDate && (
           <ModalWindow title={`${dateTransform(selectedDate)}`}>
             <DialogWindow
-              negativeBtnLabel="Cancel"
-              positiveBtnLabel="Delete"
-              text="Do you really want to delete information about the current day. Once confirmed, the action cannot be canceled."
+              negativeBtnLabel={t(CommonLngKeys.Cancel, { ns: LocalesKeys.common })}
+              positiveBtnLabel={t(CommonLngKeys.Delete, { ns: LocalesKeys.common })}
+              text={t(CalendarLngKeys.DeleteDayParagraph1, { ns: LocalesKeys.calendar })}
               handlePositiveClick={deleteInformationForDay}
               handleNegativeClick={() => navigate(-1)}
             />

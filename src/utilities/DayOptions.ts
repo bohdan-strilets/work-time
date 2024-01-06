@@ -1,23 +1,27 @@
+import { translateLabel } from 'locales/config';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
+
 const DayOptions = [
   {
     id: 1,
-    label: "Work day",
-    value: "work",
+    label: translateLabel(CommonLngKeys.WorkDay, LocalesKeys.common),
+    value: 'work',
   },
   {
     id: 2,
-    label: "Day off",
-    value: "day-off",
+    label: translateLabel(CommonLngKeys.DayOff, LocalesKeys.common),
+    value: 'day-off',
   },
   {
     id: 3,
-    label: "Vacation",
-    value: "vacation",
+    label: translateLabel(CommonLngKeys.Vacation, LocalesKeys.common),
+    value: 'vacation',
   },
   {
     id: 4,
-    label: "Sick leave",
-    value: "sick-leave",
+    label: translateLabel(CommonLngKeys.SickLeave, LocalesKeys.common),
+    value: 'sick-leave',
   },
 ];
 

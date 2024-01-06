@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { MdOutlineWork, MdSunny } from 'react-icons/md';
 import { ImOffice } from 'react-icons/im';
 import { BsCheckAll, BsFillCalendar3WeekFill } from 'react-icons/bs';
@@ -9,10 +10,13 @@ import Loader from 'components/UI/Loader';
 import { Status } from 'types/enums/StatusEnum';
 import { month } from 'utilities/DefaultCalendarData';
 import useListDays from 'hooks/useListDays';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { Title, List, Item, Image, Wrapper, Value, IsAdditional } from './ListDays.styled';
 
 const ListDays: React.FC<{}> = () => {
   const { data, sortedFilteredData } = useListDays();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -52,10 +56,14 @@ const ListDays: React.FC<{}> = () => {
                         {status === Status.dayOff && <PiBeerSteinFill size={18} />}
                         {status === Status.sickLeave && <BsHospitalFill size={18} />}
                         <Value>
-                          {status === Status.work && 'Work day'}
-                          {status === Status.dayOff && 'Day off'}
-                          {status === Status.vacation && 'Vacation'}
-                          {status === Status.sickLeave && 'Sick leave'}
+                          {status === Status.work &&
+                            t(CommonLngKeys.WorkDay, { ns: LocalesKeys.common })}
+                          {status === Status.dayOff &&
+                            t(CommonLngKeys.DayOff, { ns: LocalesKeys.common })}
+                          {status === Status.vacation &&
+                            t(CommonLngKeys.Vacation, { ns: LocalesKeys.common })}
+                          {status === Status.sickLeave &&
+                            t(CommonLngKeys.SickLeave, { ns: LocalesKeys.common })}
                         </Value>
                       </Wrapper>
                       <Wrapper>

@@ -38,6 +38,7 @@ export const List = styled.ul`
   position: absolute;
   top: 150%;
   right: 0;
+  z-index: 99;
 
   width: 100%;
 

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { BsFillCalendar3WeekFill, BsCheckAll } from 'react-icons/bs';
 import { BiSolidTimeFive } from 'react-icons/bi';
 import { MdOutlineWork, MdModeEditOutline, MdDelete, MdSunny } from 'react-icons/md';
@@ -11,6 +12,9 @@ import { DayInfoProps } from 'types/props/DayInfoProps';
 import { Status } from 'types/enums/StatusEnum';
 import useCalculateDay from 'hooks/useCalculateDay';
 import useCalculateTax from 'hooks/useCalculateTax';
+import { CalendarLngKeys } from 'types/locales/CalendarLngKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 import {
   Container,
   Text,
@@ -53,6 +57,7 @@ const Tablet: React.FC<DayInfoProps> = ({
     disabilityContribution,
     sicknessInsuranceContribution,
   } = useCalculateTax({ earningForDay });
+  const { t } = useTranslation();
 
   return (
     <div>
@@ -63,10 +68,10 @@ const Tablet: React.FC<DayInfoProps> = ({
           {status === Status.dayOff && <PiBeerSteinFill size={28} />}
           {status === Status.sickLeave && <BsHospitalFill size={28} />}
           <Text fontSize="24px" fontWeight={900} margin="0 0 0 10px">
-            {status === Status.work && 'Work day'}
-            {status === Status.dayOff && 'Day off'}
-            {status === Status.vacation && 'Vacation'}
-            {status === Status.sickLeave && 'Sick leave'}
+            {status === Status.work && t(CommonLngKeys.WorkDay, { ns: LocalesKeys.common })}
+            {status === Status.dayOff && t(CommonLngKeys.DayOff, { ns: LocalesKeys.common })}
+            {status === Status.vacation && t(CommonLngKeys.Vacation, { ns: LocalesKeys.common })}
+            {status === Status.sickLeave && t(CommonLngKeys.SickLeave, { ns: LocalesKeys.common })}
           </Text>
         </Container>
         <NumberHours>{numberHoursWorked > 0 ? `${numberHoursWorked}h` : '-'}</NumberHours>
@@ -90,7 +95,7 @@ const Tablet: React.FC<DayInfoProps> = ({
         </Container>
       </Container>
       <Container margin="0 0 var(--small-indent) 0" justifyContent="space-between">
-        <Text>Additional hours:</Text>
+        <Text>{t(CalendarLngKeys.AdditionalHours, { ns: LocalesKeys.calendar })}:</Text>
         <ExtraTimeStatus additionalHours={additionalHours}>
           <BsCheckAll size={20} />
         </ExtraTimeStatus>
@@ -101,7 +106,7 @@ const Tablet: React.FC<DayInfoProps> = ({
           alignItems="flex-start"
           margin="0 0 var(--medium-indent) 0"
         >
-          <Text fontWeight={700}>Earnings:</Text>
+          <Text fontWeight={700}>{t(CommonLngKeys.Earnings, { ns: LocalesKeys.common })}:</Text>
           <IncomeList
             numberHoursWorked={numberHoursWorked}
             workShiftNumber={workShiftNumber}

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import DropdownList from 'components/UI/DropdownList';
 import Button from 'components/UI/Button';
 import Checkbox from 'components/UI/Checkbox';
@@ -7,6 +8,9 @@ import DayOptions from 'utilities/DayOptions';
 import HoursOptions from 'utilities/HoursOptions';
 import { AddInformationFormProps } from 'types/props/AddInformationFormProps';
 import { Status } from 'types/enums/StatusEnum';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
+import { CalendarLngKeys } from 'types/locales/CalendarLngKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 
 const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate }) => {
   const {
@@ -23,6 +27,7 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
     quickFinishTime,
     selectedVacationHours,
   } = useAddInformationForm({ selectedDate });
+  const { t } = useTranslation();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -34,8 +39,8 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
             type="single"
             name="status"
             options={DayOptions}
-            label="Did you work or rest today?"
-            buttonlabel="Today"
+            label={`${t(CalendarLngKeys.DidYouWorkOrRestToday, { ns: LocalesKeys.calendar })}?`}
+            buttonlabel={t(CommonLngKeys.Today, { ns: LocalesKeys.common })}
             height="40px"
             width="100%"
             margin="0 0 var(--small-indent) 0"
@@ -57,8 +62,10 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
                 type="single"
                 name="startJob"
                 options={HoursOptions}
-                label="What time did you arrive at work?"
-                buttonlabel="Start"
+                label={`${t(CalendarLngKeys.WhatTimeDidYouArriveAtWork, {
+                  ns: LocalesKeys.calendar,
+                })}?`}
+                buttonlabel={t(CommonLngKeys.Start, { ns: LocalesKeys.common })}
                 height="40px"
                 width="100%"
                 margin="0 0 var(--small-indent) 0"
@@ -86,8 +93,8 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
                 type="single"
                 name="finishJob"
                 options={HoursOptions}
-                label="What time did you go home?"
-                buttonlabel="Finish"
+                label={`${t(CalendarLngKeys.WhatTimeDidYouGoHome, { ns: LocalesKeys.calendar })}?`}
+                buttonlabel={t(CommonLngKeys.Finish, { ns: LocalesKeys.common })}
                 height="40px"
                 width="100%"
                 margin="0 0 var(--small-indent) 0"
@@ -116,7 +123,7 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
               onChange={(value: boolean) => field.onChange(value)}
               margin="0 0 var(--small-indent) 0"
             >
-              <p>Is this an extra shift?</p>
+              <p>{`${t(CalendarLngKeys.IsThisAnExtraShift, { ns: LocalesKeys.calendar })}?`}</p>
             </Checkbox>
           )}
         />
@@ -133,15 +140,18 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
               onChange={(value: boolean) => field.onChange(value)}
               margin="0 0 var(--small-indent) 0"
             >
-              <p>
-                Do you want to set your own vacation time? (Default will be selected 06:00 - 18:00)
-              </p>
+              <p>{t(CalendarLngKeys.SetYourOwnVacationTime, { ns: LocalesKeys.calendar })}</p>
             </Checkbox>
           )}
         />
       )}
 
-      <Button type="submit" label="Add day" width="270px" height="40px" />
+      <Button
+        type="submit"
+        label={t(CalendarLngKeys.AddDay, { ns: LocalesKeys.calendar })}
+        width="270px"
+        height="40px"
+      />
     </form>
   );
 };
