@@ -1,13 +1,18 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { StatisticsByMonths } from 'types/types/StatisticsType';
 import getRandomColor from 'utilities/getRandomColor';
 import { FilterDateType } from 'types/types/FilterDateType';
 import { ValueByMonth } from 'types/types/StatisticsType';
 import { HookProps } from 'types/props/StatisticsProps';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { StatisticsLngKeys } from 'types/locales/StatisticsLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 
 export const useChart = ({ statisticsByMonths }: HookProps) => {
   const [startFilter, setStartFilter] = useState<null | FilterDateType>(null);
   const [endFilter, setEndFilter] = useState<null | FilterDateType>(null);
+  const { t } = useTranslation();
 
   const getFilterDate = (start: FilterDateType, end: FilterDateType) => {
     setStartFilter(start);
@@ -198,6 +203,20 @@ export const useChart = ({ statisticsByMonths }: HookProps) => {
     ],
   };
 
+  const labelsForDiagramByStatus = [
+    t(CommonLngKeys.Work, { ns: LocalesKeys.common }),
+    t(CommonLngKeys.DayOff, { ns: LocalesKeys.common }),
+    t(CommonLngKeys.Vacation, { ns: LocalesKeys.common }),
+    t(CommonLngKeys.SickLeave, { ns: LocalesKeys.common }),
+    t(CommonLngKeys.Additional, { ns: LocalesKeys.common }),
+  ];
+
+  const labelsForDiagramByShifts = [
+    t(StatisticsLngKeys.FirstShifts, { ns: LocalesKeys.statistics }),
+    t(StatisticsLngKeys.SecondShifts, { ns: LocalesKeys.statistics }),
+    t(StatisticsLngKeys.NightHours, { ns: LocalesKeys.statistics }),
+  ];
+
   return {
     createDataForChart,
     getLabelForChart,
@@ -207,6 +226,8 @@ export const useChart = ({ statisticsByMonths }: HookProps) => {
     calculateStatisticsByMonth,
     barGraphData,
     dataForChartGraph,
+    labelsForDiagramByStatus,
+    labelsForDiagramByShifts,
   };
 };
 

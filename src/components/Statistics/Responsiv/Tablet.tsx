@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { IoStatsChartSharp } from 'react-icons/io5';
 import Button from 'components/UI/Button';
 import Loader from 'components/UI/Loader';
@@ -6,6 +7,9 @@ import useModalWindow from 'hooks/useModalWindow';
 import { StatisticsProps } from 'types/props/StatisticsProps';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { getTheme } from '../../../redux/settings/settingsSelectors';
+import { StatisticsLngKeys } from 'types/locales/StatisticsLngKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 import {
   HeaderWrapper,
   Title,
@@ -22,9 +26,12 @@ const Tablet: React.FC<StatisticsProps> = ({
   calculateStatisticsByMonth,
   isLoading,
   dataForChartGraph,
+  labelsForDiagramByShifts,
+  labelsForDiagramByStatus,
 }) => {
   const { openModal, modalsName } = useModalWindow();
   const theme = useAppSelector(getTheme);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -32,7 +39,7 @@ const Tablet: React.FC<StatisticsProps> = ({
       <Group>
         <Data>
           <HeaderWrapper>
-            <Title>Days</Title>
+            <Title>{t(CommonLngKeys.Days, { ns: LocalesKeys.common })}</Title>
             <Button
               type="button"
               height="35px"
@@ -43,36 +50,49 @@ const Tablet: React.FC<StatisticsProps> = ({
           </HeaderWrapper>
           <List>
             <Item theme={theme}>
-              <Property>Number of working days:</Property>
+              <Property>
+                {t(StatisticsLngKeys.NumberOfWorkingDays, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberWorkingDays)}</Value>
             </Item>
             <Item theme={theme}>
-              <Property>Number of days off:</Property>
+              <Property>
+                {t(StatisticsLngKeys.NumberOfDaysOff, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberDaysOff)}</Value>
             </Item>
             <Item theme={theme}>
-              <Property>Number of vacation days:</Property>
+              <Property>
+                {t(StatisticsLngKeys.NumberOfVacationDays, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberVacationDays)}</Value>
             </Item>
             <Item theme={theme}>
-              <Property>Number of sick days:</Property>
+              <Property>
+                {t(StatisticsLngKeys.NumberOfSickDays, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberSickDays)}</Value>
             </Item>
             <Item theme={theme}>
-              <Property>Number of additional working days:</Property>
+              <Property>
+                {t(StatisticsLngKeys.NumberOfAdditionalWorkingDays, { ns: LocalesKeys.statistics })}
+                :
+              </Property>
               <Value>
                 {calculateStatisticsByMonth(statisticsByMonths?.numberAdditionalWorkingDays)}
               </Value>
             </Item>
             <Item theme={theme}>
-              <Property>Total days (except weekends):</Property>
+              <Property>
+                {t(StatisticsLngKeys.TotalDaysExceptWeekends, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.totalDays)}</Value>
             </Item>
           </List>
         </Data>
         {dataForChartGraph.forDays[0].data.length > 0 && (
           <Diagram
-            labels={['Work', 'Day off', 'Vacation', 'Sick leave', 'Additional work']}
+            labels={labelsForDiagramByStatus}
             datasets={dataForChartGraph.forDays}
             width="400px"
           />
@@ -81,7 +101,7 @@ const Tablet: React.FC<StatisticsProps> = ({
       <Group>
         <Data>
           <HeaderWrapper>
-            <Title>Hours</Title>
+            <Title>{t(CommonLngKeys.Hours, { ns: LocalesKeys.common })}</Title>
             <Button
               type="button"
               height="35px"
@@ -92,36 +112,51 @@ const Tablet: React.FC<StatisticsProps> = ({
           </HeaderWrapper>
           <List>
             <Item theme={theme}>
-              <Property>Number of working hours:</Property>
+              <Property>
+                {t(StatisticsLngKeys.NumberOfWorkingHours, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberWorkingHours)}</Value>
             </Item>
             <Item theme={theme}>
-              <Property>Number of free hours:</Property>
+              <Property>
+                {t(StatisticsLngKeys.NumberOfFreeHours, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberFreeHours)}</Value>
             </Item>
             <Item theme={theme}>
-              <Property>Number of vacation hours:</Property>
+              <Property>
+                {t(StatisticsLngKeys.NumberOfVacationHours, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberVacationHours)}</Value>
             </Item>
             <Item theme={theme}>
-              <Property>Number of sick leave hours:</Property>
+              <Property>
+                {t(StatisticsLngKeys.NumberOfSickLeaveHours, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberSickHours)}</Value>
             </Item>
             <Item theme={theme}>
-              <Property>Number of additional working hours:</Property>
+              <Property>
+                {t(StatisticsLngKeys.NumberOfAdditionalWorkingHours, {
+                  ns: LocalesKeys.statistics,
+                })}
+                :
+              </Property>
               <Value>
                 {calculateStatisticsByMonth(statisticsByMonths?.numberAdditionalWorkingHours)}
               </Value>
             </Item>
             <Item theme={theme}>
-              <Property>Total hours (except weekends):</Property>
+              <Property>
+                {t(StatisticsLngKeys.TotalHoursExceptWeekends, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.totalHours)}</Value>
             </Item>
           </List>
         </Data>
         {dataForChartGraph.forHours[0].data.length > 0 && (
           <Diagram
-            labels={['Work', 'Day off', 'Vacation', 'Sick leave', 'Additional work']}
+            labels={labelsForDiagramByStatus}
             datasets={dataForChartGraph.forHours}
             width="400px"
           />
@@ -130,7 +165,7 @@ const Tablet: React.FC<StatisticsProps> = ({
       <Group>
         <Data>
           <HeaderWrapper>
-            <Title>Shifts</Title>
+            <Title>{t(CommonLngKeys.Shifts, { ns: LocalesKeys.common })}</Title>
             <Button
               type="button"
               height="35px"
@@ -141,22 +176,48 @@ const Tablet: React.FC<StatisticsProps> = ({
           </HeaderWrapper>
           <List>
             <Item theme={theme}>
-              <Property>Number of first shifts:</Property>
+              <Property>
+                {t(StatisticsLngKeys.FirstShifts, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberFirstShifts)}</Value>
             </Item>
             <Item theme={theme}>
-              <Property>Number of second shifts:</Property>
+              <Property>
+                {t(StatisticsLngKeys.SecondShifts, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberSecondShifts)}</Value>
             </Item>
             <Item theme={theme}>
-              <Property>Number of night hours:</Property>
+              <Property>
+                {t(StatisticsLngKeys.NightHours, { ns: LocalesKeys.statistics })}:
+              </Property>
+              <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberNightHours)}</Value>
+            </Item>
+          </List>{' '}
+          <List>
+            <Item theme={theme}>
+              <Property>
+                {t(StatisticsLngKeys.FirstShifts, { ns: LocalesKeys.statistics })}:
+              </Property>
+              <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberFirstShifts)}</Value>
+            </Item>
+            <Item theme={theme}>
+              <Property>
+                {t(StatisticsLngKeys.SecondShifts, { ns: LocalesKeys.statistics })}:
+              </Property>
+              <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberSecondShifts)}</Value>
+            </Item>
+            <Item theme={theme}>
+              <Property>
+                {t(StatisticsLngKeys.NightHours, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.numberNightHours)}</Value>
             </Item>
           </List>
         </Data>
         {dataForChartGraph.forShifts[0].data.length > 0 && (
           <Diagram
-            labels={['First shifts', 'Second shifts', 'Night hours']}
+            labels={labelsForDiagramByShifts}
             datasets={dataForChartGraph.forShifts}
             width="400px"
           />
@@ -165,7 +226,7 @@ const Tablet: React.FC<StatisticsProps> = ({
       <Group>
         <Data>
           <HeaderWrapper>
-            <Title>Money</Title>
+            <Title>{t(CommonLngKeys.Money, { ns: LocalesKeys.common })}</Title>
             <Button
               type="button"
               height="35px"
@@ -176,58 +237,76 @@ const Tablet: React.FC<StatisticsProps> = ({
           </HeaderWrapper>
           <List>
             <Item theme={theme}>
-              <Property>Gross amount of money received during working days:</Property>
+              <Property>
+                {t(StatisticsLngKeys.GrossAmountOfWorkingDays, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>
                 {calculateStatisticsByMonth(statisticsByMonths?.grossAmountMoneyForWorkingDays)}
               </Value>
             </Item>
             <Item theme={theme}>
-              <Property>Net amount of money received during working days:</Property>
+              <Property>
+                {t(StatisticsLngKeys.NetAmountOfWorkingDays, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>
                 {calculateStatisticsByMonth(statisticsByMonths?.nettoAmountMoneyForWorkingDays)}
               </Value>
             </Item>
             <Item theme={theme}>
-              <Property>Gross amount of money received for vacation days:</Property>
+              <Property>
+                {t(StatisticsLngKeys.GrossAmountOfVacationDays, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>
                 {calculateStatisticsByMonth(statisticsByMonths?.grossAmountMoneyForVacationDays)}
               </Value>
             </Item>
             <Item theme={theme}>
-              <Property>Net amount of money received for vacation days:</Property>
+              <Property>
+                {t(StatisticsLngKeys.GrossAmountOfVacationDays, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>
                 {calculateStatisticsByMonth(statisticsByMonths?.nettoAmountMoneyForVacationDays)}
               </Value>
             </Item>
             <Item theme={theme}>
-              <Property>Gross amount of money received for sick days:</Property>
+              <Property>
+                {t(StatisticsLngKeys.GrossAmountOfSickDays, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>
                 {calculateStatisticsByMonth(statisticsByMonths?.grossAmountMoneyForSickDays)}
               </Value>
             </Item>
             <Item theme={theme}>
-              <Property>Net amount of money received for sick days:</Property>
+              <Property>
+                {t(StatisticsLngKeys.NetAmountOfSickDays, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>
                 {calculateStatisticsByMonth(statisticsByMonths?.nettoAmountMoneyForSickDays)}
               </Value>
             </Item>
             <Item theme={theme}>
-              <Property>Total money received gross:</Property>
+              <Property>
+                {t(StatisticsLngKeys.TotalMoneyReceivedGross, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.totalMoneyEarnedGross)}</Value>
             </Item>
             <Item theme={theme}>
-              <Property>Total money received net:</Property>
+              <Property>
+                {t(StatisticsLngKeys.TotalMoneyReceivedNet, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.totalMoneyEarnedNetto)}</Value>
             </Item>
             <Item theme={theme}>
-              <Property>Total tax paid:</Property>
+              <Property>
+                {t(StatisticsLngKeys.TotalTaxPaid, { ns: LocalesKeys.statistics })}:
+              </Property>
               <Value>{calculateStatisticsByMonth(statisticsByMonths?.totalTaxPaid)}</Value>
             </Item>
           </List>
         </Data>
         {dataForChartGraph.forMonay[0].data.length > 0 && (
           <Diagram
-            labels={['Work', 'Day off', 'Vacation', 'Sick leave', 'Additional work']}
+            labels={labelsForDiagramByStatus}
             datasets={dataForChartGraph.forMonay}
             width="400px"
           />

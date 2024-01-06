@@ -10,20 +10,15 @@ import {
 import { Bar } from 'react-chartjs-2';
 import { ChartProps } from 'types/props/ChartProps';
 
-const Chart: React.FC<ChartProps> = ({ title, labels, datasets }) => {
+const Chart: React.FC<ChartProps> = ({ labels, datasets }) => {
   ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
   const data = { labels, datasets };
 
   const options = {
     responsive: true,
     plugins: {
-      legend: {
-        position: 'bottom' as const,
-      },
-      title: {
-        display: true,
-        text: title,
-      },
+      legend: { position: 'bottom' as const },
+      title: { display: false },
     },
   };
 

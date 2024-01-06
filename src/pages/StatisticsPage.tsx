@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import Statistics from 'components/Statistics';
 import Chart from 'components/Statistics/Chart';
 import Controllers from 'components/Statistics/Controllers';
@@ -5,11 +6,13 @@ import ModalWindow from 'components/ModalWindow';
 import useModalWindow from 'hooks/useModalWindow';
 import { month } from 'utilities/DefaultCalendarData';
 import { useGetStatisticsQuery } from '../redux/statistics/statisticsApi';
+import { StatisticsLngKeys } from 'types/locales/StatisticsLngKeys';
 import useChart from 'hooks/useChart';
 
 const StatisticsPage: React.FC<{}> = () => {
   const { checkQueryParam, modalsName } = useModalWindow();
   const { data, isLoading } = useGetStatisticsQuery();
+  const { t } = useTranslation();
   const statisticsByMonths = data?.data?.statisticsByMonths;
   const {
     getLabelForChart,
@@ -17,6 +20,8 @@ const StatisticsPage: React.FC<{}> = () => {
     calculateStatisticsByMonth,
     barGraphData,
     dataForChartGraph,
+    labelsForDiagramByShifts,
+    labelsForDiagramByStatus,
   } = useChart({
     statisticsByMonths,
   });
@@ -29,11 +34,12 @@ const StatisticsPage: React.FC<{}> = () => {
         calculateStatisticsByMonth={calculateStatisticsByMonth}
         isLoading={isLoading}
         dataForChartGraph={dataForChartGraph}
+        labelsForDiagramByShifts={labelsForDiagramByShifts}
+        labelsForDiagramByStatus={labelsForDiagramByStatus}
       />
       {checkQueryParam(modalsName.chartByDays) && (
-        <ModalWindow title="Statistics by days">
+        <ModalWindow title={t(StatisticsLngKeys.StatisticsByDays)}>
           <Chart
-            title="Statistics by days"
             labels={getLabelForChart(
               month,
               [
@@ -50,9 +56,8 @@ const StatisticsPage: React.FC<{}> = () => {
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.chartByHours) && (
-        <ModalWindow title="Statistics by hours">
+        <ModalWindow title={t(StatisticsLngKeys.StatisticsByHours)}>
           <Chart
-            title="Statistics by hours"
             labels={getLabelForChart(
               month,
               [
@@ -69,9 +74,8 @@ const StatisticsPage: React.FC<{}> = () => {
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.chartByShifts) && (
-        <ModalWindow title="Work shift statistics">
+        <ModalWindow title={t(StatisticsLngKeys.WorkShiftStatistics)}>
           <Chart
-            title="Statistics by shifts"
             labels={getLabelForChart(
               month,
               ['numberFirstShifts', 'numberSecondShifts', 'numberNightHours'],
@@ -82,9 +86,8 @@ const StatisticsPage: React.FC<{}> = () => {
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.chartByMoney) && (
-        <ModalWindow title="Money statistics">
+        <ModalWindow title={t(StatisticsLngKeys.MoneyStatistics)}>
           <Chart
-            title="Statistics by moneys"
             labels={getLabelForChart(
               month,
               [

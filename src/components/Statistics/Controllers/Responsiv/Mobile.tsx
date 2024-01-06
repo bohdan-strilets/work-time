@@ -1,20 +1,24 @@
+import { useTranslation } from 'react-i18next';
 import DropdownList from 'components/UI/DropdownList';
 import Button from 'components/UI/Button';
 import MonthOptions from 'utilities/MonthOption';
 import YearOptions from 'utilities/YearOptions';
 import { ControllersForStatsProps } from 'types/props/ControllersForStatsProps';
 import useFilteredStatisticForm from 'hooks/useFilteredStatisticForm';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { Wrapper, Group, Text } from '../Controllers.styled';
 
 const Mobile: React.FC<ControllersForStatsProps> = ({ getFilterDate }) => {
   const { Controller, control, errors, handleSubmit, onSubmit } = useFilteredStatisticForm({
     getFilterDate,
   });
+  const { t } = useTranslation();
+
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)}>
       <Group>
-        <Text>From:</Text>
-
+        <Text>{t(CommonLngKeys.From, { ns: LocalesKeys.common })}:</Text>
         <Controller
           name="startMonth"
           control={control}
@@ -55,7 +59,7 @@ const Mobile: React.FC<ControllersForStatsProps> = ({ getFilterDate }) => {
         />
       </Group>
       <Group>
-        <Text>To:</Text>
+        <Text>{t(CommonLngKeys.To, { ns: LocalesKeys.common })}:</Text>
         <Controller
           name="endMonth"
           control={control}
@@ -95,7 +99,12 @@ const Mobile: React.FC<ControllersForStatsProps> = ({ getFilterDate }) => {
           )}
         />
       </Group>
-      <Button type="submit" height="30px" width="250px" label="Filter" />
+      <Button
+        type="submit"
+        height="30px"
+        width="250px"
+        label={t(CommonLngKeys.Filter, { ns: LocalesKeys.common })}
+      />
     </Wrapper>
   );
 };

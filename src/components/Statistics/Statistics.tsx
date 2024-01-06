@@ -10,6 +10,8 @@ const Statistics: React.FC<StatisticsProps> = ({
   calculateStatisticsByMonth,
   isLoading,
   dataForChartGraph,
+  labelsForDiagramByShifts,
+  labelsForDiagramByStatus,
 }) => {
   return (
     <Media
@@ -27,6 +29,8 @@ const Statistics: React.FC<StatisticsProps> = ({
               calculateStatisticsByMonth={calculateStatisticsByMonth}
               isLoading={isLoading}
               dataForChartGraph={dataForChartGraph}
+              labelsForDiagramByShifts={labelsForDiagramByShifts}
+              labelsForDiagramByStatus={labelsForDiagramByStatus}
             />
           )}
           {matches.medium && (
@@ -35,6 +39,8 @@ const Statistics: React.FC<StatisticsProps> = ({
               calculateStatisticsByMonth={calculateStatisticsByMonth}
               isLoading={isLoading}
               dataForChartGraph={dataForChartGraph}
+              labelsForDiagramByShifts={labelsForDiagramByShifts}
+              labelsForDiagramByStatus={labelsForDiagramByStatus}
             />
           )}
           {matches.large && (
@@ -43,6 +49,8 @@ const Statistics: React.FC<StatisticsProps> = ({
               calculateStatisticsByMonth={calculateStatisticsByMonth}
               isLoading={isLoading}
               dataForChartGraph={dataForChartGraph}
+              labelsForDiagramByShifts={labelsForDiagramByShifts}
+              labelsForDiagramByStatus={labelsForDiagramByStatus}
             />
           )}
         </>

@@ -12,6 +12,8 @@ export type StatisticsProps = {
     forShifts: DiagramData[];
     forMonay: DiagramData[];
   };
+  labelsForDiagramByShifts: string[];
+  labelsForDiagramByStatus: string[];
 };
 
 export type HookProps = Pick<StatisticsProps, 'statisticsByMonths'>;
