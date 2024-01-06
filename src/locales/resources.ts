@@ -14,6 +14,9 @@ import uaProfile from './ua/profile.json';
 import enCalendar from './en/calendar.json';
 import plCalendar from './pl/calendar.json';
 import uaCalendar from './ua/calendar.json';
+import enNotFound from './en/notFound.json';
+import plNotFound from './pl/notFound.json';
+import uaNotFound from './ua/notFound.json';
 
 const resources = {
   en: {
@@ -22,6 +25,7 @@ const resources = {
     [LocalesKeys.aboutUs]: enAboutUs,
     [LocalesKeys.profile]: enProfile,
     [LocalesKeys.calendar]: enCalendar,
+    [LocalesKeys.notFound]: enNotFound,
   },
   pl: {
     [LocalesKeys.statistics]: plStatistics,
@@ -29,6 +33,7 @@ const resources = {
     [LocalesKeys.aboutUs]: plAboutUs,
     [LocalesKeys.profile]: plProfile,
     [LocalesKeys.calendar]: plCalendar,
+    [LocalesKeys.notFound]: plNotFound,
   },
   ua: {
     [LocalesKeys.statistics]: uaStatistics,
@@ -36,6 +41,7 @@ const resources = {
     [LocalesKeys.aboutUs]: uaAboutUs,
     [LocalesKeys.profile]: uaProfile,
     [LocalesKeys.calendar]: uaCalendar,
+    [LocalesKeys.notFound]: uaNotFound,
   },
 };
 

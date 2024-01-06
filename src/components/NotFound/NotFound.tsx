@@ -1,5 +1,9 @@
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import LinkButton from 'components/UI/LinkButton';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
+import { NotFoundLngKeys } from 'types/locales/NotFoundLngKeys';
 import {
   Wrapper,
   LeftSide,
@@ -13,24 +17,26 @@ import {
 
 const NotFound: React.FC<{}> = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <Wrapper>
       <LeftSide>
         <ErrorCode>404</ErrorCode>
-        <Title>Page not found</Title>
+        <Title>{t(NotFoundLngKeys.PageNotFound, { ns: LocalesKeys.notFound })}</Title>
       </LeftSide>
       <RightSide>
-        <Subbtitle>
-          Sorry, the requested page is not found. Perhaps you entered the wrong URL or the page has
-          been deleted.
-        </Subbtitle>
+        <Subbtitle>{t(NotFoundLngKeys.NotFoundParagraph1, { ns: LocalesKeys.notFound })}</Subbtitle>
         <List>
           <Item>
-            <LinkButton onClick={() => navigate('/')}>Home</LinkButton>
+            <LinkButton onClick={() => navigate('/')}>
+              {t(CommonLngKeys.Home, { ns: LocalesKeys.common })}
+            </LinkButton>
           </Item>
           <Item>
-            <LinkButton onClick={() => navigate('/calendar')}>Calendar</LinkButton>
+            <LinkButton onClick={() => navigate('/calendar')}>
+              {t(CommonLngKeys.Calendar, { ns: LocalesKeys.common })}
+            </LinkButton>
           </Item>
         </List>
       </RightSide>

@@ -4,4 +4,5 @@ export enum LocalesKeys {
   aboutUs = 'aboutUs',
   profile = 'profile',
   calendar = 'calendar',
+  notFound = 'notFound',
 }

@@ -60,4 +60,8 @@ export enum CommonLngKeys {
   Sat = 'Sat',
   Sun = 'Sun',
   LogoSlogan = 'Logo slogan',
+  Home = 'Home',
+  Profile = 'Profile',
+  Statistics = 'Statistics',
+  AboutUs = 'About us',
 }
