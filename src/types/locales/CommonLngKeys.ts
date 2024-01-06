@@ -59,4 +59,5 @@ export enum CommonLngKeys {
   Fri = 'Fri',
   Sat = 'Sat',
   Sun = 'Sun',
+  LogoSlogan = 'Logo slogan',
 }

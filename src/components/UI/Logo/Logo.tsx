@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { TranslationKeys } from 'types/enums/TranslationKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { Text, Background, Icon, Slogan } from './Logo.styled';
 
 const Logo: React.FC<{}> = () => {
@@ -13,7 +14,7 @@ const Logo: React.FC<{}> = () => {
           <Icon />
         </Background>
       </Text>
-      <Slogan>{t(TranslationKeys.LogoSlogan)}</Slogan>
+      <Slogan>{t(CommonLngKeys.LogoSlogan, { ns: LocalesKeys.common })}</Slogan>
     </>
   );
 };
