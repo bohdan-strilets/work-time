@@ -10,5 +10,9 @@
   "Additional": "Dodatkowo",
   "From": "Od",
   "To": "Do",
-  "Filter": "Filtr"
+  "Filter": "Filtr",
+  "Name": "Imię",
+  "Email": "Email",
+  "Message": "Wiadomość",
+  "Send": "Wyślij"
 }

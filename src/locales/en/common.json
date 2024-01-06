@@ -10,5 +10,9 @@
   "Additional": "Additional",
   "From": "From",
   "To": "To",
-  "Filter": "Filter"
+  "Filter": "Filter",
+  "Name": "Name",
+  "Email": "Email",
+  "Message": "Message",
+  "Send": "Send"
 }

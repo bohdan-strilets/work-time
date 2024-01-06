@@ -1,8 +1,13 @@
+import { useTranslation } from 'react-i18next';
 import Logo from 'components/UI/Logo';
 import ContactForm from 'components/Forms/ContactForm';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
+import { AboutUsLngKeys } from 'types/locales/AboutUsLngKeys';
 import { TopSide, LogoWrapper, Data, LeftSide, Text, RightSide, Title } from './AboutUs.styled';
 
 const AboutUs: React.FC<{}> = () => {
+  const { t } = useTranslation();
+
   return (
     <div>
       <TopSide>
@@ -13,51 +18,44 @@ const AboutUs: React.FC<{}> = () => {
       <Data>
         <LeftSide>
           <Title textAlign="left">
-            Welcome to WorkTime – your reliable companion in time tracking and everyday
-            productivity!
+            {t(AboutUsLngKeys.WelcomeToWorkTime, { ns: LocalesKeys.aboutUs })}
           </Title>
           <Text margin="var(--medium-indent) 0">
-            WorkTime is an innovative web service designed for those who value their time and want
-            to efficiently manage workdays, shifts, and income. Our primary goal is to provide you
-            with a tool that makes time tracking easy and intuitive.
+            {t(AboutUsLngKeys.Paragraph1, { ns: LocalesKeys.aboutUs })}
           </Text>
-          <Title textAlign="left">Key features of WorkTime</Title>
+          <Title textAlign="left">
+            {' '}
+            {t(AboutUsLngKeys.KeyFeaturesOfWorkTime, { ns: LocalesKeys.aboutUs })}
+          </Title>
           <Text margin="var(--medium-indent) 0 10px 0">
-            Tracking Workdays and Shifts: Our service allows you to easily register your workdays
-            and shifts. Simply mark when you start and finish work, and WorkTime will automatically
-            save this information for future analysis.
+            {t(AboutUsLngKeys.Paragraph2, { ns: LocalesKeys.aboutUs })}
           </Text>
           <Text margin="0 0 10px 0">
-            Calculating Daily and Monthly Earnings: Our integrated earnings calculator gives you
-            instant access to information about your income for each worked day and the entire
-            month. This enables you to transparently track the financial aspect of your work.
+            {t(AboutUsLngKeys.Paragraph3, { ns: LocalesKeys.aboutUs })}
           </Text>
           <Text margin="0 0 var(--medium-indent) 0">
-            Statistics and Work Activity Analysis: WorkTime generates detailed reports on your
-            workdays and shifts. Analyze your productivity, identify trends, and plan your time
-            based on real data.
+            {t(AboutUsLngKeys.Paragraph4, { ns: LocalesKeys.aboutUs })}
           </Text>
-          <Title textAlign="left">Why you should choose WorkTime</Title>
+          <Title textAlign="left">
+            {' '}
+            {t(AboutUsLngKeys.WhyYouShouldChooseWorkTime, { ns: LocalesKeys.aboutUs })}
+          </Title>
           <Text margin="var(--medium-indent) 0 10px 0">
-            Ease of Use: Our interface is designed to allow even beginners to quickly and easily
-            manage their work time.
+            {t(AboutUsLngKeys.Paragraph5, { ns: LocalesKeys.aboutUs })}
           </Text>
           <Text margin="0 0 10px 0">
-            Data Reliability: WorkTime ensures the security of your records and provides access to
-            reliable and accurate data about your work activity.
+            {t(AboutUsLngKeys.Paragraph6, { ns: LocalesKeys.aboutUs })}
           </Text>
           <Text margin="0 0 var(--medium-indent) 0">
-            Time and Income Optimization: With WorkTime, you can efficiently manage your work time,
-            leading to increased income and an improved overall quality of life.
+            {t(AboutUsLngKeys.Paragraph7, { ns: LocalesKeys.aboutUs })}
           </Text>
           <Text margin="var(--medium-indent) 0">
-            Don't miss the opportunity to make your work more manageable and profitable. Join
-            WorkTime today – time tracking will become a straightforward and engaging process!
+            {t(AboutUsLngKeys.Paragraph8, { ns: LocalesKeys.aboutUs })}
           </Text>
         </LeftSide>
         <RightSide>
           <Title fontSize={32} margin="0 0 var(--large-indent) 0">
-            Connect with us
+            {t(AboutUsLngKeys.ConnectWithUs, { ns: LocalesKeys.aboutUs })}
           </Title>
           <ContactForm />
         </RightSide>

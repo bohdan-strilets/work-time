@@ -1,12 +1,16 @@
+import { useTranslation } from 'react-i18next';
 import { BiSolidUser } from 'react-icons/bi';
 import { MdMail } from 'react-icons/md';
 import TextInput from 'components/UI/TextInput';
 import Textarea from 'components/UI/Textarea';
 import Button from 'components/UI/Button';
 import useContactForm from 'hooks/useContactForm';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 
 const ContactForm: React.FC<{}> = () => {
   const { handleSubmit, onSubmit, register, errors } = useContactForm();
+  const { t } = useTranslation();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -14,7 +18,7 @@ const ContactForm: React.FC<{}> = () => {
         type="text"
         icon={<BiSolidUser size={18} />}
         name="name"
-        placeholder="Name"
+        placeholder={t(CommonLngKeys.Name, { ns: LocalesKeys.common })}
         required={true}
         register={register}
         errors={errors}
@@ -25,7 +29,7 @@ const ContactForm: React.FC<{}> = () => {
         type="email"
         icon={<MdMail size={18} />}
         name="email"
-        placeholder="Email"
+        placeholder={t(CommonLngKeys.Email, { ns: LocalesKeys.common })}
         required={true}
         register={register}
         errors={errors}
@@ -34,14 +38,19 @@ const ContactForm: React.FC<{}> = () => {
       />
       <Textarea
         name="text"
-        placeholder="Message"
+        placeholder={t(CommonLngKeys.Message, { ns: LocalesKeys.common })}
         required={true}
         register={register}
         errors={errors}
         height={180}
         margin="0 0 var(--medium-indent) 0"
       />
-      <Button type="submit" label="Send" width="300px" height="40px" />
+      <Button
+        type="submit"
+        label={t(CommonLngKeys.Send, { ns: LocalesKeys.common })}
+        width="300px"
+        height="40px"
+      />
     </form>
   );
 };

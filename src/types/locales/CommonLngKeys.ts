@@ -11,4 +11,8 @@ export enum CommonLngKeys {
   From = 'From',
   To = 'To',
   Filter = 'Filter',
+  Name = 'Name',
+  Email = 'Email',
+  Message = 'Message',
+  Send = 'Send',
 }
