@@ -22,14 +22,19 @@ import ChangeEmailForm from 'components/Forms/ChangeEmailForm';
 import ChangePasswordForm from 'components/Forms/ChangePasswordForm';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { UserResponseType } from 'types/types/UserResponseType';
-import { TranslationKeys } from 'types/enums/TranslationKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
+import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 
 const Profile: React.FC<{}> = () => {
   const { t } = useTranslation();
   const user = useAppSelector(getUser);
   const firstName = user?.firstName;
   const lastName = user?.lastName;
-  const name = firstName && lastName ? `${firstName} ${lastName}` : t(TranslationKeys.Name);
+  const name =
+    firstName && lastName
+      ? `${firstName} ${lastName}`
+      : t(CommonLngKeys.Name, { ns: LocalesKeys.common });
   const isActivated = user?.isActivated ?? false;
   const email = user?.email ?? 'E-mail';
   const gender = user?.gender ?? '';
@@ -37,8 +42,10 @@ const Profile: React.FC<{}> = () => {
   const dateBirth = user?.dateBirth.toString();
   const formatedDateBirth = FormatDateTime(dateBirth ?? '');
   const age = CalculateAge(dateBirth ?? '');
-  const companyName = user?.companyInfo.companyName ?? t(TranslationKeys.CompanyName);
-  const profession = user?.companyInfo.profession ?? t(TranslationKeys.Profession);
+  const companyName =
+    user?.companyInfo.companyName ?? t(CommonLngKeys.CompanyName, { ns: LocalesKeys.common });
+  const profession =
+    user?.companyInfo.profession ?? t(CommonLngKeys.Profession, { ns: LocalesKeys.common });
   const startWork = user?.companyInfo.startWork.toString();
   const formatedStartWork = FormatDateTime(startWork ?? '');
   const workExperience = CalculateAge(startWork ?? '');
@@ -125,7 +132,7 @@ const Profile: React.FC<{}> = () => {
       </Media>
 
       {checkQueryParam(modalsName.editProfile) && (
-        <ModalWindow title={t(TranslationKeys.EditProfile)}>
+        <ModalWindow title={t(ProfileLngKeys.EditProfile, { ns: LocalesKeys.profile })}>
           <EditProfileForm
             firstName={firstName}
             lastName={lastName}
@@ -139,12 +146,12 @@ const Profile: React.FC<{}> = () => {
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.uploadAvatar) && (
-        <ModalWindow title={t(TranslationKeys.UploadAvatar)}>
+        <ModalWindow title={t(ProfileLngKeys.UploadAvatar, { ns: LocalesKeys.profile })}>
           <UploadFile
             fileName="avatar"
-            text={t(TranslationKeys.UploadAvatar1_1)}
+            text={t(ProfileLngKeys.UploadAvatarParagraph1, { ns: LocalesKeys.profile })}
             operation={operations.uploadAvatar}
-            buttonLabel={t(TranslationKeys.ChangeAvatar)}
+            buttonLabel={t(ProfileLngKeys.UploadAvatar, { ns: LocalesKeys.profile })}
             acceptTypes={imageValidation.types}
             validationSize={imageValidation.size}
             type="image"
@@ -152,21 +159,21 @@ const Profile: React.FC<{}> = () => {
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.editEmail) && (
-        <ModalWindow title={t(TranslationKeys.ChangedEmail)}>
+        <ModalWindow title={t(ProfileLngKeys.ChangedEmail, { ns: LocalesKeys.profile })}>
           <ChangeEmailForm />
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.editPassword) && (
-        <ModalWindow title={t(TranslationKeys.ChangedPassword)}>
+        <ModalWindow title={t(ProfileLngKeys.ChangedPassword, { ns: LocalesKeys.profile })}>
           <ChangePasswordForm />
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.deleteProfile) && (
-        <ModalWindow title={t(TranslationKeys.DeleteProfile)}>
+        <ModalWindow title={t(ProfileLngKeys.DeleteProfile, { ns: LocalesKeys.profile })}>
           <DialogWindow
-            negativeBtnLabel={t(TranslationKeys.Cancel)}
-            positiveBtnLabel={t(TranslationKeys.Delete)}
-            text={t(TranslationKeys.DeleteProfileText)}
+            negativeBtnLabel={t(CommonLngKeys.Cancel, { ns: LocalesKeys.common })}
+            positiveBtnLabel={t(CommonLngKeys.Delete, { ns: LocalesKeys.common })}
+            text={t(ProfileLngKeys.DeleteProfileParagraph1, { ns: LocalesKeys.profile })}
             handlePositiveClick={deleteProfile}
             handleNegativeClick={() => navigate(-1)}
           />

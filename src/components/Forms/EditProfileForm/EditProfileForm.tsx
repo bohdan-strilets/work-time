@@ -6,7 +6,9 @@ import Button from 'components/UI/Button';
 import DateInput from 'components/UI/DateInput';
 import useEditProfileForm from 'hooks/useEditProfileForm';
 import { EditProfileFormProps } from 'types/props/EditProfileFormProps';
-import { TranslationKeys } from 'types/enums/TranslationKeys';
+import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 
 const EditProfileForm: React.FC<EditProfileFormProps> = ({
   firstName,
@@ -27,8 +29,8 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
       <TextInput
         type="text"
         name="firstName"
-        label={t(TranslationKeys.WhatAreYouFirstName)}
-        placeholder={t(TranslationKeys.FirstName)}
+        label={t(ProfileLngKeys.WhatIsYourFirstName, { ns: LocalesKeys.profile })}
+        placeholder={t(CommonLngKeys.FirstName, { ns: LocalesKeys.common })}
         register={register}
         errors={errors}
         height={40}
@@ -38,8 +40,8 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
       <TextInput
         type="text"
         name="lastName"
-        label={t(TranslationKeys.WhatAreYouLastName)}
-        placeholder={t(TranslationKeys.LastName)}
+        label={t(ProfileLngKeys.WhatIsYourLastName, { ns: LocalesKeys.profile })}
+        placeholder={t(CommonLngKeys.LastName, { ns: LocalesKeys.common })}
         register={register}
         errors={errors}
         height={40}
@@ -54,8 +56,8 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
             type="single"
             name="gender"
             options={GenderOptions}
-            label={t(TranslationKeys.ChooseYourGender)}
-            buttonlabel={t(TranslationKeys.Gender)}
+            label={t(ProfileLngKeys.ChooseYourGender, { ns: LocalesKeys.profile })}
+            buttonlabel={t(CommonLngKeys.Gender, { ns: LocalesKeys.common })}
             height="40px"
             width="100%"
             margin="0 0 var(--small-indent) 0"
@@ -73,9 +75,9 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
         render={({ field }) => (
           <DateInput
             name="dateBirth"
-            label={`${t(TranslationKeys.WillYouChooseYourDateBirth)} ${t(
-              TranslationKeys.DateBirthFormat,
-            )}`}
+            label={`${t(ProfileLngKeys.WillYouChooseYourDateOfBirth, {
+              ns: LocalesKeys.profile,
+            })} ${t(CommonLngKeys.DateFormat, { ns: LocalesKeys.common })}`}
             selected={field.value}
             onChange={date => setValue('dateBirth', date)}
             height="40px"
@@ -87,8 +89,8 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
       <TextInput
         type="text"
         name="companyName"
-        label={t(TranslationKeys.WhatNameCompany)}
-        placeholder={t(TranslationKeys.CompanyName)}
+        label={t(ProfileLngKeys.WhatIsTheNameOfTheCompany, { ns: LocalesKeys.profile })}
+        placeholder={t(CommonLngKeys.CompanyName, { ns: LocalesKeys.common })}
         register={register}
         errors={errors}
         height={40}
@@ -98,8 +100,8 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
       <TextInput
         type="text"
         name="profession"
-        label={t(TranslationKeys.WhatNameYourProfession)}
-        placeholder={t(TranslationKeys.Profession)}
+        label={t(ProfileLngKeys.WhatIsTheNameOfYourProfession, { ns: LocalesKeys.profile })}
+        placeholder={t(CommonLngKeys.Profession, { ns: LocalesKeys.common })}
         register={register}
         errors={errors}
         height={40}
@@ -113,9 +115,9 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
         render={({ field }) => (
           <DateInput
             name="startWork"
-            label={`${t(TranslationKeys.StartDateForWorking)} ${t(
-              TranslationKeys.DateBirthFormat,
-            )}`}
+            label={`${t(ProfileLngKeys.WillYouChooseStartDateForWorking, {
+              ns: LocalesKeys.profile,
+            })} ${t(CommonLngKeys.DateFormat, { ns: LocalesKeys.common })}`}
             selected={field.value}
             onChange={date => setValue('startWork', date)}
             height="40px"
@@ -127,15 +129,20 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
       <TextInput
         type="number"
         name="salaryPerHour"
-        label={t(TranslationKeys.YourRatePerHourWork)}
-        placeholder={t(TranslationKeys.SalaryPerHour)}
+        label={t(ProfileLngKeys.YourRatePerHourOfWork, { ns: LocalesKeys.profile })}
+        placeholder={t(CommonLngKeys.SalaryPerHour, { ns: LocalesKeys.common })}
         register={register}
         errors={errors}
         height={40}
         margin="0 0 var(--medium-indent) 0"
         defaultValue={salaryPerHour}
       />
-      <Button type="submit" label={t(TranslationKeys.EditProfile)} width="270px" height="40px" />
+      <Button
+        type="submit"
+        label={t(ProfileLngKeys.EditProfile, { ns: LocalesKeys.profile })}
+        width="270px"
+        height="40px"
+      />
     </form>
   );
 };

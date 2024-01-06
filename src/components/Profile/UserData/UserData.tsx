@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { UserDataProps } from 'types/props/UserDataProps';
-import { TranslationKeys } from 'types/enums/TranslationKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { Group, Name, Status, Item, Property, Value } from './UserData.styled';
 
 const UserData: React.FC<UserDataProps> = ({
@@ -22,39 +23,40 @@ const UserData: React.FC<UserDataProps> = ({
       </Group>
       <ul>
         <Item>
-          <Property>{t(TranslationKeys.Email)}:</Property>
+          <Property>{t(CommonLngKeys.Email, { ns: LocalesKeys.common })}:</Property>
           <Value>{email}</Value>
         </Item>
         <Item>
-          <Property>{t(TranslationKeys.Password)}:</Property>
+          <Property>{t(CommonLngKeys.Password, { ns: LocalesKeys.common })}:</Property>
           <Value>**********</Value>
         </Item>
         <Item>
-          <Property>{t(TranslationKeys.Gender)}:</Property>
+          <Property>{t(CommonLngKeys.Gender, { ns: LocalesKeys.common })}:</Property>
           <Value>{gender}</Value>
         </Item>
         <Item>
-          <Property>{t(TranslationKeys.DateBirth)}:</Property>
+          <Property>{t(CommonLngKeys.DateOfBirth, { ns: LocalesKeys.common })}:</Property>
           <Value>
-            {dateBirth} | {age} year
+            {dateBirth} | {age} {t(CommonLngKeys.Year, { ns: LocalesKeys.common })}
           </Value>
         </Item>
         <Item>
-          <Property>{t(TranslationKeys.CompanyName)}:</Property>
+          <Property>{t(CommonLngKeys.CompanyName, { ns: LocalesKeys.common })}:</Property>
           <Value>{workInfo.companyName}</Value>
         </Item>
         <Item>
-          <Property>{t(TranslationKeys.Profession)}:</Property>
+          <Property>{t(CommonLngKeys.Profession, { ns: LocalesKeys.common })}:</Property>
           <Value>{workInfo.profession}</Value>
         </Item>
         <Item>
-          <Property>{t(TranslationKeys.StartWork)}:</Property>
+          <Property>{t(CommonLngKeys.StartWork)}:</Property>
           <Value>
-            {workInfo.startWork} | {workInfo.workExperience} {t(TranslationKeys.Year)}
+            {workInfo.startWork} | {workInfo.workExperience}{' '}
+            {t(CommonLngKeys.Year, { ns: LocalesKeys.common })}
           </Value>
         </Item>
         <Item>
-          <Property>{t(TranslationKeys.SalaryPerHour)}:</Property>
+          <Property>{t(CommonLngKeys.SalaryPerHour, { ns: LocalesKeys.common })}:</Property>
           <Value>{workInfo.salaryPerHour} PLN</Value>
         </Item>
       </ul>

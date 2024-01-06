@@ -6,7 +6,8 @@ import Preview from './Preview';
 import useModalWindow from 'hooks/useModalWindow';
 import useUploadFile from 'hooks/useUploadFile';
 import { UploadFileProps } from 'types/props/UploadFileProps';
-import { TranslationKeys } from 'types/enums/TranslationKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { Text, Label, Input, UploadButton, UploadButtonLabel } from './UploadFile.styled';
 
 const UploadFile: React.FC<UploadFileProps> = ({
@@ -47,7 +48,9 @@ const UploadFile: React.FC<UploadFileProps> = ({
         />
         <UploadButton type="button" onClick={handleClick}>
           <IoMdCloudUpload size={50} />
-          <UploadButtonLabel>{t(TranslationKeys.Select)}</UploadButtonLabel>
+          <UploadButtonLabel>
+            {t(CommonLngKeys.Select, { ns: LocalesKeys.common })}
+          </UploadButtonLabel>
         </UploadButton>
       </Label>
       {previewSource && (

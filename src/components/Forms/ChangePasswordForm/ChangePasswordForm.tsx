@@ -2,7 +2,9 @@ import { useTranslation } from 'react-i18next';
 import PasswordInput from 'components/UI/PasswordInput';
 import Button from 'components/UI/Button';
 import useChangePasswordForm from 'hooks/useChangePasswordForm';
-import { TranslationKeys } from 'types/enums/TranslationKeys';
+import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 
 const ChangePasswordForm: React.FC<{}> = () => {
   const { errors, handleSubmit, onSubmit, register, password } = useChangePasswordForm();
@@ -14,8 +16,8 @@ const ChangePasswordForm: React.FC<{}> = () => {
         {password && (
           <PasswordInput
             name="password"
-            label={t(TranslationKeys.EnterYourCurrentPassword)}
-            placeholder={t(TranslationKeys.PasswordPlaceholder)}
+            label={t(ProfileLngKeys.EnterCurrentPassword, { ns: LocalesKeys.profile })}
+            placeholder={t(CommonLngKeys.PasswordPlaceholder, { ns: LocalesKeys.common })}
             register={register}
             errors={errors}
             height={40}
@@ -26,8 +28,8 @@ const ChangePasswordForm: React.FC<{}> = () => {
         )}
         <PasswordInput
           name="newPassword"
-          label={t(TranslationKeys.CreateNewPassword)}
-          placeholder={t(TranslationKeys.PasswordPlaceholder)}
+          label={t(ProfileLngKeys.CreateNewPassword, { ns: LocalesKeys.profile })}
+          placeholder={t(CommonLngKeys.PasswordPlaceholder, { ns: LocalesKeys.common })}
           register={register}
           errors={errors}
           height={40}
@@ -37,7 +39,7 @@ const ChangePasswordForm: React.FC<{}> = () => {
         />
         <PasswordInput
           name="passwordAgain"
-          label={t(TranslationKeys.RepeatEnteredPasswordAgain)}
+          label={t(ProfileLngKeys.RepeatEnteredPassword, { ns: LocalesKeys.profile })}
           register={register}
           errors={errors}
           height={40}
@@ -47,7 +49,7 @@ const ChangePasswordForm: React.FC<{}> = () => {
         />
         <Button
           type="submit"
-          label={t(TranslationKeys.ChangedPassword)}
+          label={t(ProfileLngKeys.ChangedPassword, { ns: LocalesKeys.profile })}
           height="40px"
           width="270px"
         />

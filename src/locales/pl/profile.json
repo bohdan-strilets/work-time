@@ -1,0 +1,23 @@
+{
+  "Changed email": "Zmiana adresu e-mail",
+  "Changed email paragraph 1": "Podaj nowy adres e-mail, który chcesz używać. Po dokonaniu zmian, system automatycznie wyśle wiadomość aktywacyjną na nowy adres.",
+  "Changed email paragraph 2": "Upewnij się, że podany adres e-mail jest poprawny, ponieważ na niego zostanie wysłana wiadomość z instrukcjami aktywacyjnymi. Jeśli nie otrzymasz wiadomości aktywacyjnej w ciągu kilku minut, sprawdź folder „Spam” lub „Niechciane” w swojej skrzynce odbiorczej e-mail. Zauważ, że nowy adres e-mail nie będzie aktywowany, dopóki nie potwierdzisz go, klikając link w wiadomości aktywacyjnej. Jeśli napotkasz trudności lub masz pytania, skontaktuj się z naszym zespołem wsparcia.",
+  "Enter a new email address": "Podaj nowy adres e-mail",
+  "Changed password": "Zmiana hasła",
+  "Enter your current password": "Podaj swoje obecne hasło",
+  "Create a new password": "Utwórz nowe hasło",
+  "Repeat the entered password again": "Powtórz wprowadzone hasło",
+  "Edit profile": "Edytuj profil",
+  "What are you first name": "Jak masz na imię",
+  "What are you last name": "Jak masz na nazwisko",
+  "Choose your gender": "Wybierz swoją płeć",
+  "Will you choose your date of birth": "Czy podasz swoją datę urodzenia",
+  "What is the name of the company": "Jaka jest nazwa firmy",
+  "What is the name of your profession": "Jaka jest nazwa twojego zawodu",
+  "Will you choose a start date for working for this company": "Czy wybierzesz datę rozpoczęcia pracy w tej firmie",
+  "Your rate per hour of work": "Twoja stawka za godzinę pracy",
+  "Delete profile": "Usuń profil",
+  "Delete profile paragraph 1": "Czy na pewno chcesz trwale usunąć swój profil i wszystkie związane z nim dane? Prosimy pamiętać, że ta czynność jest nieodwracalna, i nie będziemy w stanie odzyskać twojego konta i informacji po usunięciu. Wszystkie twoje osobiste informacje, przesłane pliki i historia aktywności zostaną utracone na zawsze.",
+  "Upload avatar": "Prześlij awatar",
+  "Upload avatar paragraph 1": "Wybrany plik musi być w jednym z następujących formatów '.jpg .png .gif .webp'. Plik nie może przekraczać 8 MB."
+}

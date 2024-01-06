@@ -1,0 +1,23 @@
+{
+  "Changed email": "Changed email",
+  "Changed email paragraph 1": "Enter the new email address you want to use. After making the changes, the system will automatically send an activation email to the new address.",
+  "Changed email paragraph 2": "Please ensure the accuracy of the entered email address, as an email with activation instructions will be sent to it. If you don't receive the activation email within a few minutes, check your 'Spam' or 'Junk' folder in your email inbox. Please note that the new email address will not be activated until you confirm it by clicking the link in the activation email. If you encounter any difficulties or have questions, don't hesitate to contact our support team.",
+  "Enter a new email address": "Enter a new email address",
+  "Changed password": "Changed password",
+  "Enter your current password": "Enter your current password",
+  "Create a new password": "Create a new password",
+  "Repeat the entered password again": "Repeat the entered password again",
+  "Edit profile": "Edit profile",
+  "What are you first name": "What are you first name",
+  "What are you last name": "What are you last name",
+  "Choose your gender": "Choose your gender",
+  "Will you choose your date of birth": "Will you choose your date of birth",
+  "What is the name of the company": "What is the name of the company",
+  "What is the name of your profession": "What is the name of your profession",
+  "Will you choose a start date for working for this company": "Will you choose a start date for working for this company",
+  "Your rate per hour of work": "Your rate per hour of work",
+  "Delete profile": "Delete profile",
+  "Delete profile paragraph 1": "Are you sure you want to permanently delete your profile and all associated data? Please be aware that this action is irreversible, and we will not be able to recover your account and information after deletion. All your personal information, uploaded files, and activity history will be lost forever.",
+  "Upload avatar": "Upload avatar",
+  "Upload avatar paragraph 1": "The selected file must be in one of the following formats '.jpg .png .gif .webp'. The file must not exceed 8MB"
+}

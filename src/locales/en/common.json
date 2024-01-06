@@ -14,5 +14,20 @@
   "Name": "Name",
   "Email": "Email",
   "Message": "Message",
-  "Send": "Send"
+  "Send": "Send",
+  "Password": "Password",
+  "Gender": "Gender",
+  "Date of birth": "Date of birth",
+  "Company name": "Company name",
+  "Profession": "Profession",
+  "Start work": "Start work",
+  "Salary per hour": "Salary per hour ",
+  "Password placeholder": "Least one letter, one digit, and one special character  ! @ # $ % &",
+  "Date format": "MM/DD/YYYY",
+  "Cancel": "Cancel",
+  "Delete": "Delete",
+  "Select": "Select",
+  "Year": "Year",
+  "First name": "First name",
+  "Last name": "Last name"
 }
