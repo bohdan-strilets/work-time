@@ -5,4 +5,5 @@ export enum LocalesKeys {
   profile = 'profile',
   calendar = 'calendar',
   notFound = 'notFound',
+  resetPassword = 'resetPassword',
 }

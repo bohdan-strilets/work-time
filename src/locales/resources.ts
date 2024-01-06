@@ -17,6 +17,9 @@ import uaCalendar from './ua/calendar.json';
 import enNotFound from './en/notFound.json';
 import plNotFound from './pl/notFound.json';
 import uaNotFound from './ua/notFound.json';
+import enResetPassword from './en/resetPassword.json';
+import plResetPassword from './pl/resetPassword.json';
+import uaResetPassword from './ua/resetPassword.json';
 
 const resources = {
   en: {
@@ -26,6 +29,7 @@ const resources = {
     [LocalesKeys.profile]: enProfile,
     [LocalesKeys.calendar]: enCalendar,
     [LocalesKeys.notFound]: enNotFound,
+    [LocalesKeys.resetPassword]: enResetPassword,
   },
   pl: {
     [LocalesKeys.statistics]: plStatistics,
@@ -34,6 +38,7 @@ const resources = {
     [LocalesKeys.profile]: plProfile,
     [LocalesKeys.calendar]: plCalendar,
     [LocalesKeys.notFound]: plNotFound,
+    [LocalesKeys.resetPassword]: plResetPassword,
   },
   ua: {
     [LocalesKeys.statistics]: uaStatistics,
@@ -42,6 +47,7 @@ const resources = {
     [LocalesKeys.profile]: uaProfile,
     [LocalesKeys.calendar]: uaCalendar,
     [LocalesKeys.notFound]: uaNotFound,
+    [LocalesKeys.resetPassword]: uaResetPassword,
   },
 };
 

@@ -3,7 +3,9 @@ import TextInput from 'components/UI/TextInput';
 import PasswordInput from 'components/UI/PasswordInput';
 import Button from 'components/UI/Button';
 import useResetPasswordForm from 'hooks/useResetPasswordForm';
-import { TranslationKeys } from 'types/enums/TranslationKeys';
+import { ResetPasswordLngKeys } from 'types/locales/ResetPasswordLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { Container, Wrapper, Title } from '../../Forms.styled';
 
 const Tablet: React.FC<{}> = () => {
@@ -12,12 +14,12 @@ const Tablet: React.FC<{}> = () => {
 
   return (
     <Container width="80%">
-      <Title>{t(TranslationKeys.ResetPassword)}</Title>
+      <Title>{t(ResetPasswordLngKeys.ResetPassword, { ns: LocalesKeys.resetPassword })}</Title>
       <Wrapper onSubmit={handleSubmit(onSubmit)}>
         <TextInput
           type="email"
           name="email"
-          label={t(TranslationKeys.RequestPasswordField)}
+          label={t(ResetPasswordLngKeys.WhatIsYourEmailAddress, { ns: LocalesKeys.resetPassword })}
           placeholder="yellow.mango@mail.com"
           register={register}
           errors={errors}
@@ -27,8 +29,8 @@ const Tablet: React.FC<{}> = () => {
         />
         <PasswordInput
           name="password"
-          label={t(TranslationKeys.CreateNewPassword)}
-          placeholder={t(TranslationKeys.PasswordPlaceholder)}
+          label={t(ResetPasswordLngKeys.CreateNewPassword, { ns: LocalesKeys.resetPassword })}
+          placeholder={t(CommonLngKeys.PasswordPlaceholder, { ns: LocalesKeys.common })}
           register={register}
           errors={errors}
           height={40}
@@ -38,7 +40,7 @@ const Tablet: React.FC<{}> = () => {
         />
         <PasswordInput
           name="passwordAgain"
-          label={t(TranslationKeys.RepeatEnteredPasswordAgain)}
+          label={t(ResetPasswordLngKeys.RepeatEnteredPassword, { ns: LocalesKeys.resetPassword })}
           register={register}
           errors={errors}
           height={40}
@@ -48,7 +50,7 @@ const Tablet: React.FC<{}> = () => {
         />
         <Button
           type="submit"
-          label={t(TranslationKeys.ResetPassword)}
+          label={t(ResetPasswordLngKeys.ResetPassword, { ns: LocalesKeys.resetPassword })}
           height="40px"
           width="300px"
         />
