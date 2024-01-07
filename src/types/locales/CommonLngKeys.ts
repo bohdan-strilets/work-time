@@ -69,4 +69,7 @@ export enum CommonLngKeys {
   Exit = 'Exit',
   Welcome = 'Welcome',
   SendAgain = 'Send again',
+  LastUpdated = 'Last updated',
+  FullName = 'Full Name',
+  PersonalPhoto = 'Personal photo',
 }

@@ -7,4 +7,6 @@ export enum LocalesKeys {
   notFound = 'notFound',
   resetPassword = 'resetPassword',
   auth = 'auth',
+  privacyPolicy = 'privacyPolicy',
+  termsUseSite = 'termsUseSite',
 }

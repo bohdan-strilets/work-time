@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { TranslationKeys } from 'types/enums/TranslationKeys';
+import { TermsUseSiteLngKeys } from 'types/locales/TermsUseSiteLngKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { Title, Date, List, Accent } from './TermsUseSite.styled';
 
 const TermsUseSite: React.FC<{}> = () => {
@@ -8,84 +10,86 @@ const TermsUseSite: React.FC<{}> = () => {
   return (
     <>
       <Date>
-        {t(TranslationKeys.LastUpdated)}: <Accent>06.01.2023</Accent>
+        {t(CommonLngKeys.LastUpdated, { ns: LocalesKeys.common })}: <Accent>06.01.2023</Accent>
       </Date>
-      <Title>{t(TranslationKeys.UserRegistrationAndAccount)}</Title>
+      <Title>
+        {t(TermsUseSiteLngKeys.UserRegistrationAndAccount, { ns: LocalesKeys.termsUseSite })}
+      </Title>
       <List margin="0 0 var(--small-indent) var(--medium-indent)">
         <li>
-          <p>{t(TranslationKeys.TermsOfUse1_1)}</p>
+          <p>{t(TermsUseSiteLngKeys.TermsOfUseParagraph1, { ns: LocalesKeys.termsUseSite })}</p>
         </li>
         <li>
-          <p>{t(TranslationKeys.TermsOfUse1_2)}</p>
+          <p>{t(TermsUseSiteLngKeys.TermsOfUseParagraph2, { ns: LocalesKeys.termsUseSite })}</p>
         </li>
       </List>
-      <Title>{t(TranslationKeys.PurposeOfTheService)}</Title>
+      <Title>{t(TermsUseSiteLngKeys.PurposeOfTheService, { ns: LocalesKeys.termsUseSite })}</Title>
       <List margin="0 0 var(--small-indent) var(--medium-indent)">
         <li>
-          <p>{t(TranslationKeys.TermsOfUse2_1)}</p>
+          <p>{t(TermsUseSiteLngKeys.TermsOfUseParagraph3, { ns: LocalesKeys.termsUseSite })}</p>
         </li>
         <li>
-          <p>{t(TranslationKeys.TermsOfUse2_2)}</p>
+          <p>{t(TermsUseSiteLngKeys.TermsOfUseParagraph4, { ns: LocalesKeys.termsUseSite })}</p>
         </li>
       </List>
-      <Title>{t(TranslationKeys.Notifications)}</Title>
+      <Title>{t(TermsUseSiteLngKeys.Notifications, { ns: LocalesKeys.termsUseSite })}</Title>
       <List margin="0 0 var(--small-indent) var(--medium-indent)">
         <li>
-          <p>{t(TranslationKeys.TermsOfUse3_1)}</p>
+          <p>{t(TermsUseSiteLngKeys.TermsOfUseParagraph5, { ns: LocalesKeys.termsUseSite })}</p>
         </li>
         <li>
-          <p>{t(TranslationKeys.TermsOfUse3_2)}</p>
+          <p>{t(TermsUseSiteLngKeys.TermsOfUseParagraph6, { ns: LocalesKeys.termsUseSite })}</p>
         </li>
       </List>
-      <Title>{t(TranslationKeys.DataManagement)}</Title>
+      <Title>{t(TermsUseSiteLngKeys.DataManagement, { ns: LocalesKeys.termsUseSite })}</Title>
       <List margin="0 0 var(--small-indent) var(--medium-indent)">
         <li>
-          <p>{t(TranslationKeys.TermsOfUse4_1)}</p>
+          <p>{t(TermsUseSiteLngKeys.TermsOfUseParagraph7, { ns: LocalesKeys.termsUseSite })}</p>
         </li>
         <li>
-          <p>{t(TranslationKeys.TermsOfUse4_2)}</p>
+          <p>{t(TermsUseSiteLngKeys.TermsOfUseParagraph8, { ns: LocalesKeys.termsUseSite })}</p>
         </li>
       </List>
-      <Title>{t(TranslationKeys.SecurityMeasures)}</Title>
+      <Title>{t(TermsUseSiteLngKeys.SecurityMeasures, { ns: LocalesKeys.termsUseSite })}</Title>
       <List margin="0 0 var(--small-indent) var(--medium-indent)">
         <li>
-          <p>{t(TranslationKeys.TermsOfUse5_1)}</p>
+          <p>{t(TermsUseSiteLngKeys.TermsOfUseParagraph9, { ns: LocalesKeys.termsUseSite })}</p>
         </li>
         <li>
-          <p>{t(TranslationKeys.TermsOfUse5_2)}</p>
+          <p>{t(TermsUseSiteLngKeys.TermsOfUseParagraph10, { ns: LocalesKeys.termsUseSite })}</p>
         </li>
       </List>
-      <Title>{t(TranslationKeys.ResponsibleConduct)}</Title>
+      <Title>{t(TermsUseSiteLngKeys.ResponsibleConduct, { ns: LocalesKeys.termsUseSite })}</Title>
       <List margin="0 0 var(--small-indent) var(--medium-indent)">
         <li>
-          <p>{t(TranslationKeys.TermsOfUse6_1)}</p>
+          <p>{t(TermsUseSiteLngKeys.TermsOfUseParagraph11, { ns: LocalesKeys.termsUseSite })}</p>
         </li>
         <li>
-          <p>{t(TranslationKeys.TermsOfUse6_2)}</p>
+          <p>{t(TermsUseSiteLngKeys.TermsOfUseParagraph12, { ns: LocalesKeys.termsUseSite })}</p>
         </li>
       </List>
-      <Title>{t(TranslationKeys.CookieUsage)}</Title>
+      <Title>{t(TermsUseSiteLngKeys.CookieUsage, { ns: LocalesKeys.termsUseSite })}</Title>
       <List margin="0 0 var(--small-indent) var(--medium-indent)">
         <li>
-          <p>{t(TranslationKeys.TermsOfUse7_1)}</p>
+          <p>{t(TermsUseSiteLngKeys.TermsOfUseParagraph13, { ns: LocalesKeys.termsUseSite })}</p>
         </li>
         <li>
-          <p>{t(TranslationKeys.TermsOfUse7_2)}</p>
+          <p>{t(TermsUseSiteLngKeys.TermsOfUseParagraph14, { ns: LocalesKeys.termsUseSite })}</p>
         </li>
       </List>
-      <Title>{t(TranslationKeys.PolicyUpdates)}</Title>
+      <Title>{t(TermsUseSiteLngKeys.PolicyUpdates, { ns: LocalesKeys.termsUseSite })}</Title>
       <List margin="0 0 var(--small-indent) var(--medium-indent)">
         <li>
-          <p>{t(TranslationKeys.TermsOfUse8_1)}</p>
+          <p>{t(TermsUseSiteLngKeys.TermsOfUseParagraph15, { ns: LocalesKeys.termsUseSite })}</p>
         </li>
       </List>
-      <Title>{t(TranslationKeys.TerminationOfAccount)}</Title>
+      <Title>{t(TermsUseSiteLngKeys.TerminationOfAccount, { ns: LocalesKeys.termsUseSite })}</Title>
       <List margin="0 0 var(--small-indent) var(--medium-indent)">
         <li>
-          <p>{t(TranslationKeys.TermsOfUse9_1)}</p>
+          <p>{t(TermsUseSiteLngKeys.TermsOfUseParagraph16, { ns: LocalesKeys.termsUseSite })}</p>
         </li>
       </List>
-      <p>{t(TranslationKeys.TermsOfUse10)}</p>
+      <p>{t(TermsUseSiteLngKeys.TermsOfUseParagraph17, { ns: LocalesKeys.termsUseSite })}</p>
     </>
   );
 };

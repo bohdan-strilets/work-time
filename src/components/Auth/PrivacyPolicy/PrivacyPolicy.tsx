@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { TranslationKeys } from 'types/enums/TranslationKeys';
+import { PrivacyPolicyLngKeys } from 'types/locales/PrivacyPolicyLngKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { Title, Text, Accent, List } from './PrivacyPolicy.styled';
 
 const PrivacyPolicy: React.FC<{}> = () => {
@@ -8,53 +10,87 @@ const PrivacyPolicy: React.FC<{}> = () => {
   return (
     <>
       <Text margin="var(--small-indent) 0 var(--small-indent) 0">
-        {t(TranslationKeys.LastUpdated)}: <Accent>06.01.2023</Accent>
+        {t(CommonLngKeys.LastUpdated, { ns: LocalesKeys.common })}: <Accent>06.01.2023</Accent>
       </Text>
-      <Title>{t(TranslationKeys.CollectedPersonalInformation)}</Title>
-      <Text margin="0 0 5px 0">{t(TranslationKeys.PrivacPolicy1_1)}</Text>
+      <Title>
+        {t(PrivacyPolicyLngKeys.CollectedPersonalInformation, { ns: LocalesKeys.privacyPolicy })}
+      </Title>
+      <Text margin="0 0 5px 0">
+        {t(PrivacyPolicyLngKeys.PrivacyPolicyParagraph1, { ns: LocalesKeys.privacyPolicy })}
+      </Text>
       <List margin="0 0 var(--small-indent) var(--medium-indent)">
         <li>
-          <p>{t(TranslationKeys.FullName)}</p>
+          <p>{t(CommonLngKeys.FullName, { ns: LocalesKeys.common })}</p>
         </li>
         <li>
-          <p>{t(TranslationKeys.Password)}</p>
+          <p>{t(CommonLngKeys.Password, { ns: LocalesKeys.common })}</p>
         </li>
         <li>
-          <p>{t(TranslationKeys.EmailAddress)}</p>
+          <p>{t(CommonLngKeys.Email, { ns: LocalesKeys.common })}</p>
         </li>
         <li>
-          <p>{t(TranslationKeys.Gender)}</p>
+          <p>{t(CommonLngKeys.Gender, { ns: LocalesKeys.common })}</p>
         </li>
         <li>
-          <p>{t(TranslationKeys.WorkInformation)}</p>
+          <p>
+            {t(PrivacyPolicyLngKeys.PrivacyPolicyParagraph2, { ns: LocalesKeys.privacyPolicy })}
+          </p>
         </li>
         <li>
-          <p>{t(TranslationKeys.PersonalPhoto)}</p>
+          <p>{t(CommonLngKeys.PersonalPhoto, { ns: LocalesKeys.common })}</p>
         </li>
         <li>
-          <p>{t(TranslationKeys.InformationWorkShifts)}</p>
+          <p>
+            {t(PrivacyPolicyLngKeys.InformationRegardingWorkShifts, {
+              ns: LocalesKeys.privacyPolicy,
+            })}
+          </p>
         </li>
       </List>
-      <Title>{t(TranslationKeys.PurposeOfDataCollection)}</Title>
-      <Text margin="0 0 5px 0">{t(TranslationKeys.PrivacyPolicy2_1)}</Text>
+      <Title>
+        {t(PrivacyPolicyLngKeys.PurposeOfDataCollection, { ns: LocalesKeys.privacyPolicy })}
+      </Title>
+      <Text margin="0 0 5px 0">
+        {t(PrivacyPolicyLngKeys.PrivacyPolicyParagraph3, { ns: LocalesKeys.privacyPolicy })}
+      </Text>
       <List margin="0 0 var(--small-indent) var(--medium-indent)">
         <li>
-          <p>{t(TranslationKeys.PrivacyPolicy2_2)}</p>
+          <p>
+            {t(PrivacyPolicyLngKeys.TimeTrackingOfWorkAndShifts, { ns: LocalesKeys.privacyPolicy })}
+          </p>
         </li>
         <li>
-          <p>{t(TranslationKeys.PrivacyPolicy2_3)}</p>
+          <p>
+            {t(PrivacyPolicyLngKeys.PrivacyPolicyParagraph4, { ns: LocalesKeys.privacyPolicy })}
+          </p>
         </li>
       </List>
-      <Title>{t(TranslationKeys.ThirdPartyDataSharing)}</Title>
-      <Text margin="0 0 var(--small-indent) 0">{t(TranslationKeys.PrivacyPolicy3_1)}</Text>
-      <Title>{t(TranslationKeys.DataSecurity)}</Title>
-      <Text margin="0 0 var(--small-indent) 0">{t(TranslationKeys.PrivacyPolicy4_1)}</Text>
-      <Title>{t(TranslationKeys.ManagementOfPersonalData)}</Title>
-      <Text margin="0 0 var(--small-indent) 0">{t(TranslationKeys.PrivacyPolicy5_1)}</Text>
-      <Title>{t(TranslationKeys.CookieUsage)}</Title>
-      <Text margin="0 0 var(--small-indent) 0">{t(TranslationKeys.PrivacyPolicy6_1)}</Text>
-      <Title>{t(TranslationKeys.PrivacyPolicyUpdates)}</Title>
-      <Text>{t(TranslationKeys.PrivacyPolicy7_1)}</Text>
+      <Title>
+        {t(PrivacyPolicyLngKeys.ThirdPartyDataSharing, { ns: LocalesKeys.privacyPolicy })}
+      </Title>
+      <Text margin="0 0 var(--small-indent) 0">
+        {t(PrivacyPolicyLngKeys.PrivacyPolicyParagraph5, { ns: LocalesKeys.privacyPolicy })}
+      </Text>
+      <Title>{t(PrivacyPolicyLngKeys.DataSecurity, { ns: LocalesKeys.privacyPolicy })}</Title>
+      <Text margin="0 0 var(--small-indent) 0">
+        {t(PrivacyPolicyLngKeys.PrivacyPolicyParagraph6, { ns: LocalesKeys.privacyPolicy })}
+      </Text>
+      <Title>
+        {t(PrivacyPolicyLngKeys.ManagementOfPersonalData, { ns: LocalesKeys.privacyPolicy })}
+      </Title>
+      <Text margin="0 0 var(--small-indent) 0">
+        {t(PrivacyPolicyLngKeys.PrivacyPolicyParagraph7, { ns: LocalesKeys.privacyPolicy })}
+      </Text>
+      <Title>{t(PrivacyPolicyLngKeys.CookieUsage, { ns: LocalesKeys.privacyPolicy })}</Title>
+      <Text margin="0 0 var(--small-indent) 0">
+        {t(PrivacyPolicyLngKeys.PrivacyPolicyParagraph8, { ns: LocalesKeys.privacyPolicy })}
+      </Text>
+      <Title>
+        {t(PrivacyPolicyLngKeys.PrivacyPolicyUpdates, { ns: LocalesKeys.privacyPolicy })}
+      </Title>
+      <Text>
+        {t(PrivacyPolicyLngKeys.PrivacyPolicyParagraph9, { ns: LocalesKeys.privacyPolicy })}
+      </Text>
     </>
   );
 };

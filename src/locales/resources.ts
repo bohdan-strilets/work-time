@@ -23,6 +23,12 @@ import uaResetPassword from './ua/resetPassword.json';
 import enAuth from './en/auth.json';
 import plAuth from './pl/auth.json';
 import uaAuth from './ua/auth.json';
+import enPrivacyPoliocy from './en/privacyPolicy.json';
+import plPrivacyPoliocy from './pl/privacyPolicy.json';
+import uaPrivacyPoliocy from './ua/privacyPolicy.json';
+import enTermsUseSite from './en/termsUseSite.json';
+import plTermsUseSite from './pl/termsUseSite.json';
+import uaTermsUseSite from './ua/termsUseSite.json';
 
 const resources = {
   en: {
@@ -34,6 +40,8 @@ const resources = {
     [LocalesKeys.notFound]: enNotFound,
     [LocalesKeys.resetPassword]: enResetPassword,
     [LocalesKeys.auth]: enAuth,
+    [LocalesKeys.privacyPolicy]: enPrivacyPoliocy,
+    [LocalesKeys.termsUseSite]: enTermsUseSite,
   },
   pl: {
     [LocalesKeys.statistics]: plStatistics,
@@ -44,6 +52,8 @@ const resources = {
     [LocalesKeys.notFound]: plNotFound,
     [LocalesKeys.resetPassword]: plResetPassword,
     [LocalesKeys.auth]: plAuth,
+    [LocalesKeys.privacyPolicy]: plPrivacyPoliocy,
+    [LocalesKeys.termsUseSite]: plTermsUseSite,
   },
   ua: {
     [LocalesKeys.statistics]: uaStatistics,
@@ -54,6 +64,8 @@ const resources = {
     [LocalesKeys.notFound]: uaNotFound,
     [LocalesKeys.resetPassword]: uaResetPassword,
     [LocalesKeys.auth]: uaAuth,
+    [LocalesKeys.privacyPolicy]: uaPrivacyPoliocy,
+    [LocalesKeys.termsUseSite]: uaTermsUseSite,
   },
 };
 
