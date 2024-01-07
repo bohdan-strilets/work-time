@@ -8,7 +8,8 @@ import operations from '../../../redux/user/userOperations';
 import { getIsLoggedIn } from '../../../redux/user/userSelectors';
 import { UserResponseType } from 'types/types/UserResponseType';
 import { FooterMenuProps } from 'types/props/FooterMenuProps';
-import { TranslationKeys } from 'types/enums/TranslationKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { Copyright } from './Footer.styled';
 
 const Footer: React.FC<FooterMenuProps> = ({ closeMenu }) => {
@@ -33,7 +34,7 @@ const Footer: React.FC<FooterMenuProps> = ({ closeMenu }) => {
           height={40}
           margin="0 0 var(--large-indent) 0"
           icon={<IoMdExit size={18} />}
-          label={t(TranslationKeys.Exit)}
+          label={t(CommonLngKeys.Exit, { ns: LocalesKeys.common })}
           handleClick={logout}
         />
       )}

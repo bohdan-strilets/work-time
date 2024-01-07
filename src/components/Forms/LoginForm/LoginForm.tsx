@@ -7,7 +7,8 @@ import Desktop from './Responsiv/Desktop';
 import ModalWindow from 'components/ModalWindow';
 import useModalWindow from 'hooks/useModalWindow';
 import RequestPasswordResetForm from '../RequestPasswordResetForm';
-import { TranslationKeys } from 'types/enums/TranslationKeys';
+import { AuthLngKeys } from 'types/locales/AuthLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 
 const LoginForm: React.FC<{}> = () => {
   const { modalsName, checkQueryParam } = useModalWindow();
@@ -31,7 +32,7 @@ const LoginForm: React.FC<{}> = () => {
         )}
       </Media>
       {checkQueryParam(modalsName.requestPasswordReset) && (
-        <ModalWindow title={t(TranslationKeys.RequestPasswordReset)}>
+        <ModalWindow title={t(AuthLngKeys.RequestPasswordReset, { ns: LocalesKeys.auth })}>
           <RequestPasswordResetForm />
         </ModalWindow>
       )}

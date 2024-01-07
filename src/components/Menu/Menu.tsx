@@ -15,7 +15,8 @@ import {
   getIsLoggedIn,
 } from '../../redux/user/userSelectors';
 import { getTheme } from '../../redux/settings/settingsSelectors';
-import { TranslationKeys } from 'types/enums/TranslationKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { Backdrop, Content } from './Menu.styled';
 
 const Menu: React.FC<MenuProps> = ({ closeMenu, handleBackdropClick, handleStartClick }) => {
@@ -36,11 +37,13 @@ const Menu: React.FC<MenuProps> = ({ closeMenu, handleBackdropClick, handleStart
           <UserInfo
             avatarUrl={avatarUrl ?? ''}
             name={name}
-            profession={companyInfo?.profession ?? t(TranslationKeys.Profession)}
+            profession={
+              companyInfo?.profession ?? t(CommonLngKeys.Profession, { ns: LocalesKeys.common })
+            }
           />
         ) : (
           <Button
-            label={t(TranslationKeys.Start)}
+            label={t(CommonLngKeys.Start, { ns: LocalesKeys.common })}
             height={40}
             handleClick={handleStartClick}
             margin="40px 0 70px 0"

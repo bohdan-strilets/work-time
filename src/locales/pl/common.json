@@ -63,5 +63,10 @@
   "Home": "Strona główna",
   "Profile": "Profil",
   "Statistics": "Statystyki",
-  "About us": "O nas"
+  "About us": "O nas",
+  "Login": "Zaloguj się",
+  "Registration": "Rejestracja",
+  "Exit": "Wyjście",
+  "Welcome": "Witamy",
+  "Send again": "Wyślij ponownie"
 }

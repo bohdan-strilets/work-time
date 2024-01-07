@@ -4,7 +4,9 @@ import loginFormBg from 'Assets/images/login-form-bg.jpg';
 import RegistrationForm from 'components/Forms/RegistrationForm';
 import LoginForm from 'components/Forms/LoginForm';
 import useAuth from 'hooks/useAuth';
-import { TranslationKeys } from 'types/enums/TranslationKeys';
+import { AuthLngKeys } from 'types/locales/AuthLngKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { Wrapper, LeftSide, Overlay, Title, Text, Button, RightSide } from '../Auth.styled';
 
 const Mobile: React.FC<{}> = () => {
@@ -17,21 +19,21 @@ const Mobile: React.FC<{}> = () => {
         {type === 'registration' ? (
           <Overlay>
             <Title fontSize={24} color="var(--white-color)">
-              {t(TranslationKeys.GreetingRegistration)}
+              {t(AuthLngKeys.HelloFriend, { ns: LocalesKeys.auth })}
             </Title>
-            <Text>{t(TranslationKeys.RegistrationSlogan)}</Text>
+            <Text>{t(AuthLngKeys.EnterYourPersonalDetails, { ns: LocalesKeys.auth })}</Text>
             <Button onClick={changeType} type="button">
-              {t(TranslationKeys.Login)}
+              {t(CommonLngKeys.Login, { ns: LocalesKeys.common })}
             </Button>
           </Overlay>
         ) : (
           <Overlay>
             <Title fontSize={24} color="var(--white-color)">
-              {t(TranslationKeys.GreetingLogin)}
+              {t(AuthLngKeys.WelcomeBack, { ns: LocalesKeys.auth })}
             </Title>
-            <Text>{t(TranslationKeys.LoginSlogan)}</Text>
+            <Text>{t(AuthLngKeys.ToKeepConnected, { ns: LocalesKeys.auth })}</Text>
             <Button onClick={changeType} type="button">
-              {t(TranslationKeys.Registration)}
+              {t(CommonLngKeys.Registration, { ns: LocalesKeys.common })}
             </Button>
           </Overlay>
         )}
@@ -39,11 +41,11 @@ const Mobile: React.FC<{}> = () => {
       <RightSide type={type}>
         {type === 'registration' ? (
           <Title fontSize={20} color="var(--black-color)">
-            {t(TranslationKeys.CreateAccount)}
+            {t(AuthLngKeys.CreateAccount, { ns: LocalesKeys.auth })}
           </Title>
         ) : (
           <Title fontSize={20} color="var(--black-color)">
-            {t(TranslationKeys.SignInTo)} Work Time
+            {t(AuthLngKeys.SignInTo, { ns: LocalesKeys.auth })} Work Time
           </Title>
         )}
         {type === 'registration' ? <RegistrationForm /> : <LoginForm />}

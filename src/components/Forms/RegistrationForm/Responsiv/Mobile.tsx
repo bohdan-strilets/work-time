@@ -11,7 +11,9 @@ import LinkButton from 'components/UI/LinkButton';
 import useRegistrationForm from 'hooks/useRegistrationForm';
 import useModalWindow from 'hooks/useModalWindow';
 import { Text } from '../../Forms.styled';
-import { TranslationKeys } from 'types/enums/TranslationKeys';
+import { AuthLngKeys } from 'types/locales/AuthLngKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 
 const Mobile: React.FC<{}> = () => {
   const { register, handleSubmit, errors, onSubmit, Controller, control } = useRegistrationForm();
@@ -24,7 +26,7 @@ const Mobile: React.FC<{}> = () => {
         type="text"
         icon={<BiSolidUser size={16} />}
         name="firstName"
-        placeholder={t(TranslationKeys.FirstName)}
+        placeholder={t(CommonLngKeys.FirstName, { ns: LocalesKeys.common })}
         required={true}
         register={register}
         errors={errors}
@@ -36,7 +38,7 @@ const Mobile: React.FC<{}> = () => {
         type="text"
         icon={<BiSolidUser size={16} />}
         name="lastName"
-        placeholder={t(TranslationKeys.LastName)}
+        placeholder={t(CommonLngKeys.LastName, { ns: LocalesKeys.common })}
         required={true}
         register={register}
         errors={errors}
@@ -48,7 +50,7 @@ const Mobile: React.FC<{}> = () => {
         type="email"
         icon={<MdMail size={16} />}
         name="email"
-        placeholder={t(TranslationKeys.Email)}
+        placeholder={t(CommonLngKeys.Email, { ns: LocalesKeys.common })}
         required={true}
         register={register}
         errors={errors}
@@ -59,7 +61,7 @@ const Mobile: React.FC<{}> = () => {
       <PasswordInput
         icon={<BiSolidLock size={16} />}
         name="password"
-        placeholder={t(TranslationKeys.PasswordPlaceholder)}
+        placeholder={t(CommonLngKeys.PasswordPlaceholder, { ns: LocalesKeys.common })}
         required={true}
         register={register}
         errors={errors}
@@ -71,7 +73,7 @@ const Mobile: React.FC<{}> = () => {
       <PasswordInput
         icon={<BiSolidLock size={16} />}
         name="passwordAgain"
-        placeholder={t(TranslationKeys.PasswordPlaceholder)}
+        placeholder={t(CommonLngKeys.PasswordPlaceholder, { ns: LocalesKeys.common })}
         required={true}
         register={register}
         errors={errors}
@@ -93,27 +95,27 @@ const Mobile: React.FC<{}> = () => {
             margin="0 0 var(--small-indent) 0"
           >
             <Text width="250px">
-              {t(TranslationKeys.IHaveReadThe)}
+              {t(AuthLngKeys.IHaveReadThe, { ns: LocalesKeys.auth })}
               <LinkButton onClick={() => openModal(modalsName.termsUseSite)}>
-                {t(TranslationKeys.TermsOfUseOfTheSite)}
+                {t(AuthLngKeys.TermsOfUseOfTheSite, { ns: LocalesKeys.auth })}
               </LinkButton>
-              {t(TranslationKeys.AndThe)}
+              {t(AuthLngKeys.AndThe, { ns: LocalesKeys.auth })}
               <LinkButton onClick={() => openModal(modalsName.privacyPolicy)}>
-                {t(TranslationKeys.PrivacyPolicy)}
+                {t(AuthLngKeys.PrivacyPolicy, { ns: LocalesKeys.auth })}
               </LinkButton>
-              {t(TranslationKeys.AndAgreeToThem)}
+              {t(AuthLngKeys.AndAgreeToThem, { ns: LocalesKeys.auth })}
             </Text>
           </Checkbox>
         )}
       />
       <Button
         type="submit"
-        label={t(TranslationKeys.Registration)}
+        label={t(CommonLngKeys.Registration, { ns: LocalesKeys.common })}
         width="300px"
         height="40px"
         margin="0 0 var(--small-indent) 0"
       />
-      <LineWithText label={t(TranslationKeys.UseGoogle)} />
+      <LineWithText label={t(AuthLngKeys.OrUseGoogle, { ns: LocalesKeys.auth })} />
       <GoogleAuthBtn width={300} />
     </form>
   );

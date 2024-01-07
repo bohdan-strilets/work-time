@@ -63,5 +63,10 @@
   "Home": "Home",
   "Profile": "Profile",
   "Statistics": "Statistics",
-  "About us": "About us"
+  "About us": "About us",
+  "Login": "Login",
+  "Registration": "Registration",
+  "Exit": "Exit",
+  "Welcome": "Welcome",
+  "Send again": "Send again"
 }

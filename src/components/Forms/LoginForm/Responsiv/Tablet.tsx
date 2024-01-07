@@ -9,7 +9,9 @@ import LineWithText from 'components/UI/LineWithText';
 import LinkButton from 'components/UI/LinkButton';
 import useLoginForm from 'hooks/useLoginForm';
 import useModalWindow from 'hooks/useModalWindow';
-import { TranslationKeys } from 'types/enums/TranslationKeys';
+import { AuthLngKeys } from 'types/locales/AuthLngKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 
 const Tablet: React.FC<{}> = () => {
   const { register, handleSubmit, errors, onSubmit } = useLoginForm();
@@ -22,7 +24,7 @@ const Tablet: React.FC<{}> = () => {
         type="email"
         icon={<MdMail size={18} />}
         name="email"
-        placeholder={t(TranslationKeys.Email)}
+        placeholder={t(CommonLngKeys.Email, { ns: LocalesKeys.common })}
         required={true}
         register={register}
         errors={errors}
@@ -33,7 +35,7 @@ const Tablet: React.FC<{}> = () => {
       <PasswordInput
         icon={<BiSolidLock size={18} />}
         name="password"
-        placeholder={t(TranslationKeys.PasswordPlaceholder)}
+        placeholder={t(CommonLngKeys.PasswordPlaceholder, { ns: LocalesKeys.common })}
         required={true}
         register={register}
         errors={errors}
@@ -45,15 +47,15 @@ const Tablet: React.FC<{}> = () => {
 
       <Button
         type="submit"
-        label={t(TranslationKeys.Login)}
+        label={t(CommonLngKeys.Login, { ns: LocalesKeys.common })}
         width="330px"
         height="40px"
         margin="0 0 var(--small-indent) 0"
       />
       <LinkButton onClick={() => openModal(modalsName.requestPasswordReset)}>
-        {`${t(TranslationKeys.ForgotYourPassword)}?`}
+        {`${t(AuthLngKeys.ForgotYourPassword, { ns: LocalesKeys.auth })}?`}
       </LinkButton>
-      <LineWithText label={t(TranslationKeys.UseGoogle)} />
+      <LineWithText label={t(AuthLngKeys.OrUseGoogle, { ns: LocalesKeys.auth })} />
       <GoogleAuthBtn width={330} />
     </form>
   );

@@ -8,7 +8,8 @@ import ModalWindow from 'components/ModalWindow';
 import PrivacyPolicy from 'components/Auth/PrivacyPolicy';
 import TermsUseSite from 'components/Auth/TermsUseSite';
 import useModalWindow from 'hooks/useModalWindow';
-import { TranslationKeys } from 'types/enums/TranslationKeys';
+import { AuthLngKeys } from 'types/locales/AuthLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 
 const RegistrationForm: React.FC<{}> = () => {
   const { checkQueryParam, modalsName } = useModalWindow();
@@ -32,12 +33,12 @@ const RegistrationForm: React.FC<{}> = () => {
         )}
       </Media>
       {checkQueryParam(modalsName.privacyPolicy) && (
-        <ModalWindow title={t(TranslationKeys.PrivacyPolicy)}>
+        <ModalWindow title={t(AuthLngKeys.PrivacyPolicy, { ns: LocalesKeys.auth })}>
           <PrivacyPolicy />
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.termsUseSite) && (
-        <ModalWindow title={t(TranslationKeys.TermsOfUseOfTheSite)}>
+        <ModalWindow title={t(AuthLngKeys.TermsOfUseOfTheSite, { ns: LocalesKeys.auth })}>
           <TermsUseSite />
         </ModalWindow>
       )}

@@ -18,6 +18,7 @@ import { CalendarTypeEnum } from 'types/enums/CalendarTypeEnum';
 import { CalendarLngKeys } from 'types/locales/CalendarLngKeys';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
+import { AuthLngKeys } from 'types/locales/AuthLngKeys';
 import { List } from '../Calendar.styled';
 
 const Mobile: React.FC<{}> = () => {
@@ -123,12 +124,12 @@ const Mobile: React.FC<{}> = () => {
           </ModalWindow>
         )}
         {checkQueryParam(modalsName.greetings) && (
-          <ModalWindow title="Welcome">
+          <ModalWindow title={t(CommonLngKeys.Welcome, { ns: LocalesKeys.common })}>
             <Greetings />
           </ModalWindow>
         )}
         {checkQueryParam(modalsName.repeatActivationEmail) && (
-          <ModalWindow title="Send the activation email again">
+          <ModalWindow title={t(AuthLngKeys.SendActivationEmailAgain, { ns: LocalesKeys.auth })}>
             <RepeatConfirmEmailForm />
           </ModalWindow>
         )}

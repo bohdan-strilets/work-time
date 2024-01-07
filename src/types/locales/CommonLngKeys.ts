@@ -64,4 +64,9 @@ export enum CommonLngKeys {
   Profile = 'Profile',
   Statistics = 'Statistics',
   AboutUs = 'About us',
+  Login = 'Login',
+  Registration = 'Registration',
+  Exit = 'Exit',
+  Welcome = 'Welcome',
+  SendAgain = 'Send again',
 }

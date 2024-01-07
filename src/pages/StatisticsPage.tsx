@@ -7,6 +7,7 @@ import useModalWindow from 'hooks/useModalWindow';
 import { month } from 'utilities/DefaultCalendarData';
 import { useGetStatisticsQuery } from '../redux/statistics/statisticsApi';
 import { StatisticsLngKeys } from 'types/locales/StatisticsLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 import useChart from 'hooks/useChart';
 
 const StatisticsPage: React.FC<{}> = () => {
@@ -38,7 +39,7 @@ const StatisticsPage: React.FC<{}> = () => {
         labelsForDiagramByStatus={labelsForDiagramByStatus}
       />
       {checkQueryParam(modalsName.chartByDays) && (
-        <ModalWindow title={t(StatisticsLngKeys.StatisticsByDays)}>
+        <ModalWindow title={t(StatisticsLngKeys.StatisticsByDays, { ns: LocalesKeys.statistics })}>
           <Chart
             labels={getLabelForChart(
               month,
@@ -56,7 +57,7 @@ const StatisticsPage: React.FC<{}> = () => {
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.chartByHours) && (
-        <ModalWindow title={t(StatisticsLngKeys.StatisticsByHours)}>
+        <ModalWindow title={t(StatisticsLngKeys.StatisticsByHours, { ns: LocalesKeys.statistics })}>
           <Chart
             labels={getLabelForChart(
               month,
@@ -74,7 +75,9 @@ const StatisticsPage: React.FC<{}> = () => {
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.chartByShifts) && (
-        <ModalWindow title={t(StatisticsLngKeys.WorkShiftStatistics)}>
+        <ModalWindow
+          title={t(StatisticsLngKeys.WorkShiftStatistics, { ns: LocalesKeys.statistics })}
+        >
           <Chart
             labels={getLabelForChart(
               month,
@@ -86,7 +89,7 @@ const StatisticsPage: React.FC<{}> = () => {
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.chartByMoney) && (
-        <ModalWindow title={t(StatisticsLngKeys.MoneyStatistics)}>
+        <ModalWindow title={t(StatisticsLngKeys.MoneyStatistics, { ns: LocalesKeys.statistics })}>
           <Chart
             labels={getLabelForChart(
               month,

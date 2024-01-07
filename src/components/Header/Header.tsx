@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import Media from 'react-media';
 import { useNavigate } from 'react-router-dom';
 import { CgMenuGridO } from 'react-icons/cg';
@@ -11,12 +12,15 @@ import useMenu from 'hooks/useMenu';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { getIsLoggedIn } from '../../redux/user/userSelectors';
 import ScreenWidth from 'utilities/ScreenWidth';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { Wrapper, Line, List, Item } from './Header.styled';
 
 const Header: React.FC<{}> = () => {
   const navigate = useNavigate();
   const { openMenu, isOpen, closeMenu, handleBackdropClick, handleStartClick } = useMenu();
   const isLoggedIn = useAppSelector(getIsLoggedIn);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -39,7 +43,7 @@ const Header: React.FC<{}> = () => {
             ) : (
               <Button
                 type="button"
-                label="Start"
+                label={t(CommonLngKeys.Start, { ns: LocalesKeys.common })}
                 width="200px"
                 height="35px"
                 onClick={() => navigate('auth')}

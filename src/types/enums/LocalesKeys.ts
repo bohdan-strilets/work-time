@@ -6,4 +6,5 @@ export enum LocalesKeys {
   calendar = 'calendar',
   notFound = 'notFound',
   resetPassword = 'resetPassword',
+  auth = 'auth',
 }

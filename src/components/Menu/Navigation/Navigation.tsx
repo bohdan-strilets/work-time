@@ -4,7 +4,8 @@ import { FaCalendarDays, FaUserGroup } from 'react-icons/fa6';
 import { FaChartArea } from 'react-icons/fa6';
 import { BsInfoSquareFill } from 'react-icons/bs';
 import { NavigationProps } from 'types/props/NavigationProps';
-import { TranslationKeys } from 'types/enums/TranslationKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { List, Item, Reference, ReferenceText } from './Navigation.styled';
 
 const Navigation: React.FC<NavigationProps> = ({ closeMenu }) => {
@@ -15,31 +16,31 @@ const Navigation: React.FC<NavigationProps> = ({ closeMenu }) => {
       <Item>
         <Reference to="/" onClick={closeMenu}>
           <HiMiniHome size={20} />
-          <ReferenceText>{t(TranslationKeys.Home)}</ReferenceText>
+          <ReferenceText>{t(CommonLngKeys.Home, { ns: LocalesKeys.common })}</ReferenceText>
         </Reference>
       </Item>
       <Item>
         <Reference to="/calendar" onClick={closeMenu}>
           <FaCalendarDays />
-          <ReferenceText>{t(TranslationKeys.Calendar)}</ReferenceText>
+          <ReferenceText>{t(CommonLngKeys.Calendar, { ns: LocalesKeys.common })}</ReferenceText>
         </Reference>
       </Item>
       <Item>
         <Reference to="/profile" onClick={closeMenu}>
           <FaUserGroup size={18} />
-          <ReferenceText>{t(TranslationKeys.Profile)}</ReferenceText>
+          <ReferenceText>{t(CommonLngKeys.Profile, { ns: LocalesKeys.common })}</ReferenceText>
         </Reference>
       </Item>
       <Item>
         <Reference to="/statistics" onClick={closeMenu}>
           <FaChartArea />
-          <ReferenceText>{t(TranslationKeys.Statistics)}</ReferenceText>
+          <ReferenceText>{t(CommonLngKeys.Statistics, { ns: LocalesKeys.common })}</ReferenceText>
         </Reference>
       </Item>
       <Item>
         <Reference to="/about-us" onClick={closeMenu}>
           <BsInfoSquareFill />
-          <ReferenceText>{t(TranslationKeys.AboutUs)}</ReferenceText>
+          <ReferenceText>{t(CommonLngKeys.AboutUs, { ns: LocalesKeys.common })}</ReferenceText>
         </Reference>
       </Item>
     </List>

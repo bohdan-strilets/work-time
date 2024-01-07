@@ -2,7 +2,9 @@ import { useTranslation } from 'react-i18next';
 import TextInput from 'components/UI/TextInput';
 import Button from 'components/UI/Button';
 import useRequestPasswordResetForm from 'hooks/useRequestPasswordResetForm';
-import { TranslationKeys } from 'types/enums/TranslationKeys';
+import { AuthLngKeys } from 'types/locales/AuthLngKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { Text } from '../Forms.styled';
 
 const RequestPasswordResetForm: React.FC<{}> = () => {
@@ -11,12 +13,14 @@ const RequestPasswordResetForm: React.FC<{}> = () => {
 
   return (
     <>
-      <Text margin="0 0 var(--small-indent) 0">{t(TranslationKeys.RequestPasswordMessage)}</Text>
+      <Text margin="0 0 var(--small-indent) 0">
+        {t(AuthLngKeys.RequestPasswordParagraph1, { ns: LocalesKeys.auth })}
+      </Text>
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextInput
           type="email"
           name="email"
-          label={t(TranslationKeys.RequestPasswordField)}
+          label={t(CommonLngKeys.Email, { ns: LocalesKeys.common })}
           placeholder="yellow.mango@mail.com"
           register={register}
           errors={errors}
@@ -24,7 +28,12 @@ const RequestPasswordResetForm: React.FC<{}> = () => {
           required={true}
           margin="0 0 var(--small-indent) 0"
         />
-        <Button type="submit" label={t(TranslationKeys.Send)} height="40px" width="270px" />
+        <Button
+          type="submit"
+          label={t(CommonLngKeys.Send, { ns: LocalesKeys.common })}
+          height="40px"
+          width="270px"
+        />
       </form>
     </>
   );
