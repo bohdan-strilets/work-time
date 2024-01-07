@@ -6,7 +6,6 @@ import FormatDateTime from 'utilities/FormatDateTime';
 import CalculateAge from 'utilities/CalculateAge';
 import FindLabelByValeu from 'utilities/FindLabelByValeu';
 import GenderOptions from 'utilities/GenderOptions';
-import useModalWindow from 'hooks/useModalWindow';
 import operations from '../redux/user/userOperations';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { UserResponseType } from 'types/types/UserResponseType';
