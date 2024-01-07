@@ -7,6 +7,7 @@ import useAuth from 'hooks/useAuth';
 import { AuthLngKeys } from 'types/locales/AuthLngKeys';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
+import { AuthEnum } from 'types/enums/AuthEnum';
 import { Wrapper, LeftSide, Overlay, Title, Text, Button, RightSide } from '../Auth.styled';
 
 const Desktop: React.FC<{}> = () => {
@@ -16,7 +17,7 @@ const Desktop: React.FC<{}> = () => {
   return (
     <Wrapper>
       <LeftSide registrationUrl={registrationFormBg} loginUrl={loginFormBg} type={type}>
-        {type === 'registration' ? (
+        {type === AuthEnum.Registration ? (
           <Overlay>
             <Title fontSize={42} color="var(--white-color)">
               {t(AuthLngKeys.HelloFriend, { ns: LocalesKeys.auth })}
@@ -39,7 +40,7 @@ const Desktop: React.FC<{}> = () => {
         )}
       </LeftSide>
       <RightSide type={type}>
-        {type === 'registration' ? (
+        {type === AuthEnum.Registration ? (
           <Title fontSize={28} color="var(--black-color)">
             {t(AuthLngKeys.CreateAccount, { ns: LocalesKeys.auth })}
           </Title>
@@ -48,7 +49,7 @@ const Desktop: React.FC<{}> = () => {
             {t(AuthLngKeys.SignInTo, { ns: LocalesKeys.auth })} Work Time
           </Title>
         )}
-        {type === 'registration' ? <RegistrationForm /> : <LoginForm />}
+        {type === AuthEnum.Registration ? <RegistrationForm /> : <LoginForm />}
       </RightSide>
     </Wrapper>
   );

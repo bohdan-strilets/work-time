@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { AuthType } from "types/types/AuthTypes";
+import { useState } from 'react';
+import { AuthEnum } from 'types/enums/AuthEnum';
 
 const useAuth = () => {
-  const [type, setType] = useState<AuthType>("registration");
+  const [type, setType] = useState<AuthEnum>(AuthEnum.Login);
 
   const changeType = () =>
-    type === "registration" ? setType("login") : setType("registration");
+    type === AuthEnum.Registration ? setType(AuthEnum.Login) : setType(AuthEnum.Registration);
 
   return { changeType, type };
 };
