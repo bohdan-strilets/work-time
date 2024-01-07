@@ -20,7 +20,7 @@ const Greetings: React.FC<{}> = () => {
       <Text>
         {t(AuthLngKeys.DidntReceiveActivationEmail, { ns: LocalesKeys.auth })}?
         <LinkButton onClick={() => openModal(modalsName.repeatActivationEmail)}>
-          {t(CommonLngKeys.SendAgain, { ns: LocalesKeys.auth })}
+          {t(CommonLngKeys.SendAgain, { ns: LocalesKeys.common })}
         </LinkButton>
         .
       </Text>
