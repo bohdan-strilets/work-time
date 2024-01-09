@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import useSound from 'use-sound';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { AddInformationFormInputs } from 'types/inputs/AddInformationFormInputs';
 import { HookProps } from 'types/props/AddInformationFormProps';
@@ -12,12 +13,16 @@ import useCalculateDay from './useCalculateDay';
 import useCalculateTax from './useCalculateTax';
 import { useAppSelector } from './useAppSelector';
 import { getSalaryPerHour } from '../redux/user/userSelectors';
+import sprite from 'Assets/sounds/sprite';
+import sounds from 'Assets/sounds/sounds.mp3';
+import { SoundNamesEnum } from 'types/enums/SoundNamesEnum';
 
 const useAddInformationForm = ({ selectedDate }: HookProps) => {
   const [quickStartTime, setQuickStartTime] = useState<string | null>(null);
   const [quickFinishTime, setQuickFinishTime] = useState<string | null>(null);
   const { closeModal } = useModalWindow();
   const [createDay] = useCreateDayMutation();
+  const [play] = useSound(sounds, { sprite });
 
   const {
     register,
@@ -149,6 +154,7 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
       }
     }
     closeModal();
+    play({ id: SoundNamesEnum.Success });
   };
 
   return {
