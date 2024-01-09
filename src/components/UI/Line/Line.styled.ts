@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
   position: absolute;
@@ -13,11 +13,11 @@ export const StyledLine = styled.div<{
   background: string;
   margin?: string;
 }>`
-  width: ${({ width }) => (width ? width : "")};
-  height: ${({ height }) => (height ? height : "")};
-  margin: ${({ margin }) => (margin ? margin : "")};
+  width: ${({ width }) => (width ? width : '')};
+  height: ${({ height }) => (height ? height : '')};
+  margin: ${({ margin }) => (margin ? margin : '')};
 
-  background-color: ${({ background }) => (background ? background : "")};
+  background-color: ${({ background }) => (background ? background : '')};
   border-radius: 5px;
   box-shadow: var(--main-shadow);
 `;

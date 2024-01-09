@@ -1,4 +1,4 @@
-import { Wrapper, StyledLine } from "./Line.styled";
+import { Wrapper, StyledLine } from './Line.styled';
 
 const Line: React.FC<{}> = () => {
   return (
