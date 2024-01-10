@@ -12,11 +12,24 @@ export const translateLabel = (labelKey: string, nsKey: string) => {
   return i18n.t(labelKey, { ns: nsKey });
 };
 
-const settings = JSON.parse(localStorage.getItem('persist:settings') ?? '');
-const defaultLng: LanguageEnum = settings.language.replaceAll('"', '');
+let settings = { language: LanguageEnum.en };
+const settingsJSON = localStorage.getItem('persist:settings');
+if (settingsJSON !== null) settings = JSON.parse(settingsJSON);
+const defaultLng = settings.language.replaceAll('"', '');
 
 i18n.use(initReactI18next).init({
-  ns: [LocalesKeys.common, LocalesKeys.statistics],
+  ns: [
+    LocalesKeys.common,
+    LocalesKeys.statistics,
+    LocalesKeys.aboutUs,
+    LocalesKeys.auth,
+    LocalesKeys.calendar,
+    LocalesKeys.notFound,
+    LocalesKeys.privacyPolicy,
+    LocalesKeys.profile,
+    LocalesKeys.resetPassword,
+    LocalesKeys.termsUseSite,
+  ],
   resources,
   lng: defaultLng,
   interpolation: { escapeValue: false },

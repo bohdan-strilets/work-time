@@ -10,6 +10,8 @@ import { changeLang } from 'locales/config';
 const initialState: SettingsSliceState = {
   theme: ThemeEnum.Light,
   language: LanguageEnum.en,
+  soundEnabled: true,
+  volume: 1,
 };
 
 const settingsPersistConfig = {
@@ -28,8 +30,14 @@ export const settingsSlice = createSlice({
       state.language = action.payload;
       changeLang(action.payload);
     },
+    soundSwitch(state, action: PayloadAction<boolean>) {
+      state.soundEnabled = action.payload;
+    },
+    changeVolume(state, action: PayloadAction<number>) {
+      state.volume = action.payload;
+    },
   },
 });
 
-export const { changeTheme, changeLanguage } = settingsSlice.actions;
+export const { changeTheme, changeLanguage, soundSwitch, changeVolume } = settingsSlice.actions;
 export const persisteSettingsReducer = persistReducer(settingsPersistConfig, settingsSlice.reducer);

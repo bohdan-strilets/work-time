@@ -1,6 +1,5 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import useSound from 'use-sound';
 import Layout from 'components/Layout';
 import Loader from 'components/UI/Loader';
 import PrivateRoute from 'components/PrivateRoute';
@@ -9,9 +8,8 @@ import useRefresh from 'hooks/useRefresh';
 import { ThemeEnum } from 'types/enums/ThemeEnum';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { getTheme } from './redux/settings/settingsSelectors';
-import sounds from 'Assets/sounds/sounds.mp3';
-import sprite from 'Assets/sounds/sprite';
 import { SoundNamesEnum } from 'types/enums/SoundNamesEnum';
+import useSoundSprite from 'hooks/useSoundSprite';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 const AuthPage = lazy(() => import('pages/AuthPage'));
@@ -25,7 +23,7 @@ const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 const App: React.FC<{}> = () => {
   const { isRefreshing } = useRefresh();
   const theme = useAppSelector(getTheme);
-  const [play] = useSound(sounds, { sprite });
+  const { play } = useSoundSprite();
 
   useEffect(() => {
     document.body.className = theme === ThemeEnum.Dark ? 'dark' : '';
