@@ -8,6 +8,7 @@ import MobileMenu from 'components/Menu/MobileMenu';
 import UserInformation from 'components/UserInformation';
 import ThemeChangeBtn from 'components/UI/ThemeChangeBtn';
 import LanguageSelection from 'components/UI/LanguageSelection';
+import SoundSwitch from 'components/UI/SoundSwitch';
 import useMenu from 'hooks/useMenu';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { getIsLoggedIn } from '../../redux/user/userSelectors';
@@ -37,6 +38,7 @@ const Header: React.FC<{}> = () => {
           </Item>
           <Item>
             <ThemeChangeBtn />
+            <SoundSwitch />
             <LanguageSelection />
             {isLoggedIn ? (
               <UserInformation />

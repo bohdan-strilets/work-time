@@ -15,6 +15,7 @@ export const Button = styled.button`
   align-items: center;
   justify-content: space-between;
 
+  padding: 0;
   background-color: transparent;
   color: var(--black-color);
 
