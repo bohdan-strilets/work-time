@@ -18,6 +18,6 @@ export type StatisticsProps = {
 
 export type HookProps = Pick<StatisticsProps, 'statisticsByMonths'>;
 
-export type ItemProps = {
-  theme: ThemeEnum;
-};
+export type ItemProps = { theme: ThemeEnum };
+
+export type DataProps = { isThereData?: boolean };

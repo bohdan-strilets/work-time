@@ -33,11 +33,16 @@ const Desktop: React.FC<StatisticsProps> = ({
   const theme = useAppSelector(getTheme);
   const { t } = useTranslation();
 
+  const showDiagramForDays = dataForChartGraph.forDays[0].data[0] > 0;
+  const showDiagramForHours = dataForChartGraph.forHours[0].data[0] > 0;
+  const showDiagramForShifts = dataForChartGraph.forShifts[0].data[0] > 0;
+  const showDiagramForMoney = dataForChartGraph.forMonay[0].data[0] > 0;
+
   return (
     <>
       {isLoading && <Loader />}
       <Group>
-        <Data>
+        <Data isThereData={showDiagramForDays}>
           <HeaderWrapper>
             <Title>{t(CommonLngKeys.Days, { ns: LocalesKeys.common })}</Title>
             <Button
@@ -90,7 +95,7 @@ const Desktop: React.FC<StatisticsProps> = ({
             </Item>
           </List>
         </Data>
-        {dataForChartGraph.forDays[0].data.length > 0 && (
+        {showDiagramForDays && (
           <Diagram
             labels={labelsForDiagramByStatus}
             datasets={dataForChartGraph.forDays}
@@ -99,7 +104,7 @@ const Desktop: React.FC<StatisticsProps> = ({
         )}
       </Group>
       <Group>
-        <Data>
+        <Data isThereData={showDiagramForHours}>
           <HeaderWrapper>
             <Title>{t(CommonLngKeys.Hours, { ns: LocalesKeys.common })}</Title>
             <Button
@@ -154,7 +159,7 @@ const Desktop: React.FC<StatisticsProps> = ({
             </Item>
           </List>
         </Data>
-        {dataForChartGraph.forHours[0].data.length > 0 && (
+        {showDiagramForHours && (
           <Diagram
             labels={labelsForDiagramByStatus}
             datasets={dataForChartGraph.forHours}
@@ -163,7 +168,7 @@ const Desktop: React.FC<StatisticsProps> = ({
         )}
       </Group>
       <Group>
-        <Data>
+        <Data isThereData={showDiagramForShifts}>
           <HeaderWrapper>
             <Title>{t(CommonLngKeys.Shifts, { ns: LocalesKeys.common })}</Title>
             <Button
@@ -195,7 +200,7 @@ const Desktop: React.FC<StatisticsProps> = ({
             </Item>
           </List>
         </Data>
-        {dataForChartGraph.forShifts[0].data.length > 0 && (
+        {showDiagramForShifts && (
           <Diagram
             labels={labelsForDiagramByShifts}
             datasets={dataForChartGraph.forShifts}
@@ -204,7 +209,7 @@ const Desktop: React.FC<StatisticsProps> = ({
         )}
       </Group>
       <Group>
-        <Data>
+        <Data isThereData={showDiagramForMoney}>
           <HeaderWrapper>
             <Title>{t(CommonLngKeys.Money, { ns: LocalesKeys.common })}</Title>
             <Button
@@ -284,7 +289,7 @@ const Desktop: React.FC<StatisticsProps> = ({
             </Item>
           </List>
         </Data>
-        {dataForChartGraph.forMonay[0].data.length > 0 && (
+        {showDiagramForMoney && (
           <Diagram
             labels={labelsForDiagramByStatus}
             datasets={dataForChartGraph.forMonay}

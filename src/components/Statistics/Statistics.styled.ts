@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import ScreenWidth from 'utilities/ScreenWidth';
-import { ItemProps } from 'types/props/StatisticsProps';
+import { ItemProps, DataProps } from 'types/props/StatisticsProps';
 import { ThemeEnum } from 'types/enums/ThemeEnum';
 
 export const HeaderWrapper = styled.div`
@@ -41,11 +41,11 @@ export const Group = styled.div`
   }
 `;
 
-export const Data = styled.div`
+export const Data = styled.div<DataProps>`
   width: 100%;
 
   @media screen and (min-width: ${ScreenWidth.desktop}) {
-    width: 60%;
+    width: ${({ isThereData }) => (isThereData ? '60%' : '100%')};
   }
 `;
 

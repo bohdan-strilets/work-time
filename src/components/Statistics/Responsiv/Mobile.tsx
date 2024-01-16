@@ -90,7 +90,7 @@ const Mobile: React.FC<StatisticsProps> = ({
             </Item>
           </List>
         </Data>
-        {dataForChartGraph.forDays[0].data.length > 0 && (
+        {dataForChartGraph.forDays[0].data[0] > 0 && (
           <Diagram
             labels={labelsForDiagramByStatus}
             datasets={dataForChartGraph.forDays}
@@ -154,7 +154,7 @@ const Mobile: React.FC<StatisticsProps> = ({
             </Item>
           </List>
         </Data>
-        {dataForChartGraph.forHours[0].data.length > 0 && (
+        {dataForChartGraph.forHours[0].data[0] > 0 && (
           <Diagram
             labels={labelsForDiagramByStatus}
             datasets={dataForChartGraph.forHours}
@@ -195,7 +195,7 @@ const Mobile: React.FC<StatisticsProps> = ({
             </Item>
           </List>
         </Data>
-        {dataForChartGraph.forShifts[0].data.length > 0 && (
+        {dataForChartGraph.forShifts[0].data[0] > 0 && (
           <Diagram
             labels={labelsForDiagramByShifts}
             datasets={dataForChartGraph.forShifts}
@@ -285,7 +285,7 @@ const Mobile: React.FC<StatisticsProps> = ({
             </Item>
           </List>
         </Data>
-        {dataForChartGraph.forMonay[0].data.length > 0 && (
+        {dataForChartGraph.forMonay[0].data[0] > 0 && (
           <Diagram
             labels={labelsForDiagramByStatus}
             datasets={dataForChartGraph.forMonay}
