@@ -71,5 +71,11 @@
   "Send again": "Відправити знову",
   "Last updated": "Останє оновлення",
   "Full Name": "Повне ім'я",
-  "Personal photo": "Особисте фото"
+  "Personal photo": "Особисте фото",
+  "Work day gross": "Робочий день брутто",
+  "Work day net": "Робочий день нетто",
+  "Vacation day gross": "Відпустковий день брутто",
+  "Vacation day net": "Відпустковий день нетто",
+  "Sick day gross": "Хворобовий день брутто",
+  "Sick day net": "Хворобовий день нетто"
 }

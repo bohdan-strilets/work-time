@@ -71,5 +71,11 @@
   "Send again": "Send again",
   "Last updated": "Last updated",
   "Full Name": "Full Name",
-  "Personal photo": "Personal photo"
+  "Personal photo": "Personal photo",
+  "Work day gross": "Work day gross",
+  "Work day net": "Work day net",
+  "Vacation day gross": "Vacation day gross",
+  "Vacation day net": "Vacation day net",
+  "Sick day gross": "Sick day gross",
+  "Sick day net": "Sick day net"
 }

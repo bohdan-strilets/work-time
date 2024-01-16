@@ -71,5 +71,11 @@
   "Send again": "Wyślij ponownie",
   "Last updated": "Ostatnia aktualizacja",
   "Full Name": "Imię i Nazwisko",
-  "Personal photo": "Zdjęcie osobiste"
+  "Personal photo": "Zdjęcie osobiste",
+  "Work day gross": "Dzień roboczy brutto",
+  "Work day net": "Dzień roboczy netto",
+  "Vacation day gross": "Dzień urlopowy brutto",
+  "Vacation day net": "Dzień urlopowy netto",
+  "Sick day gross": "Dzień chorobowy brutto",
+  "Sick day net": "Dzień chorobowy netto"
 }

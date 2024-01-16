@@ -90,39 +90,107 @@ export const useChart = ({ statisticsByMonths }: HookProps) => {
 
   const barGraphData = {
     forDays: [
-      createDataForChart('Working', 'numberWorkingDays', statisticsByMonths),
-      createDataForChart('Day off', 'numberDaysOff', statisticsByMonths),
-      createDataForChart('Vacation', 'numberVacationDays', statisticsByMonths),
-      createDataForChart('Sick', 'numberSickDays', statisticsByMonths),
-      createDataForChart('Additional', 'numberAdditionalWorkingDays', statisticsByMonths),
+      createDataForChart(
+        t(CommonLngKeys.Work, { ns: LocalesKeys.common }),
+        'numberWorkingDays',
+        statisticsByMonths,
+      ),
+      createDataForChart(
+        t(CommonLngKeys.DayOff, { ns: LocalesKeys.common }),
+        'numberDaysOff',
+        statisticsByMonths,
+      ),
+      createDataForChart(
+        t(CommonLngKeys.Vacation, { ns: LocalesKeys.common }),
+        'numberVacationDays',
+        statisticsByMonths,
+      ),
+      createDataForChart(
+        t(CommonLngKeys.SickLeave, { ns: LocalesKeys.common }),
+        'numberSickDays',
+        statisticsByMonths,
+      ),
+      createDataForChart(
+        t(CommonLngKeys.Additional, { ns: LocalesKeys.common }),
+        'numberAdditionalWorkingDays',
+        statisticsByMonths,
+      ),
     ],
     forHours: [
-      createDataForChart('Working', 'numberWorkingHours', statisticsByMonths),
-      createDataForChart('Day off', 'numberFreeHours', statisticsByMonths),
-      createDataForChart('Vacation', 'numberVacationHours', statisticsByMonths),
-      createDataForChart('Sick', 'numberSickHours', statisticsByMonths),
-      createDataForChart('Additional', 'numberAdditionalWorkingHours', statisticsByMonths),
+      createDataForChart(
+        t(CommonLngKeys.Work, { ns: LocalesKeys.common }),
+        'numberWorkingHours',
+        statisticsByMonths,
+      ),
+      createDataForChart(
+        t(CommonLngKeys.DayOff, { ns: LocalesKeys.common }),
+        'numberFreeHours',
+        statisticsByMonths,
+      ),
+      createDataForChart(
+        t(CommonLngKeys.Vacation, { ns: LocalesKeys.common }),
+        'numberVacationHours',
+        statisticsByMonths,
+      ),
+      createDataForChart(
+        t(CommonLngKeys.SickLeave, { ns: LocalesKeys.common }),
+        'numberSickHours',
+        statisticsByMonths,
+      ),
+      createDataForChart(
+        t(CommonLngKeys.Additional, { ns: LocalesKeys.common }),
+        'numberAdditionalWorkingHours',
+        statisticsByMonths,
+      ),
     ],
     forShifts: [
-      createDataForChart('First shifts', 'numberFirstShifts', statisticsByMonths),
-      createDataForChart('Second shifts', 'numberSecondShifts', statisticsByMonths),
-      createDataForChart('Night hours', 'numberNightHours', statisticsByMonths),
+      createDataForChart(
+        t(StatisticsLngKeys.FirstShifts, { ns: LocalesKeys.statistics }),
+        'numberFirstShifts',
+        statisticsByMonths,
+      ),
+      createDataForChart(
+        t(StatisticsLngKeys.SecondShifts, { ns: LocalesKeys.statistics }),
+        'numberSecondShifts',
+        statisticsByMonths,
+      ),
+      createDataForChart(
+        t(StatisticsLngKeys.NightHours, { ns: LocalesKeys.statistics }),
+        'numberNightHours',
+        statisticsByMonths,
+      ),
     ],
     forMoney: [
-      createDataForChart('Work day gross', 'grossAmountMoneyForWorkingDays', statisticsByMonths),
-      createDataForChart('Work day netto', 'nettoAmountMoneyForWorkingDays', statisticsByMonths),
       createDataForChart(
-        'Vacation day gross',
+        t(CommonLngKeys.WorkDayGross, { ns: LocalesKeys.common }),
+        'grossAmountMoneyForWorkingDays',
+        statisticsByMonths,
+      ),
+      createDataForChart(
+        t(CommonLngKeys.WorkDayNet, { ns: LocalesKeys.common }),
+        'nettoAmountMoneyForWorkingDays',
+        statisticsByMonths,
+      ),
+      createDataForChart(
+        t(CommonLngKeys.VacationDayGross, { ns: LocalesKeys.common }),
         'grossAmountMoneyForVacationDays',
         statisticsByMonths,
       ),
       createDataForChart(
-        'Vacation day netto',
+        t(CommonLngKeys.VacationDayNet, { ns: LocalesKeys.common }),
         'nettoAmountMoneyForVacationDays',
         statisticsByMonths,
       ),
-      createDataForChart('Sick day gross', 'grossAmountMoneyForSickDays', statisticsByMonths),
-      createDataForChart('Sick day netto', 'nettoAmountMoneyForSickDays', statisticsByMonths),
+      createDataForChart(
+        t(CommonLngKeys.SickDayGross, { ns: LocalesKeys.common }),
+        'grossAmountMoneyForSickDays',
+        statisticsByMonths,
+      ),
+      createDataForChart(
+        t(CommonLngKeys.SickDayNet, { ns: LocalesKeys.common }),
+        'nettoAmountMoneyForSickDays',
+        statisticsByMonths,
+      ),
     ],
   };
 

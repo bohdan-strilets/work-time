@@ -72,4 +72,10 @@ export enum CommonLngKeys {
   LastUpdated = 'Last updated',
   FullName = 'Full Name',
   PersonalPhoto = 'Personal photo',
+  WorkDayGross = 'Work day gross',
+  WorkDayNet = 'Work day net',
+  VacationDayGross = 'Vacation day gross',
+  VacationDayNet = 'Vacation day net',
+  SickDayGross = 'Sick day gross',
+  SickDayNet = 'Sick day net',
 }
