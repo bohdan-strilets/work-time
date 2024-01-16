@@ -7,4 +7,5 @@ export type EditProfileFormProps = {
   profession?: string;
   startWork?: Date;
   salaryPerHour?: number;
+  description?: string;
 };

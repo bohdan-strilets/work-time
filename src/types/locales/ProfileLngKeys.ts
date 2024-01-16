@@ -20,4 +20,7 @@ export enum ProfileLngKeys {
   DeleteProfileParagraph1 = 'Delete profile paragraph 1',
   UploadAvatar = 'Upload avatar',
   UploadAvatarParagraph1 = 'Upload avatar paragraph 1',
+  ExampleDescriptionForUser = 'Example description for user',
+  WriteFewWordsAboutYourself = 'Write a few words about yourself',
+  HelloHereWantedToTellYouLittleAboutMyself = 'Hello, here I wanted to tell you a little about myself',
 }

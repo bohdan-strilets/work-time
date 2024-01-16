@@ -19,6 +19,8 @@ const Profile: React.FC<ProfileProps> = ({
   salaryPerHour,
   alt,
   avatarUrl,
+  userId,
+  description,
 }) => {
   return (
     <>
@@ -46,6 +48,8 @@ const Profile: React.FC<ProfileProps> = ({
                 salaryPerHour={salaryPerHour}
                 alt={alt}
                 avatarUrl={avatarUrl}
+                userId={userId}
+                description={description}
               />
             )}
             {matches.medium && (
@@ -63,6 +67,8 @@ const Profile: React.FC<ProfileProps> = ({
                 salaryPerHour={salaryPerHour}
                 alt={alt}
                 avatarUrl={avatarUrl}
+                userId={userId}
+                description={description}
               />
             )}
             {matches.large && (
@@ -80,6 +86,8 @@ const Profile: React.FC<ProfileProps> = ({
                 salaryPerHour={salaryPerHour}
                 alt={alt}
                 avatarUrl={avatarUrl}
+                userId={userId}
+                description={description}
               />
             )}
           </>

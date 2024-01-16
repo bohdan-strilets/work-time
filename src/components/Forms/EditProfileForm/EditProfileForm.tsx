@@ -4,6 +4,7 @@ import TextInput from 'components/UI/TextInput';
 import DropdownList from 'components/UI/DropdownList';
 import Button from 'components/UI/Button';
 import DateInput from 'components/UI/DateInput';
+import Textarea from 'components/UI/Textarea';
 import useEditProfileForm from 'hooks/useEditProfileForm';
 import { EditProfileFormProps } from 'types/props/EditProfileFormProps';
 import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
@@ -19,6 +20,7 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
   profession,
   startWork,
   salaryPerHour,
+  description,
 }) => {
   const { register, errors, Controller, control, setValue, handleSubmit, onSubmit } =
     useEditProfileForm();
@@ -67,6 +69,18 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
             defaultValue={gender}
           />
         )}
+      />
+      <Textarea
+        name="description"
+        label={t(ProfileLngKeys.WriteFewWordsAboutYourself, { ns: LocalesKeys.profile })}
+        placeholder={t(ProfileLngKeys.HelloHereWantedToTellYouLittleAboutMyself, {
+          ns: LocalesKeys.profile,
+        })}
+        register={register}
+        errors={errors}
+        height={180}
+        margin="0 0 var(--small-indent) 0"
+        defaultValue={description}
       />
       <Controller
         name="dateBirth"

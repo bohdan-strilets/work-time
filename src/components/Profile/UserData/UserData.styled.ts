@@ -21,6 +21,22 @@ export const Name = styled.p`
   }
 `;
 
+export const Id = styled.p`
+  font-size: 14px;
+  font-weight: 500;
+
+  margin-bottom: var(--small-indent);
+  color: var(--gray-color);
+`;
+
+export const Description = styled.p`
+  font-size: 14px;
+
+  @media screen and (min-width: ${ScreenWidth.desktop}) {
+    font-size: 16px;
+  }
+`;
+
 export const Status = styled.div<StatusProps>`
   width: 14px;
   height: 14px;

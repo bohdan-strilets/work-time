@@ -37,6 +37,7 @@ const useEditProfileForm = () => {
         startWork: value.startWork,
         salaryPerHour: value.salaryPerHour,
       },
+      description: value.description,
     };
 
     const response = await dispatch(operations.changeProfile(userData));

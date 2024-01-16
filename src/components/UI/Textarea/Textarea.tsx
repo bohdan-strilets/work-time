@@ -12,6 +12,7 @@ const Textarea: React.FC<TextareaProps> = ({
   width,
   height,
   margin,
+  defaultValue,
 }) => {
   return (
     <Wrapper width={width} margin={margin} disabled={disabled}>
@@ -26,6 +27,7 @@ const Textarea: React.FC<TextareaProps> = ({
         {...register(name, { required: required, disabled: disabled })}
         placeholder={placeholder}
         height={height}
+        defaultValue={defaultValue}
       />
       {errors[name] && <Error>{errors[name].message}</Error>}
     </Wrapper>

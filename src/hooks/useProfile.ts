@@ -11,6 +11,7 @@ import { useAppDispatch } from 'hooks/useAppDispatch';
 import { UserResponseType } from 'types/types/UserResponseType';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
 
 const useProfile = () => {
   const { t } = useTranslation();
@@ -38,6 +39,9 @@ const useProfile = () => {
   const salaryPerHour = user?.companyInfo.salaryPerHour ?? 0;
   const avatarUrl = user?.avatarUrl ?? '';
   const alt = `Profile avatar by ${name}`;
+  const userId = user?._id ?? 'ID';
+  const description =
+    user?.description ?? t(ProfileLngKeys.ExampleDescriptionForUser, { ns: LocalesKeys.profile });
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -69,6 +73,8 @@ const useProfile = () => {
     lastName,
     gender,
     user,
+    userId,
+    description,
   };
 };
 

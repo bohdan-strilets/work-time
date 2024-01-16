@@ -20,6 +20,8 @@ const Mobile: React.FC<ProfileProps> = ({
   salaryPerHour,
   alt,
   avatarUrl,
+  userId,
+  description,
 }) => {
   const { modalsName, openModal } = useModalWindow();
 
@@ -40,6 +42,8 @@ const Mobile: React.FC<ProfileProps> = ({
             workExperience: workExperience,
             salaryPerHour: salaryPerHour,
           }}
+          userId={userId}
+          description={description}
         />
       </LeftSide>
       <Button type="button" onClick={() => openModal(modalsName.uploadAvatar)}>

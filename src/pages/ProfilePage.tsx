@@ -35,6 +35,8 @@ const ProfilePage: React.FC<{}> = () => {
     gender,
     lastName,
     user,
+    userId,
+    description,
   } = useProfile();
   const navigate = useNavigate();
   const { checkQueryParam, modalsName } = useModalWindow();
@@ -56,6 +58,8 @@ const ProfilePage: React.FC<{}> = () => {
         salaryPerHour={salaryPerHour}
         alt={alt}
         avatarUrl={avatarUrl}
+        userId={userId}
+        description={description}
       />
       {checkQueryParam(modalsName.editProfile) && (
         <ModalWindow title={t(ProfileLngKeys.EditProfile, { ns: LocalesKeys.profile })}>
@@ -68,6 +72,7 @@ const ProfilePage: React.FC<{}> = () => {
             profession={profession}
             startWork={user?.companyInfo.startWork}
             salaryPerHour={salaryPerHour}
+            description={description}
           />
         </ModalWindow>
       )}

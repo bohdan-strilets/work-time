@@ -19,5 +19,8 @@
   "Delete profile": "Delete profile",
   "Delete profile paragraph 1": "Are you sure you want to permanently delete your profile and all associated data? Please be aware that this action is irreversible, and we will not be able to recover your account and information after deletion. All your personal information, uploaded files, and activity history will be lost forever.",
   "Upload avatar": "Upload avatar",
-  "Upload avatar paragraph 1": "The selected file must be in one of the following formats '.jpg .png .gif .webp'. The file must not exceed 8MB"
+  "Upload avatar paragraph 1": "The selected file must be in one of the following formats '.jpg .png .gif .webp'. The file must not exceed 8MB",
+  "Example description for user": "Example description for user.",
+  "Write a few words about yourself": "Write a few words about yourself...",
+  "Hello, here I wanted to tell you a little about myself": "Hello, here I wanted to tell you a little about myself"
 }

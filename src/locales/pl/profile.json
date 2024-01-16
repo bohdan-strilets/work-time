@@ -19,5 +19,8 @@
   "Delete profile": "Usuń profil",
   "Delete profile paragraph 1": "Czy na pewno chcesz trwale usunąć swój profil i wszystkie związane z nim dane? Prosimy pamiętać, że ta czynność jest nieodwracalna, i nie będziemy w stanie odzyskać twojego konta i informacji po usunięciu. Wszystkie twoje osobiste informacje, przesłane pliki i historia aktywności zostaną utracone na zawsze.",
   "Upload avatar": "Prześlij awatar",
-  "Upload avatar paragraph 1": "Wybrany plik musi być w jednym z następujących formatów '.jpg .png .gif .webp'. Plik nie może przekraczać 8 MB."
+  "Upload avatar paragraph 1": "Wybrany plik musi być w jednym z następujących formatów '.jpg .png .gif .webp'. Plik nie może przekraczać 8 MB.",
+  "Example description for user": "Przykładowy opis dla użytkownika.",
+  "Write a few words about yourself": "Napisz kilka słów o sobie...",
+  "Hello, here I wanted to tell you a little about myself": "Witaj, tutaj chciałem(am) powiedzieć trochę o sobie."
 }

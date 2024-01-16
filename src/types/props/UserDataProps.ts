@@ -12,6 +12,8 @@ export type UserDataProps = {
     workExperience?: number;
     salaryPerHour?: number;
   };
+  userId: string;
+  description: string;
 };
 
 export type StatusProps = Pick<UserDataProps, 'isActivateed'>;

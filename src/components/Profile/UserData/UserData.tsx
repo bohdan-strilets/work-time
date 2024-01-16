@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { UserDataProps } from 'types/props/UserDataProps';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
-import { Group, Name, Status, Item, Property, Value } from './UserData.styled';
+import { Group, Name, Status, Id, Description, Item, Property, Value } from './UserData.styled';
 
 const UserData: React.FC<UserDataProps> = ({
   name,
@@ -12,6 +12,8 @@ const UserData: React.FC<UserDataProps> = ({
   dateBirth,
   age,
   workInfo,
+  userId,
+  description,
 }) => {
   const { t } = useTranslation();
 
@@ -21,6 +23,8 @@ const UserData: React.FC<UserDataProps> = ({
         <Name>{name}</Name>
         <Status isActivateed={isActivateed} />
       </Group>
+      <Id>ID: {userId}</Id>
+      <Description>{description}</Description>
       <ul>
         <Item>
           <Property>{t(CommonLngKeys.Email, { ns: LocalesKeys.common })}:</Property>

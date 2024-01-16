@@ -12,4 +12,6 @@ export type ProfileProps = {
   salaryPerHour: number;
   alt: string;
   avatarUrl: string;
+  userId: string;
+  description: string;
 };

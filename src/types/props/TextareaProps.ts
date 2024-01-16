@@ -9,6 +9,7 @@ export type TextareaProps = {
   width?: number;
   height?: number;
   margin?: string;
+  defaultValue?: string;
 };
 
 export type WrapperProps = Pick<TextareaProps, 'width' | 'margin' | 'disabled'>;
