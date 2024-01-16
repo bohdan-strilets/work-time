@@ -73,7 +73,7 @@ const Desktop: React.FC<ControllersForStatsProps> = ({ getFilterDate }) => {
               width="250px"
               margin="0 var(--small-indent) 0 0"
               errors={errors}
-              defaultValue={MonthOptions[MonthOptions.length - 1].value}
+              defaultValue={MonthOptions[0].value}
               position="absolute"
             />
           )}

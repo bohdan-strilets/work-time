@@ -24,6 +24,11 @@ const YearOptions = [
     label: '2024',
     value: '2024',
   },
+  {
+    id: 6,
+    label: '2025',
+    value: '2025',
+  },
 ];
 
 export default YearOptions;
