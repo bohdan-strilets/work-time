@@ -23,11 +23,12 @@ const ListDays: React.FC<{}> = () => {
     <>
       {!data && <Loader />}
       {data?.data && data.data?.length > 0 ? (
-        sortedFilteredData.map(item => {
+        sortedFilteredData.map((item, index) => {
           const monthName = month[Number(item.month) - 1];
           const title = `${monthName} ${item.year}`;
+
           return (
-            <>
+            <div key={index}>
               <Title>{title}</Title>
               <List>
                 {item.data?.map(item => {
@@ -92,7 +93,7 @@ const ListDays: React.FC<{}> = () => {
                   );
                 })}
               </List>
-            </>
+            </div>
           );
         })
       ) : (
