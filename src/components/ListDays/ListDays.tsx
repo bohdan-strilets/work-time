@@ -7,6 +7,7 @@ import { PiBeerSteinFill } from 'react-icons/pi';
 import { BsHospitalFill } from 'react-icons/bs';
 import { RiTimerFlashFill } from 'react-icons/ri';
 import Loader from 'components/UI/Loader';
+import Placeholder from 'components/Placeholder';
 import { Status } from 'types/enums/StatusEnum';
 import { month } from 'utilities/DefaultCalendarData';
 import useListDays from 'hooks/useListDays';
@@ -21,7 +22,7 @@ const ListDays: React.FC<{}> = () => {
   return (
     <>
       {!data && <Loader />}
-      {data &&
+      {data?.data && data.data?.length > 0 ? (
         sortedFilteredData.map(item => {
           const monthName = month[Number(item.month) - 1];
           const title = `${monthName} ${item.year}`;
@@ -93,7 +94,10 @@ const ListDays: React.FC<{}> = () => {
               </List>
             </>
           );
-        })}
+        })
+      ) : (
+        <Placeholder />
+      )}
     </>
   );
 };

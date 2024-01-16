@@ -1,4 +1,5 @@
 import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io';
+import { useTranslation } from 'react-i18next';
 import CalendarButton from '../../CalendarButton';
 import DropdownList from 'components/UI/DropdownList';
 import { month } from 'utilities/DefaultCalendarData';
@@ -7,6 +8,8 @@ import YearOptions from 'utilities/YearOptions';
 import useTime from 'hooks/useTime';
 import TypeCalendarOptions from 'utilities/TypeCalendarOptions';
 import { CalendarTypeEnum } from 'types/enums/CalendarTypeEnum';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { Wrapper, DateWindow, Group } from '../Controllers.styled';
 
 const Mobile: React.FC<ControllersProps> = ({
@@ -20,6 +23,7 @@ const Mobile: React.FC<ControllersProps> = ({
   handleChangeCalendarType,
 }) => {
   const currentDateAndTime = useTime();
+  const { t } = useTranslation();
 
   return (
     <Wrapper>
@@ -29,7 +33,7 @@ const Mobile: React.FC<ControllersProps> = ({
         options={TypeCalendarOptions}
         defaultValue={CalendarTypeEnum.Calendar}
         onChange={handleChangeCalendarType}
-        buttonlabel="Show how"
+        buttonlabel={t(CommonLngKeys.ShowHow, { ns: LocalesKeys.common })}
         height="30px"
         width="100%"
         position="absolute"
