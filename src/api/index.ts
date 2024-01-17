@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
 
 // export const API_URL = 'https://work-time-api.vercel.app/';
 export const API_URL = 'http://localhost:5050/';
@@ -44,9 +43,7 @@ api.interceptors.response.use(
         localStorage.setItem('persist:user', JSON.stringify(dataToLS));
         refreshAttempts = 0;
         return api.request(originalRequest);
-      } catch (error) {
-        toast.error('Something went wrong, try logging in again in.');
-      }
+      } catch (error) {}
     }
 
     throw error;

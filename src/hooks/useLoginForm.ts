@@ -1,7 +1,6 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { LoginFormInputs } from 'types/inputs/LoginFormInputs';
 import LoginFormSchema from 'validations/LoginFormSchema';
 import { useAppDispatch } from './useAppDispatch';
@@ -27,12 +26,7 @@ const useLoginForm = () => {
   const onSubmit: SubmitHandler<LoginFormInputs> = async value => {
     const response = await dispatch(operations.login(value));
     const data = response.payload as UserResponseType<UserType, TokensType>;
-    if (data && data.success) {
-      navigate('/calendar');
-    } else {
-      navigate('/auth');
-      toast.warning('Something went wrong, please check the entered data and try again.');
-    }
+    if (data && data.success) navigate('/calendar');
   };
 
   return { register, handleSubmit, errors, onSubmit };

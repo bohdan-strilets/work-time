@@ -1,0 +1,12 @@
+{
+  "This email address is already registered": "Ця адреса електронної пошти вже зареєстрована.",
+  "Incorrect email address": "Неправильна адреса електронної пошти.",
+  "Incorrect password": "Введено неправильний пароль.",
+  "Your email address is not activated": "Ваша електронна адреса не активована.",
+  "You are not authorized": "Ви не авторизовані.",
+  "User not found": "Такого користувача не знайдено.",
+  "Check the correctness of the entered data": "Перевірте правильність введених даних.",
+  "Information for the day with the current ID was not found": "Інформацію про день з поточним ID не знайдено.",
+  "General axios error": "Виникла неочікувана помилка при обробці запиту.",
+  "General error": "Виникла неочікувана помилка. Будь ласка, спробуйте знову пізніше."
+}

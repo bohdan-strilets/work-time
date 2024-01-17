@@ -1,0 +1,12 @@
+{
+  "This email address is already registered": "Ten adres e-mail jest już zarejestrowany.",
+  "Incorrect email address": "Nieprawidłowy adres e-mail.",
+  "Incorrect password": "Nieprawidłowe hasło.",
+  "Your email address is not activated": "Twój adres e-mail nie został aktywowany.",
+  "You are not authorized": "Nie jesteś uwierzytelniony.",
+  "User not found": "Nie znaleziono użytkownika.",
+  "Check the correctness of the entered data": "Sprawdź poprawność wprowadzonych danych.",
+  "Information for the day with the current ID was not found": "Informacje o dniu o aktualnym ID nie zostały znalezione.",
+  "General axios error": "Wystąpił nieoczekiwany błąd podczas przetwarzania żądania.",
+  "General error": "Wystąpił nieoczekiwany błąd. Proszę spróbuj ponownie później."
+}

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AxiosError } from 'axios';
+import axios, { AxiosError } from 'axios';
 import { toast } from 'react-toastify';
 import api from 'api';
 import { UserResponseType } from 'types/types/UserResponseType';
@@ -12,6 +12,10 @@ import { ChangeProfileDto } from 'types/dto/ChangeProfileDto';
 import { EmailDto } from 'types/dto/EmailDto';
 import { ChangePasswordDto } from 'types/dto/ChangePasswordDto';
 import { ResetPasswordDto } from 'types/dto/resetPasswordDto';
+import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import { translateLabel } from 'locales/config';
+import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 
 const registration = createAsyncThunk<
   UserResponseType<UserType, TokensType> | undefined,
@@ -25,15 +29,16 @@ const registration = createAsyncThunk<
     }
     return undefined;
   } catch (error: any) {
-    if (error.response) {
-      const err = error.response.data as UserResponseType;
-      toast.error(`${err.code} - ${err.message}`);
-    } else if (error.request) {
-      const err = error as AxiosError;
-      toast.error(err.message);
+    if (axios.isAxiosError(error)) {
+      const axiosError = error as AxiosError<UserResponseType>;
+      if (axiosError.response) {
+        const serverError = axiosError.response.data as UserResponseType;
+        CustomErrorHandler(serverError);
+      } else {
+        toast.error(translateLabel(ErrorLngKeys.GeneralAxiosError, LocalesKeys.error));
+      }
     } else {
-      const err = error as AxiosError;
-      toast.error(err.message);
+      toast.error(translateLabel(ErrorLngKeys.GeneralError, LocalesKeys.error));
     }
   }
 });
@@ -49,15 +54,16 @@ const googleAuth = createAsyncThunk<UserResponseType<UserType, TokensType> | und
       }
       return undefined;
     } catch (error: any) {
-      if (error.response) {
-        const err = error.response.data as UserResponseType;
-        toast.error(`${err.code} - ${err.message}`);
-      } else if (error.request) {
-        const err = error as AxiosError;
-        toast.error(err.message);
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<UserResponseType>;
+        if (axiosError.response) {
+          const serverError = axiosError.response.data as UserResponseType;
+          CustomErrorHandler(serverError);
+        } else {
+          toast.error(translateLabel(ErrorLngKeys.GeneralAxiosError, LocalesKeys.error));
+        }
       } else {
-        const err = error as AxiosError;
-        toast.error(err.message);
+        toast.error(translateLabel(ErrorLngKeys.GeneralError, LocalesKeys.error));
       }
     }
   },
@@ -73,15 +79,16 @@ const logout = createAsyncThunk<UserResponseType | undefined>(
       }
       return undefined;
     } catch (error: any) {
-      if (error.response) {
-        const err = error.response.data as UserResponseType;
-        toast.error(`${err.code} - ${err.message}`);
-      } else if (error.request) {
-        const err = error as AxiosError;
-        toast.error(err.message);
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<UserResponseType>;
+        if (axiosError.response) {
+          const serverError = axiosError.response.data as UserResponseType;
+          CustomErrorHandler(serverError);
+        } else {
+          toast.error(translateLabel(ErrorLngKeys.GeneralAxiosError, LocalesKeys.error));
+        }
       } else {
-        const err = error as AxiosError;
-        toast.error(err.message);
+        toast.error(translateLabel(ErrorLngKeys.GeneralError, LocalesKeys.error));
       }
     }
   },
@@ -98,15 +105,16 @@ const login = createAsyncThunk<UserResponseType<UserType, TokensType> | undefine
       }
       return undefined;
     } catch (error: any) {
-      if (error.response) {
-        const err = error.response.data as UserResponseType;
-        toast.error(`${err.code} - ${err.message}`);
-      } else if (error.request) {
-        const err = error as AxiosError;
-        toast.error(err.message);
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<UserResponseType>;
+        if (axiosError.response) {
+          const serverError = axiosError.response.data as UserResponseType;
+          CustomErrorHandler(serverError);
+        } else {
+          toast.error(translateLabel(ErrorLngKeys.GeneralAxiosError, LocalesKeys.error));
+        }
       } else {
-        const err = error as AxiosError;
-        toast.error(err.message);
+        toast.error(translateLabel(ErrorLngKeys.GeneralError, LocalesKeys.error));
       }
     }
   },
@@ -123,15 +131,16 @@ const refreshUser = createAsyncThunk<UserResponseType<TokensType> | undefined>(
       }
       return undefined;
     } catch (error: any) {
-      if (error.response) {
-        const err = error.response.data as UserResponseType;
-        toast.error(`${err.code} - ${err.message}`);
-      } else if (error.request) {
-        const err = error as AxiosError;
-        toast.error(err.message);
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<UserResponseType>;
+        if (axiosError.response) {
+          const serverError = axiosError.response.data as UserResponseType;
+          CustomErrorHandler(serverError);
+        } else {
+          toast.error(translateLabel(ErrorLngKeys.GeneralAxiosError, LocalesKeys.error));
+        }
       } else {
-        const err = error as AxiosError;
-        toast.error(err.message);
+        toast.error(translateLabel(ErrorLngKeys.GeneralError, LocalesKeys.error));
       }
     }
   },
@@ -148,15 +157,16 @@ const changeProfile = createAsyncThunk<UserResponseType<UserType> | undefined, C
       }
       return undefined;
     } catch (error: any) {
-      if (error.response) {
-        const err = error.response.data as UserResponseType;
-        toast.error(`${err.code} - ${err.message}`);
-      } else if (error.request) {
-        const err = error as AxiosError;
-        toast.error(err.message);
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<UserResponseType>;
+        if (axiosError.response) {
+          const serverError = axiosError.response.data as UserResponseType;
+          CustomErrorHandler(serverError);
+        } else {
+          toast.error(translateLabel(ErrorLngKeys.GeneralAxiosError, LocalesKeys.error));
+        }
       } else {
-        const err = error as AxiosError;
-        toast.error(err.message);
+        toast.error(translateLabel(ErrorLngKeys.GeneralError, LocalesKeys.error));
       }
     }
   },
@@ -173,15 +183,16 @@ const uploadAvatar = createAsyncThunk<UserResponseType<UserType> | undefined, Fo
         return response;
       }
     } catch (error: any) {
-      if (error.response) {
-        const err = error.response.data as UserResponseType;
-        toast.error(`${err.code} - ${err.message}`);
-      } else if (error.request) {
-        const err = error as AxiosError;
-        toast.error(err.message);
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<UserResponseType>;
+        if (axiosError.response) {
+          const serverError = axiosError.response.data as UserResponseType;
+          CustomErrorHandler(serverError);
+        } else {
+          toast.error(translateLabel(ErrorLngKeys.GeneralAxiosError, LocalesKeys.error));
+        }
       } else {
-        const err = error as AxiosError;
-        toast.error(err.message);
+        toast.error(translateLabel(ErrorLngKeys.GeneralError, LocalesKeys.error));
       }
     }
   },
@@ -197,15 +208,16 @@ const changeEmail = createAsyncThunk<UserResponseType | undefined, EmailDto>(
         return response;
       }
     } catch (error: any) {
-      if (error.response) {
-        const err = error.response.data as UserResponseType;
-        toast.error(`${err.code} - ${err.message}`);
-      } else if (error.request) {
-        const err = error as AxiosError;
-        toast.error(err.message);
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<UserResponseType>;
+        if (axiosError.response) {
+          const serverError = axiosError.response.data as UserResponseType;
+          CustomErrorHandler(serverError);
+        } else {
+          toast.error(translateLabel(ErrorLngKeys.GeneralAxiosError, LocalesKeys.error));
+        }
       } else {
-        const err = error as AxiosError;
-        toast.error(err.message);
+        toast.error(translateLabel(ErrorLngKeys.GeneralError, LocalesKeys.error));
       }
     }
   },
@@ -221,15 +233,16 @@ const changePassword = createAsyncThunk<UserResponseType | undefined, ChangePass
         return response;
       }
     } catch (error: any) {
-      if (error.response) {
-        const err = error.response.data as UserResponseType;
-        toast.error(`${err.code} - ${err.message}`);
-      } else if (error.request) {
-        const err = error as AxiosError;
-        toast.error(err.message);
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<UserResponseType>;
+        if (axiosError.response) {
+          const serverError = axiosError.response.data as UserResponseType;
+          CustomErrorHandler(serverError);
+        } else {
+          toast.error(translateLabel(ErrorLngKeys.GeneralAxiosError, LocalesKeys.error));
+        }
       } else {
-        const err = error as AxiosError;
-        toast.error(err.message);
+        toast.error(translateLabel(ErrorLngKeys.GeneralError, LocalesKeys.error));
       }
     }
   },
@@ -246,15 +259,16 @@ const requestResetPassword = createAsyncThunk<UserResponseType | undefined, Emai
       }
       return undefined;
     } catch (error: any) {
-      if (error.response) {
-        const err = error.response.data as UserResponseType;
-        toast.error(`${err.code} - ${err.message}`);
-      } else if (error.request) {
-        const err = error as AxiosError;
-        toast.error(err.message);
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<UserResponseType>;
+        if (axiosError.response) {
+          const serverError = axiosError.response.data as UserResponseType;
+          CustomErrorHandler(serverError);
+        } else {
+          toast.error(translateLabel(ErrorLngKeys.GeneralAxiosError, LocalesKeys.error));
+        }
       } else {
-        const err = error as AxiosError;
-        toast.error(err.message);
+        toast.error(translateLabel(ErrorLngKeys.GeneralError, LocalesKeys.error));
       }
     }
   },
@@ -271,15 +285,16 @@ const resetPassword = createAsyncThunk<UserResponseType | undefined, ResetPasswo
       }
       return undefined;
     } catch (error: any) {
-      if (error.response) {
-        const err = error.response.data as UserResponseType;
-        toast.error(`${err.code} - ${err.message}`);
-      } else if (error.request) {
-        const err = error as AxiosError;
-        toast.error(err.message);
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<UserResponseType>;
+        if (axiosError.response) {
+          const serverError = axiosError.response.data as UserResponseType;
+          CustomErrorHandler(serverError);
+        } else {
+          toast.error(translateLabel(ErrorLngKeys.GeneralAxiosError, LocalesKeys.error));
+        }
       } else {
-        const err = error as AxiosError;
-        toast.error(err.message);
+        toast.error(translateLabel(ErrorLngKeys.GeneralError, LocalesKeys.error));
       }
     }
   },
@@ -296,15 +311,16 @@ const repeatConfirmEmail = createAsyncThunk<UserResponseType | undefined, EmailD
       }
       return undefined;
     } catch (error: any) {
-      if (error.response) {
-        const err = error.response.data as UserResponseType;
-        toast.error(`${err.code} - ${err.message}`);
-      } else if (error.request) {
-        const err = error as AxiosError;
-        toast.error(err.message);
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<UserResponseType>;
+        if (axiosError.response) {
+          const serverError = axiosError.response.data as UserResponseType;
+          CustomErrorHandler(serverError);
+        } else {
+          toast.error(translateLabel(ErrorLngKeys.GeneralAxiosError, LocalesKeys.error));
+        }
       } else {
-        const err = error as AxiosError;
-        toast.error(err.message);
+        toast.error(translateLabel(ErrorLngKeys.GeneralError, LocalesKeys.error));
       }
     }
   },
@@ -320,15 +336,16 @@ const deleteProfile = createAsyncThunk<UserResponseType | undefined>(
         return response;
       }
     } catch (error: any) {
-      if (error.response) {
-        const err = error.response.data as UserResponseType;
-        toast.error(`${err.code} - ${err.message}`);
-      } else if (error.request) {
-        const err = error as AxiosError;
-        toast.error(err.message);
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<UserResponseType>;
+        if (axiosError.response) {
+          const serverError = axiosError.response.data as UserResponseType;
+          CustomErrorHandler(serverError);
+        } else {
+          toast.error(translateLabel(ErrorLngKeys.GeneralAxiosError, LocalesKeys.error));
+        }
       } else {
-        const err = error as AxiosError;
-        toast.error(err.message);
+        toast.error(translateLabel(ErrorLngKeys.GeneralError, LocalesKeys.error));
       }
     }
   },
@@ -345,15 +362,16 @@ const currentUser = createAsyncThunk<UserResponseType<UserType> | undefined>(
       }
       return undefined;
     } catch (error: any) {
-      if (error.response) {
-        const err = error.response.data as UserResponseType;
-        toast.error(`${err.code} - ${err.message}`);
-      } else if (error.request) {
-        const err = error as AxiosError;
-        toast.error(err.message);
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<UserResponseType>;
+        if (axiosError.response) {
+          const serverError = axiosError.response.data as UserResponseType;
+          CustomErrorHandler(serverError);
+        } else {
+          toast.error(translateLabel(ErrorLngKeys.GeneralAxiosError, LocalesKeys.error));
+        }
       } else {
-        const err = error as AxiosError;
-        toast.error(err.message);
+        toast.error(translateLabel(ErrorLngKeys.GeneralError, LocalesKeys.error));
       }
     }
   },

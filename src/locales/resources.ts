@@ -29,6 +29,9 @@ import uaPrivacyPoliocy from './ua/privacyPolicy.json';
 import enTermsUseSite from './en/termsUseSite.json';
 import plTermsUseSite from './pl/termsUseSite.json';
 import uaTermsUseSite from './ua/termsUseSite.json';
+import enErrors from './en/errors.json';
+import plErrors from './pl/errors.json';
+import uaErrors from './ua/errors.json';
 
 const resources = {
   en: {
@@ -42,6 +45,7 @@ const resources = {
     [LocalesKeys.auth]: enAuth,
     [LocalesKeys.privacyPolicy]: enPrivacyPoliocy,
     [LocalesKeys.termsUseSite]: enTermsUseSite,
+    [LocalesKeys.error]: enErrors,
   },
   pl: {
     [LocalesKeys.statistics]: plStatistics,
@@ -54,6 +58,7 @@ const resources = {
     [LocalesKeys.auth]: plAuth,
     [LocalesKeys.privacyPolicy]: plPrivacyPoliocy,
     [LocalesKeys.termsUseSite]: plTermsUseSite,
+    [LocalesKeys.error]: plErrors,
   },
   ua: {
     [LocalesKeys.statistics]: uaStatistics,
@@ -66,6 +71,7 @@ const resources = {
     [LocalesKeys.auth]: uaAuth,
     [LocalesKeys.privacyPolicy]: uaPrivacyPoliocy,
     [LocalesKeys.termsUseSite]: uaTermsUseSite,
+    [LocalesKeys.error]: uaErrors,
   },
 };
 

@@ -1,0 +1,12 @@
+{
+  "This email address is already registered": "This email address is already registered.",
+  "Incorrect email address": "Incorrect email address.",
+  "Incorrect password": "Incorrect password.",
+  "Your email address is not activated": "Your email address is not activated.",
+  "You are not authorized": "You are not authorized.",
+  "User not found": "User not found.",
+  "Check the correctness of the entered data": "Check the correctness of the entered data.",
+  "Information for the day with the current ID was not found": "Information for the day with the current ID was not found.",
+  "General axios error": "An unexpected error occurred while processing the request.",
+  "General error": "An unexpected error occurred. Please try again later."
+}

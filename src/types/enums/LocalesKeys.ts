@@ -9,4 +9,5 @@ export enum LocalesKeys {
   auth = 'auth',
   privacyPolicy = 'privacyPolicy',
   termsUseSite = 'termsUseSite',
+  error = 'error',
 }

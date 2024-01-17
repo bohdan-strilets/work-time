@@ -29,6 +29,7 @@ i18n.use(initReactI18next).init({
     LocalesKeys.profile,
     LocalesKeys.resetPassword,
     LocalesKeys.termsUseSite,
+    LocalesKeys.error,
   ],
   resources,
   lng: defaultLng,
