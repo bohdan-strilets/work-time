@@ -80,4 +80,5 @@ export enum CommonLngKeys {
   SickDayNet = 'Sick day net',
   ShowHow = 'Show how',
   TheresNothingHereYet = "There's nothing here yet",
+  ListOfUsers = 'List of users',
 }

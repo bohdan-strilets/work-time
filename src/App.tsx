@@ -18,6 +18,7 @@ const ProfilePage = lazy(() => import('pages/ProfilePage'));
 const AboutPage = lazy(() => import('pages/AboutPage'));
 const ResetPasswordPage = lazy(() => import('pages/ResetPasswordPage'));
 const StatisticsPage = lazy(() => import('pages/StatisticsPage'));
+const ListOfUsers = lazy(() => import('pages/ListOfUsers'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
 const App: React.FC<{}> = () => {
@@ -94,6 +95,14 @@ const App: React.FC<{}> = () => {
                 element={
                   <PrivateRoute>
                     <StatisticsPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/list-users"
+                element={
+                  <PrivateRoute>
+                    <ListOfUsers />
                   </PrivateRoute>
                 }
               />
