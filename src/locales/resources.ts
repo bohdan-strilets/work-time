@@ -32,6 +32,9 @@ import uaTermsUseSite from './ua/termsUseSite.json';
 import enErrors from './en/errors.json';
 import plErrors from './pl/errors.json';
 import uaErrors from './ua/errors.json';
+import enValidation from './en/validation.json';
+import plValidation from './pl/validation.json';
+import uaValidation from './ua/validation.json';
 
 const resources = {
   en: {
@@ -46,6 +49,7 @@ const resources = {
     [LocalesKeys.privacyPolicy]: enPrivacyPoliocy,
     [LocalesKeys.termsUseSite]: enTermsUseSite,
     [LocalesKeys.error]: enErrors,
+    [LocalesKeys.validation]: enValidation,
   },
   pl: {
     [LocalesKeys.statistics]: plStatistics,
@@ -59,6 +63,7 @@ const resources = {
     [LocalesKeys.privacyPolicy]: plPrivacyPoliocy,
     [LocalesKeys.termsUseSite]: plTermsUseSite,
     [LocalesKeys.error]: plErrors,
+    [LocalesKeys.validation]: plValidation,
   },
   ua: {
     [LocalesKeys.statistics]: uaStatistics,
@@ -72,6 +77,7 @@ const resources = {
     [LocalesKeys.privacyPolicy]: uaPrivacyPoliocy,
     [LocalesKeys.termsUseSite]: uaTermsUseSite,
     [LocalesKeys.error]: uaErrors,
+    [LocalesKeys.validation]: uaValidation,
   },
 };
 

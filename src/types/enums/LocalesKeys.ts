@@ -10,4 +10,5 @@ export enum LocalesKeys {
   privacyPolicy = 'privacyPolicy',
   termsUseSite = 'termsUseSite',
   error = 'error',
+  validation = 'validation',
 }
