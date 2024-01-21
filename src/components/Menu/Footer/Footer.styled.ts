@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Copyright = styled.p`
-  position: absolute;
+  position: relative;
   bottom: var(--medium-indent);
-  left: 50%;
-  transform: translateX(-50%);
+  text-align: center;
 `;
