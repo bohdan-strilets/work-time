@@ -5,4 +5,5 @@ export type UserSliceState = {
   token: string | null;
   isLoggedIn: boolean;
   isRefreshing: boolean;
+  usersArr: UserType[] | null;
 };

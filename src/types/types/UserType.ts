@@ -1,5 +1,6 @@
 import { CompanyInfoType } from './CompanyInfoType';
 import { Gender } from 'types/enums/GenderEnum';
+import { StatisticsType } from './StatisticsType';
 
 export type UserType = {
   _id: string;
@@ -14,6 +15,7 @@ export type UserType = {
   avatarUrl: string | null;
   activationToken: string | null;
   isActivated: boolean;
+  statistics: StatisticsType;
   createdAt: Date;
   updatedAt: Date;
 };

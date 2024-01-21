@@ -10,6 +10,7 @@ const initialState: UserSliceState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
+  usersArr: null,
 };
 
 const userPersistConfig = {
@@ -89,6 +90,11 @@ export const userSlice = createSlice({
         if (action.payload && action.payload.data) {
           state.user = action.payload.data;
           state.isLoggedIn = true;
+        }
+      })
+      .addCase(operations.getAllUsers.fulfilled, (state, action) => {
+        if (action.payload && action.payload.data) {
+          state.usersArr = action.payload.data;
         }
       });
   },

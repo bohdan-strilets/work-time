@@ -15,6 +15,7 @@ export const OPERATION_NAME = {
   RepeatConfirmEmail: 'repeat-confirm-email',
   DeleteProfile: 'delete-profile',
   CurrentUser: 'current-user',
+  GetAllUsers: 'get-all-users',
 };
 
 export const ENDPOINTS_PATH = {
@@ -32,4 +33,5 @@ export const ENDPOINTS_PATH = {
   RepeatConfirmEmail: 'api/v1/users/repeat-activation-email',
   DeleteProfile: 'api/v1/users/delete-profile',
   CurrentUser: 'api/v1/users/current-user',
+  GetAllUsers: 'api/v1/users/get-all-users',
 };

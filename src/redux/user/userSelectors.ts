@@ -12,3 +12,4 @@ export const getAvatarUrl = (state: RootState) => state.user.user?.avatarUrl;
 export const getCompanyInfo = (state: RootState) => state.user.user?.companyInfo;
 export const getPassword = (state: RootState) => state.user.user?.password;
 export const getSalaryPerHour = (state: RootState) => state.user.user?.companyInfo.salaryPerHour;
+export const getAllUsers = (state: RootState) => state.user.usersArr;

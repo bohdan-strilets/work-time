@@ -377,6 +377,32 @@ const currentUser = createAsyncThunk<UserResponseType<UserType> | undefined>(
   },
 );
 
+const getAllUsers = createAsyncThunk<UserResponseType<UserType[]> | undefined>(
+  `${ENTITY_NAME}/${OPERATION_NAME.GetAllUsers}`,
+  async () => {
+    try {
+      const { data } = await api.get(ENDPOINTS_PATH.GetAllUsers);
+      if (data) {
+        const response = data as UserResponseType<UserType[]>;
+        return response;
+      }
+      return undefined;
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<UserResponseType>;
+        if (axiosError.response) {
+          const serverError = axiosError.response.data as UserResponseType;
+          CustomErrorHandler(serverError);
+        } else {
+          toast.error(translateLabel(ErrorLngKeys.GeneralAxiosError, LocalesKeys.error));
+        }
+      } else {
+        toast.error(translateLabel(ErrorLngKeys.GeneralError, LocalesKeys.error));
+      }
+    }
+  },
+);
+
 const operations = {
   registration,
   googleAuth,
@@ -392,6 +418,7 @@ const operations = {
   repeatConfirmEmail,
   deleteProfile,
   currentUser,
+  getAllUsers,
 };
 
 export default operations;
