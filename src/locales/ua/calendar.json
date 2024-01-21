@@ -1,16 +1,16 @@
 {
-  "Did you work or rest today": "Чи працювали ви чи відпочивали сьогодні",
+  "Did you work or rest today": "Який це був день",
   "Add day": "Додати день",
   "What time did you arrive at work": "О котрій годині ви прибули на роботу",
   "What time did you go home": "О котрій годині ви пішли додому",
   "Is this an extra shift": "Чи це додаткова зміна",
   "Do you want to set your own vacation time": "Чи бажаєте встановити свій власний час відпустки? (За замовчуванням буде вибрано час з 06:00 до 18:00)",
   "Additional hours": "Додаткові години",
-  "Pension contribution": "Внесок на пенсію",
+  "Pension contribution": "Пенсійний податок",
   "Disability contribution": "Внесок на інвалідність",
   "Sickness insurance contribution": "Внесок на медичне страхування в разі хвороби",
-  "Health insurance premium": "Премія медичного страхування",
-  "Advance payment of income tax": "Авансовий платіж податку на доходи",
+  "Health insurance premium": "Внесок на медичне страхування",
+  "Advance payment of income tax": "Податок на доходи",
   "Change day": "Змінити день",
   "Delete day paragraph 1": "Чи ви дійсно хочете видалити інформацію про поточний день? Після підтвердження цієї дії її неможливо буде скасувати"
 }
