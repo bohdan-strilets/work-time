@@ -50,8 +50,8 @@ const Mobile: React.FC<ProfileProps> = ({
         <Avatar
           alt={alt}
           url={avatarUrl}
-          width="300px"
-          height="300px"
+          width="290px"
+          height="290px"
           margin="0 0 var(--small-indent)"
           borderRadius="10px"
           border="5px solid var(--white-transparent-color)"

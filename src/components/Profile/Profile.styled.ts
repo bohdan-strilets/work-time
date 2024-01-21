@@ -20,6 +20,8 @@ export const LeftSide = styled.div`
   }
 `;
 
+export const RightSide = styled.div``;
+
 export const Button = styled.button`
   position: relative;
   display: inline-block;
@@ -46,8 +48,8 @@ export const ButtonHover = styled.div`
   align-items: center;
   justify-content: center;
 
-  width: 300px;
-  height: 300px;
+  width: 290px;
+  height: 290px;
 
   border-radius: 10px;
   background-color: var(--white-transparent-color);

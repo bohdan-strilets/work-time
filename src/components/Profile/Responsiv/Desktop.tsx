@@ -4,7 +4,7 @@ import Controllers from '../Controllers';
 import Avatar from 'components/UI/Avatar';
 import { ProfileProps } from 'types/props/ProfileProps';
 import useModalWindow from 'hooks/useModalWindow';
-import { Wrapper, LeftSide, Button, ButtonHover } from '../Profile.styled';
+import { Wrapper, LeftSide, RightSide, Button, ButtonHover } from '../Profile.styled';
 
 const Desktop: React.FC<ProfileProps> = ({
   name,
@@ -46,7 +46,7 @@ const Desktop: React.FC<ProfileProps> = ({
           description={description}
         />
       </LeftSide>
-      <div>
+      <RightSide>
         <Button type="button" onClick={() => openModal(modalsName.uploadAvatar)}>
           <Avatar
             alt={alt}
@@ -62,7 +62,7 @@ const Desktop: React.FC<ProfileProps> = ({
           </ButtonHover>
         </Button>
         <Controllers />
-      </div>
+      </RightSide>
     </Wrapper>
   );
 };
