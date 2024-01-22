@@ -24,10 +24,10 @@ const Checkbox: React.FC<CheckboxProps> = ({
         type="checkbox"
         name={name}
         checked={isChecked}
-        {...register(name)}
         required={required}
         disabled={disabled}
         onClick={toggle}
+        {...register(name)}
       />
       <CustomCheckbox checked={isChecked} disabled={disabled} className="checkbox">
         {isChecked && <HiCheck size={20} />}

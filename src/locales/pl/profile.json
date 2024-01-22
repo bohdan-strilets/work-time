@@ -22,5 +22,10 @@
   "Upload avatar paragraph 1": "Wybrany plik musi być w jednym z następujących formatów '.jpg .png .gif .webp'. Plik nie może przekraczać 8 MB.",
   "Example description for user": "Przykładowy opis dla użytkownika.",
   "Write a few words about yourself": "Napisz kilka słów o sobie...",
-  "Hello, here I wanted to tell you a little about myself": "Witaj, tutaj chciałem(am) powiedzieć trochę o sobie."
+  "Hello, here I wanted to tell you a little about myself": "Witaj, tutaj chciałem(am) powiedzieć trochę o sobie.",
+  "Calculation setup": "Konfiguracja obliczeń",
+  "Select contract type": "Wybierz rodzaj umowy",
+  "Are you already 26 years old": "Czy masz już 26 lat?",
+  "Are you a participant in the PPK program": "Czy jesteś uczestnikiem programu PPK?",
+  "The settings have been successfully changed": "Ustawienia zostały pomyślnie zmienione."
 }

@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { MdEmail } from 'react-icons/md';
-import { RiLockFill } from 'react-icons/ri';
-import { RiEdit2Fill } from 'react-icons/ri';
+import { RiLockFill, RiEdit2Fill, RiSettings4Fill } from 'react-icons/ri';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import useModalWindow from 'hooks/useModalWindow';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
+import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { Item, Label } from './Controllers.styled';
 
 const Controllers: React.FC<{}> = () => {
@@ -29,6 +29,10 @@ const Controllers: React.FC<{}> = () => {
       <Item onClick={() => openModal(modalsName.deleteProfile)}>
         <RiDeleteBin6Fill />
         <Label>{t(ProfileLngKeys.DeleteProfile, { ns: LocalesKeys.profile })}</Label>
+      </Item>
+      <Item onClick={() => openModal(modalsName.calculationSetup)}>
+        <RiSettings4Fill />
+        <Label>{t(CommonLngKeys.Settings, { ns: LocalesKeys.common })}</Label>
       </Item>
     </ul>
   );

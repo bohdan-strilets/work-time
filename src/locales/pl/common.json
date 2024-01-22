@@ -23,7 +23,7 @@
   "Start work": "Rozpocznij pracę",
   "Salary per hour": "Stawka godzinowa",
   "Password placeholder": "Przynajmniej jedna litera, jedna cyfra i jeden znak specjalny ! @ # $ % &",
-  "Date format": "MM/DD/YYYY",
+  "Date format": "MM.DD.YYYY",
   "Cancel": "Anuluj",
   "Delete": "Usuń",
   "Select": "Wybierz",
@@ -80,5 +80,10 @@
   "Sick day net": "Dzień chorobowy netto",
   "Show how": "Pokaż, jak",
   "There's nothing here yet": "Na razie tu nic nie ma...",
-  "List of users": "Lista użytkowników"
+  "List of users": "Lista użytkowników",
+  "Settings": "Ustawienia",
+  "Contract of employment": "Umowa o pracę",
+  "Mandate contract": "Umowa zlecenie",
+  "Type": "Typ",
+  "Save": "Zapisz"
 }

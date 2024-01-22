@@ -81,4 +81,9 @@ export enum CommonLngKeys {
   ShowHow = 'Show how',
   TheresNothingHereYet = "There's nothing here yet",
   ListOfUsers = 'List of users',
+  Settings = 'Settings',
+  ContractEmployment = 'Contract of employment',
+  MandateContract = 'Mandate contract',
+  Type = 'Type',
+  Save = 'Save',
 }

@@ -96,6 +96,11 @@ export const userSlice = createSlice({
         if (action.payload && action.payload.data) {
           state.usersArr = action.payload.data;
         }
+      })
+      .addCase(operations.changeSettings.fulfilled, (state, action) => {
+        if (action.payload && action.payload.data) {
+          state.user = action.payload.data;
+        }
       });
   },
 });

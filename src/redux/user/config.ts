@@ -16,6 +16,7 @@ export const OPERATION_NAME = {
   DeleteProfile: 'delete-profile',
   CurrentUser: 'current-user',
   GetAllUsers: 'get-all-users',
+  ChangeSettings: 'change-settings',
 };
 
 export const ENDPOINTS_PATH = {
@@ -34,4 +35,5 @@ export const ENDPOINTS_PATH = {
   DeleteProfile: 'api/v1/users/delete-profile',
   CurrentUser: 'api/v1/users/current-user',
   GetAllUsers: 'api/v1/users/get-all-users',
+  ChangeSettings: 'api/v1/users/change-settings',
 };

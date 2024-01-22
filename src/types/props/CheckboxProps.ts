@@ -4,8 +4,8 @@ export type CheckboxProps = {
   margin?: string;
   required?: boolean;
   disabled?: boolean;
-  register: any;
-  errors: any;
+  register?: any;
+  errors?: any;
   onChange: (value: boolean) => void;
   children?: string | React.ReactNode;
   childrenWidth?: string;

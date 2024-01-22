@@ -16,6 +16,7 @@ import CustomErrorHandler from 'utilities/CustomErrorHandler';
 import { translateLabel } from 'locales/config';
 import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
+import { ChangeSettingsDto } from 'types/dto/ChangeSettingsDto';
 
 const registration = createAsyncThunk<
   UserResponseType<UserType, TokensType> | undefined,
@@ -403,6 +404,32 @@ const getAllUsers = createAsyncThunk<UserResponseType<UserType[]> | undefined>(
   },
 );
 
+const changeSettings = createAsyncThunk<UserResponseType<UserType> | undefined, ChangeSettingsDto>(
+  `${ENTITY_NAME}/${OPERATION_NAME.ChangeSettings}`,
+  async changeSettingsDto => {
+    try {
+      const { data } = await api.put(ENDPOINTS_PATH.ChangeSettings, changeSettingsDto);
+      if (data) {
+        const response = data as UserResponseType<UserType>;
+        return response;
+      }
+      return undefined;
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<UserResponseType>;
+        if (axiosError.response) {
+          const serverError = axiosError.response.data as UserResponseType;
+          CustomErrorHandler(serverError);
+        } else {
+          toast.error(translateLabel(ErrorLngKeys.GeneralAxiosError, LocalesKeys.error));
+        }
+      } else {
+        toast.error(translateLabel(ErrorLngKeys.GeneralError, LocalesKeys.error));
+      }
+    }
+  },
+);
+
 const operations = {
   registration,
   googleAuth,
@@ -419,6 +446,7 @@ const operations = {
   deleteProfile,
   currentUser,
   getAllUsers,
+  changeSettings,
 };
 
 export default operations;

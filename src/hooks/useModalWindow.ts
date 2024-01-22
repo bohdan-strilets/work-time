@@ -23,6 +23,7 @@ const useModalWindow = () => {
     chartByHours: 'chart-by-hours',
     chartByShifts: 'chart-by-shifts',
     chartByMoney: 'chart-by-money',
+    calculationSetup: 'calculation-setup',
   };
 
   const openModal = (modalName: string) => {

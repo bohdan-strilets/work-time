@@ -23,4 +23,9 @@ export enum ProfileLngKeys {
   ExampleDescriptionForUser = 'Example description for user',
   WriteFewWordsAboutYourself = 'Write a few words about yourself',
   HelloHereWantedToTellYouLittleAboutMyself = 'Hello, here I wanted to tell you a little about myself',
+  CalculationSetup = 'Calculation setup',
+  SelectContractType = 'Select contract type',
+  AreYouAlreadyYearsOld = 'Are you already 26 years old',
+  AreYouParticipantInPPK = 'Are you a participant in the PPK program',
+  SettingsHaveBeenSuccessfullyChanged = 'The settings have been successfully changed',
 }

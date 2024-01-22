@@ -23,7 +23,7 @@
   "Start work": "Start work",
   "Salary per hour": "Salary per hour ",
   "Password placeholder": "Least one letter, one digit, and one special character  ! @ # $ % &",
-  "Date format": "MM/DD/YYYY",
+  "Date format": "MM.DD.YYYY",
   "Cancel": "Cancel",
   "Delete": "Delete",
   "Select": "Select",
@@ -80,5 +80,10 @@
   "Sick day net": "Sick day net",
   "Show how": "Show, how",
   "There's nothing here yet": "There's nothing here yet...",
-  "List of users": "List of users"
+  "List of users": "List of users",
+  "Settings": "Settings",
+  "Contract of employment": "Contract of employment",
+  "Mandate contract": "Mandate contract",
+  "Type": "Type",
+  "Save": "Save"
 }

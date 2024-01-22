@@ -1,6 +1,7 @@
 import { CompanyInfoType } from './CompanyInfoType';
 import { Gender } from 'types/enums/GenderEnum';
 import { StatisticsType } from './StatisticsType';
+import { CalculationSetupType } from './CalculationSetupType';
 
 export type UserType = {
   _id: string;
@@ -16,6 +17,7 @@ export type UserType = {
   activationToken: string | null;
   isActivated: boolean;
   statistics: StatisticsType;
+  settings: CalculationSetupType;
   createdAt: Date;
   updatedAt: Date;
 };

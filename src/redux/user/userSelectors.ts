@@ -13,3 +13,7 @@ export const getCompanyInfo = (state: RootState) => state.user.user?.companyInfo
 export const getPassword = (state: RootState) => state.user.user?.password;
 export const getSalaryPerHour = (state: RootState) => state.user.user?.companyInfo.salaryPerHour;
 export const getAllUsers = (state: RootState) => state.user.usersArr;
+export const getCalculationSettings = (state: RootState) => state.user.user?.settings;
+export const getContractType = (state: RootState) => state.user.user?.settings.contractType;
+export const getAlready26 = (state: RootState) => state.user.user?.settings.areYouAlready26Years;
+export const getPpk = (state: RootState) => state.user.user?.settings.ppk;

@@ -10,6 +10,7 @@ import operations from '../redux/user/userOperations';
 import { imageValidation } from 'validations/FileValidation';
 import ChangeEmailForm from 'components/Forms/ChangeEmailForm';
 import ChangePasswordForm from 'components/Forms/ChangePasswordForm';
+import CalculationSetupForm from 'components/Forms/CalculationSetupForm';
 import useProfile from 'hooks/useProfile';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
@@ -108,6 +109,11 @@ const ProfilePage: React.FC<{}> = () => {
             handlePositiveClick={deleteProfile}
             handleNegativeClick={() => navigate(-1)}
           />
+        </ModalWindow>
+      )}
+      {checkQueryParam(modalsName.calculationSetup) && (
+        <ModalWindow title={t(ProfileLngKeys.CalculationSetup, { ns: LocalesKeys.profile })}>
+          <CalculationSetupForm />
         </ModalWindow>
       )}
     </>
