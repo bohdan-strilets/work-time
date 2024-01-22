@@ -22,6 +22,7 @@ const Tablet: React.FC<ProfileProps> = ({
   avatarUrl,
   userId,
   description,
+  settings,
 }) => {
   const { modalsName, openModal } = useModalWindow();
 
@@ -44,6 +45,7 @@ const Tablet: React.FC<ProfileProps> = ({
           }}
           userId={userId}
           description={description}
+          settings={settings}
         />
       </LeftSide>
       <div>

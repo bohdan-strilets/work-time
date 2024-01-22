@@ -2,7 +2,19 @@ import { useTranslation } from 'react-i18next';
 import { UserDataProps } from 'types/props/UserDataProps';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
-import { Group, Name, Status, Id, Description, Item, Property, Value } from './UserData.styled';
+import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
+import { ContractTypeEnum } from 'types/enums/ContractTypeEnum';
+import {
+  Group,
+  Name,
+  Status,
+  Id,
+  Description,
+  Title,
+  Item,
+  Property,
+  Value,
+} from './UserData.styled';
 
 const UserData: React.FC<UserDataProps> = ({
   name,
@@ -14,6 +26,7 @@ const UserData: React.FC<UserDataProps> = ({
   workInfo,
   userId,
   description,
+  settings,
 }) => {
   const { t } = useTranslation();
 
@@ -21,10 +34,11 @@ const UserData: React.FC<UserDataProps> = ({
     <>
       <Group>
         <Name>{name}</Name>
-        <Status isActivateed={isActivateed} />
+        <Status value={isActivateed} />
       </Group>
       <Id>ID: {userId}</Id>
       <Description>{description}</Description>
+      <Title>{t(ProfileLngKeys.UserData, { ns: LocalesKeys.profile })}</Title>
       <ul>
         <Item>
           <Property>{t(CommonLngKeys.Email, { ns: LocalesKeys.common })}:</Property>
@@ -62,6 +76,30 @@ const UserData: React.FC<UserDataProps> = ({
         <Item>
           <Property>{t(CommonLngKeys.SalaryPerHour, { ns: LocalesKeys.common })}:</Property>
           <Value>{workInfo.salaryPerHour} PLN</Value>
+        </Item>
+      </ul>
+      <Title>{t(ProfileLngKeys.CalculationSettings, { ns: LocalesKeys.profile })}</Title>
+      <ul>
+        <Item>
+          <Property>{t(ProfileLngKeys.ContractType, { ns: LocalesKeys.profile })}:</Property>
+          <Value>
+            {settings?.contractType === ContractTypeEnum.ContractEmployment &&
+              t(CommonLngKeys.ContractEmployment, { ns: LocalesKeys.common })}
+          </Value>
+          <Value>
+            {settings?.contractType === ContractTypeEnum.MandateContract &&
+              t(CommonLngKeys.MandateContract, { ns: LocalesKeys.common })}
+          </Value>
+        </Item>
+        <Item>
+          <Property>{t(ProfileLngKeys.Full26Years, { ns: LocalesKeys.profile })}:</Property>
+          <Status value={settings?.areYouAlready26Years} />
+        </Item>
+        <Item>
+          <Property>
+            {t(ProfileLngKeys.ParticipantOfPpkProgram, { ns: LocalesKeys.profile })}:
+          </Property>
+          <Status value={settings?.ppk} />
         </Item>
       </ul>
     </>

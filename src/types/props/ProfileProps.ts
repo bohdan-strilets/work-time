@@ -1,3 +1,5 @@
+import { CalculationSetupType } from 'types/types/CalculationSetupType';
+
 export type ProfileProps = {
   name: string;
   isActivated: boolean;
@@ -14,4 +16,5 @@ export type ProfileProps = {
   avatarUrl: string;
   userId: string;
   description: string;
+  settings?: CalculationSetupType;
 };

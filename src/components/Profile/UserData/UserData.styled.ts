@@ -31,9 +31,28 @@ export const Id = styled.p`
 
 export const Description = styled.p`
   font-size: 14px;
+  margin-bottom: var(--medium-indent);
 
   @media screen and (min-width: ${ScreenWidth.desktop}) {
     font-size: 16px;
+  }
+`;
+
+export const Title = styled.p`
+  font-weight: 700;
+  font-size: 18px;
+
+  padding: 0 10px;
+
+  color: var(--white-color);
+  background-color: var(--black-color);
+
+  @media screen and (min-width: ${ScreenWidth.desktop}) {
+    font-size: 24px;
+  }
+
+  @media screen and (min-width: ${ScreenWidth.desktop}) {
+    font-size: 28px;
   }
 `;
 
@@ -43,8 +62,7 @@ export const Status = styled.div<StatusProps>`
 
   border-radius: 50%;
   box-shadow: var(--main-shadow);
-  background-color: ${({ isActivateed }) =>
-    isActivateed ? 'var(--green-color)' : 'var(--gray-color)'};
+  background-color: ${({ value }) => (value ? 'var(--green-color)' : 'var(--accent-color)')};
 
   @media screen and (min-width: ${ScreenWidth.tablet}) {
     width: 18px;

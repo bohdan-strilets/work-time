@@ -42,6 +42,7 @@ const useProfile = () => {
   const userId = user?._id ?? 'ID';
   const description =
     user?.description ?? t(ProfileLngKeys.ExampleDescriptionForUser, { ns: LocalesKeys.profile });
+  const settings = user?.settings;
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -75,6 +76,7 @@ const useProfile = () => {
     user,
     userId,
     description,
+    settings,
   };
 };
 

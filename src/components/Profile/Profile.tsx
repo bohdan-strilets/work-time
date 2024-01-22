@@ -21,6 +21,7 @@ const Profile: React.FC<ProfileProps> = ({
   avatarUrl,
   userId,
   description,
+  settings,
 }) => {
   return (
     <>
@@ -50,6 +51,7 @@ const Profile: React.FC<ProfileProps> = ({
                 avatarUrl={avatarUrl}
                 userId={userId}
                 description={description}
+                settings={settings}
               />
             )}
             {matches.medium && (
@@ -69,6 +71,7 @@ const Profile: React.FC<ProfileProps> = ({
                 avatarUrl={avatarUrl}
                 userId={userId}
                 description={description}
+                settings={settings}
               />
             )}
             {matches.large && (
@@ -88,6 +91,7 @@ const Profile: React.FC<ProfileProps> = ({
                 avatarUrl={avatarUrl}
                 userId={userId}
                 description={description}
+                settings={settings}
               />
             )}
           </>

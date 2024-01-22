@@ -38,6 +38,7 @@ const ProfilePage: React.FC<{}> = () => {
     user,
     userId,
     description,
+    settings,
   } = useProfile();
   const navigate = useNavigate();
   const { checkQueryParam, modalsName } = useModalWindow();
@@ -61,6 +62,7 @@ const ProfilePage: React.FC<{}> = () => {
         avatarUrl={avatarUrl}
         userId={userId}
         description={description}
+        settings={settings}
       />
       {checkQueryParam(modalsName.editProfile) && (
         <ModalWindow title={t(ProfileLngKeys.EditProfile, { ns: LocalesKeys.profile })}>

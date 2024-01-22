@@ -28,4 +28,9 @@ export enum ProfileLngKeys {
   AreYouAlreadyYearsOld = 'Are you already 26 years old',
   AreYouParticipantInPPK = 'Are you a participant in the PPK program',
   SettingsHaveBeenSuccessfullyChanged = 'The settings have been successfully changed',
+  UserData = 'User data',
+  CalculationSettings = 'Calculation settings',
+  ContractType = 'Contract type',
+  Full26Years = 'Full 26 years',
+  ParticipantOfPpkProgram = 'Participant of the PPK program',
 }

@@ -27,5 +27,10 @@
   "Select contract type": "Select contract type",
   "Are you already 26 years old": "Are you already 26 years old?",
   "Are you a participant in the PPK program": "Are you a participant in the PPK program?",
-  "The settings have been successfully changed": "The settings have been successfully changed."
+  "The settings have been successfully changed": "The settings have been successfully changed.",
+  "User data": "User data",
+  "Calculation settings": "Calculation settings",
+  "Contract type": "Contract type",
+  "Full 26 years": "Full 26 years",
+  "Participant of the PPK program": "Participant of the PPK program"
 }

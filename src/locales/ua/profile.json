@@ -27,5 +27,10 @@
   "Select contract type": "Виберіть тип контракту",
   "Are you already 26 years old": "Вам вже є 26 років?",
   "Are you a participant in the PPK program": "Чи ви є учасником програми PPK?",
-  "The settings have been successfully changed": "Налаштування були успішно змінені."
+  "The settings have been successfully changed": "Налаштування були успішно змінені.",
+  "User data": "Дані користувача",
+  "Calculation settings": "Налаштування обчислень",
+  "Contract type": "Тип договору",
+  "Full 26 years": "Повні 26 років",
+  "Participant of the PPK program": "Учасник програми PPK"
 }

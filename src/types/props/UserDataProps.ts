@@ -1,3 +1,5 @@
+import { CalculationSetupType } from 'types/types/CalculationSetupType';
+
 export type UserDataProps = {
   name: string;
   isActivateed: boolean;
@@ -14,6 +16,7 @@ export type UserDataProps = {
   };
   userId: string;
   description: string;
+  settings?: CalculationSetupType;
 };
 
-export type StatusProps = Pick<UserDataProps, 'isActivateed'>;
+export type StatusProps = { value?: boolean };
