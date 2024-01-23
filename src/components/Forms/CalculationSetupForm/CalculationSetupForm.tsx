@@ -24,7 +24,7 @@ const CalculationSetupForm: React.FC<{}> = () => {
             name="contractType"
             options={ContractTypeOptions}
             label={t(ProfileLngKeys.SelectContractType, { ns: LocalesKeys.profile })}
-            buttonlabel="Type"
+            buttonlabel={t(CommonLngKeys.Type, { ns: LocalesKeys.common })}
             height="40px"
             width="100%"
             margin="0 0 var(--small-indent) 0"

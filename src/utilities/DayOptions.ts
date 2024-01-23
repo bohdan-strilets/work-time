@@ -2,7 +2,7 @@ import { translateLabel } from 'locales/config';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 
-const DayOptions = [
+export const DayOptions = [
   {
     id: 1,
     label: translateLabel(CommonLngKeys.WorkDay, LocalesKeys.common),
@@ -25,4 +25,15 @@ const DayOptions = [
   },
 ];
 
-export default DayOptions;
+export const ShortDayOptions = [
+  {
+    id: 1,
+    label: translateLabel(CommonLngKeys.WorkDay, LocalesKeys.common),
+    value: 'work',
+  },
+  {
+    id: 2,
+    label: translateLabel(CommonLngKeys.DayOff, LocalesKeys.common),
+    value: 'day-off',
+  },
+];

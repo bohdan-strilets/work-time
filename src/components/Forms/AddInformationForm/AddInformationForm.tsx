@@ -4,13 +4,16 @@ import Button from 'components/UI/Button';
 import Checkbox from 'components/UI/Checkbox';
 import QuickTiming from 'components/UI/QuickTiming';
 import useAddInformationForm from 'hooks/useAddInformationForm';
-import DayOptions from 'utilities/DayOptions';
+import { DayOptions, ShortDayOptions } from 'utilities/DayOptions';
 import HoursOptions from 'utilities/HoursOptions';
 import { AddInformationFormProps } from 'types/props/AddInformationFormProps';
 import { Status } from 'types/enums/StatusEnum';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { CalendarLngKeys } from 'types/locales/CalendarLngKeys';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
+import { useAppSelector } from 'hooks/useAppSelector';
+import { getContractType } from '../../../redux/user/userSelectors';
+import { ContractTypeEnum } from 'types/enums/ContractTypeEnum';
 
 const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate }) => {
   const {
@@ -28,6 +31,7 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
     selectedVacationHours,
   } = useAddInformationForm({ selectedDate });
   const { t } = useTranslation();
+  const contractType = useAppSelector(getContractType);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -38,7 +42,9 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
           <DropdownList
             type="single"
             name="status"
-            options={DayOptions}
+            options={
+              contractType === ContractTypeEnum.ContractEmployment ? DayOptions : ShortDayOptions
+            }
             label={`${t(CalendarLngKeys.DidYouWorkOrRestToday, { ns: LocalesKeys.calendar })}?`}
             buttonlabel={t(CommonLngKeys.Today, { ns: LocalesKeys.common })}
             height="40px"
