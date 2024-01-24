@@ -28,5 +28,9 @@
   "First name is required": "Ім'я обов'язкове.",
   "Last name is required": "Прізвище обов'язкове.",
   "You must accept the rules": "Ви повинні прийняти правила.",
-  "Field is required": "Це поле обов'язкове."
+  "Field is required": "Це поле обов'язкове.",
+  "Choose one option from the list": "Виберіть одне значення зі списку.",
+  "The minimum value that can be specified is": "Мінімальне значення, яке можна вказати, - 0,5%.",
+  "The maximum value that can be specified is": "Максимальне значення, яке можна вказати, - 4%.",
+  "This choice cannot remain empty": "Цей вибір не може залишитися порожнім."
 }

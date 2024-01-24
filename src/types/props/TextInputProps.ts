@@ -14,6 +14,9 @@ export type TextInputProps = {
   children?: React.ReactNode;
   defaultValue?: string | number;
   padding?: string;
+  minValue?: number;
+  maxValue?: number;
+  step?: number;
 };
 
 export type WrapperProps = Pick<TextInputProps, 'width' | 'margin' | 'disabled'>;

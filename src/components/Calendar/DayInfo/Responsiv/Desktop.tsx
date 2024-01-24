@@ -52,6 +52,7 @@ const Desktop: React.FC<DayInfoProps> = ({
   const {
     healthInsurance,
     incomeTax,
+    amountForPpk,
     total,
     pensionContribution,
     disabilityContribution,
@@ -126,6 +127,7 @@ const Desktop: React.FC<DayInfoProps> = ({
           pensionContribution={pensionContribution}
           disabilityContribution={disabilityContribution}
           sicknessInsuranceContribution={sicknessInsuranceContribution}
+          amountForPpk={amountForPpk}
         />
       )}
       <Container justifyContent="space-between">

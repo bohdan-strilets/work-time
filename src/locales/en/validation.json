@@ -28,5 +28,9 @@
   "First name is required": "First name is required.",
   "Last name is required": "Last name is required.",
   "You must accept the rules": "You must accept the rules.",
-  "Field is required": "Field is required."
+  "Field is required": "Field is required.",
+  "Choose one option from the list": "Choose one option from the list.",
+  "The minimum value that can be specified is": "The minimum value that can be specified is 0.5%.",
+  "The maximum value that can be specified is": "The maximum value that can be specified is 4%.",
+  "This choice cannot remain empty": "This choice cannot remain empty."
 }

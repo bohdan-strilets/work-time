@@ -28,5 +28,9 @@
   "First name is required": "Imię jest wymagane.",
   "Last name is required": "Nazwisko jest wymagane.",
   "You must accept the rules": "Musisz zaakceptować zasady.",
-  "Field is required": "To pole jest wymagane."
+  "Field is required": "To pole jest wymagane.",
+  "Choose one option from the list": "Wybierz jedną opcję z listy.",
+  "The minimum value that can be specified is": "Najniższą wartością, którą można podać, jest 0,5%.",
+  "The maximum value that can be specified is": "Maksymalną wartością, jaką można podać, jest 4%.",
+  "This choice cannot remain empty": "Ten wybór nie może pozostać pusty."
 }

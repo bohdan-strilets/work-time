@@ -4,4 +4,5 @@ export type ExpensesListProps = {
   pensionContribution: number;
   disabilityContribution: number;
   sicknessInsuranceContribution: number;
+  amountForPpk: number;
 };

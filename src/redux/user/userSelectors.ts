@@ -17,3 +17,4 @@ export const getCalculationSettings = (state: RootState) => state.user.user?.set
 export const getContractType = (state: RootState) => state.user.user?.settings.contractType;
 export const getAlready26 = (state: RootState) => state.user.user?.settings.areYouAlready26Years;
 export const getPpk = (state: RootState) => state.user.user?.settings.ppk;
+export const getPpkRate = (state: RootState) => state.user.user?.settings.ppkRate;

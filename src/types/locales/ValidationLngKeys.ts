@@ -29,4 +29,8 @@ export enum ValidationLngKeys {
   LastNameIsRequired = 'Last name is required',
   AcceptRules = 'You must accept the rules',
   FieldIsRequired = 'Field is required',
+  ChooseOneOptionFromList = 'Choose one option from the list',
+  MinimumValueThatCanBeSpecified = 'The minimum value that can be specified is',
+  MaximumValueThatCanBeSpecified = 'The maximum value that can be specified is',
+  ThisChoiceCannotRemainEmpty = 'This choice cannot remain empty',
 }

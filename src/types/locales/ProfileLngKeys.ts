@@ -33,4 +33,6 @@ export enum ProfileLngKeys {
   ContractType = 'Contract type',
   Full26Years = 'Full 26 years',
   ParticipantOfPpkProgram = 'Participant of the PPK program',
+  PpkContributionRateYouPay = 'PPK contribution rate you pay',
+  MinimumValueAndMaximum = 'Minimum value and maximum',
 }

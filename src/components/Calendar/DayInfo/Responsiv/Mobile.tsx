@@ -53,6 +53,7 @@ const Mobile: React.FC<DayInfoProps> = ({
     healthInsurance,
     incomeTax,
     total,
+    amountForPpk,
     pensionContribution,
     disabilityContribution,
     sicknessInsuranceContribution,
@@ -122,6 +123,7 @@ const Mobile: React.FC<DayInfoProps> = ({
           pensionContribution={pensionContribution}
           disabilityContribution={disabilityContribution}
           sicknessInsuranceContribution={sicknessInsuranceContribution}
+          amountForPpk={amountForPpk}
         />
       )}
       <Container displayBlock={true}>

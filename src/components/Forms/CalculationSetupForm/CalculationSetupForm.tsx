@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import DropdownList from 'components/UI/DropdownList';
 import Checkbox from 'components/UI/Checkbox';
 import Button from 'components/UI/Button';
+import TextInput from 'components/UI/TextInput';
 import ContractTypeOptions from 'utilities/ContractTypeOptions';
 import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
@@ -10,8 +11,16 @@ import useCalculationSetupForm from 'hooks/useCalculationSetupForm';
 
 const CalculationSetupForm: React.FC<{}> = () => {
   const { t } = useTranslation();
-  const { handleSubmit, onSubmit, control, errors, calculationSettings, register, Controller } =
-    useCalculationSetupForm();
+  const {
+    handleSubmit,
+    onSubmit,
+    control,
+    errors,
+    calculationSettings,
+    register,
+    Controller,
+    ppkSelected,
+  } = useCalculationSetupForm();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -68,6 +77,22 @@ const CalculationSetupForm: React.FC<{}> = () => {
           </Checkbox>
         )}
       />
+      {ppkSelected && (
+        <TextInput
+          type="number"
+          name="ppkRate"
+          label={t(ProfileLngKeys.PpkContributionRateYouPay, { ns: LocalesKeys.profile })}
+          placeholder={t(ProfileLngKeys.MinimumValueAndMaximum, { ns: LocalesKeys.profile })}
+          defaultValue={calculationSettings?.ppkRate}
+          minValue={0.5}
+          maxValue={4}
+          step={0.1}
+          register={register}
+          errors={errors}
+          height={40}
+          margin="0 0 var(--small-indent) 0"
+        />
+      )}
       <Button
         type="submit"
         label={t(CommonLngKeys.Save, { ns: LocalesKeys.common })}
