@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 export const API_URL = 'https://work-time-api.vercel.app/';
-// export const API_URL = 'http://localhost:5050/';
 
 const api = axios.create({
   withCredentials: true,

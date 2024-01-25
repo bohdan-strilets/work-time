@@ -83,12 +83,9 @@ const UserData: React.FC<UserDataProps> = ({
         <Item>
           <Property>{t(ProfileLngKeys.ContractType, { ns: LocalesKeys.profile })}:</Property>
           <Value>
-            {settings?.contractType === ContractTypeEnum.ContractEmployment &&
-              t(CommonLngKeys.ContractEmployment, { ns: LocalesKeys.common })}
-          </Value>
-          <Value>
-            {settings?.contractType === ContractTypeEnum.MandateContract &&
-              t(CommonLngKeys.MandateContract, { ns: LocalesKeys.common })}
+            {settings?.contractType === ContractTypeEnum.ContractEmployment
+              ? t(CommonLngKeys.ContractEmployment, { ns: LocalesKeys.common })
+              : t(CommonLngKeys.MandateContract, { ns: LocalesKeys.common })}
           </Value>
         </Item>
         <Item>
