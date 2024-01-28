@@ -5,17 +5,15 @@ const useCheckbox = ({ onChange, defaultValue }: HookProps) => {
   const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
-    onChange(isChecked);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isChecked]);
-
-  useEffect(() => {
     if (defaultValue) {
       setIsChecked(defaultValue);
     }
   }, [defaultValue]);
 
-  const toggle = () => setIsChecked(state => !state);
+  const toggle = () => {
+    setIsChecked(!isChecked);
+    onChange && onChange(!isChecked);
+  };
 
   return { isChecked, toggle };
 };

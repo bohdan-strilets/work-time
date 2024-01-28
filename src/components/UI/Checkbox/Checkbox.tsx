@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { HiCheck } from 'react-icons/hi';
 import { CheckboxProps } from 'types/props/CheckboxProps';
 import useCheckbox from 'hooks/useCheckbox';
@@ -18,6 +19,10 @@ const Checkbox: React.FC<CheckboxProps> = ({
 }) => {
   const { isChecked, toggle } = useCheckbox({ onChange, defaultValue });
 
+  useEffect(() => {
+    if (register && name) register(name, { required });
+  }, [register, name, required]);
+
   return (
     <Wrapper margin={margin}>
       <Input
@@ -27,7 +32,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
         required={required}
         disabled={disabled}
         onClick={toggle}
-        {...register(name)}
+        {...(register && name ? register(name) : {})}
       />
       <CustomCheckbox checked={isChecked} disabled={disabled} className="checkbox">
         {isChecked && <HiCheck size={20} />}
@@ -36,7 +41,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
         <ChildrenWrapper childrenWidth={childrenWidth}>{children}</ChildrenWrapper>
       )}
       {label && !children && <Label>{label}</Label>}
-      {errors[name] && <Error role="alert">{errors[name]?.message}</Error>}
+      {errors && errors[name] && <Error role="alert">{errors[name]?.message}</Error>}
     </Wrapper>
   );
 };

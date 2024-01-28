@@ -69,6 +69,7 @@ const CalendarPage: React.FC<{}> = () => {
             workShiftNumber={dayInfo.workShiftNumber}
             additionalHours={dayInfo.additionalHours}
             dateTransform={dateTransform}
+            dayInfoId={dayInfoId}
           />
         </ModalWindow>
       )}

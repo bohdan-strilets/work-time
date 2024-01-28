@@ -8,6 +8,7 @@ import { PiBeerSteinFill } from 'react-icons/pi';
 import { BsHospitalFill } from 'react-icons/bs';
 import ExpensesList from 'components/Calendar/ExpensesList';
 import IncomeList from 'components/Calendar/IncomeList';
+import TodoList from 'components/Calendar/TodoList';
 import { DayInfoProps } from 'types/props/DayInfoProps';
 import { Status } from 'types/enums/StatusEnum';
 import useCalculateDay from 'hooks/useCalculateDay';
@@ -33,6 +34,7 @@ const Tablet: React.FC<DayInfoProps> = ({
   workShiftNumber,
   additionalHours,
   dateTransform,
+  dayInfoId,
 }) => {
   const {
     earningForDay,
@@ -150,6 +152,7 @@ const Tablet: React.FC<DayInfoProps> = ({
           </Text>
         </Container>
       </Container>
+      <TodoList dayId={dayInfoId} />
     </div>
   );
 };

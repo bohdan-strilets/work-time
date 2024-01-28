@@ -13,6 +13,7 @@ const DayInfo: React.FC<DayInfoProps> = ({
   workShiftNumber,
   additionalHours,
   dateTransform,
+  dayInfoId,
 }) => {
   return (
     <Media
@@ -33,6 +34,7 @@ const DayInfo: React.FC<DayInfoProps> = ({
               workShiftNumber={workShiftNumber}
               additionalHours={additionalHours}
               dateTransform={dateTransform}
+              dayInfoId={dayInfoId}
             />
           )}
           {matches.medium && (
@@ -44,6 +46,7 @@ const DayInfo: React.FC<DayInfoProps> = ({
               workShiftNumber={workShiftNumber}
               additionalHours={additionalHours}
               dateTransform={dateTransform}
+              dayInfoId={dayInfoId}
             />
           )}
           {matches.large && (
@@ -55,6 +58,7 @@ const DayInfo: React.FC<DayInfoProps> = ({
               workShiftNumber={workShiftNumber}
               additionalHours={additionalHours}
               dateTransform={dateTransform}
+              dayInfoId={dayInfoId}
             />
           )}
         </>

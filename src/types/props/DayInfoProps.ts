@@ -3,7 +3,7 @@ import { DayDataType } from 'types/types/DayType';
 export type DayInfoProps = Pick<
   DayDataType,
   'status' | 'numberHoursWorked' | 'time' | 'workShiftNumber' | 'additionalHours'
-> & { date: Date | null; dateTransform: (date: Date) => string };
+> & { date: Date | null; dateTransform: (date: Date) => string; dayInfoId: string | null };
 
 export type ContainerProps = {
   margin?: string;

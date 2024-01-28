@@ -7,6 +7,7 @@ import { ImOffice } from 'react-icons/im';
 import { PiBeerSteinFill } from 'react-icons/pi';
 import { BsHospitalFill } from 'react-icons/bs';
 import IncomeList from 'components/Calendar/IncomeList';
+import TodoList from 'components/Calendar/TodoList';
 import ExpensesList from 'components/Calendar/ExpensesList';
 import { DayInfoProps } from 'types/props/DayInfoProps';
 import { Status } from 'types/enums/StatusEnum';
@@ -33,6 +34,7 @@ const Mobile: React.FC<DayInfoProps> = ({
   workShiftNumber,
   additionalHours,
   dateTransform,
+  dayInfoId,
 }) => {
   const {
     earningForDay,
@@ -146,6 +148,7 @@ const Mobile: React.FC<DayInfoProps> = ({
           </ItemLi>
         </List>
       </Container>
+      <TodoList dayId={dayInfoId} />
     </div>
   );
 };

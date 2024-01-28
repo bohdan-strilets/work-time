@@ -3,6 +3,7 @@ import { persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 
 import { persisteUserReducer } from './user/userSlice';
 import { calendarApi } from './calendar/calendarApi';
 import { statisticsApi } from './statistics/statisticsApi';
+import { todosApi } from './todo/todoApi';
 import { persisteSettingsReducer } from './settings/settingsSlice';
 
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
     user: persisteUserReducer,
     [calendarApi.reducerPath]: calendarApi.reducer,
     [statisticsApi.reducerPath]: statisticsApi.reducer,
+    [todosApi.reducerPath]: todosApi.reducer,
     settings: persisteSettingsReducer,
   },
   middleware: getDefaultMiddleware =>
@@ -19,7 +21,8 @@ export const store = configureStore({
       },
     })
       .concat(calendarApi.middleware)
-      .concat(statisticsApi.middleware),
+      .concat(statisticsApi.middleware)
+      .concat(todosApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
