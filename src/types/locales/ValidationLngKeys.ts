@@ -33,4 +33,7 @@ export enum ValidationLngKeys {
   MinimumValueThatCanBeSpecified = 'The minimum value that can be specified is',
   MaximumValueThatCanBeSpecified = 'The maximum value that can be specified is',
   ThisChoiceCannotRemainEmpty = 'This choice cannot remain empty',
+  TaskMustBeAtLeast = 'Task must be at least',
+  TaskMustNotExceed = 'Task must not exceed',
+  PleaseSelectValidPriorityOption = 'Please select a valid priority option',
 }

@@ -86,4 +86,8 @@ export enum CommonLngKeys {
   MandateContract = 'Mandate contract',
   Type = 'Type',
   Save = 'Save',
+  Low = 'Low',
+  Medium = 'Medium',
+  High = 'High',
+  Create = 'Create',
 }

@@ -1,9 +1,6 @@
 import styled from '@emotion/styled';
 
-export const List = styled.ol`
-  list-style: decimal;
-  margin-left: var(--medium-indent);
-`;
+export const List = styled.ol``;
 
 export const Item = styled.li`
   display: flex;

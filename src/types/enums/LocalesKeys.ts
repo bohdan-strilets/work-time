@@ -11,4 +11,5 @@ export enum LocalesKeys {
   termsUseSite = 'termsUseSite',
   error = 'error',
   validation = 'validation',
+  todos = 'todos',
 }

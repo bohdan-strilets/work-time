@@ -32,5 +32,8 @@
   "Choose one option from the list": "Виберіть одне значення зі списку.",
   "The minimum value that can be specified is": "Мінімальне значення, яке можна вказати, - 0,5%.",
   "The maximum value that can be specified is": "Максимальне значення, яке можна вказати, - 4%.",
-  "This choice cannot remain empty": "Цей вибір не може залишитися порожнім."
+  "This choice cannot remain empty": "Цей вибір не може залишитися порожнім.",
+  "Task must be at least": "Задача повинна містити принаймні 1 символ.",
+  "Task must not exceed": "Задача повинна містити принаймні 1 символ.",
+  "Please select a valid priority option": "Будь ласка, виберіть пріоритет для задачі."
 }

@@ -10,6 +10,7 @@ export type CheckboxProps = {
   children?: string | React.ReactNode;
   childrenWidth?: string;
   defaultValue?: boolean;
+  readOnly?: boolean;
 };
 
 export type WrapperProps = Pick<CheckboxProps, 'margin'>;

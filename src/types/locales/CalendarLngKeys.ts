@@ -13,5 +13,4 @@ export enum CalendarLngKeys {
   AdvancePaymentOfIncomeTax = 'Advance payment of income tax',
   ChangeDay = 'Change day',
   DeleteDayParagraph1 = 'Delete day paragraph 1',
-  PlanYourDay = 'Plan your day',
 }

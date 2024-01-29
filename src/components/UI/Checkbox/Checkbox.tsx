@@ -16,6 +16,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
   children,
   childrenWidth,
   defaultValue,
+  readOnly,
 }) => {
   const { isChecked, toggle } = useCheckbox({ onChange, defaultValue });
 
@@ -32,6 +33,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
         required={required}
         disabled={disabled}
         onClick={toggle}
+        readOnly={readOnly}
         {...(register && name ? register(name) : {})}
       />
       <CustomCheckbox checked={isChecked} disabled={disabled} className="checkbox">

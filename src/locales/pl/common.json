@@ -85,5 +85,9 @@
   "Contract of employment": "Umowa o pracę",
   "Mandate contract": "Umowa zlecenie",
   "Type": "Typ",
-  "Save": "Zapisz"
+  "Save": "Zapisz",
+  "Low": "Niski",
+  "Medium": "Średni",
+  "High": "Wysoki",
+  "Create": "Utworzyć"
 }

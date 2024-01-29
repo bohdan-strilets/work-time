@@ -85,5 +85,9 @@
   "Contract of employment": "Contract of employment",
   "Mandate contract": "Mandate contract",
   "Type": "Type",
-  "Save": "Save"
+  "Save": "Save",
+  "Low": "Low",
+  "Medium": "Medium",
+  "High": "High",
+  "Create": "Create"
 }

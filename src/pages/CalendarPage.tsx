@@ -6,10 +6,12 @@ import DialogWindow from 'components/DialogWindow';
 import EditInformationForm from 'components/Forms/EditInformationForm';
 import Greetings from 'components/Greetings';
 import RepeatConfirmEmailForm from 'components/Forms/RepeatConfirmEmailForm';
+import AddedTodoForm from 'components/Forms/AddedTodoForm';
 import DayInfo from 'components/Calendar/DayInfo';
 import useCalendar from 'hooks/useCalendar';
 import useModalWindow from 'hooks/useModalWindow';
 import { CalendarLngKeys } from 'types/locales/CalendarLngKeys';
+import { TodosLngKeys } from 'types/locales/TodosLngKeys';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { AuthLngKeys } from 'types/locales/AuthLngKeys';
@@ -92,6 +94,11 @@ const CalendarPage: React.FC<{}> = () => {
             handlePositiveClick={deleteInformationForDay}
             handleNegativeClick={() => navigate(-1)}
           />
+        </ModalWindow>
+      )}
+      {checkQueryParam(modalsName.cellDayNewTodo) && (
+        <ModalWindow title={t(TodosLngKeys.AddNewTask, { ns: LocalesKeys.todos })}>
+          <AddedTodoForm dayId={dayInfoId} />
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.greetings) && (

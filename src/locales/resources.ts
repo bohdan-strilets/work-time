@@ -35,6 +35,9 @@ import uaErrors from './ua/errors.json';
 import enValidation from './en/validation.json';
 import plValidation from './pl/validation.json';
 import uaValidation from './ua/validation.json';
+import enTodos from './en/todos.json';
+import plTodos from './pl/todos.json';
+import uaTodos from './ua/todos.json';
 
 const resources = {
   en: {
@@ -50,6 +53,7 @@ const resources = {
     [LocalesKeys.termsUseSite]: enTermsUseSite,
     [LocalesKeys.error]: enErrors,
     [LocalesKeys.validation]: enValidation,
+    [LocalesKeys.todos]: enTodos,
   },
   pl: {
     [LocalesKeys.statistics]: plStatistics,
@@ -64,6 +68,7 @@ const resources = {
     [LocalesKeys.termsUseSite]: plTermsUseSite,
     [LocalesKeys.error]: plErrors,
     [LocalesKeys.validation]: plValidation,
+    [LocalesKeys.todos]: plTodos,
   },
   ua: {
     [LocalesKeys.statistics]: uaStatistics,
@@ -78,6 +83,7 @@ const resources = {
     [LocalesKeys.termsUseSite]: uaTermsUseSite,
     [LocalesKeys.error]: uaErrors,
     [LocalesKeys.validation]: uaValidation,
+    [LocalesKeys.todos]: uaTodos,
   },
 };
 

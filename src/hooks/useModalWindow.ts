@@ -24,6 +24,7 @@ const useModalWindow = () => {
     chartByShifts: 'chart-by-shifts',
     chartByMoney: 'chart-by-money',
     calculationSetup: 'calculation-setup',
+    cellDayNewTodo: 'cell-day-new-todo',
   };
 
   const openModal = (modalName: string) => {

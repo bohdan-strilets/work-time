@@ -32,5 +32,8 @@
   "Choose one option from the list": "Wybierz jedną opcję z listy.",
   "The minimum value that can be specified is": "Najniższą wartością, którą można podać, jest 0,5%.",
   "The maximum value that can be specified is": "Maksymalną wartością, jaką można podać, jest 4%.",
-  "This choice cannot remain empty": "Ten wybór nie może pozostać pusty."
+  "This choice cannot remain empty": "Ten wybór nie może pozostać pusty.",
+  "Task must be at least": "Zadanie musi mieć co najmniej 1 znak.",
+  "Task must not exceed": "Zadanie nie może przekraczać 1000 znaków.",
+  "Please select a valid priority option": "Proszę wybrać poprawną opcję priorytetu."
 }

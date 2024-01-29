@@ -31,6 +31,7 @@ i18n.use(initReactI18next).init({
     LocalesKeys.termsUseSite,
     LocalesKeys.error,
     LocalesKeys.validation,
+    LocalesKeys.todos,
   ],
   resources,
   lng: defaultLng,
