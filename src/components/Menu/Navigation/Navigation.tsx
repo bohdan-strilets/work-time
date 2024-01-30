@@ -4,7 +4,7 @@ import { FaCalendarDays } from 'react-icons/fa6';
 import { FaChartArea } from 'react-icons/fa6';
 import { BsInfoSquareFill } from 'react-icons/bs';
 import { PiUserListFill } from 'react-icons/pi';
-import { FaUsers } from 'react-icons/fa';
+import { FaUsers, FaList } from 'react-icons/fa';
 import { NavigationProps } from 'types/props/NavigationProps';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
@@ -25,6 +25,12 @@ const Navigation: React.FC<NavigationProps> = ({ closeMenu }) => {
         <Reference to="/calendar" onClick={closeMenu}>
           <FaCalendarDays />
           <ReferenceText>{t(CommonLngKeys.Calendar, { ns: LocalesKeys.common })}</ReferenceText>
+        </Reference>
+      </Item>
+      <Item>
+        <Reference to="/todos" onClick={closeMenu}>
+          <FaList />
+          <ReferenceText>{t(CommonLngKeys.TodoList, { ns: LocalesKeys.common })}</ReferenceText>
         </Reference>
       </Item>
       <Item>
