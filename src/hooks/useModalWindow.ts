@@ -25,6 +25,7 @@ const useModalWindow = () => {
     chartByMoney: 'chart-by-money',
     calculationSetup: 'calculation-setup',
     cellDayNewTodo: 'cell-day-new-todo',
+    deleteTodo: 'delete-todo',
   };
 
   const openModal = (modalName: string) => {

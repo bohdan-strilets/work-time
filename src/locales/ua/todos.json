@@ -4,5 +4,8 @@
   "Plan a task for the day": "Заплануйте завдання на день.",
   "Set a priority for the task": "Встановіть пріоритет для завдання.",
   "Go to the store for groceries": "Піти в магазин за продуктами.",
-  "Task successfully created": "Задача успішно створена."
+  "Task successfully created": "Задача успішно створена.",
+  "The task was successfully deleted": "Задачу успішно видалено.",
+  "Delete todo": "Видалити завдання",
+  "Are you sure you want to delete the selected task": "Ви впевнені, що хочете видалити обране завдання? Після підтвердження цієї операції ви вже не зможете відмінити її."
 }

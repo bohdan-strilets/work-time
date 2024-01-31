@@ -4,5 +4,8 @@
   "Plan a task for the day": "Plan a task for the day.",
   "Set a priority for the task": "Set a priority for the task.",
   "Go to the store for groceries": "Go to the store for groceries.",
-  "Task successfully created": "Task successfully created."
+  "Task successfully created": "Task successfully created.",
+  "The task was successfully deleted": "The task was successfully deleted.",
+  "Delete todo": "Delete todo",
+  "Are you sure you want to delete the selected task": "Are you sure you want to delete the selected task? Once confirmed, the action cannot be undone."
 }

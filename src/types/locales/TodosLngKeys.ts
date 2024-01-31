@@ -5,4 +5,7 @@ export enum TodosLngKeys {
   SetPriorityForTask = 'Set a priority for the task',
   GoToStoreForGroceries = 'Go to the store for groceries',
   TaskSuccessfullyCreated = 'Task successfully created',
+  TaskWasSuccessfullyDeleted = 'The task was successfully deleted',
+  DeleteTodo = 'Delete todo',
+  AreYouSureYouWantToDeleteSelectedTask = 'Are you sure you want to delete the selected task',
 }

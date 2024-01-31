@@ -4,5 +4,8 @@
   "Plan a task for the day": "Zaplanuj zadanie na dzień.",
   "Set a priority for the task": "Ustal priorytet dla zadania.",
   "Go to the store for groceries": "Pójść do sklepu po produkty.",
-  "Task successfully created": "Zadanie zostało pomyślnie utworzone."
+  "Task successfully created": "Zadanie zostało pomyślnie utworzone.",
+  "The task was successfully deleted": "Zadanie zostało pomyślnie usunięte.",
+  "Delete todo": "Usuń zadanie",
+  "Are you sure you want to delete the selected task": "Czy na pewno chcesz usunąć wybrane zadanie? Po potwierdzeniu tej operacji nie będzie możliwości jej cofnięcia."
 }
