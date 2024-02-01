@@ -7,5 +7,7 @@
   "Task successfully created": "Задача успішно створена.",
   "The task was successfully deleted": "Задачу успішно видалено.",
   "Delete todo": "Видалити завдання",
-  "Are you sure you want to delete the selected task": "Ви впевнені, що хочете видалити обране завдання? Після підтвердження цієї операції ви вже не зможете відмінити її."
+  "Are you sure you want to delete the selected task": "Ви впевнені, що хочете видалити обране завдання? Після підтвердження цієї операції ви вже не зможете відмінити її.",
+  "The task was successfully modified": "Задачу успішно змінено.",
+  "Edit todo": "Редагувати завдання"
 }

@@ -6,10 +6,12 @@ import ModalWindow from 'components/ModalWindow';
 import DialogWindow from 'components/DialogWindow';
 import useModalWindow from 'hooks/useModalWindow';
 import TodosList from 'components/TodosList';
+import EditTodoForm from 'components/Forms/EditTodoForm';
 import { TodosLngKeys } from 'types/locales/TodosLngKeys';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { useDeleteTodoMutation } from '../redux/todo/todoApi';
+import { useGetOneTodoQuery } from '../redux/todo/todoApi';
 
 const TodosPage: React.FC<{}> = () => {
   const [todoId, setTodoId] = useState<null | string>(null);
@@ -17,6 +19,8 @@ const TodosPage: React.FC<{}> = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [deleteTodo] = useDeleteTodoMutation();
+  const { data } = useGetOneTodoQuery(todoId ?? '');
+  const todo = data?.data;
 
   const getTodoId = (todoId: string) => setTodoId(todoId);
 
@@ -31,6 +35,7 @@ const TodosPage: React.FC<{}> = () => {
   return (
     <>
       <TodosList getTodoId={getTodoId} />
+
       {checkQueryParam(modalsName.deleteTodo) && (
         <ModalWindow title={t(TodosLngKeys.DeleteTodo, { ns: LocalesKeys.todos })}>
           <DialogWindow
@@ -42,6 +47,11 @@ const TodosPage: React.FC<{}> = () => {
             handlePositiveClick={handleDeleteTodo}
             handleNegativeClick={() => navigate(-1)}
           />
+        </ModalWindow>
+      )}
+      {checkQueryParam(modalsName.editTodo) && todoId && todo && (
+        <ModalWindow title={t(TodosLngKeys.EditTodo, { ns: LocalesKeys.todos })}>
+          <EditTodoForm todoId={todoId} task={todo.task} priority={todo.priority} />
         </ModalWindow>
       )}
     </>

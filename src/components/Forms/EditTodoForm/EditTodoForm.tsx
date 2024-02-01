@@ -3,17 +3,16 @@ import Textarea from 'components/UI/Textarea';
 import DropdownList from 'components/UI/DropdownList';
 import Button from 'components/UI/Button';
 import { PriorityOptions } from 'utilities/PriorityOptions';
-import PriorityEnum from 'types/enums/PriorityEnum';
-import { TodosLngKeys } from 'types/locales/TodosLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
-import { AddedTodoFormProps } from 'types/props/AddedTodoFormProps';
-import useAddedTodoForm from 'hooks/useAddedTodoForm';
+import { TodosLngKeys } from 'types/locales/TodosLngKeys';
+import useEditTodoForm from 'hooks/useEditTodoForm';
+import { EditTodoFormProps } from 'types/props/EditTodoFormProps';
 
-const AddedTodoForm: React.FC<AddedTodoFormProps> = ({ dayId }) => {
+const EditTodoForm: React.FC<EditTodoFormProps> = ({ todoId, task, priority }) => {
   const { t } = useTranslation();
-  const { Controller, control, errors, handleSubmit, onSubmit, register } = useAddedTodoForm({
-    dayId,
+  const { handleSubmit, onSubmit, register, errors, control, Controller } = useEditTodoForm({
+    todoId,
   });
 
   return (
@@ -26,6 +25,7 @@ const AddedTodoForm: React.FC<AddedTodoFormProps> = ({ dayId }) => {
         register={register}
         errors={errors}
         height={140}
+        defaultValue={task}
         margin="0 0 var(--medium-indent) 0"
       />
       <Controller
@@ -44,14 +44,14 @@ const AddedTodoForm: React.FC<AddedTodoFormProps> = ({ dayId }) => {
             onChange={(value: string | string[]) => field.onChange(value)}
             errors={errors}
             required={true}
-            defaultValue={PriorityEnum.Low}
+            defaultValue={priority}
             position="relative"
           />
         )}
       />
       <Button
         type="submit"
-        label={t(CommonLngKeys.Create, { ns: LocalesKeys.common })}
+        label={t(CommonLngKeys.Edit, { ns: LocalesKeys.common })}
         width="270px"
         height="40px"
       />
@@ -59,4 +59,4 @@ const AddedTodoForm: React.FC<AddedTodoFormProps> = ({ dayId }) => {
   );
 };
 
-export default AddedTodoForm;
+export default EditTodoForm;

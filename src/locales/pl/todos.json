@@ -7,5 +7,7 @@
   "Task successfully created": "Zadanie zostało pomyślnie utworzone.",
   "The task was successfully deleted": "Zadanie zostało pomyślnie usunięte.",
   "Delete todo": "Usuń zadanie",
-  "Are you sure you want to delete the selected task": "Czy na pewno chcesz usunąć wybrane zadanie? Po potwierdzeniu tej operacji nie będzie możliwości jej cofnięcia."
+  "Are you sure you want to delete the selected task": "Czy na pewno chcesz usunąć wybrane zadanie? Po potwierdzeniu tej operacji nie będzie możliwości jej cofnięcia.",
+  "The task was successfully modified": "Zadanie zostało pomyślnie zmodyfikowane.",
+  "Edit todo": "Edytuj zadanie"
 }

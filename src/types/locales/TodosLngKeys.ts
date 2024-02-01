@@ -8,4 +8,6 @@ export enum TodosLngKeys {
   TaskWasSuccessfullyDeleted = 'The task was successfully deleted',
   DeleteTodo = 'Delete todo',
   AreYouSureYouWantToDeleteSelectedTask = 'Are you sure you want to delete the selected task',
+  TaskWasSuccessfullyModified = 'The task was successfully modified',
+  EditTodo = 'Edit todo',
 }

@@ -14,7 +14,7 @@ const TodoControllers: React.FC<{}> = () => {
         </Button>
       </Item>
       <Item>
-        <Button type="button">
+        <Button type="button" onClick={() => openModal(modalsName.editTodo)}>
           <RiEdit2Fill />
         </Button>
       </Item>

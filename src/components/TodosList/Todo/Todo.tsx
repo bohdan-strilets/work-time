@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import getRandomColor from 'utilities/getRandomColor';
 import Checkbox from 'components/UI/Checkbox';
@@ -12,7 +12,6 @@ import { useUpdateCompletedMutation } from '../../../redux/todo/todoApi';
 import {
   Item,
   Image,
-  Date,
   Container,
   Id,
   StatusBar,
@@ -22,22 +21,31 @@ import {
 } from './Todo.styled';
 
 const Todo: React.FC<TodoProps> = ({ _id, task, priority, isCompleted, updatedAt, getTodoId }) => {
+  const [currentId, setCurrentId] = useState<null | string>(null);
   const { t } = useTranslation();
   const [updateCompleted] = useUpdateCompletedMutation();
 
   useEffect(() => {
-    getTodoId(_id);
-  }, [_id, getTodoId]);
+    if (currentId) {
+      getTodoId(currentId);
+    }
+  }, [currentId, getTodoId]);
 
   const handleTodoChange = (value: boolean) => {
     const dto = { todoId: _id, updateCompletedDto: { isCompleted: value } };
     updateCompleted(dto);
   };
 
+  const handleItemClick = (e: React.MouseEvent<HTMLLIElement>) => {
+    const selectedTodoId = e.currentTarget.dataset.id;
+    if (selectedTodoId) {
+      setCurrentId(selectedTodoId);
+    }
+  };
+
   return (
-    <Item>
+    <Item onClick={handleItemClick} data-id={_id}>
       <Image background={getRandomColor(0.6)}>
-        <Date>28.01.2024</Date>
         <TodoControllers />
       </Image>
       <Container>

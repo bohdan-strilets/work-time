@@ -23,7 +23,7 @@ export const Image = styled.div<ImageProps>`
   position: relative;
 
   width: 100%;
-  height: 170px;
+  height: 70px;
   padding: 10px;
 
   background: ${({ background }) => background};
@@ -33,24 +33,6 @@ export const Image = styled.div<ImageProps>`
 
 export const Container = styled.div`
   padding: 10px;
-`;
-
-export const Date = styled.p`
-  position: absolute;
-  bottom: 0;
-  left: 10px;
-
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--white-color);
-
-  @media screen and (min-width: ${ScreenWidth.tablet}) {
-    font-size: 22px;
-  }
-
-  @media screen and (min-width: ${ScreenWidth.desktop}) {
-    font-size: 28px;
-  }
 `;
 
 export const Id = styled.p`

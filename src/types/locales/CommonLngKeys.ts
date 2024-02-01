@@ -92,4 +92,6 @@ export enum CommonLngKeys {
   Create = 'Create',
   TodoList = 'Todo list',
   Completed = 'Completed',
+  Edit = 'Edit',
+  Priority = 'Priority',
 }

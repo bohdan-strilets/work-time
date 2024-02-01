@@ -26,6 +26,7 @@ const useModalWindow = () => {
     calculationSetup: 'calculation-setup',
     cellDayNewTodo: 'cell-day-new-todo',
     deleteTodo: 'delete-todo',
+    editTodo: 'edit-todo',
   };
 
   const openModal = (modalName: string) => {
