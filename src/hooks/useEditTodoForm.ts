@@ -9,6 +9,7 @@ import { LocalesKeys } from 'types/enums/LocalesKeys';
 import useModalWindow from 'hooks/useModalWindow';
 import { useUpdateTodoMutation } from '../redux/todo/todoApi';
 import { HookProps } from 'types/props/EditTodoFormProps';
+import { useGetOneTodoQuery } from '../redux/todo/todoApi';
 
 const useEditTodoForm = ({ todoId }: HookProps) => {
   const validation = {
@@ -24,6 +25,8 @@ const useEditTodoForm = ({ todoId }: HookProps) => {
   const { t } = useTranslation();
   const { closeModal } = useModalWindow();
   const [updateTodo] = useUpdateTodoMutation();
+  const { data, isLoading } = useGetOneTodoQuery(todoId);
+  const todo = data?.data;
 
   const onSubmit: SubmitHandler<EditTodoFormInput> = value => {
     const dto = {
@@ -36,7 +39,7 @@ const useEditTodoForm = ({ todoId }: HookProps) => {
     toast.success(t(TodosLngKeys.TaskWasSuccessfullyModified, { ns: LocalesKeys.todos }));
   };
 
-  return { handleSubmit, onSubmit, register, errors, control, Controller };
+  return { handleSubmit, onSubmit, register, errors, control, Controller, todo, isLoading };
 };
 
 export default useEditTodoForm;

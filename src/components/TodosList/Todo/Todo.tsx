@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import getRandomColor from 'utilities/getRandomColor';
 import Checkbox from 'components/UI/Checkbox';
@@ -21,32 +20,18 @@ import {
 } from './Todo.styled';
 
 const Todo: React.FC<TodoProps> = ({ _id, task, priority, isCompleted, updatedAt, getTodoId }) => {
-  const [currentId, setCurrentId] = useState<null | string>(null);
   const { t } = useTranslation();
   const [updateCompleted] = useUpdateCompletedMutation();
-
-  useEffect(() => {
-    if (currentId) {
-      getTodoId(currentId);
-    }
-  }, [currentId, getTodoId]);
 
   const handleTodoChange = (value: boolean) => {
     const dto = { todoId: _id, updateCompletedDto: { isCompleted: value } };
     updateCompleted(dto);
   };
 
-  const handleItemClick = (e: React.MouseEvent<HTMLLIElement>) => {
-    const selectedTodoId = e.currentTarget.dataset.id;
-    if (selectedTodoId) {
-      setCurrentId(selectedTodoId);
-    }
-  };
-
   return (
-    <Item onClick={handleItemClick} data-id={_id}>
+    <Item>
       <Image background={getRandomColor(0.6)}>
-        <TodoControllers />
+        <TodoControllers todoId={_id} getTodoId={getTodoId} />
       </Image>
       <Container>
         <Id>ID: {_id}</Id>
