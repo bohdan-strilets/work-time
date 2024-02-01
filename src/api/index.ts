@@ -16,20 +16,12 @@ api.interceptors.request.use(config => {
   return config;
 });
 
-let refreshAttempts = 0;
-
 api.interceptors.response.use(
   config => {
     return config;
   },
   async error => {
-    if (
-      error.response.status === 401 &&
-      error.config &&
-      !error.config._isRetry &&
-      refreshAttempts < 2
-    ) {
-      refreshAttempts += 1;
+    if (error.response.status === 401 && error.config && !error.config._isRetry) {
       const originalRequest = error.config;
       originalRequest._isRetry = true;
       try {
@@ -40,7 +32,6 @@ api.interceptors.response.use(
         };
 
         localStorage.setItem('persist:user', JSON.stringify(dataToLS));
-        refreshAttempts = 0;
         return api.request(originalRequest);
       } catch (error) {}
     }

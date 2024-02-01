@@ -8,8 +8,10 @@ const useRefresh = () => {
   const dispatch = useAppDispatch();
   const isRefreshing = useAppSelector(getIsRefreshing);
   const dataByLs = localStorage.getItem('persist:user');
-  const parsedData = JSON.parse(dataByLs ?? '');
-  const token = parsedData.token;
+  let parsedData = null;
+  if (dataByLs !== null) parsedData = JSON.parse(dataByLs);
+  let token: string | null = null;
+  if (parsedData !== null) token = parsedData.token;
 
   useEffect(() => {
     if (token !== null && token !== 'null') {
