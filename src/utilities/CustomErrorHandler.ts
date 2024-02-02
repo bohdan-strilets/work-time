@@ -30,6 +30,12 @@ const CustomErrorHandler = (serverError: any) => {
     case serverError.code === 400 && serverError.message === ErrorsEnum.DayByIDNotFound:
       toast.error(translateLabel(ErrorLngKeys.InformationForDayByIDNotFound, LocalesKeys.error));
       break;
+    case serverError.code === 404 && serverError.message === ErrorsEnum.TodoWithCurrentIdNotFound:
+      toast.error(translateLabel(ErrorLngKeys.InformationForDayByIDNotFound, LocalesKeys.error));
+      break;
+    case serverError.code === 400 && serverError.message === ErrorsEnum.ThereWasNoIdSpecifiedForDay:
+      toast.error(translateLabel(ErrorLngKeys.InformationForDayByIDNotFound, LocalesKeys.error));
+      break;
     default:
       toast.error(translateLabel(ErrorLngKeys.GeneralError, LocalesKeys.error));
       break;

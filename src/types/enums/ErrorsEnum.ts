@@ -7,4 +7,6 @@ export enum ErrorsEnum {
   UserNotFound = 'User not found.',
   CheckCorrectEnteredData = 'Check correct entered data.',
   DayByIDNotFound = 'Day with current ID not found.',
+  TodoWithCurrentIdNotFound = 'Todo with current ID not found.',
+  ThereWasNoIdSpecifiedForDay = 'There was no ID specified for the day.',
 }

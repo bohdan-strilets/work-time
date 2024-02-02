@@ -8,5 +8,8 @@
   "Check the correctness of the entered data": "Sprawdź poprawność wprowadzonych danych.",
   "Information for the day with the current ID was not found": "Informacje o dniu o aktualnym ID nie zostały znalezione.",
   "General axios error": "Wystąpił nieoczekiwany błąd podczas przetwarzania żądania.",
-  "General error": "Wystąpił nieoczekiwany błąd. Proszę spróbuj ponownie później."
+  "General error": "Wystąpił nieoczekiwany błąd. Proszę spróbuj ponownie później.",
+  "Todo with current ID not found": "Nie znaleziono zadania o bieżącym ID.",
+  "Check correct entered data": "Sprawdź poprawność wprowadzonych danych.",
+  "There was no ID specified for the day": "Nie określono ID dla danego dnia."
 }

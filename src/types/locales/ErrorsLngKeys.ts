@@ -9,4 +9,7 @@ export enum ErrorLngKeys {
   InformationForDayByIDNotFound = 'Information for the day with the current ID was not found',
   GeneralAxiosError = 'General axios error',
   GeneralError = 'General error',
+  TodoWithCurrentIdNotFound = 'Todo with current ID not found',
+  CheckCorrectEnteredData = 'Check correct entered data',
+  ThereWasNoIdSpecifiedForDay = 'There was no ID specified for the day',
 }

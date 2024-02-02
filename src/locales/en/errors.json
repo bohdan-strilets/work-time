@@ -8,5 +8,8 @@
   "Check the correctness of the entered data": "Check the correctness of the entered data.",
   "Information for the day with the current ID was not found": "Information for the day with the current ID was not found.",
   "General axios error": "An unexpected error occurred while processing the request.",
-  "General error": "An unexpected error occurred. Please try again later."
+  "General error": "An unexpected error occurred. Please try again later.",
+  "Todo with current ID not found": "Todo with current ID not found.",
+  "Check correct entered data": "Check correct entered data.",
+  "There was no ID specified for the day": "There was no ID specified for the day."
 }
