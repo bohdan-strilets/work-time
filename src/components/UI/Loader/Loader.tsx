@@ -1,10 +1,11 @@
 import { LoaderProps } from 'types/props/LoaderProps';
-import { Wrapper, Icon } from './Loader.styled';
+import { Wrapper, Icon, Text } from './Loader.styled';
 
 const Loader: React.FC<LoaderProps> = ({ margin }) => {
   return (
     <Wrapper margin={margin}>
-      <Icon size={35} />
+      <Text>W</Text>
+      <Icon size={45} />
     </Wrapper>
   );
 };

@@ -3,6 +3,8 @@ import { RiLoaderFill } from 'react-icons/ri';
 import { WrapperProps } from 'types/props/LoaderProps';
 
 export const Wrapper = styled.div<WrapperProps>`
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,5 +24,16 @@ export const Icon = styled(RiLoaderFill)`
   }
 
   color: var(--accent-color);
-  animation: loaderEffect 1000ms linear infinite;
+  animation: loaderEffect 1500ms linear infinite;
+`;
+
+export const Text = styled.p`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--black-color);
 `;
