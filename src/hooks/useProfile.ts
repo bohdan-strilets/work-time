@@ -12,10 +12,14 @@ import { UserResponseType } from 'types/types/UserResponseType';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
+import useSoundSprite from './useSoundSprite';
+import { SoundNamesEnum } from 'types/enums/SoundNamesEnum';
 
 const useProfile = () => {
   const { t } = useTranslation();
   const user = useAppSelector(getUser);
+  const { play } = useSoundSprite();
+
   const firstName = user?.firstName;
   const lastName = user?.lastName;
   const name =
@@ -52,6 +56,7 @@ const useProfile = () => {
     const data = response.payload as UserResponseType;
     if (data && data.success) {
       navigate('/');
+      play({ id: SoundNamesEnum.Delete });
     }
   };
 

@@ -11,6 +11,8 @@ import { TodosLngKeys } from 'types/locales/TodosLngKeys';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { useDeleteTodoMutation } from '../redux/todo/todoApi';
+import useSoundSprite from 'hooks/useSoundSprite';
+import { SoundNamesEnum } from 'types/enums/SoundNamesEnum';
 
 const TodosPage: React.FC<{}> = () => {
   const [todoId, setTodoId] = useState<null | string>(null);
@@ -18,6 +20,7 @@ const TodosPage: React.FC<{}> = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [deleteTodo] = useDeleteTodoMutation();
+  const { play } = useSoundSprite();
 
   const getTodoId = (todoId: string) => setTodoId(todoId);
 
@@ -26,6 +29,7 @@ const TodosPage: React.FC<{}> = () => {
       deleteTodo(todoId);
       closeModal();
       toast.success(t(TodosLngKeys.TaskWasSuccessfullyDeleted, { ns: LocalesKeys.todos }));
+      play({ id: SoundNamesEnum.Delete });
     }
   };
 

@@ -7,6 +7,8 @@ import { useGetAllDaysInfoQuery } from '../redux/calendar/calendarApi';
 import { DayInfoType, DayDataType } from 'types/types/DayType';
 import { useDeleteDayMutation } from '../redux/calendar/calendarApi';
 import { CalendarTypeEnum } from 'types/enums/CalendarTypeEnum';
+import useSoundSprite from './useSoundSprite';
+import { SoundNamesEnum } from 'types/enums/SoundNamesEnum';
 
 export const useCalendar = () => {
   const [date, setDate] = useState(new Date());
@@ -24,6 +26,7 @@ export const useCalendar = () => {
   const { modalsName, openModal } = useModalWindow();
   const { data, isLoading } = useGetAllDaysInfoQuery();
   const [deleteDay] = useDeleteDayMutation();
+  const { play } = useSoundSprite();
 
   useEffect(() => {
     if (data && data.data) {
@@ -162,6 +165,7 @@ export const useCalendar = () => {
   const deleteInformationForDay = () => {
     if (dayInfoId) deleteDay(dayInfoId);
     navigate('/calendar');
+    play({ id: SoundNamesEnum.Delete });
   };
 
   const backToCurrentDate = () => {

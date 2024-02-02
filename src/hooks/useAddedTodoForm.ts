@@ -9,6 +9,8 @@ import { useCreateTodoMutation } from '../redux/todo/todoApi';
 import { AddedTodoFormProps } from 'types/props/AddedTodoFormProps';
 import useModalWindow from 'hooks/useModalWindow';
 import AddedTodoFormSchema from 'validations/AddedTodoFormSchema';
+import useSoundSprite from './useSoundSprite';
+import { SoundNamesEnum } from 'types/enums/SoundNamesEnum';
 
 const useAddedTodoForm = ({ dayId }: AddedTodoFormProps) => {
   const validation = {
@@ -24,6 +26,7 @@ const useAddedTodoForm = ({ dayId }: AddedTodoFormProps) => {
   const { t } = useTranslation();
   const [createTodo] = useCreateTodoMutation();
   const { closeModal } = useModalWindow();
+  const { play } = useSoundSprite();
 
   const onSubmit: SubmitHandler<AddedTodoFormInputs> = value => {
     const dto = {
@@ -36,6 +39,7 @@ const useAddedTodoForm = ({ dayId }: AddedTodoFormProps) => {
     createTodo(dto);
     closeModal();
     toast.success(t(TodosLngKeys.TaskSuccessfullyCreated, { ns: LocalesKeys.todos }));
+    play({ id: SoundNamesEnum.Success });
   };
 
   return { handleSubmit, onSubmit, register, errors, control, Controller };
