@@ -22,7 +22,7 @@ export const useCalendar = () => {
 
   const navigate = useNavigate();
   const { modalsName, openModal } = useModalWindow();
-  const { data } = useGetAllDaysInfoQuery();
+  const { data, isLoading } = useGetAllDaysInfoQuery();
   const [deleteDay] = useDeleteDayMutation();
 
   useEffect(() => {
@@ -196,6 +196,7 @@ export const useCalendar = () => {
     backToCurrentDate,
     handleChangeCalendarType,
     calendarType,
+    isLoading,
   };
 };
 

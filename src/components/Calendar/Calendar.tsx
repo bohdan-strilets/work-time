@@ -21,6 +21,7 @@ const Calendar: React.FC<CalendarProps> = ({
   areEqual,
   selectedDate,
   handleChangeMonth,
+  isLoading,
 }) => {
   return (
     <Media
@@ -49,6 +50,7 @@ const Calendar: React.FC<CalendarProps> = ({
               areEqual={areEqual}
               selectedDate={selectedDate}
               handleChangeMonth={handleChangeMonth}
+              isLoading={isLoading}
             />
           )}
           {matches.medium && (
@@ -68,6 +70,7 @@ const Calendar: React.FC<CalendarProps> = ({
               areEqual={areEqual}
               selectedDate={selectedDate}
               handleChangeMonth={handleChangeMonth}
+              isLoading={isLoading}
             />
           )}
           {matches.large && (
@@ -87,6 +90,7 @@ const Calendar: React.FC<CalendarProps> = ({
               areEqual={areEqual}
               selectedDate={selectedDate}
               handleChangeMonth={handleChangeMonth}
+              isLoading={isLoading}
             />
           )}
         </>

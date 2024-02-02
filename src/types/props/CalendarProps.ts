@@ -16,4 +16,5 @@ export type CalendarProps = {
   areEqual: (a: Date, b: Date) => boolean | undefined;
   selectedDate: Date | null;
   handleChangeMonth: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  isLoading: boolean;
 };

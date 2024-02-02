@@ -4,6 +4,7 @@ import MonthList from '../MonthList';
 import CellDay from '../CellDay';
 import CellInformation from '../CellInformation';
 import ListDays from 'components/ListDays';
+import Loader from 'components/UI/Loader';
 import { CalendarTypeEnum } from 'types/enums/CalendarTypeEnum';
 import { CalendarProps } from 'types/props/CalendarProps';
 import { List } from '../Calendar.styled';
@@ -24,6 +25,7 @@ const Tablet: React.FC<CalendarProps> = ({
   areEqual,
   selectedDate,
   handleChangeMonth,
+  isLoading,
 }) => {
   return (
     <>
@@ -55,6 +57,7 @@ const Tablet: React.FC<CalendarProps> = ({
                     status={dayInfo?.status}
                   >
                     <CellInformation date={date} dayInfo={dayInfo} />
+                    {isLoading && <Loader />}
                   </CellDay>
                 ) : (
                   <CellDay key={index} />

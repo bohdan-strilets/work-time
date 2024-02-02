@@ -1,5 +1,6 @@
 import Loader from 'components/UI/Loader';
 import Todo from './Todo/Todo';
+import Placeholder from 'components/Placeholder';
 import { useGetAllTodoQuery } from '../../redux/todo/todoApi';
 import { TodoListProps } from 'types/props/ExtendedTodoListProps';
 import { List } from './TodosList.styled';
@@ -12,8 +13,7 @@ const TodosList: React.FC<TodoListProps> = ({ getTodoId }) => {
     <>
       {isLoading && <Loader />}
       <List>
-        {todos &&
-          todos.length > 0 &&
+        {todos && todos.length > 0 ? (
           todos.map(item => (
             <Todo
               key={item._id}
@@ -24,7 +24,10 @@ const TodosList: React.FC<TodoListProps> = ({ getTodoId }) => {
               updatedAt={item.updatedAt}
               getTodoId={getTodoId}
             />
-          ))}
+          ))
+        ) : (
+          <Placeholder />
+        )}
       </List>
     </>
   );

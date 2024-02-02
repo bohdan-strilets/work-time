@@ -40,6 +40,7 @@ const CalendarPage: React.FC<{}> = () => {
     backToCurrentDate,
     handleChangeCalendarType,
     calendarType,
+    isLoading,
   } = useCalendar();
 
   return (
@@ -60,6 +61,7 @@ const CalendarPage: React.FC<{}> = () => {
         areEqual={areEqual}
         selectedDate={selectedDate}
         handleChangeMonth={handleChangeMonth}
+        isLoading={isLoading}
       />
       {checkQueryParam(modalsName.cellDay) && dayInfo && selectedDate && (
         <ModalWindow title={`${dateTransform(selectedDate)}`}>
