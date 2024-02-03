@@ -25,7 +25,7 @@ const CustomErrorHandler = (serverError: any) => {
       toast.error(translateLabel(ErrorLngKeys.UserNotFound, LocalesKeys.error));
       break;
     case serverError.code === 400 && serverError.message === ErrorsEnum.CheckCorrectEnteredData:
-      toast.error(translateLabel(ErrorLngKeys.CheckCorrectnessEnteredData, LocalesKeys.error));
+      toast.error(translateLabel(ErrorLngKeys.CheckCorrectEnteredData, LocalesKeys.error));
       break;
     case serverError.code === 400 && serverError.message === ErrorsEnum.DayByIDNotFound:
       toast.error(translateLabel(ErrorLngKeys.InformationForDayByIDNotFound, LocalesKeys.error));
