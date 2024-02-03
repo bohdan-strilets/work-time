@@ -4,4 +4,5 @@ export type DialogWindowProps = {
   negativeBtnLabel: string;
   handlePositiveClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   handleNegativeClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  isLoader?: boolean;
 };

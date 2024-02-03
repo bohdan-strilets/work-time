@@ -12,5 +12,8 @@
   "Health insurance premium": "Health insurance premium",
   "Advance payment of income tax": "Advance payment of income tax",
   "Change day": "Change day",
-  "Delete  day paragraph 1": "Do you really want to delete information about the current day. Once confirmed, the action cannot be canceled."
+  "Delete  day paragraph 1": "Do you really want to delete information about the current day. Once confirmed, the action cannot be canceled.",
+  "Information about the day has been successfully added": "Information about the day has been successfully added.",
+  "Information about the day has been successfully modified": "Information about the day has been successfully modified.",
+  "Information about the day has been successfully deleted": "Information about the day has been successfully deleted."
 }

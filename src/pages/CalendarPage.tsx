@@ -41,6 +41,7 @@ const CalendarPage: React.FC<{}> = () => {
     handleChangeCalendarType,
     calendarType,
     isLoading,
+    isDeleteLoading,
   } = useCalendar();
 
   return (
@@ -95,6 +96,7 @@ const CalendarPage: React.FC<{}> = () => {
             text={t(CalendarLngKeys.DeleteDayParagraph1, { ns: LocalesKeys.calendar })}
             handlePositiveClick={deleteInformationForDay}
             handleNegativeClick={() => navigate(-1)}
+            isLoader={isDeleteLoading}
           />
         </ModalWindow>
       )}

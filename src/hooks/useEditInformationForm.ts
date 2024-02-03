@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import axios, { AxiosError } from 'axios';
+import { useTranslation } from 'react-i18next';
 import { EditInformationFormInputs } from 'types/inputs/EditInformationFormInputs';
 import { HookProps } from 'types/props/EditInformationFormProps';
 import GetKeyByDate from 'utilities/GetKeyByDate';
@@ -14,6 +17,12 @@ import useCalculateDay from './useCalculateDay';
 import { useAppSelector } from './useAppSelector';
 import { getSalaryPerHour } from '../redux/user/userSelectors';
 import useCalculateTax from './useCalculateTax';
+import { UpdateDayType } from 'types/types/UpdateDayType';
+import { CalendarResponseType } from 'types/types/CalendarResponseType';
+import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
+import { CalendarLngKeys } from 'types/locales/CalendarLngKeys';
 
 const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
   const [dayInfo, setDayInfo] = useState<DayDataType | null>(null);
@@ -35,7 +44,7 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
   const endTime = watch('finishJob') ?? '';
   const timeRange = `${startTime}-${endTime}`;
   const { data } = useGetOneDayInfoQuery(dayId ?? '');
-  const [updateDay] = useUpdateDayMutation();
+  const [updateDay, { isLoading }] = useUpdateDayMutation();
   const numberHours = CalculateWorkedHours(startTime, endTime);
   const workShiftNumber = DetermineShiftNumber(timeRange, numberHours);
   const salaryPerHour = useAppSelector(getSalaryPerHour) ?? 0;
@@ -48,6 +57,7 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
     status: selectedStatus,
   });
   const { calculateTotal } = useCalculateTax({ earningForDay: 0 });
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (selectedDate) {
@@ -76,9 +86,10 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
     }
   }, [dayInfo, setValue]);
 
-  const onSubmit: SubmitHandler<EditInformationFormInputs> = data => {
+  const onSubmit: SubmitHandler<EditInformationFormInputs> = async data => {
     if (selectedDate) {
       const key = GetKeyByDate(selectedDate);
+      let updateDayDto: UpdateDayType | null = null;
       if (data.startJob && data.finishJob && data.status === Status.work) {
         let grossEarnings = 0;
         if (data.additionalHours) {
@@ -93,7 +104,7 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
           grossEarnings = calculateEarningsDay(numberHours, salaryPerHour, data.status);
         }
         const netEarnings = calculateTotal(grossEarnings);
-        const updateDayDto = {
+        updateDayDto = {
           data: {
             [key]: {
               status: data.status,
@@ -106,14 +117,11 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
             },
           },
         };
-        if (dayId) {
-          updateDay({ dayId, updateDayDto });
-        }
       }
       if (data.startJob && data.finishJob && data.status === Status.vacation) {
         const grossEarnings = calculateProfitForVacation(numberHours, salaryPerHour);
         const netEarnings = calculateTotal(grossEarnings);
-        const updateDayDto = {
+        updateDayDto = {
           data: {
             [key]: {
               status: data.status,
@@ -126,14 +134,11 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
             },
           },
         };
-        if (dayId) {
-          updateDay({ dayId, updateDayDto });
-        }
       }
       if (data.status === Status.sickLeave) {
         const grossEarnings = calculateProfitForVacation(12, salaryPerHour);
         const netEarnings = calculateTotal(grossEarnings);
-        const updateDayDto = {
+        updateDayDto = {
           data: {
             [key]: {
               status: data.status,
@@ -146,16 +151,13 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
             },
           },
         };
-        if (dayId) {
-          updateDay({ dayId, updateDayDto });
-        }
       }
       if (
         data.status !== Status.work &&
         data.status !== Status.vacation &&
         data.status !== Status.sickLeave
       ) {
-        const updateDayDto = {
+        updateDayDto = {
           data: {
             [key]: {
               status: data.status,
@@ -168,12 +170,27 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
             },
           },
         };
-        if (dayId) {
-          updateDay({ dayId, updateDayDto });
+      }
+      if (updateDayDto !== null && dayId) {
+        await updateDay({ dayId, updateDayDto });
+        try {
+          navigate('/calendar');
+          toast.success(t(CalendarLngKeys.SuccessfullyModified, { ns: LocalesKeys.calendar }));
+        } catch (error: any) {
+          if (axios.isAxiosError(error)) {
+            const axiosError = error as AxiosError<CalendarResponseType>;
+            if (axiosError.response) {
+              const serverError = axiosError.response.data as CalendarResponseType;
+              CustomErrorHandler(serverError);
+            } else {
+              toast.error(t(ErrorLngKeys.GeneralAxiosError, { ns: LocalesKeys.error }));
+            }
+          } else {
+            toast.error(t(ErrorLngKeys.GeneralError, { ns: LocalesKeys.error }));
+          }
         }
       }
     }
-    navigate('/calendar');
   };
 
   return {
@@ -189,6 +206,7 @@ const useEditInformationForm = ({ dayId, selectedDate }: HookProps) => {
     setQuickStartTime,
     setQuickFinishTime,
     selectedStatus,
+    isLoading,
   };
 };
 

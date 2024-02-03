@@ -12,5 +12,8 @@
   "Health insurance premium": "Внесок на медичне страхування",
   "Advance payment of income tax": "Податок на доходи",
   "Change day": "Змінити день",
-  "Delete day paragraph 1": "Чи ви дійсно хочете видалити інформацію про поточний день? Після підтвердження цієї дії її неможливо буде скасувати"
+  "Delete day paragraph 1": "Чи ви дійсно хочете видалити інформацію про поточний день? Після підтвердження цієї дії її неможливо буде скасувати",
+  "Information about the day has been successfully added": "Інформація про день успішно додана.",
+  "Information about the day has been successfully modified": "Інформація про день успішно змінена.",
+  "Information about the day has been successfully deleted": "Інформація про день успішно видалена."
 }

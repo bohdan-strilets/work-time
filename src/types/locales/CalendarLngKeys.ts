@@ -13,4 +13,7 @@ export enum CalendarLngKeys {
   AdvancePaymentOfIncomeTax = 'Advance payment of income tax',
   ChangeDay = 'Change day',
   DeleteDayParagraph1 = 'Delete day paragraph 1',
+  SuccessfullyAdded = 'Information about the day has been successfully added',
+  SuccessfullyModified = 'Information about the day has been successfully modified',
+  SuccessfullyDeleted = 'Information about the day has been successfully deleted',
 }

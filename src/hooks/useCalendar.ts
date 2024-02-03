@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios, { AxiosError } from 'axios';
+import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 import { Month } from 'types/enums/CalendarEnum';
 import { month as monthNames, weekdays } from 'utilities/DefaultCalendarData';
 import useModalWindow from 'hooks/useModalWindow';
@@ -9,6 +12,11 @@ import { useDeleteDayMutation } from '../redux/calendar/calendarApi';
 import { CalendarTypeEnum } from 'types/enums/CalendarTypeEnum';
 import useSoundSprite from './useSoundSprite';
 import { SoundNamesEnum } from 'types/enums/SoundNamesEnum';
+import { CalendarLngKeys } from 'types/locales/CalendarLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
+import { CalendarResponseType } from 'types/types/CalendarResponseType';
+import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 
 export const useCalendar = () => {
   const [date, setDate] = useState(new Date());
@@ -25,8 +33,9 @@ export const useCalendar = () => {
   const navigate = useNavigate();
   const { modalsName, openModal } = useModalWindow();
   const { data, isLoading } = useGetAllDaysInfoQuery();
-  const [deleteDay] = useDeleteDayMutation();
+  const [deleteDay, { isLoading: isDeleteLoading }] = useDeleteDayMutation();
   const { play } = useSoundSprite();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (data && data.data) {
@@ -162,10 +171,27 @@ export const useCalendar = () => {
     }
   };
 
-  const deleteInformationForDay = () => {
-    if (dayInfoId) deleteDay(dayInfoId);
-    navigate('/calendar');
-    play({ id: SoundNamesEnum.Delete });
+  const deleteInformationForDay = async () => {
+    if (dayInfoId) {
+      await deleteDay(dayInfoId);
+      try {
+        navigate('/calendar');
+        play({ id: SoundNamesEnum.Delete });
+        toast.success(t(CalendarLngKeys.SuccessfullyDeleted, { ns: LocalesKeys.calendar }));
+      } catch (error: any) {
+        if (axios.isAxiosError(error)) {
+          const axiosError = error as AxiosError<CalendarResponseType>;
+          if (axiosError.response) {
+            const serverError = axiosError.response.data as CalendarResponseType;
+            CustomErrorHandler(serverError);
+          } else {
+            toast.error(t(ErrorLngKeys.GeneralAxiosError, { ns: LocalesKeys.error }));
+          }
+        } else {
+          toast.error(t(ErrorLngKeys.GeneralError, { ns: LocalesKeys.error }));
+        }
+      }
+    }
   };
 
   const backToCurrentDate = () => {
@@ -201,6 +227,7 @@ export const useCalendar = () => {
     handleChangeCalendarType,
     calendarType,
     isLoading,
+    isDeleteLoading,
   };
 };
 

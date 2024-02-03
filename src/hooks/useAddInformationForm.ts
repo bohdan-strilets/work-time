@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import axios, { AxiosError } from 'axios';
 import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 import { AddInformationFormInputs } from 'types/inputs/AddInformationFormInputs';
 import { HookProps } from 'types/props/AddInformationFormProps';
 import useModalWindow from './useModalWindow';
@@ -21,15 +22,15 @@ import CustomErrorHandler from 'utilities/CustomErrorHandler';
 import { CalendarResponseType } from 'types/types/CalendarResponseType';
 import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
-import { translateLabel } from 'locales/config';
+import { CalendarLngKeys } from 'types/locales/CalendarLngKeys';
 
 const useAddInformationForm = ({ selectedDate }: HookProps) => {
   const [quickStartTime, setQuickStartTime] = useState<string | null>(null);
   const [quickFinishTime, setQuickFinishTime] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
   const { closeModal } = useModalWindow();
-  const [createDay] = useCreateDayMutation();
+  const [createDay, { isLoading }] = useCreateDayMutation();
   const { play } = useSoundSprite();
+  const { t } = useTranslation();
 
   const {
     register,
@@ -157,24 +158,22 @@ const useAddInformationForm = ({ selectedDate }: HookProps) => {
         };
       }
       if (result !== null) {
-        setIsLoading(true);
         await createDay(result);
         try {
-          setIsLoading(false);
           closeModal();
+          toast.success(t(CalendarLngKeys.SuccessfullyAdded, { ns: LocalesKeys.calendar }));
           play({ id: SoundNamesEnum.Success });
         } catch (error: any) {
-          setIsLoading(false);
           if (axios.isAxiosError(error)) {
             const axiosError = error as AxiosError<CalendarResponseType>;
             if (axiosError.response) {
               const serverError = axiosError.response.data as CalendarResponseType;
               CustomErrorHandler(serverError);
             } else {
-              toast.error(translateLabel(ErrorLngKeys.GeneralAxiosError, LocalesKeys.error));
+              toast.error(t(ErrorLngKeys.GeneralAxiosError, { ns: LocalesKeys.error }));
             }
           } else {
-            toast.error(translateLabel(ErrorLngKeys.GeneralError, LocalesKeys.error));
+            toast.error(t(ErrorLngKeys.GeneralError, { ns: LocalesKeys.error }));
           }
         }
       }

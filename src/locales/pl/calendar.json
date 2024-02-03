@@ -12,5 +12,8 @@
   "Health insurance premium": "Składka na ubezpieczenie zdrowotne",
   "Advance payment of income tax": "Zaliczka na podatek dochodowy",
   "Change day": "Zmień dzień",
-  "Delete day paragraph 1": "Czy na pewno chcesz usunąć informacje o bieżącym dniu? Po potwierdzeniu tej operacji nie można jej cofnąć"
+  "Delete day paragraph 1": "Czy na pewno chcesz usunąć informacje o bieżącym dniu? Po potwierdzeniu tej operacji nie można jej cofnąć",
+  "Information about the day has been successfully added": "Informacje o dniu zostały pomyślnie dodane.",
+  "Information about the day has been successfully modified": "Informacje o dniu zostały pomyślnie zmienione.",
+  "Information about the day has been successfully deleted": "Informacje o dniu zostały pomyślnie usunięte."
 }
