@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import ScreenWidth from 'utilities/ScreenWidth';
 
 export const Wrapper = styled.div`
   position: relative;
@@ -7,7 +8,11 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
 
-  width: 70px;
+  width: 50px;
+
+  @media screen and (min-width: ${ScreenWidth.tablet}) {
+    width: 70px;
+  }
 `;
 
 export const Button = styled.button`

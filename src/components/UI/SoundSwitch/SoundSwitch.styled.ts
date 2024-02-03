@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import ScreenWidth from 'utilities/ScreenWidth';
 
 export const Wrapper = styled.div`
   position: relative;
@@ -10,7 +11,7 @@ export const Button = styled.button`
   justify-content: center;
 
   font-size: 18px;
-  width: 50px;
+  width: 30px;
   height: 30px;
   padding: 0;
 
@@ -25,5 +26,9 @@ export const Button = styled.button`
   :hover,
   :focus {
     color: var(--accent-color);
+  }
+
+  @media screen and (min-width: ${ScreenWidth.tablet}) {
+    width: 50px;
   }
 `;

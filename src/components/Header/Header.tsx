@@ -46,7 +46,7 @@ const Header: React.FC<{}> = () => {
               <Button
                 type="button"
                 label={t(CommonLngKeys.Start, { ns: LocalesKeys.common })}
-                width="200px"
+                width="140px"
                 height="35px"
                 onClick={() => navigate('auth')}
               />
