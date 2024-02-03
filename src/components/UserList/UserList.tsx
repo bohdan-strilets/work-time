@@ -1,4 +1,5 @@
 import Item from './Item';
+import Placeholder from 'components/Placeholder';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { getAllUsers } from '../../redux/user/userSelectors';
 import useChart from 'hooks/useChart';
@@ -9,12 +10,11 @@ const UserList: React.FC<{}> = () => {
 
   return (
     <ul>
-      {users &&
+      {users ? (
         users.map(i => {
           const numberWorkingHours = calculateStatisticsByMonth(
             i.statistics.statisticsByMonths.numberWorkingHours,
           );
-
           return (
             <Item
               key={i._id}
@@ -31,7 +31,10 @@ const UserList: React.FC<{}> = () => {
               description={i.description}
             />
           );
-        })}
+        })
+      ) : (
+        <Placeholder />
+      )}
     </ul>
   );
 };
