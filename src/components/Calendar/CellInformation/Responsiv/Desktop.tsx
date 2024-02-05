@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { MdOutlineWork } from 'react-icons/md';
 import { BiSolidTimeFive } from 'react-icons/bi';
+import { HiMiniClipboardDocumentList } from 'react-icons/hi2';
 import { BsCheckAll } from 'react-icons/bs';
 import { CellInformationProps } from 'types/props/CellInformationProps';
 import { Status } from 'types/enums/StatusEnum';
@@ -9,6 +10,7 @@ import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import {
   DayOfMonth,
+  TodoStatus,
   Container,
   DayStatus,
   LabelWrapper,
@@ -22,7 +24,14 @@ const Desktop: React.FC<CellInformationProps> = ({ dayInfo, date }) => {
 
   return (
     <>
-      <DayOfMonth>{date.getDate()}</DayOfMonth>
+      <DayOfMonth>
+        <TodoStatus>
+          {dayInfo && dayInfo.areTaskToday && (
+            <HiMiniClipboardDocumentList size={18} color="var(--black-color)" />
+          )}
+        </TodoStatus>
+        {date.getDate()}
+      </DayOfMonth>
       {dayInfo?.status && (
         <Container>
           {dayInfo?.status === Status.work && (

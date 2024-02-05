@@ -12,6 +12,14 @@ export const DayOfMonth = styled.p`
   }
 `;
 
+export const TodoStatus = styled.div`
+  margin-right: 5px;
+
+  @media screen and (min-width: ${ScreenWidth.desktop}) {
+    margin-right: 10px;
+  }
+`;
+
 export const Container = styled.div`
   display: flex;
   align-items: center;

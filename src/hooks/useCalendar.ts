@@ -17,6 +17,7 @@ import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { CalendarResponseType } from 'types/types/CalendarResponseType';
 import CustomErrorHandler from 'utilities/CustomErrorHandler';
 import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
+import { useGetAllTodoQuery } from '../redux/todo/todoApi';
 
 export const useCalendar = () => {
   const [date, setDate] = useState(new Date());
@@ -36,6 +37,7 @@ export const useCalendar = () => {
   const [deleteDay, { isLoading: isDeleteLoading }] = useDeleteDayMutation();
   const { play } = useSoundSprite();
   const { t } = useTranslation();
+  const { data: todos } = useGetAllTodoQuery();
 
   useEffect(() => {
     if (data && data.data) {
@@ -165,8 +167,11 @@ export const useCalendar = () => {
     if (date instanceof Date) {
       const dateCell = date.toLocaleDateString().replaceAll('.', '-');
       const informationAboutDay = allDays?.filter(item => item.data[dateCell]);
-      if (informationAboutDay) {
-        return informationAboutDay[0]?.data[dateCell];
+      if (informationAboutDay && informationAboutDay[0]) {
+        const dayId = informationAboutDay[0]._id;
+        const areTaskToday = todos?.data?.some(i => i.dayId === dayId);
+        const response = { ...informationAboutDay[0]?.data[dateCell], areTaskToday };
+        return response;
       }
     }
   };

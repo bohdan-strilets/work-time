@@ -7,6 +7,7 @@ export type DayInfoType = {
   time: string;
   workShiftNumber: WorkShiftNumber;
   additionalHours: boolean;
+  areTaskToday?: boolean;
 };
 
 export type WorkUserDataType = {

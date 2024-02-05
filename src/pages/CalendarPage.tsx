@@ -102,7 +102,7 @@ const CalendarPage: React.FC<{}> = () => {
       )}
       {checkQueryParam(modalsName.cellDayNewTodo) && (
         <ModalWindow title={t(TodosLngKeys.AddNewTask, { ns: LocalesKeys.todos })}>
-          <AddedTodoForm dayId={dayInfoId} />
+          <AddedTodoForm dayId={dayInfoId} selectedDate={selectedDate} />
         </ModalWindow>
       )}
       {checkQueryParam(modalsName.greetings) && (

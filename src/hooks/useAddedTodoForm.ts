@@ -12,7 +12,7 @@ import AddedTodoFormSchema from 'validations/AddedTodoFormSchema';
 import useSoundSprite from './useSoundSprite';
 import { SoundNamesEnum } from 'types/enums/SoundNamesEnum';
 
-const useAddedTodoForm = ({ dayId }: AddedTodoFormProps) => {
+const useAddedTodoForm = ({ dayId, selectedDate }: AddedTodoFormProps) => {
   const validation = {
     resolver: yupResolver<AddedTodoFormInputs>(AddedTodoFormSchema),
   };
@@ -29,17 +29,20 @@ const useAddedTodoForm = ({ dayId }: AddedTodoFormProps) => {
   const { play } = useSoundSprite();
 
   const onSubmit: SubmitHandler<AddedTodoFormInputs> = value => {
-    const dto = {
-      dayId: dayId ?? '',
-      task: value.task,
-      priority: value.priority,
-      isCompleted: false,
-    };
+    if (selectedDate) {
+      const dto = {
+        dayId: dayId ?? '',
+        task: value.task,
+        priority: value.priority,
+        isCompleted: false,
+        appointmentDate: selectedDate.toLocaleDateString(),
+      };
 
-    createTodo(dto);
-    closeModal();
-    toast.success(t(TodosLngKeys.TaskSuccessfullyCreated, { ns: LocalesKeys.todos }));
-    play({ id: SoundNamesEnum.Success });
+      createTodo(dto);
+      closeModal();
+      toast.success(t(TodosLngKeys.TaskSuccessfullyCreated, { ns: LocalesKeys.todos }));
+      play({ id: SoundNamesEnum.Success });
+    }
   };
 
   return { handleSubmit, onSubmit, register, errors, control, Controller };

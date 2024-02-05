@@ -10,10 +10,11 @@ import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { AddedTodoFormProps } from 'types/props/AddedTodoFormProps';
 import useAddedTodoForm from 'hooks/useAddedTodoForm';
 
-const AddedTodoForm: React.FC<AddedTodoFormProps> = ({ dayId }) => {
+const AddedTodoForm: React.FC<AddedTodoFormProps> = ({ dayId, selectedDate }) => {
   const { t } = useTranslation();
   const { Controller, control, errors, handleSubmit, onSubmit, register } = useAddedTodoForm({
     dayId,
+    selectedDate,
   });
 
   return (

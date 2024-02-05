@@ -3,4 +3,5 @@ export type CreateTodoDto = {
   task: string;
   priority?: string;
   isCompleted?: boolean;
+  appointmentDate: string;
 };
