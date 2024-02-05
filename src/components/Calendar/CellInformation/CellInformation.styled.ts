@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import ScreenWidth from 'utilities/ScreenWidth';
 
-export const DayOfMonth = styled.p`
+export const DayOfMonth = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
