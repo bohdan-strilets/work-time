@@ -8,7 +8,7 @@ import { TodosLngKeys } from 'types/locales/TodosLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import useModalWindow from 'hooks/useModalWindow';
 import { useUpdateCompletedMutation } from '../../../redux/todo/todoApi';
-import { List, Item, Text } from './TodoList.styled';
+import { Item } from './TodoList.styled';
 
 const TodoList: React.FC<TodoListProps> = ({ dayId }) => {
   const { t } = useTranslation();
@@ -33,22 +33,22 @@ const TodoList: React.FC<TodoListProps> = ({ dayId }) => {
         onClick={() => openModal(modalsName.cellDayNewTodo)}
       />
       {isLoading && <Loader />}
-      <List>
+      <ul>
         {todos &&
           todos?.length > 0 &&
           todos.map((item, index) => (
-            <Item key={item._id}>
+            <Item key={item._id} isCompleted={item.isCompleted}>
               <Checkbox
                 name={`task${index}`}
                 onChange={value => handleTodoChange(value, item._id)}
                 defaultValue={item.isCompleted}
                 readOnly={true}
               >
-                <Text>{item.task}</Text>
+                <p>{item.task}</p>
               </Checkbox>
             </Item>
           ))}
-      </List>
+      </ul>
     </>
   );
 };

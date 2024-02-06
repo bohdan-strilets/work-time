@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import getRandomColor from 'utilities/getRandomColor';
 import Checkbox from 'components/UI/Checkbox';
 import TodoControllers from '../TodoControllers';
 import PriorityEnum from 'types/enums/PriorityEnum';
@@ -8,9 +7,12 @@ import { LocalesKeys } from 'types/enums/LocalesKeys';
 import FormatDateTime from 'utilities/FormatDateTime';
 import { TodoProps } from 'types/props/TodoProps';
 import { useUpdateCompletedMutation } from '../../../redux/todo/todoApi';
+import { month } from 'utilities/DefaultCalendarData';
+import { FormatDateTimeZone } from 'utilities/FormatDateTimeZone';
 import {
   Item,
   Image,
+  AppointmentDate,
   Container,
   Id,
   StatusBar,
@@ -19,7 +21,15 @@ import {
   CreatedDate,
 } from './Todo.styled';
 
-const Todo: React.FC<TodoProps> = ({ _id, task, priority, isCompleted, updatedAt, getTodoId }) => {
+const Todo: React.FC<TodoProps> = ({
+  _id,
+  task,
+  priority,
+  isCompleted,
+  updatedAt,
+  getTodoId,
+  appointmentDate,
+}) => {
   const { t } = useTranslation();
   const [updateCompleted] = useUpdateCompletedMutation();
 
@@ -28,9 +38,19 @@ const Todo: React.FC<TodoProps> = ({ _id, task, priority, isCompleted, updatedAt
     updateCompleted(dto);
   };
 
+  const getDateWithMonthName = () => {
+    const formatedDate = FormatDateTimeZone(appointmentDate);
+    const date = new Date(formatedDate);
+    const day = date.getDate();
+    const monthIndex = date.getMonth() + 1;
+    const year = date.getFullYear();
+    return `${day} ${month[monthIndex]} ${year}`;
+  };
+
   return (
     <Item>
-      <Image background={getRandomColor(0.6)}>
+      <Image>
+        {appointmentDate && <AppointmentDate>{getDateWithMonthName()}</AppointmentDate>}
         <TodoControllers todoId={_id} getTodoId={getTodoId} />
       </Image>
       <Container>

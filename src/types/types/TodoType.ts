@@ -7,7 +7,7 @@ export type TodoType = {
   task: string;
   priority: PriorityEnum;
   isCompleted: boolean;
-  appointmentDate: Date;
+  appointmentDate: string;
   createdAt: Date;
   updatedAt: Date;
 };

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import PriorityEnum from 'types/enums/PriorityEnum';
 import ScreenWidth from 'utilities/ScreenWidth';
-import { ImageProps, PriorityProps } from 'types/props/ExtendedTodoListProps';
+import { PriorityProps } from 'types/props/ExtendedTodoListProps';
 
 export const Item = styled.li`
   width: 95%;
@@ -19,16 +19,21 @@ export const Item = styled.li`
   }
 `;
 
-export const Image = styled.div<ImageProps>`
+export const Image = styled.div`
   position: relative;
 
   width: 100%;
   height: 70px;
   padding: 10px;
 
-  background: ${({ background }) => background};
+  background: var(--main-gradient);
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
+`;
+
+export const AppointmentDate = styled.p`
+  font-weight: 900;
+  font-size: 18px;
 `;
 
 export const Container = styled.div`

@@ -4,7 +4,7 @@ import ScreenWidth from 'utilities/ScreenWidth';
 export const List = styled.ul`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
 
   @media screen and (min-width: ${ScreenWidth.tablet}) {
     display: flex;

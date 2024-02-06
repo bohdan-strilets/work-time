@@ -11,6 +11,7 @@ import useModalWindow from 'hooks/useModalWindow';
 import AddedTodoFormSchema from 'validations/AddedTodoFormSchema';
 import useSoundSprite from './useSoundSprite';
 import { SoundNamesEnum } from 'types/enums/SoundNamesEnum';
+import { FormatDateTimeZone } from 'utilities/FormatDateTimeZone';
 
 const useAddedTodoForm = ({ dayId, selectedDate }: AddedTodoFormProps) => {
   const validation = {
@@ -30,12 +31,13 @@ const useAddedTodoForm = ({ dayId, selectedDate }: AddedTodoFormProps) => {
 
   const onSubmit: SubmitHandler<AddedTodoFormInputs> = value => {
     if (selectedDate) {
+      const formatedDate = FormatDateTimeZone(selectedDate);
       const dto = {
         dayId: dayId ?? '',
         task: value.task,
         priority: value.priority,
         isCompleted: false,
-        appointmentDate: selectedDate.toLocaleDateString(),
+        appointmentDate: formatedDate,
       };
 
       createTodo(dto);

@@ -1,17 +1,20 @@
 import styled from '@emotion/styled';
+import { ItemProps } from 'types/props/TodoListProps';
 
-export const List = styled.ol``;
+const greenTransparent = 'rgba(25, 209, 114, 0.1)';
+const redTransparent = 'rgba(209, 25, 25,0.1)';
 
-export const Item = styled.li`
+export const Item = styled.li<ItemProps>`
   display: flex;
   align-items: center;
 
-  padding: 10px 0;
-  border-bottom: 1px solid var(--gray-color);
+  padding: 10px;
+  margin-bottom: 10px;
+
+  border-radius: 5px;
+  background-color: ${({ isCompleted }) => (isCompleted ? greenTransparent : redTransparent)};
 
   :last-child {
-    border-bottom: none;
+    margin-bottom: 0;
   }
 `;
-
-export const Text = styled.p``;

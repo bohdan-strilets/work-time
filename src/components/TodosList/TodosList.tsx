@@ -23,6 +23,7 @@ const TodosList: React.FC<TodoListProps> = ({ getTodoId }) => {
               isCompleted={item.isCompleted}
               updatedAt={item.updatedAt}
               getTodoId={getTodoId}
+              appointmentDate={item.appointmentDate}
             />
           ))
         ) : (

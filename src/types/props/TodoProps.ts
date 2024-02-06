@@ -7,4 +7,5 @@ export type TodoProps = {
   isCompleted: boolean;
   updatedAt: Date;
   getTodoId: (todoId: string) => void;
+  appointmentDate: string;
 };

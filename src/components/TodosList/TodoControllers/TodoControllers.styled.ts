@@ -31,6 +31,6 @@ export const Button = styled.button`
 
   :hover,
   :focus {
-    color: var(--green-color);
+    color: var(--gray-color);
   }
 `;
