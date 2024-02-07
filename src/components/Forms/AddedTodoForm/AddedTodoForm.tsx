@@ -53,7 +53,7 @@ const AddedTodoForm: React.FC<AddedTodoFormProps> = ({ dayId, selectedDate }) =>
       <Button
         type="submit"
         label={t(CommonLngKeys.Create, { ns: LocalesKeys.common })}
-        width="270px"
+        width="100%"
         height="40px"
       />
     </form>

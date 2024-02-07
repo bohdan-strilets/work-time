@@ -160,7 +160,7 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
         <Button
           type="submit"
           label={t(CalendarLngKeys.AddDay, { ns: LocalesKeys.calendar })}
-          width="270px"
+          width="100%"
           height="40px"
         />
       </form>

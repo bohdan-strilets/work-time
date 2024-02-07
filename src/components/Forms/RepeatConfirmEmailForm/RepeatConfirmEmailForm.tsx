@@ -36,7 +36,7 @@ const RepeatConfirmEmailForm: React.FC<{}> = () => {
           type="submit"
           label={t(CommonLngKeys.Send, { ns: LocalesKeys.common })}
           height="40px"
-          width="270px"
+          width="100%"
         />
       </form>
       {isSuccess && (

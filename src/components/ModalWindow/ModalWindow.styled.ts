@@ -22,7 +22,7 @@ export const Body = styled.div`
   transform: translate(-50%, -50%);
 
   width: 90%;
-  max-height: 600px;
+  max-height: 100%;
   overflow-y: auto;
 
   border-radius: 3px;
@@ -31,12 +31,10 @@ export const Body = styled.div`
 
   @media screen and (min-width: ${ScreenWidth.tablet}) {
     width: 660px;
-    max-height: 580px;
   }
 
   @media screen and (min-width: ${ScreenWidth.desktop}) {
     width: 780px;
-    max-height: 600px;
   }
 `;
 

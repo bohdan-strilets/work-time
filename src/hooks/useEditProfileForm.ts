@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
@@ -8,10 +9,13 @@ import useModalWindow from './useModalWindow';
 import operations from '../redux/user/userOperations';
 import { UserResponseType } from 'types/types/UserResponseType';
 import { UserType } from 'types/types/UserType';
+import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
 
 const useEditProfileForm = () => {
   const dispatch = useAppDispatch();
   const { closeModal } = useModalWindow();
+  const { t } = useTranslation();
 
   const validation = {
     resolver: yupResolver<EditProfileFormInputs>(EditProfileFormSchema),
@@ -44,7 +48,9 @@ const useEditProfileForm = () => {
     const data = response.payload as UserResponseType<UserType>;
     if (data && data.success) {
       closeModal();
-      toast.success('Your account information has been successfully updated.');
+      toast.success(
+        t(ProfileLngKeys.AccountInformationSuccessfullyUpdated, { ns: LocalesKeys.profile }),
+      );
     }
   };
 

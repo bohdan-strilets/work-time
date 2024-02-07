@@ -48,7 +48,7 @@ const Mobile: React.FC<{}> = () => {
       <Button
         type="submit"
         label={t(CommonLngKeys.Login, { ns: LocalesKeys.common })}
-        width="300px"
+        width="100%"
         height="40px"
         margin="0 0 var(--small-indent) 0"
       />

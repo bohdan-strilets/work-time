@@ -35,7 +35,7 @@ const ChangeEmailForm: React.FC<{}> = () => {
           type="submit"
           label={t(ProfileLngKeys.ChangedEmail, { ns: LocalesKeys.profile })}
           height="40px"
-          width="270px"
+          width="100%"
         />
       </form>
     </>

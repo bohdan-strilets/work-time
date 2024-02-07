@@ -35,4 +35,5 @@ export enum ProfileLngKeys {
   ParticipantOfPpkProgram = 'Participant of the PPK program',
   PpkContributionRateYouPay = 'PPK contribution rate you pay',
   MinimumValueAndMaximum = 'Minimum value and maximum',
+  AccountInformationSuccessfullyUpdated = 'Your account information has been successfully updated',
 }

@@ -154,7 +154,7 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
       <Button
         type="submit"
         label={t(ProfileLngKeys.EditProfile, { ns: LocalesKeys.profile })}
-        width="270px"
+        width="100%"
         height="40px"
       />
     </form>

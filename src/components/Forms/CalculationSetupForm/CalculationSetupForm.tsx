@@ -96,7 +96,7 @@ const CalculationSetupForm: React.FC<{}> = () => {
       <Button
         type="submit"
         label={t(CommonLngKeys.Save, { ns: LocalesKeys.common })}
-        width="270px"
+        width="100%"
         height="40px"
       />
     </form>

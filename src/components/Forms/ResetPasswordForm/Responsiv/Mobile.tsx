@@ -52,7 +52,7 @@ const Mobile: React.FC<{}> = () => {
           type="submit"
           label={t(ResetPasswordLngKeys.ResetPassword, { ns: LocalesKeys.resetPassword })}
           height="40px"
-          width="200px"
+          width="100%"
         />
       </Wrapper>
     </Container>

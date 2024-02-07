@@ -152,7 +152,7 @@ const EditInformationForm: React.FC<EditInformationFormProps> = ({ dayId, select
         <Button
           type="submit"
           label={t(CalendarLngKeys.ChangeDay, { ns: LocalesKeys.calendar })}
-          width="270px"
+          width="100%"
           height="40px"
         />
       </form>

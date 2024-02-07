@@ -48,7 +48,7 @@ const ContactForm: React.FC<{}> = () => {
       <Button
         type="submit"
         label={t(CommonLngKeys.Send, { ns: LocalesKeys.common })}
-        width="300px"
+        width="100%"
         height="40px"
       />
     </form>

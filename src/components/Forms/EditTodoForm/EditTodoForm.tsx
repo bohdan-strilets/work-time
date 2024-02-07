@@ -56,7 +56,7 @@ const EditTodoForm: React.FC<EditTodoFormProps> = ({ todoId }) => {
         <Button
           type="submit"
           label={t(CommonLngKeys.Edit, { ns: LocalesKeys.common })}
-          width="270px"
+          width="100%"
           height="40px"
         />
       </form>
