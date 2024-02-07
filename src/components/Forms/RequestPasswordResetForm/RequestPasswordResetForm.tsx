@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import TextInput from 'components/UI/TextInput';
 import Button from 'components/UI/Button';
+import Loader from 'components/UI/Loader';
 import useRequestPasswordResetForm from 'hooks/useRequestPasswordResetForm';
 import { AuthLngKeys } from 'types/locales/AuthLngKeys';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
@@ -8,7 +9,7 @@ import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { Text } from '../Forms.styled';
 
 const RequestPasswordResetForm: React.FC<{}> = () => {
-  const { errors, handleSubmit, onSubmit, register } = useRequestPasswordResetForm();
+  const { errors, handleSubmit, onSubmit, register, isLoading } = useRequestPasswordResetForm();
   const { t } = useTranslation();
 
   return (
@@ -28,6 +29,7 @@ const RequestPasswordResetForm: React.FC<{}> = () => {
           required={true}
           margin="0 0 var(--small-indent) 0"
         />
+        {isLoading && <Loader />}
         <Button
           type="submit"
           label={t(CommonLngKeys.Send, { ns: LocalesKeys.common })}

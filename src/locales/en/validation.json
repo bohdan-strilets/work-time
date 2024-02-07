@@ -35,5 +35,6 @@
   "This choice cannot remain empty": "This choice cannot remain empty.",
   "Task must be at least": "Task must be at least 1 characters.",
   "Task must not exceed": "Task must not exceed 1000 characters.",
-  "Please select a valid priority option": "Please select a valid priority option."
+  "Please select a valid priority option": "Please select a valid priority option.",
+  "Read the privacy policy and site rules and if you agree, check the box": "Read the privacy policy and site rules and if you agree, check the box."
 }

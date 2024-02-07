@@ -9,5 +9,6 @@
   "Delete todo": "Delete todo",
   "Are you sure you want to delete the selected task": "Are you sure you want to delete the selected task? Once confirmed, the action cannot be undone.",
   "The task was successfully modified": "The task was successfully modified.",
-  "Edit todo": "Edit todo"
+  "Edit todo": "Edit todo",
+  "The task status has been successfully updated": "The task status has been successfully updated."
 }

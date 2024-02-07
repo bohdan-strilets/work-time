@@ -35,5 +35,8 @@
   "Participant of the PPK program": "Participant of the PPK program",
   "PPK contribution rate you pay": "PPK contribution rate you pay",
   "Minimum value and maximum": "Minimum value 0.5%, maximum 4%",
-  "Your account information has been successfully updated": "Your account information has been successfully updated."
+  "Your account information has been successfully updated": "Your account information has been successfully updated.",
+  "The email address has been successfully changed": "The email address has been successfully changed.",
+  "The password has been successfully changed": "The password has been successfully changed.",
+  "A password reset email has been successfully sent to your email address": "A password reset email has been successfully sent to your email address."
 }

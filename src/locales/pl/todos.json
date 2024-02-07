@@ -9,5 +9,6 @@
   "Delete todo": "Usuń zadanie",
   "Are you sure you want to delete the selected task": "Czy na pewno chcesz usunąć wybrane zadanie? Po potwierdzeniu tej operacji nie będzie możliwości jej cofnięcia.",
   "The task was successfully modified": "Zadanie zostało pomyślnie zmodyfikowane.",
-  "Edit todo": "Edytuj zadanie"
+  "Edit todo": "Edytuj zadanie",
+  "The task status has been successfully updated": "Status zadania został pomyślnie zaktualizowany."
 }

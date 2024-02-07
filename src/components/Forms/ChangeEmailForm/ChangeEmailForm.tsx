@@ -1,13 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import TextInput from 'components/UI/TextInput';
 import Button from 'components/UI/Button';
+import Loader from 'components/UI/Loader';
 import useChangeEmailForm from 'hooks/useChangeEmailForm';
 import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { Text } from '../Forms.styled';
 
 const ChangeEmailForm: React.FC<{}> = () => {
-  const { errors, handleSubmit, onSubmit, register, userEmail } = useChangeEmailForm();
+  const { errors, handleSubmit, onSubmit, register, userEmail, isLoading } = useChangeEmailForm();
   const { t } = useTranslation();
 
   return (
@@ -31,6 +32,7 @@ const ChangeEmailForm: React.FC<{}> = () => {
           required={true}
           margin="0 0 var(--small-indent) 0"
         />
+        {isLoading && <Loader />}
         <Button
           type="submit"
           label={t(ProfileLngKeys.ChangedEmail, { ns: LocalesKeys.profile })}

@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+import axios, { AxiosError } from 'axios';
 import { useTranslation } from 'react-i18next';
 import Checkbox from 'components/UI/Checkbox';
 import TodoControllers from '../TodoControllers';
@@ -9,6 +11,10 @@ import { TodoProps } from 'types/props/TodoProps';
 import { useUpdateCompletedMutation } from '../../../redux/todo/todoApi';
 import { month } from 'utilities/DefaultCalendarData';
 import { FormatDateTimeZone } from 'utilities/FormatDateTimeZone';
+import { TodosLngKeys } from 'types/locales/TodosLngKeys';
+import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import { TodosResponseType } from 'types/types/TodosResponseType';
+import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 import {
   Item,
   Image,
@@ -31,18 +37,35 @@ const Todo: React.FC<TodoProps> = ({
   appointmentDate,
 }) => {
   const { t } = useTranslation();
-  const [updateCompleted] = useUpdateCompletedMutation();
+  const [updateCompleted, { isLoading }] = useUpdateCompletedMutation();
 
-  const handleTodoChange = (value: boolean) => {
+  const handleTodoChange = async (value: boolean) => {
     const dto = { todoId: _id, updateCompletedDto: { isCompleted: value } };
-    updateCompleted(dto);
+    await updateCompleted(dto);
+    try {
+      toast.success(
+        t(TodosLngKeys.TaskStatusHasBeenSuccessfullyUpdated, { ns: LocalesKeys.todos }),
+      );
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<TodosResponseType>;
+        if (axiosError.response) {
+          const serverError = axiosError.response.data as TodosResponseType;
+          CustomErrorHandler(serverError);
+        } else {
+          toast.error(t(ErrorLngKeys.GeneralAxiosError, { ns: LocalesKeys.error }));
+        }
+      } else {
+        toast.error(t(ErrorLngKeys.GeneralError, { ns: LocalesKeys.error }));
+      }
+    }
   };
 
   const getDateWithMonthName = () => {
     const formatedDate = FormatDateTimeZone(appointmentDate);
     const date = new Date(formatedDate);
     const day = date.getDate();
-    const monthIndex = date.getMonth() + 1;
+    const monthIndex = date.getMonth();
     const year = date.getFullYear();
     return `${day} ${month[monthIndex]} ${year}`;
   };
@@ -69,6 +92,7 @@ const Todo: React.FC<TodoProps> = ({
             label={t(CommonLngKeys.Completed, { ns: LocalesKeys.common })}
             defaultValue={isCompleted}
             readOnly={true}
+            disabled={isLoading}
           />
         </StatusBar>
         <DateBar>

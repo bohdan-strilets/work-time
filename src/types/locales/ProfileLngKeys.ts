@@ -36,4 +36,7 @@ export enum ProfileLngKeys {
   PpkContributionRateYouPay = 'PPK contribution rate you pay',
   MinimumValueAndMaximum = 'Minimum value and maximum',
   AccountInformationSuccessfullyUpdated = 'Your account information has been successfully updated',
+  EmailAddressHasBeenSuccessfullyChanged = 'The email address has been successfully changed',
+  PasswordHasBeenSuccessfullyChanged = 'The password has been successfully changed',
+  PasswordResetEmailSuccessfullySent = 'A password reset email has been successfully sent to your email address',
 }

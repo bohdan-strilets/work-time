@@ -1,13 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import PasswordInput from 'components/UI/PasswordInput';
 import Button from 'components/UI/Button';
+import Loader from 'components/UI/Loader';
 import useChangePasswordForm from 'hooks/useChangePasswordForm';
 import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 
 const ChangePasswordForm: React.FC<{}> = () => {
-  const { errors, handleSubmit, onSubmit, register, password } = useChangePasswordForm();
+  const { errors, handleSubmit, onSubmit, register, password, isLoading } = useChangePasswordForm();
   const { t } = useTranslation();
 
   return (
@@ -47,6 +48,7 @@ const ChangePasswordForm: React.FC<{}> = () => {
           margin="0 0 var(--small-indent) 0"
           padding="0 45px 0 35px"
         />
+        {isLoading && <Loader />}
         <Button
           type="submit"
           label={t(ProfileLngKeys.ChangedPassword, { ns: LocalesKeys.profile })}

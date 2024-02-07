@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import Textarea from 'components/UI/Textarea';
 import DropdownList from 'components/UI/DropdownList';
 import Button from 'components/UI/Button';
+import Loader from 'components/UI/Loader';
 import { PriorityOptions } from 'utilities/PriorityOptions';
 import PriorityEnum from 'types/enums/PriorityEnum';
 import { TodosLngKeys } from 'types/locales/TodosLngKeys';
@@ -12,10 +13,11 @@ import useAddedTodoForm from 'hooks/useAddedTodoForm';
 
 const AddedTodoForm: React.FC<AddedTodoFormProps> = ({ dayId, selectedDate }) => {
   const { t } = useTranslation();
-  const { Controller, control, errors, handleSubmit, onSubmit, register } = useAddedTodoForm({
-    dayId,
-    selectedDate,
-  });
+  const { Controller, control, errors, handleSubmit, onSubmit, register, isLoading } =
+    useAddedTodoForm({
+      dayId,
+      selectedDate,
+    });
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -50,6 +52,7 @@ const AddedTodoForm: React.FC<AddedTodoFormProps> = ({ dayId, selectedDate }) =>
           />
         )}
       />
+      {isLoading && <Loader />}
       <Button
         type="submit"
         label={t(CommonLngKeys.Create, { ns: LocalesKeys.common })}

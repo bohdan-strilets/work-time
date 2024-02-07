@@ -39,6 +39,7 @@ const ProfilePage: React.FC<{}> = () => {
     userId,
     description,
     settings,
+    isLoading,
   } = useProfile();
   const navigate = useNavigate();
   const { checkQueryParam, modalsName } = useModalWindow();
@@ -110,6 +111,7 @@ const ProfilePage: React.FC<{}> = () => {
             text={t(ProfileLngKeys.DeleteProfileParagraph1, { ns: LocalesKeys.profile })}
             handlePositiveClick={deleteProfile}
             handleNegativeClick={() => navigate(-1)}
+            isLoader={isLoading}
           />
         </ModalWindow>
       )}

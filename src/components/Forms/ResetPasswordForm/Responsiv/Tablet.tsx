@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import TextInput from 'components/UI/TextInput';
 import PasswordInput from 'components/UI/PasswordInput';
 import Button from 'components/UI/Button';
+import Loader from 'components/UI/Loader';
 import useResetPasswordForm from 'hooks/useResetPasswordForm';
 import { ResetPasswordLngKeys } from 'types/locales/ResetPasswordLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
@@ -9,7 +10,7 @@ import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { Container, Wrapper, Title } from '../../Forms.styled';
 
 const Tablet: React.FC<{}> = () => {
-  const { errors, handleSubmit, onSubmit, register } = useResetPasswordForm();
+  const { errors, handleSubmit, onSubmit, register, isLoading } = useResetPasswordForm();
   const { t } = useTranslation();
 
   return (
@@ -48,6 +49,7 @@ const Tablet: React.FC<{}> = () => {
           margin="0 0 var(--small-indent) 0"
           padding="0 45px 0 35px"
         />
+        {isLoading && <Loader />}
         <Button
           type="submit"
           label={t(ResetPasswordLngKeys.ResetPassword, { ns: LocalesKeys.resetPassword })}

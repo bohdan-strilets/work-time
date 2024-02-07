@@ -37,127 +37,124 @@ const EditInformationForm: React.FC<EditInformationFormProps> = ({ dayId, select
   const contractType = useAppSelector(getContractType);
 
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Controller
-          name="status"
-          control={control}
-          render={({ field }) => (
-            <DropdownList
-              type="single"
-              name="status"
-              options={
-                contractType === ContractTypeEnum.ContractEmployment ? DayOptions : ShortDayOptions
-              }
-              label={`${t(CalendarLngKeys.DidYouWorkOrRestToday, { ns: LocalesKeys.calendar })}?`}
-              buttonlabel={t(CommonLngKeys.Today, { ns: LocalesKeys.common })}
-              height="40px"
-              width="100%"
-              margin="0 0 var(--small-indent) 0"
-              onChange={(value: string | string[]) => field.onChange(value)}
-              errors={errors}
-              required={true}
-              defaultValue={dayInfo?.status}
-              position="relative"
-            />
-          )}
-        />
-        {(selectedStatus === Status.work || selectedStatus === Status.vacation) && (
-          <>
-            <Controller
-              name="startJob"
-              control={control}
-              render={({ field }) => (
-                <DropdownList
-                  type="single"
-                  name="startJob"
-                  options={HoursOptions}
-                  label={`${t(CalendarLngKeys.WhatTimeDidYouArriveAtWork, {
-                    ns: LocalesKeys.calendar,
-                  })}?`}
-                  buttonlabel={t(CommonLngKeys.Start, { ns: LocalesKeys.common })}
-                  height="40px"
-                  width="100%"
-                  margin="0 0 var(--small-indent) 0"
-                  onChange={(value: string | string[]) => {
-                    setQuickStartTime(null);
-                    field.onChange(value);
-                  }}
-                  errors={errors}
-                  defaultValue={
-                    dayInfo?.time && !quickStartTime
-                      ? GetLineSegment(dayInfo?.time, 0, 5)
-                      : quickStartTime
-                  }
-                  position="relative"
-                />
-              )}
-            />
-            <QuickTiming getQuickTime={setQuickStartTime} margin="0 0 var(--small-indent) 0" />
-          </>
-        )}
-        {(selectedStatus === Status.work || selectedStatus === Status.vacation) && (
-          <>
-            <Controller
-              name="finishJob"
-              control={control}
-              render={({ field }) => (
-                <DropdownList
-                  type="single"
-                  name="finishJob"
-                  options={HoursOptions}
-                  label={`${t(CalendarLngKeys.WhatTimeDidYouGoHome, {
-                    ns: LocalesKeys.calendar,
-                  })}?`}
-                  buttonlabel={t(CommonLngKeys.Finish, { ns: LocalesKeys.common })}
-                  height="40px"
-                  width="100%"
-                  margin="0 0 var(--small-indent) 0"
-                  onChange={(value: string | string[]) => {
-                    setQuickStartTime(null);
-                    field.onChange(value);
-                  }}
-                  errors={errors}
-                  defaultValue={
-                    dayInfo?.time && !quickFinishTime
-                      ? GetLineSegment(dayInfo?.time, 6, dayInfo.time.length)
-                      : quickFinishTime
-                  }
-                  position="relative"
-                />
-              )}
-            />
-            <QuickTiming getQuickTime={setQuickFinishTime} margin="0 0 var(--small-indent) 0" />
-          </>
-        )}
-        {selectedStatus === Status.work && (
-          <Controller
-            name="additionalHours"
-            control={control}
-            render={({ field }) => (
-              <Checkbox
-                name="additionalHours"
-                errors={errors}
-                register={register}
-                onChange={(value: boolean) => field.onChange(value)}
-                margin="0 0 var(--small-indent) 0"
-                defaultValue={dayInfo?.additionalHours}
-              >
-                <p>{`${t(CalendarLngKeys.IsThisAnExtraShift, { ns: LocalesKeys.calendar })}?`}</p>
-              </Checkbox>
-            )}
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Controller
+        name="status"
+        control={control}
+        render={({ field }) => (
+          <DropdownList
+            type="single"
+            name="status"
+            options={
+              contractType === ContractTypeEnum.ContractEmployment ? DayOptions : ShortDayOptions
+            }
+            label={`${t(CalendarLngKeys.DidYouWorkOrRestToday, { ns: LocalesKeys.calendar })}?`}
+            buttonlabel={t(CommonLngKeys.Today, { ns: LocalesKeys.common })}
+            height="40px"
+            width="100%"
+            margin="0 0 var(--small-indent) 0"
+            onChange={(value: string | string[]) => field.onChange(value)}
+            errors={errors}
+            required={true}
+            defaultValue={dayInfo?.status}
+            position="relative"
           />
         )}
-
-        <Button
-          type="submit"
-          label={t(CalendarLngKeys.ChangeDay, { ns: LocalesKeys.calendar })}
-          width="100%"
-          height="40px"
+      />
+      {(selectedStatus === Status.work || selectedStatus === Status.vacation) && (
+        <>
+          <Controller
+            name="startJob"
+            control={control}
+            render={({ field }) => (
+              <DropdownList
+                type="single"
+                name="startJob"
+                options={HoursOptions}
+                label={`${t(CalendarLngKeys.WhatTimeDidYouArriveAtWork, {
+                  ns: LocalesKeys.calendar,
+                })}?`}
+                buttonlabel={t(CommonLngKeys.Start, { ns: LocalesKeys.common })}
+                height="40px"
+                width="100%"
+                margin="0 0 var(--small-indent) 0"
+                onChange={(value: string | string[]) => {
+                  setQuickStartTime(null);
+                  field.onChange(value);
+                }}
+                errors={errors}
+                defaultValue={
+                  dayInfo?.time && !quickStartTime
+                    ? GetLineSegment(dayInfo?.time, 0, 5)
+                    : quickStartTime
+                }
+                position="relative"
+              />
+            )}
+          />
+          <QuickTiming getQuickTime={setQuickStartTime} margin="0 0 var(--small-indent) 0" />
+        </>
+      )}
+      {(selectedStatus === Status.work || selectedStatus === Status.vacation) && (
+        <>
+          <Controller
+            name="finishJob"
+            control={control}
+            render={({ field }) => (
+              <DropdownList
+                type="single"
+                name="finishJob"
+                options={HoursOptions}
+                label={`${t(CalendarLngKeys.WhatTimeDidYouGoHome, {
+                  ns: LocalesKeys.calendar,
+                })}?`}
+                buttonlabel={t(CommonLngKeys.Finish, { ns: LocalesKeys.common })}
+                height="40px"
+                width="100%"
+                margin="0 0 var(--small-indent) 0"
+                onChange={(value: string | string[]) => {
+                  setQuickStartTime(null);
+                  field.onChange(value);
+                }}
+                errors={errors}
+                defaultValue={
+                  dayInfo?.time && !quickFinishTime
+                    ? GetLineSegment(dayInfo?.time, 6, dayInfo.time.length)
+                    : quickFinishTime
+                }
+                position="relative"
+              />
+            )}
+          />
+          <QuickTiming getQuickTime={setQuickFinishTime} margin="0 0 var(--small-indent) 0" />
+        </>
+      )}
+      {selectedStatus === Status.work && (
+        <Controller
+          name="additionalHours"
+          control={control}
+          render={({ field }) => (
+            <Checkbox
+              name="additionalHours"
+              errors={errors}
+              register={register}
+              onChange={(value: boolean) => field.onChange(value)}
+              margin="0 0 var(--small-indent) 0"
+              defaultValue={dayInfo?.additionalHours}
+            >
+              <p>{`${t(CalendarLngKeys.IsThisAnExtraShift, { ns: LocalesKeys.calendar })}?`}</p>
+            </Checkbox>
+          )}
         />
-      </form>
+      )}
       {isLoading && <Loader />}
-    </>
+      <Button
+        type="submit"
+        label={t(CalendarLngKeys.ChangeDay, { ns: LocalesKeys.calendar })}
+        width="100%"
+        height="40px"
+      />
+    </form>
   );
 };
 

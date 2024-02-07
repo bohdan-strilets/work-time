@@ -13,6 +13,7 @@ const DialogWindow: React.FC<DialogWindowProps> = ({
   return (
     <>
       {text && <Text>{text}</Text>}
+      {isLoader && <Loader />}
       <List>
         <Item>
           <Button type="button" onClick={handleNegativeClick} className="negative">
@@ -25,7 +26,6 @@ const DialogWindow: React.FC<DialogWindowProps> = ({
           </Button>
         </Item>
       </List>
-      {isLoader && <Loader />}
     </>
   );
 };

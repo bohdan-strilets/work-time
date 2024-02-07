@@ -35,5 +35,8 @@
   "Participant of the PPK program": "Учасник програми PPK",
   "PPK contribution rate you pay": "Внесок до ППК, який ви сплачуєте",
   "Minimum value and maximum": "Мінімальне значення 0,5%, максимальне 4%",
-  "Your account information has been successfully updated": "Інформацію вашого облікового запису успішно оновлено."
+  "Your account information has been successfully updated": "Інформацію вашого облікового запису успішно оновлено.",
+  "The email address has been successfully changed": "Електронну адресу успішно змінено.",
+  "The password has been successfully changed": "Пароль успішно змінено.",
+  "A password reset email has been successfully sent to your email address": "Лист для зміни пароля успішно надіслано на вашу електронну адресу."
 }

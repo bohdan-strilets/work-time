@@ -8,6 +8,7 @@ import PasswordInput from 'components/UI/PasswordInput';
 import GoogleAuthBtn from 'components/UI/GoogleAuthBtn';
 import LineWithText from 'components/UI/LineWithText';
 import LinkButton from 'components/UI/LinkButton';
+import Loader from 'components/UI/Loader';
 import useRegistrationForm from 'hooks/useRegistrationForm';
 import useModalWindow from 'hooks/useModalWindow';
 import { AuthLngKeys } from 'types/locales/AuthLngKeys';
@@ -15,7 +16,8 @@ import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 
 const Desktop: React.FC<{}> = () => {
-  const { register, handleSubmit, errors, onSubmit, Controller, control } = useRegistrationForm();
+  const { register, handleSubmit, errors, onSubmit, Controller, control, isLoading } =
+    useRegistrationForm();
   const { modalsName, openModal } = useModalWindow();
   const { t } = useTranslation();
 
@@ -108,6 +110,7 @@ const Desktop: React.FC<{}> = () => {
           </Checkbox>
         )}
       />
+      {isLoading && <Loader />}
       <Button
         type="submit"
         label={t(CommonLngKeys.Registration, { ns: LocalesKeys.common })}

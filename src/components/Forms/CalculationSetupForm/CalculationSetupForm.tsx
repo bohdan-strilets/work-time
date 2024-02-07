@@ -3,6 +3,7 @@ import DropdownList from 'components/UI/DropdownList';
 import Checkbox from 'components/UI/Checkbox';
 import Button from 'components/UI/Button';
 import TextInput from 'components/UI/TextInput';
+import Loader from 'components/UI/Loader';
 import ContractTypeOptions from 'utilities/ContractTypeOptions';
 import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
@@ -20,6 +21,7 @@ const CalculationSetupForm: React.FC<{}> = () => {
     register,
     Controller,
     ppkSelected,
+    isLoading,
   } = useCalculationSetupForm();
 
   return (
@@ -93,6 +95,7 @@ const CalculationSetupForm: React.FC<{}> = () => {
           margin="0 0 var(--small-indent) 0"
         />
       )}
+      {isLoading && <Loader />}
       <Button
         type="submit"
         label={t(CommonLngKeys.Save, { ns: LocalesKeys.common })}

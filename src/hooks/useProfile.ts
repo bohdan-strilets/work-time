@@ -1,5 +1,8 @@
+import { useState } from 'react';
+import axios, { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { getUser } from '../redux/user/userSelectors';
 import FormatDateTime from 'utilities/FormatDateTime';
@@ -14,8 +17,11 @@ import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
 import useSoundSprite from './useSoundSprite';
 import { SoundNamesEnum } from 'types/enums/SoundNamesEnum';
+import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 
 const useProfile = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const { t } = useTranslation();
   const user = useAppSelector(getUser);
   const { play } = useSoundSprite();
@@ -52,11 +58,25 @@ const useProfile = () => {
   const dispatch = useAppDispatch();
 
   const deleteProfile = async () => {
-    const response = await dispatch(operations.deleteProfile());
-    const data = response.payload as UserResponseType;
-    if (data && data.success) {
+    setIsLoading(true);
+    await dispatch(operations.deleteProfile());
+    try {
+      setIsLoading(false);
       navigate('/');
       play({ id: SoundNamesEnum.Delete });
+    } catch (error: any) {
+      setIsLoading(false);
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<UserResponseType>;
+        if (axiosError.response) {
+          const serverError = axiosError.response.data as UserResponseType;
+          CustomErrorHandler(serverError);
+        } else {
+          toast.error(t(ErrorLngKeys.GeneralAxiosError, { ns: LocalesKeys.error }));
+        }
+      } else {
+        toast.error(t(ErrorLngKeys.GeneralError, { ns: LocalesKeys.error }));
+      }
     }
   };
 
@@ -82,6 +102,7 @@ const useProfile = () => {
     userId,
     description,
     settings,
+    isLoading,
   };
 };
 

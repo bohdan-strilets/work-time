@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import axios, { AxiosError } from 'axios';
 import { useTranslation } from 'react-i18next';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -8,11 +10,13 @@ import { useAppDispatch } from './useAppDispatch';
 import useModalWindow from './useModalWindow';
 import operations from '../redux/user/userOperations';
 import { UserResponseType } from 'types/types/UserResponseType';
-import { UserType } from 'types/types/UserType';
 import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
+import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 
 const useEditProfileForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useAppDispatch();
   const { closeModal } = useModalWindow();
   const { t } = useTranslation();
@@ -44,13 +48,27 @@ const useEditProfileForm = () => {
       description: value.description,
     };
 
-    const response = await dispatch(operations.changeProfile(userData));
-    const data = response.payload as UserResponseType<UserType>;
-    if (data && data.success) {
+    setIsLoading(true);
+    await dispatch(operations.changeProfile(userData));
+    try {
+      setIsLoading(false);
       closeModal();
       toast.success(
         t(ProfileLngKeys.AccountInformationSuccessfullyUpdated, { ns: LocalesKeys.profile }),
       );
+    } catch (error: any) {
+      setIsLoading(false);
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<UserResponseType>;
+        if (axiosError.response) {
+          const serverError = axiosError.response.data as UserResponseType;
+          CustomErrorHandler(serverError);
+        } else {
+          toast.error(t(ErrorLngKeys.GeneralAxiosError, { ns: LocalesKeys.error }));
+        }
+      } else {
+        toast.error(t(ErrorLngKeys.GeneralError, { ns: LocalesKeys.error }));
+      }
     }
   };
 
@@ -62,6 +80,7 @@ const useEditProfileForm = () => {
     Controller,
     control,
     setValue,
+    isLoading,
   };
 };
 

@@ -5,6 +5,7 @@ import DropdownList from 'components/UI/DropdownList';
 import Button from 'components/UI/Button';
 import DateInput from 'components/UI/DateInput';
 import Textarea from 'components/UI/Textarea';
+import Loader from 'components/UI/Loader';
 import useEditProfileForm from 'hooks/useEditProfileForm';
 import { EditProfileFormProps } from 'types/props/EditProfileFormProps';
 import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
@@ -22,7 +23,7 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
   salaryPerHour,
   description,
 }) => {
-  const { register, errors, Controller, control, setValue, handleSubmit, onSubmit } =
+  const { register, errors, Controller, control, setValue, handleSubmit, onSubmit, isLoading } =
     useEditProfileForm();
   const { t } = useTranslation();
 
@@ -151,6 +152,7 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({
         margin="0 0 var(--medium-indent) 0"
         defaultValue={salaryPerHour}
       />
+      {isLoading && <Loader />}
       <Button
         type="submit"
         label={t(ProfileLngKeys.EditProfile, { ns: LocalesKeys.profile })}

@@ -12,10 +12,19 @@ import { EditTodoFormProps } from 'types/props/EditTodoFormProps';
 
 const EditTodoForm: React.FC<EditTodoFormProps> = ({ todoId }) => {
   const { t } = useTranslation();
-  const { handleSubmit, onSubmit, register, errors, control, Controller, todo, isLoading } =
-    useEditTodoForm({
-      todoId,
-    });
+  const {
+    handleSubmit,
+    onSubmit,
+    register,
+    errors,
+    control,
+    Controller,
+    todo,
+    isLoading,
+    isUpdateLoading,
+  } = useEditTodoForm({
+    todoId,
+  });
 
   return (
     <>
@@ -53,6 +62,7 @@ const EditTodoForm: React.FC<EditTodoFormProps> = ({ todoId }) => {
             />
           )}
         />
+        {isUpdateLoading && <Loader />}
         <Button
           type="submit"
           label={t(CommonLngKeys.Edit, { ns: LocalesKeys.common })}

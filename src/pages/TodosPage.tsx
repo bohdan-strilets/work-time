@@ -1,3 +1,4 @@
+import axios, { AxiosError } from 'axios';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -13,6 +14,9 @@ import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { useDeleteTodoMutation } from '../redux/todo/todoApi';
 import useSoundSprite from 'hooks/useSoundSprite';
 import { SoundNamesEnum } from 'types/enums/SoundNamesEnum';
+import { TodosResponseType } from 'types/types/TodosResponseType';
+import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 
 const TodosPage: React.FC<{}> = () => {
   const [todoId, setTodoId] = useState<null | string>(null);
@@ -24,12 +28,26 @@ const TodosPage: React.FC<{}> = () => {
 
   const getTodoId = (todoId: string) => setTodoId(todoId);
 
-  const handleDeleteTodo = () => {
+  const handleDeleteTodo = async () => {
     if (todoId !== null) {
-      deleteTodo(todoId);
-      closeModal();
-      toast.success(t(TodosLngKeys.TaskWasSuccessfullyDeleted, { ns: LocalesKeys.todos }));
-      play({ id: SoundNamesEnum.Delete });
+      await deleteTodo(todoId);
+      try {
+        closeModal();
+        toast.success(t(TodosLngKeys.TaskWasSuccessfullyDeleted, { ns: LocalesKeys.todos }));
+        play({ id: SoundNamesEnum.Delete });
+      } catch (error: any) {
+        if (axios.isAxiosError(error)) {
+          const axiosError = error as AxiosError<TodosResponseType>;
+          if (axiosError.response) {
+            const serverError = axiosError.response.data as TodosResponseType;
+            CustomErrorHandler(serverError);
+          } else {
+            toast.error(t(ErrorLngKeys.GeneralAxiosError, { ns: LocalesKeys.error }));
+          }
+        } else {
+          toast.error(t(ErrorLngKeys.GeneralError, { ns: LocalesKeys.error }));
+        }
+      }
     }
   };
 

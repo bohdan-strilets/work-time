@@ -36,4 +36,5 @@ export enum ValidationLngKeys {
   TaskMustBeAtLeast = 'Task must be at least',
   TaskMustNotExceed = 'Task must not exceed',
   PleaseSelectValidPriorityOption = 'Please select a valid priority option',
+  ReadPrivacyPolicyAndSiteRules = 'Read the privacy policy and site rules and if you agree, check the box',
 }

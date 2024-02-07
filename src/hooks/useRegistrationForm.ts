@@ -1,19 +1,27 @@
+import { useState } from 'react';
+import axios, { AxiosError } from 'axios';
+import { useTranslation } from 'react-i18next';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { RegistrationFormInputs } from 'types/inputs/RegistrationFormInputs';
 import RegistrationFormSchema from 'validations/RegistrationFormSchema';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import operations from '../redux/user/userOperations';
 import { UserResponseType } from 'types/types/UserResponseType';
-import { UserType } from 'types/types/UserType';
-import { TokensType } from 'types/types/TokensType';
 import useModalWindow from './useModalWindow';
+import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
+import { LocalesKeys } from 'types/enums/LocalesKeys';
+import { ValidationLngKeys } from 'types/locales/ValidationLngKeys';
 
 const useRegistrationForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { modalsName } = useModalWindow();
+  const { t } = useTranslation();
 
   const validation = {
     resolver: yupResolver<RegistrationFormInputs>(RegistrationFormSchema),
@@ -36,17 +44,33 @@ const useRegistrationForm = () => {
     };
 
     if (value.rules) {
-      const response = await dispatch(operations.registration(user));
-      const data = response.payload as UserResponseType<UserType, TokensType>;
-      if (data && data.success) navigate(`/calendar?modal=${modalsName.greetings}`);
+      setIsLoading(true);
+      await dispatch(operations.registration(user));
+      try {
+        setIsLoading(false);
+        navigate(`/calendar?modal=${modalsName.greetings}`);
+      } catch (error: any) {
+        setIsLoading(false);
+        if (axios.isAxiosError(error)) {
+          const axiosError = error as AxiosError<UserResponseType>;
+          if (axiosError.response) {
+            const serverError = axiosError.response.data as UserResponseType;
+            CustomErrorHandler(serverError);
+          } else {
+            toast.error(t(ErrorLngKeys.GeneralAxiosError, { ns: LocalesKeys.error }));
+          }
+        } else {
+          toast.error(t(ErrorLngKeys.GeneralError, { ns: LocalesKeys.error }));
+        }
+      }
     } else {
       setError('rules', {
-        message: 'Read the privacy policy and site rules and if you agree, check the box.',
+        message: t(ValidationLngKeys.ReadPrivacyPolicyAndSiteRules, { ns: LocalesKeys.validation }),
       });
     }
   };
 
-  return { register, handleSubmit, errors, onSubmit, Controller, control };
+  return { register, handleSubmit, errors, onSubmit, Controller, control, isLoading };
 };
 
 export default useRegistrationForm;

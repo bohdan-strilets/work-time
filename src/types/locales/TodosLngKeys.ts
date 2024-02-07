@@ -10,4 +10,5 @@ export enum TodosLngKeys {
   AreYouSureYouWantToDeleteSelectedTask = 'Are you sure you want to delete the selected task',
   TaskWasSuccessfullyModified = 'The task was successfully modified',
   EditTodo = 'Edit todo',
+  TaskStatusHasBeenSuccessfullyUpdated = 'The task status has been successfully updated',
 }

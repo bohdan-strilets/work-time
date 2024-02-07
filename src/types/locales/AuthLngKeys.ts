@@ -26,4 +26,5 @@ export enum AuthLngKeys {
   GreetingsParagraph4 = 'Greetings paragraph 4',
   GreetingsParagraph5 = 'Greetings paragraph 5',
   DidntReceiveActivationEmail = "Didn't receive an activation email",
+  ConfirmationEmailSentAgain = 'The confirmation email has been sent again',
 }
