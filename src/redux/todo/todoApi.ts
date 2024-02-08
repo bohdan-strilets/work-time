@@ -5,18 +5,17 @@ import { UpdateCompletedDto } from 'types/dto/UpdateCompletedDto';
 import { UpdateTodoDto } from 'types/dto/UpdateTodoDto';
 import { TodoType } from 'types/types/TodoType';
 import { TodosResponseType } from 'types/types/TodosResponseType';
-
-const tags = { Todos: 'todos' };
+import { tags } from '../tags';
 
 export const todosApi = createApi({
   reducerPath: 'todosApi',
-  tagTypes: [tags.Todos],
+  tagTypes: [tags.Todos, tags.Calendars],
   baseQuery: axiosBaseQuery('todos'),
   endpoints(build) {
     return {
       getAllTodo: build.query<TodosResponseType<TodoType[]>, void>({
         query: () => ({ url: 'all-todos', method: 'GET' }),
-        providesTags: [tags.Todos],
+        providesTags: [tags.Todos, tags.Calendars],
       }),
       getOneTodo: build.query<TodosResponseType<TodoType>, string>({
         query: todoId => ({ url: `one-todo/${todoId}`, method: 'GET' }),

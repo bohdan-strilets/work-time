@@ -4,12 +4,11 @@ import { DayInfoType } from 'types/types/DayType';
 import { CreateDayDto } from 'types/dto/CreateDayDto';
 import { UpdateDayDto } from 'types/dto/UpdateDayDto';
 import axiosBaseQuery from 'api/axiosBaseQuery';
-
-const tags = { Calendars: 'calendars' };
+import { tags } from '../tags';
 
 export const calendarApi = createApi({
   reducerPath: 'calendarApi',
-  tagTypes: [tags.Calendars],
+  tagTypes: [tags.Calendars, tags.Todos],
   baseQuery: axiosBaseQuery('calendars'),
   endpoints(build) {
     return {
@@ -42,7 +41,7 @@ export const calendarApi = createApi({
           url: `delete-day/${dayId}`,
           method: 'DELETE',
         }),
-        invalidatesTags: [tags.Calendars],
+        invalidatesTags: [tags.Calendars, tags.Todos],
       }),
     };
   },

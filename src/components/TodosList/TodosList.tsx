@@ -4,10 +4,14 @@ import Placeholder from 'components/Placeholder';
 import { useGetAllTodoQuery } from '../../redux/todo/todoApi';
 import { TodoListProps } from 'types/props/ExtendedTodoListProps';
 import { List } from './TodosList.styled';
+import { useEffect } from 'react';
 
 const TodosList: React.FC<TodoListProps> = ({ getTodoId }) => {
-  const { data, isLoading } = useGetAllTodoQuery();
+  const { data, isLoading, refetch } = useGetAllTodoQuery();
   const todos = data?.data;
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   return (
     <>
