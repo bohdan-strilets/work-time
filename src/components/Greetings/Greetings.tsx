@@ -13,9 +13,15 @@ const Greetings: React.FC<{}> = () => {
   return (
     <>
       <Text>{t(AuthLngKeys.GreetingsParagraph1, { ns: LocalesKeys.auth })}</Text>
+      <Text textColor="var(--green-color)">
+        {t(AuthLngKeys.GreetingsParagraph1_1, { ns: LocalesKeys.auth })}
+      </Text>
       <Text>{t(AuthLngKeys.GreetingsParagraph2, { ns: LocalesKeys.auth })}</Text>
       <Text>{t(AuthLngKeys.GreetingsParagraph3, { ns: LocalesKeys.auth })}</Text>
       <Text>{t(AuthLngKeys.GreetingsParagraph4, { ns: LocalesKeys.auth })}</Text>
+      <Text textColor="var(--accent-color)">
+        {t(AuthLngKeys.GreetingsParagraph4_1, { ns: LocalesKeys.auth })}
+      </Text>
       <Text>{t(AuthLngKeys.GreetingsParagraph5, { ns: LocalesKeys.auth })}</Text>
       <Text>
         {t(AuthLngKeys.DidntReceiveActivationEmail, { ns: LocalesKeys.auth })}?
