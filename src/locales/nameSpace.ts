@@ -14,6 +14,7 @@ const nameSpace = [
   LocalesKeys.error,
   LocalesKeys.validation,
   LocalesKeys.todos,
+  LocalesKeys.calculator,
 ];
 
 export default nameSpace;

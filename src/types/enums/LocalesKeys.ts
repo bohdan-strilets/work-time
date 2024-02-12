@@ -12,4 +12,5 @@ export enum LocalesKeys {
   error = 'error',
   validation = 'validation',
   todos = 'todos',
+  calculator = 'calculator',
 }

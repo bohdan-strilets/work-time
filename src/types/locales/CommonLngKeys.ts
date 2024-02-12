@@ -96,4 +96,6 @@ export enum CommonLngKeys {
   Priority = 'Priority',
   DateRegistration = 'Date of registration',
   StartWorkDate = 'Start work date',
+  Calculator = 'Calculator',
+  Net = 'Net',
 }

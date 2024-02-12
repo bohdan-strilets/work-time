@@ -6,8 +6,8 @@ export type TextInputProps = {
   placeholder?: string;
   required?: boolean;
   disabled?: boolean;
-  register: any;
-  errors: any;
+  register?: any;
+  errors?: any;
   width?: number;
   height?: number;
   margin?: string;

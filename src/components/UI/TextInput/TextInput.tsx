@@ -34,7 +34,7 @@ const TextInput: React.FC<TextInputProps> = ({
         <Input
           type={type}
           name={name}
-          {...register(name, { required: required, disabled: disabled })}
+          {...(register && name ? register(name, { required: required, disabled: disabled }) : {})}
           placeholder={placeholder}
           height={height}
           icon={icon}
@@ -46,7 +46,7 @@ const TextInput: React.FC<TextInputProps> = ({
         />
         {children && children}
       </InputWrapper>
-      {errors[name] && <Error>{errors[name].message}</Error>}
+      {errors && errors[name] && <Error>{errors[name].message}</Error>}
     </Wrapper>
   );
 };

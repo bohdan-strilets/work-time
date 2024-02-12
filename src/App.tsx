@@ -20,6 +20,7 @@ const ResetPasswordPage = lazy(() => import('pages/ResetPasswordPage'));
 const StatisticsPage = lazy(() => import('pages/StatisticsPage'));
 const ListOfUsersPages = lazy(() => import('pages/ListOfUsersPages'));
 const TodosPage = lazy(() => import('pages/TodosPage'));
+const CalculatorPage = lazy(() => import('pages/CalculatorPage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
 const App: React.FC<{}> = () => {
@@ -64,6 +65,14 @@ const App: React.FC<{}> = () => {
                 element={
                   <PrivateRoute>
                     <CalendarPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/calculator"
+                element={
+                  <PrivateRoute>
+                    <CalculatorPage />
                   </PrivateRoute>
                 }
               />

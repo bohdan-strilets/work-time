@@ -38,6 +38,9 @@ import uaValidation from './ua/validation.json';
 import enTodos from './en/todos.json';
 import plTodos from './pl/todos.json';
 import uaTodos from './ua/todos.json';
+import enCalculator from './en/calculator.json';
+import plCalculator from './pl/calculator.json';
+import uaCalculator from './ua/calculator.json';
 
 const resources = {
   en: {
@@ -54,6 +57,7 @@ const resources = {
     [LocalesKeys.error]: enErrors,
     [LocalesKeys.validation]: enValidation,
     [LocalesKeys.todos]: enTodos,
+    [LocalesKeys.calculator]: enCalculator,
   },
   pl: {
     [LocalesKeys.statistics]: plStatistics,
@@ -69,6 +73,7 @@ const resources = {
     [LocalesKeys.error]: plErrors,
     [LocalesKeys.validation]: plValidation,
     [LocalesKeys.todos]: plTodos,
+    [LocalesKeys.calculator]: plCalculator,
   },
   ua: {
     [LocalesKeys.statistics]: uaStatistics,
@@ -84,6 +89,7 @@ const resources = {
     [LocalesKeys.error]: uaErrors,
     [LocalesKeys.validation]: uaValidation,
     [LocalesKeys.todos]: uaTodos,
+    [LocalesKeys.calculator]: uaCalculator,
   },
 };
 
