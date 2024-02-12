@@ -4,7 +4,7 @@ import axios, { AxiosError } from 'axios';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import { Month } from 'types/enums/CalendarEnum';
-import { month as monthNames, weekdays } from 'utilities/DefaultCalendarData';
+import { month as monthNames } from 'utilities/DefaultCalendarData';
 import useModalWindow from 'hooks/useModalWindow';
 import { useGetAllDaysInfoQuery } from '../redux/calendar/calendarApi';
 import { DayInfoType, DayDataType } from 'types/types/DayType';
@@ -146,9 +146,7 @@ export const useCalendar = () => {
     const monthIndex = date?.getMonth();
     const month = monthNames[monthIndex ? monthIndex : 0];
     const year = date?.getFullYear();
-    const dayIndex = date?.getDay();
-    const day = weekdays[dayIndex ? dayIndex : 0];
-    return `${dayNumber} ${month} ${year} - ${day}`;
+    return `${dayNumber} ${month} ${year}`;
   };
 
   const handleCellClick = (date: Date) => {
