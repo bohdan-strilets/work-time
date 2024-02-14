@@ -10,5 +10,8 @@
   "General error": "Виникла неочікувана помилка. Будь ласка, спробуйте знову пізніше.",
   "Todo with current ID not found": "Завдання з поточним ідентифікатором не знайдено.",
   "Check correct entered data": "Перевірте правильність введених даних.",
-  "There was no ID specified for the day": "Для цього дня не вказано ID."
+  "There was no ID specified for the day": "Для цього дня не вказано ID.",
+  "Error obtaining location": "Помилка отримання місцезнаходження.",
+  "Your browser does not support geolocation": "Ваш браузер не підтримує геолокацію.",
+  "Error requesting weather data": "Помилка під час запиту даних про погоду."
 }

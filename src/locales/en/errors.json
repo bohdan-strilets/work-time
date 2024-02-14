@@ -10,5 +10,8 @@
   "General error": "An unexpected error occurred. Please try again later.",
   "Todo with current ID not found": "Todo with current ID not found.",
   "Check correct entered data": "Check correct entered data.",
-  "There was no ID specified for the day": "There was no ID specified for the day."
+  "There was no ID specified for the day": "There was no ID specified for the day.",
+  "Error obtaining location": "Error obtaining location.",
+  "Your browser does not support geolocation": "Your browser does not support geolocation.",
+  "Error requesting weather data": "Error requesting weather data."
 }

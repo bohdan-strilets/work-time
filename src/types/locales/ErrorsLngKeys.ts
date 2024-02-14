@@ -11,4 +11,7 @@ export enum ErrorLngKeys {
   TodoWithCurrentIdNotFound = 'Todo with current ID not found',
   CheckCorrectEnteredData = 'Check correct entered data',
   ThereWasNoIdSpecifiedForDay = 'There was no ID specified for the day',
+  ErrorObtainingLocation = 'Error obtaining location',
+  YourBrowserDoesNotSupportGeolocation = 'Your browser does not support geolocation',
+  ErrorRequestingWeatherData = 'Error requesting weather data',
 }

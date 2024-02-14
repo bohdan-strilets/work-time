@@ -8,6 +8,8 @@ import { PiBeerSteinFill } from 'react-icons/pi';
 import { BsHospitalFill } from 'react-icons/bs';
 import IncomeList from 'components/Calendar/IncomeList';
 import TodoList from 'components/Calendar/TodoList';
+import Weather from 'components/Calendar/Weather';
+import Loader from 'components/UI/Loader';
 import ExpensesList from 'components/Calendar/ExpensesList';
 import { DayInfoProps } from 'types/props/DayInfoProps';
 import { Status } from 'types/enums/StatusEnum';
@@ -16,6 +18,7 @@ import useCalculateTax from 'hooks/useCalculateTax';
 import { CalendarLngKeys } from 'types/locales/CalendarLngKeys';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
+import useWeather from 'hooks/useWeather';
 import {
   Container,
   Text,
@@ -61,9 +64,22 @@ const Mobile: React.FC<DayInfoProps> = ({
     sicknessInsuranceContribution,
   } = useCalculateTax({ earningForDay });
   const { t } = useTranslation();
+  const { forecast } = useWeather(date ?? new Date());
+  const forecastForDay = forecast?.forecast.forecastday[0].day;
 
   return (
     <div>
+      {forecastForDay ? (
+        <Weather
+          averageTemperature={forecastForDay.avgtemp_c}
+          weatherCondition={forecastForDay.condition.text}
+          weatherIcon={forecastForDay.condition.icon}
+          maximumTemperature={forecastForDay.maxtemp_c}
+          minimumTemperature={forecastForDay.mintemp_c}
+        />
+      ) : (
+        <Loader />
+      )}
       <Container margin="0 0 var(--medium-indent) 0" justifyContent="space-between">
         <Container>
           {status === Status.work && <ImOffice size={28} />}

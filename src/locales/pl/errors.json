@@ -10,5 +10,8 @@
   "General error": "Wystąpił nieoczekiwany błąd. Proszę spróbuj ponownie później.",
   "Todo with current ID not found": "Nie znaleziono zadania o bieżącym ID.",
   "Check correct entered data": "Sprawdź poprawność wprowadzonych danych.",
-  "There was no ID specified for the day": "Nie określono ID dla danego dnia."
+  "There was no ID specified for the day": "Nie określono ID dla danego dnia.",
+  "Error obtaining location": "Błąd podczas pobierania lokalizacji.",
+  "Your browser does not support geolocation": "Twoja przeglądarka nie obsługuje geolokalizacji.",
+  "Error requesting weather data": "Błąd podczas żądania danych pogodowych."
 }
