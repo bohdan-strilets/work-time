@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsFillCalendar3WeekFill, BsCheckAll } from 'react-icons/bs';
 import { BiSolidTimeFive } from 'react-icons/bi';
@@ -19,6 +20,7 @@ import { CalendarLngKeys } from 'types/locales/CalendarLngKeys';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import useWeather from 'hooks/useWeather';
+import { useGetWeatherMutation } from '../../../../redux/weather/weatherApi';
 import {
   Container,
   Text,
@@ -64,21 +66,29 @@ const Desktop: React.FC<DayInfoProps> = ({
     sicknessInsuranceContribution,
   } = useCalculateTax({ earningForDay });
   const { t } = useTranslation();
-  const { forecast } = useWeather(date ?? new Date());
-  const forecastForDay = forecast?.forecast.forecastday[0].day;
+  const { weatherDto } = useWeather(date ?? new Date());
+  const [getWeather, { isLoading, data }] = useGetWeatherMutation();
+  const forecast = data?.data;
+
+  useEffect(() => {
+    if (weatherDto.latitude !== null && weatherDto.longitude !== null) {
+      getWeather(weatherDto);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [weatherDto.latitude, weatherDto.longitude]);
 
   return (
     <div>
-      {forecastForDay ? (
+      {isLoading && <Loader />}
+      {forecast && (
         <Weather
-          averageTemperature={forecastForDay.avgtemp_c}
-          weatherCondition={forecastForDay.condition.text}
-          weatherIcon={forecastForDay.condition.icon}
-          maximumTemperature={forecastForDay.maxtemp_c}
-          minimumTemperature={forecastForDay.mintemp_c}
+          averageTemperature={forecast.averageTemperature}
+          weatherCondition={forecast.weatherCondition}
+          weatherIcon={forecast.weatherIcon}
+          maximumTemperature={forecast.maximumTemperature}
+          minimumTemperature={forecast.minimumTemperature}
+          location={forecast.location}
         />
-      ) : (
-        <Loader />
       )}
       <Container margin="0 0 var(--small-indent) 0" justifyContent="space-between">
         <Container>

@@ -1,10 +1,14 @@
-export type WeatherProps = {
-  averageTemperature: number;
-  weatherCondition: string;
-  weatherIcon: string;
-  maximumTemperature: number;
-  minimumTemperature: number;
-};
+import { WeatherType } from 'types/types/WeatherType';
+
+export type WeatherProps = Pick<
+  WeatherType,
+  | 'averageTemperature'
+  | 'weatherCondition'
+  | 'weatherIcon'
+  | 'maximumTemperature'
+  | 'minimumTemperature'
+  | 'location'
+>;
 
 export type TemperatureValueProps = {
   margin?: string;

@@ -14,6 +14,19 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const LocationWrapper = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media screen and (min-width: ${ScreenWidth.tablet}) {
+    justify-content: center;
+  }
+`;
+
+export const LocationText = styled.p`
+  margin-left: 5px;
+`;
+
 export const TemperatureWrapper = styled.div`
   display: flex;
   align-items: center;

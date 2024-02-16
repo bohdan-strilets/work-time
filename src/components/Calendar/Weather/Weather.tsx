@@ -1,7 +1,10 @@
 import { HiArrowSmDown, HiArrowSmUp } from 'react-icons/hi';
+import { FaLocationDot } from 'react-icons/fa6';
 import { WeatherProps } from 'types/props/WeatherProps';
 import {
   Wrapper,
+  LocationWrapper,
+  LocationText,
   TemperatureWrapper,
   ConditionWrapper,
   TemperatureValue,
@@ -14,9 +17,16 @@ const Weather: React.FC<WeatherProps> = ({
   weatherIcon,
   maximumTemperature,
   minimumTemperature,
+  location,
 }) => {
   return (
     <Wrapper>
+      <LocationWrapper>
+        <FaLocationDot color="var(--green-color)" />
+        <LocationText>
+          {location.country}, {location.city}
+        </LocationText>
+      </LocationWrapper>
       <TemperatureWrapper>
         <HiArrowSmDown color="var(--accent-color)" />
         <TemperatureValue margin="0 20px 0 0" color="var(--accent-color)" fontSize="14px">

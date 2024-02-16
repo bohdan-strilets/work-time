@@ -4,6 +4,7 @@ import { persisteUserReducer } from './user/userSlice';
 import { calendarApi } from './calendar/calendarApi';
 import { statisticsApi } from './statistics/statisticsApi';
 import { todosApi } from './todo/todoApi';
+import { weatherApi } from './weather/weatherApi';
 import { persisteSettingsReducer } from './settings/settingsSlice';
 
 export const store = configureStore({
@@ -12,6 +13,7 @@ export const store = configureStore({
     [calendarApi.reducerPath]: calendarApi.reducer,
     [statisticsApi.reducerPath]: statisticsApi.reducer,
     [todosApi.reducerPath]: todosApi.reducer,
+    [weatherApi.reducerPath]: weatherApi.reducer,
     settings: persisteSettingsReducer,
   },
   middleware: getDefaultMiddleware =>
@@ -22,7 +24,8 @@ export const store = configureStore({
     })
       .concat(calendarApi.middleware)
       .concat(statisticsApi.middleware)
-      .concat(todosApi.middleware),
+      .concat(todosApi.middleware)
+      .concat(weatherApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
