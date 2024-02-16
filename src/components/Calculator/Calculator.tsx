@@ -4,6 +4,9 @@ import { CalculatorLngKeys } from 'types/locales/CalculatorLngKeys';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import useCalculateTax from 'hooks/useCalculateTax';
+import { useAppSelector } from 'hooks/useAppSelector';
+import { getSalaryPerHour } from '../../redux/user/userSelectors';
+import normalizingForNumber from 'utilities/normalizingForNumber';
 import {
   Text,
   Wrapper,
@@ -21,7 +24,8 @@ import {
 } from './Calculator.styled';
 
 const Calculator: React.FC<{}> = () => {
-  const [bruttoPerHours, setBruttoPerHours] = useState(0);
+  const salaryPerHour = useAppSelector(getSalaryPerHour);
+  const [bruttoPerHours, setBruttoPerHours] = useState(salaryPerHour ?? 0);
   const [hoursInWeek, setHoursInWeek] = useState(40);
   const { calculateTotal } = useCalculateTax({ earningForDay: bruttoPerHours });
   const { t } = useTranslation();
@@ -65,7 +69,7 @@ const Calculator: React.FC<{}> = () => {
         </InputWrapper>
         <InputWrapper>
           <p>{t(CommonLngKeys.Net, { ns: LocalesKeys.common })}:</p>
-          <ResultWindow>{calculateTotal(bruttoPerHours)}</ResultWindow>
+          <ResultWindow>{normalizingForNumber(calculateTotal(bruttoPerHours))}</ResultWindow>
           <Prefix position="absolute" bottom="0" right="10px" fontSize="24px">
             PLN
           </Prefix>
@@ -89,42 +93,52 @@ const Calculator: React.FC<{}> = () => {
         <Item>
           <p>{t(CalculatorLngKeys.SalaryPerDay, { ns: LocalesKeys.calculator })}:</p>
           <ValueWrapper>
-            <Value>{calculateTotal(bruttoPerHours)}</Value>
+            <Value>{normalizingForNumber(calculateTotal(bruttoPerHours))}</Value>
             <Prefix>PLN</Prefix>
           </ValueWrapper>
         </Item>
         <Item>
           <p>{t(CalculatorLngKeys.SalaryPerWeek, { ns: LocalesKeys.calculator })}:</p>
           <ValueWrapper>
-            <Value>{calculateTotal(bruttoPerHours * quantityHours.week)}</Value>
+            <Value>
+              {normalizingForNumber(calculateTotal(bruttoPerHours * quantityHours.week))}
+            </Value>
             <Prefix>PLN</Prefix>
           </ValueWrapper>
         </Item>
         <Item>
           <p>{t(CalculatorLngKeys.MonthlySalary, { ns: LocalesKeys.calculator })}:</p>
           <ValueWrapper>
-            <Value>{calculateTotal(bruttoPerHours * quantityHours.month)}</Value>
+            <Value>
+              {normalizingForNumber(calculateTotal(bruttoPerHours * quantityHours.month))}
+            </Value>
             <Prefix>PLN</Prefix>
           </ValueWrapper>
         </Item>
         <Item>
           <p>{t(CalculatorLngKeys.SalaryForQuarter, { ns: LocalesKeys.calculator })}:</p>
           <ValueWrapper>
-            <Value>{calculateTotal(bruttoPerHours * quantityHours.quarter)}</Value>
+            <Value>
+              {normalizingForNumber(calculateTotal(bruttoPerHours * quantityHours.quarter))}
+            </Value>
             <Prefix>PLN</Prefix>
           </ValueWrapper>
         </Item>
         <Item>
           <p>{t(CalculatorLngKeys.SaileForHalfYear, { ns: LocalesKeys.calculator })}:</p>
           <ValueWrapper>
-            <Value>{calculateTotal(bruttoPerHours * quantityHours.halfYear)}</Value>
+            <Value>
+              {normalizingForNumber(calculateTotal(bruttoPerHours * quantityHours.halfYear))}
+            </Value>
             <Prefix>PLN</Prefix>
           </ValueWrapper>
         </Item>
         <Item>
           <p>{t(CalculatorLngKeys.SalaryForYear, { ns: LocalesKeys.calculator })}:</p>
           <ValueWrapper>
-            <Value>{calculateTotal(bruttoPerHours * quantityHours.year)}</Value>
+            <Value>
+              {normalizingForNumber(calculateTotal(bruttoPerHours * quantityHours.year))}
+            </Value>
             <Prefix>PLN</Prefix>
           </ValueWrapper>
         </Item>

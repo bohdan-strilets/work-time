@@ -13,6 +13,7 @@ import { ItemProps } from 'types/props/ItemProps';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { StatisticsLngKeys } from 'types/locales/StatisticsLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
+import normalizingForNumber from 'utilities/normalizingForNumber';
 import {
   Wrapper,
   FirstFloor,
@@ -112,7 +113,7 @@ const Item: React.FC<ItemProps> = ({
                 {t(StatisticsLngKeys.NumberOfWorkingHours, { ns: LocalesKeys.statistics })}:
               </Property>
               <Value>
-                <Hours>{numberWorkingHours}</Hours>
+                <Hours>{normalizingForNumber(numberWorkingHours)}</Hours>
               </Value>
             </KeyValue>
           </PropertyWrapper>
