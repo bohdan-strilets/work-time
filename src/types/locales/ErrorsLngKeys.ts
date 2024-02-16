@@ -13,5 +13,4 @@ export enum ErrorLngKeys {
   ThereWasNoIdSpecifiedForDay = 'There was no ID specified for the day',
   ErrorObtainingLocation = 'Error obtaining location',
   YourBrowserDoesNotSupportGeolocation = 'Your browser does not support geolocation',
-  ErrorRequestingWeatherData = 'Error requesting weather data',
 }

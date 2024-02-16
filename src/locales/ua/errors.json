@@ -12,6 +12,5 @@
   "Check correct entered data": "Перевірте правильність введених даних.",
   "There was no ID specified for the day": "Для цього дня не вказано ID.",
   "Error obtaining location": "Помилка отримання місцезнаходження.",
-  "Your browser does not support geolocation": "Ваш браузер не підтримує геолокацію.",
-  "Error requesting weather data": "Помилка під час запиту даних про погоду."
+  "Your browser does not support geolocation": "Ваш браузер не підтримує геолокацію."
 }

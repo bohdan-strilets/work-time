@@ -12,6 +12,5 @@
   "Check correct entered data": "Sprawdź poprawność wprowadzonych danych.",
   "There was no ID specified for the day": "Nie określono ID dla danego dnia.",
   "Error obtaining location": "Błąd podczas pobierania lokalizacji.",
-  "Your browser does not support geolocation": "Twoja przeglądarka nie obsługuje geolokalizacji.",
-  "Error requesting weather data": "Błąd podczas żądania danych pogodowych."
+  "Your browser does not support geolocation": "Twoja przeglądarka nie obsługuje geolokalizacji."
 }
