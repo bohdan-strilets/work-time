@@ -101,7 +101,8 @@ export const userSlice = createSlice({
         if (action.payload && action.payload.data) {
           state.user = action.payload.data;
         }
-      });
+      })
+      .addCase(operations.sendContactEmail.fulfilled, () => {});
   },
 });
 

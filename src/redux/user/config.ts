@@ -17,6 +17,7 @@ export const OPERATION_NAME = {
   CurrentUser: 'current-user',
   GetAllUsers: 'get-all-users',
   ChangeSettings: 'change-settings',
+  SendContactEmail: 'send-contact-email',
 };
 
 export const ENDPOINTS_PATH = {
@@ -36,4 +37,5 @@ export const ENDPOINTS_PATH = {
   CurrentUser: 'api/v1/users/current-user',
   GetAllUsers: 'api/v1/users/get-all-users',
   ChangeSettings: 'api/v1/users/change-settings',
+  SendContactEmail: 'api/v1/users/send-contact-email',
 };

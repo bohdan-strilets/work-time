@@ -4,12 +4,13 @@ import { MdMail } from 'react-icons/md';
 import TextInput from 'components/UI/TextInput';
 import Textarea from 'components/UI/Textarea';
 import Button from 'components/UI/Button';
+import Loader from 'components/UI/Loader';
 import useContactForm from 'hooks/useContactForm';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 
 const ContactForm: React.FC<{}> = () => {
-  const { handleSubmit, onSubmit, register, errors } = useContactForm();
+  const { handleSubmit, onSubmit, register, errors, isLoading } = useContactForm();
   const { t } = useTranslation();
 
   return (
@@ -45,6 +46,7 @@ const ContactForm: React.FC<{}> = () => {
         height={180}
         margin="0 0 var(--medium-indent) 0"
       />
+      {isLoading && <Loader />}
       <Button
         type="submit"
         label={t(CommonLngKeys.Send, { ns: LocalesKeys.common })}

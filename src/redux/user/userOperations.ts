@@ -17,6 +17,7 @@ import { translateLabel } from 'locales/config';
 import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { ChangeSettingsDto } from 'types/dto/ChangeSettingsDto';
+import { ContactEmailDto } from 'types/dto/ContactEmailDto';
 
 const registration = createAsyncThunk<
   UserResponseType<UserType, TokensType> | undefined,
@@ -430,6 +431,32 @@ const changeSettings = createAsyncThunk<UserResponseType<UserType> | undefined, 
   },
 );
 
+const sendContactEmail = createAsyncThunk<UserResponseType | undefined, ContactEmailDto>(
+  `${ENTITY_NAME}/${OPERATION_NAME.SendContactEmail}`,
+  async contactEmailDto => {
+    try {
+      const { data } = await api.post(ENDPOINTS_PATH.SendContactEmail, contactEmailDto);
+      if (data) {
+        const response = data as UserResponseType;
+        return response;
+      }
+      return undefined;
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<UserResponseType>;
+        if (axiosError.response) {
+          const serverError = axiosError.response.data as UserResponseType;
+          CustomErrorHandler(serverError);
+        } else {
+          toast.error(translateLabel(ErrorLngKeys.GeneralAxiosError, LocalesKeys.error));
+        }
+      } else {
+        toast.error(translateLabel(ErrorLngKeys.GeneralError, LocalesKeys.error));
+      }
+    }
+  },
+);
+
 const operations = {
   registration,
   googleAuth,
@@ -447,6 +474,7 @@ const operations = {
   currentUser,
   getAllUsers,
   changeSettings,
+  sendContactEmail,
 };
 
 export default operations;

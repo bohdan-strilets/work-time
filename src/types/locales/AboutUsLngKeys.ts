@@ -11,4 +11,5 @@ export enum AboutUsLngKeys {
   Paragraph7 = 'Paragraph 7',
   Paragraph8 = 'Paragraph 8',
   ConnectWithUs = 'Connect with us',
+  MessageWasSentSuccessfully = 'The message was sent successfully, expect a response within one day',
 }
