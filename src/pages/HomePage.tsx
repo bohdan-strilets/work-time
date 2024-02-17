@@ -1,7 +1,7 @@
-import styled from "@emotion/styled";
-import Logo from "components/UI/Logo";
-import SocialNetworks from "components/SocialNetworks";
-import Line from "components/UI/Line";
+import styled from '@emotion/styled';
+import Logo from 'components/UI/Logo';
+import SocialNetworks from 'components/SocialNetworks';
+import Line from 'components/UI/Line';
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 const HomePage: React.FC<{}> = () => {
   return (
     <Wrapper>
-      <Logo />
+      <Logo showIcon={true} />
       <SocialNetworks />
       <Line />
     </Wrapper>

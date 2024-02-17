@@ -68,7 +68,6 @@ export const NumberField = styled.input`
 
   color: var(--accent-color);
   outline: none;
-  border-radius: 5px;
   border: 1px solid var(--gray-color);
 
   :hover,
@@ -97,7 +96,6 @@ export const ResultWindow = styled.div`
 
   color: var(--green-color);
   background-color: var(--gray-color);
-  border-radius: 5px;
   border: 1px solid var(--gray-color);
 `;
 

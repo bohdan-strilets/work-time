@@ -12,7 +12,7 @@ const AboutUs: React.FC<{}> = () => {
     <div>
       <TopSide>
         <LogoWrapper>
-          <Logo />
+          <Logo showIcon={false} />
         </LogoWrapper>
       </TopSide>
       <Data>
