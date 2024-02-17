@@ -39,4 +39,5 @@ export enum ProfileLngKeys {
   EmailAddressHasBeenSuccessfullyChanged = 'The email address has been successfully changed',
   PasswordHasBeenSuccessfullyChanged = 'The password has been successfully changed',
   PasswordResetEmailSuccessfullySent = 'A password reset email has been successfully sent to your email address',
+  AvatarHasBeenSuccessfullyChanged = 'The avatar has been successfully changed',
 }

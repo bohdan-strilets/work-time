@@ -38,5 +38,6 @@
   "Your account information has been successfully updated": "Інформацію вашого облікового запису успішно оновлено.",
   "The email address has been successfully changed": "Електронну адресу успішно змінено.",
   "The password has been successfully changed": "Пароль успішно змінено.",
-  "A password reset email has been successfully sent to your email address": "Лист для зміни пароля успішно надіслано на вашу електронну адресу."
+  "A password reset email has been successfully sent to your email address": "Лист для зміни пароля успішно надіслано на вашу електронну адресу.",
+  "The avatar has been successfully changed": "Аватар успішно змінено."
 }

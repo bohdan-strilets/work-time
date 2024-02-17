@@ -18,6 +18,7 @@ import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { ChangeSettingsDto } from 'types/dto/ChangeSettingsDto';
 import { ContactEmailDto } from 'types/dto/ContactEmailDto';
+import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
 
 const registration = createAsyncThunk<
   UserResponseType<UserType, TokensType> | undefined,
@@ -181,7 +182,9 @@ const uploadAvatar = createAsyncThunk<UserResponseType<UserType> | undefined, Fo
       const { data } = await api.post(ENDPOINTS_PATH.UploadAvatar, avatar);
       if (data) {
         const response = data as UserResponseType;
-        toast.success('The avatar has been successfully changed.');
+        toast.success(
+          translateLabel(ProfileLngKeys.AvatarHasBeenSuccessfullyChanged, LocalesKeys.profile),
+        );
         return response;
       }
     } catch (error: any) {

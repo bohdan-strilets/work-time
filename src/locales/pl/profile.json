@@ -38,5 +38,6 @@
   "Your account information has been successfully updated": "Informacje o Twoim koncie zostały pomyślnie zaktualizowane.",
   "The email address has been successfully changed": "Adres e-mail został pomyślnie zmieniony.",
   "The password has been successfully changed": "Hasło zostało pomyślnie zmienione.",
-  "A password reset email has been successfully sent to your email address": "Wiadomość e-mail dotycząca resetowania hasła została pomyślnie wysłana na Twój adres e-mail."
+  "A password reset email has been successfully sent to your email address": "Wiadomość e-mail dotycząca resetowania hasła została pomyślnie wysłana na Twój adres e-mail.",
+  "The avatar has been successfully changed": "Awatar został pomyślnie zmieniony."
 }
