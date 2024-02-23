@@ -83,7 +83,7 @@ export const Button = styled.button`
   background-color: var(--gray-color);
   border: none;
   outline: none;
-  color: var(--black-color);
+  color: var(--accent-color);
   box-shadow: var(--main-shadow);
 
   cursor: pointer;
@@ -92,7 +92,7 @@ export const Button = styled.button`
   :hover,
   :focus {
     background-color: var(--black-color);
-    color: var(--gray-color);
+    color: var(--white-color);
   }
 
   @media screen and (min-width: ${ScreenWidth.tablet}) {
