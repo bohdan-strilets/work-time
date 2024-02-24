@@ -9,33 +9,33 @@ const UserList: React.FC<{}> = () => {
   const { calculateStatisticsByMonth } = useChart({});
 
   return (
-    <ul>
-      {users ? (
-        users.map(i => {
-          const numberWorkingHours = calculateStatisticsByMonth(
-            i.statistics.statisticsByMonths.numberWorkingHours,
-          );
-          return (
-            <Item
-              key={i._id}
-              avatarUrl={i.avatarUrl}
-              name={`${i.firstName} ${i.lastName}`}
-              userId={i._id}
-              gender={i.gender}
-              dateBirth={i.dateBirth}
-              registrationDate={i.createdAt}
-              startWorkDate={i.companyInfo.startWork}
-              companyName={i.companyInfo.companyName}
-              profession={i.companyInfo.profession}
-              numberWorkingHours={numberWorkingHours}
-              description={i.description}
-            />
-          );
-        })
-      ) : (
-        <Placeholder />
-      )}
-    </ul>
+    <>
+      <ul>
+        {users &&
+          users.map(i => {
+            const numberWorkingHours = calculateStatisticsByMonth(
+              i.statistics.statisticsByMonths.numberWorkingHours,
+            );
+            return (
+              <Item
+                key={i._id}
+                avatarUrl={i.avatarUrl}
+                name={`${i.firstName} ${i.lastName}`}
+                userId={i._id}
+                gender={i.gender}
+                dateBirth={i.dateBirth}
+                registrationDate={i.createdAt}
+                startWorkDate={i.companyInfo.startWork}
+                companyName={i.companyInfo.companyName}
+                profession={i.companyInfo.profession}
+                numberWorkingHours={numberWorkingHours}
+                description={i.description}
+              />
+            );
+          })}
+      </ul>
+      {!users && <Placeholder />}
+    </>
   );
 };
 
