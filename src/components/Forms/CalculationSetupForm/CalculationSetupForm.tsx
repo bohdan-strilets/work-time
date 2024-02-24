@@ -4,7 +4,7 @@ import Checkbox from 'components/UI/Checkbox';
 import Button from 'components/UI/Button';
 import TextInput from 'components/UI/TextInput';
 import Loader from 'components/UI/Loader';
-import ContractTypeOptions from 'utilities/ContractTypeOptions';
+import ContractTypeOptions from 'utilities/dropdownListOptions/ContractTypeOptions';
 import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';

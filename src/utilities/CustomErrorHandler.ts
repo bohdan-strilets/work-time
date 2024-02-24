@@ -4,42 +4,31 @@ import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { ErrorsEnum } from 'types/enums/ErrorsEnum';
 
+const errorMessages: { [key: string]: { [key: string]: string } } = {
+  '409': {
+    [ErrorsEnum.ThisEmailInUse]: ErrorLngKeys.ThisEmailIsAlreadyRegistered,
+  },
+  '400': {
+    [ErrorsEnum.EmailIsWrong]: ErrorLngKeys.IncorrectEmailAddress,
+    [ErrorsEnum.PasswordIsWrong]: ErrorLngKeys.IncorrectPassword,
+    [ErrorsEnum.EmailIsNotActivated]: ErrorLngKeys.YourEmailIsNotActivated,
+    [ErrorsEnum.CheckCorrectEnteredData]: ErrorLngKeys.CheckCorrectEnteredData,
+    [ErrorsEnum.DayByIDNotFound]: ErrorLngKeys.InformationForDayByIDNotFound,
+    [ErrorsEnum.ThereWasNoIdSpecifiedForDay]: ErrorLngKeys.InformationForDayByIDNotFound,
+  },
+  '401': {
+    [ErrorsEnum.UserIsNotUnauthorized]: ErrorLngKeys.YouAreNotAuthorized,
+  },
+  '404': {
+    [ErrorsEnum.UserNotFound]: ErrorLngKeys.UserNotFound,
+    [ErrorsEnum.TodoWithCurrentIdNotFound]: ErrorLngKeys.InformationForDayByIDNotFound,
+  },
+};
+
 const CustomErrorHandler = (serverError: any) => {
-  switch (true) {
-    case serverError.code === 409 && serverError.message === ErrorsEnum.ThisEmailInUse:
-      toast.error(translateLabel(ErrorLngKeys.ThisEmailIsAlreadyRegistered, LocalesKeys.error));
-      break;
-    case serverError.code === 401 && serverError.message === ErrorsEnum.EmailIsWrong:
-      toast.error(translateLabel(ErrorLngKeys.IncorrectEmailAddress, LocalesKeys.error));
-      break;
-    case serverError.code === 401 && serverError.message === ErrorsEnum.PasswordIsWrong:
-      toast.error(translateLabel(ErrorLngKeys.IncorrectPassword, LocalesKeys.error));
-      break;
-    case serverError.code === 401 && serverError.message === ErrorsEnum.EmailIsNotActivated:
-      toast.error(translateLabel(ErrorLngKeys.YourEmailIsNotActivated, LocalesKeys.error));
-      break;
-    case serverError.code === 401 && serverError.message === ErrorsEnum.UserIsNotUnauthorized:
-      toast.error(translateLabel(ErrorLngKeys.YouAreNotAuthorized, LocalesKeys.error));
-      break;
-    case serverError.code === 404 && serverError.message === ErrorsEnum.UserNotFound:
-      toast.error(translateLabel(ErrorLngKeys.UserNotFound, LocalesKeys.error));
-      break;
-    case serverError.code === 400 && serverError.message === ErrorsEnum.CheckCorrectEnteredData:
-      toast.error(translateLabel(ErrorLngKeys.CheckCorrectEnteredData, LocalesKeys.error));
-      break;
-    case serverError.code === 400 && serverError.message === ErrorsEnum.DayByIDNotFound:
-      toast.error(translateLabel(ErrorLngKeys.InformationForDayByIDNotFound, LocalesKeys.error));
-      break;
-    case serverError.code === 404 && serverError.message === ErrorsEnum.TodoWithCurrentIdNotFound:
-      toast.error(translateLabel(ErrorLngKeys.InformationForDayByIDNotFound, LocalesKeys.error));
-      break;
-    case serverError.code === 400 && serverError.message === ErrorsEnum.ThereWasNoIdSpecifiedForDay:
-      toast.error(translateLabel(ErrorLngKeys.InformationForDayByIDNotFound, LocalesKeys.error));
-      break;
-    default:
-      toast.error(translateLabel(ErrorLngKeys.GeneralError, LocalesKeys.error));
-      break;
-  }
+  const errorCode = serverError.code.toString();
+  const errorMessage = errorMessages[errorCode]?.[serverError.message] || ErrorLngKeys.GeneralError;
+  toast.error(translateLabel(errorMessage, LocalesKeys.error));
 };
 
 export default CustomErrorHandler;
