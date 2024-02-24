@@ -4,7 +4,7 @@ import Chart from 'components/Statistics/Chart';
 import Controllers from 'components/Statistics/Controllers';
 import ModalWindow from 'components/ModalWindow';
 import useModalWindow from 'hooks/useModalWindow';
-import { month } from 'utilities/DefaultCalendarData';
+import { month } from 'utilities/defaultData/DefaultCalendarData';
 import { useGetStatisticsQuery } from '../redux/statistics/statisticsApi';
 import { StatisticsLngKeys } from 'types/locales/StatisticsLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';

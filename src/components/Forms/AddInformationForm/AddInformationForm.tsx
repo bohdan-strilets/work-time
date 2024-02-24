@@ -5,7 +5,7 @@ import Checkbox from 'components/UI/Checkbox';
 import QuickTiming from 'components/UI/QuickTiming';
 import Loader from 'components/UI/Loader';
 import useAddInformationForm from 'hooks/useAddInformationForm';
-import { DayOptions, ShortDayOptions } from 'utilities/DayOptions';
+import { DayOptions, ShortDayOptions } from 'utilities/dropdownListOptions/DayOptions';
 import HoursOptions from 'utilities/HoursOptions';
 import { AddInformationFormProps } from 'types/props/AddInformationFormProps';
 import { Status } from 'types/enums/StatusEnum';

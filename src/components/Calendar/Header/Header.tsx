@@ -1,5 +1,5 @@
 import { WeekdaysList, DayName } from './Header.styled';
-import { weekdays } from 'utilities/DefaultCalendarData';
+import { weekdays } from 'utilities/defaultData/DefaultCalendarData';
 
 const Header: React.FC<{}> = () => {
   return (

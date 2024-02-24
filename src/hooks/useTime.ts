@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { month as monthName } from 'utilities/DefaultCalendarData';
+import { month as monthName } from 'utilities/defaultData/DefaultCalendarData';
 
 const useTime = () => {
   const [date, setDate] = useState(new Date());

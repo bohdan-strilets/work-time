@@ -1,4 +1,4 @@
-import { month } from 'utilities/DefaultCalendarData';
+import { month } from 'utilities/defaultData/DefaultCalendarData';
 import CalendarButton from '../CalendarButton';
 import { MonthListProps } from 'types/props/MonthListProps';
 import { Wrapper, List, Item } from './MonthList.styled';

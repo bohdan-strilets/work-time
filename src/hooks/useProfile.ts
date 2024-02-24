@@ -7,7 +7,7 @@ import { useAppSelector } from 'hooks/useAppSelector';
 import { getUser } from '../redux/user/userSelectors';
 import FormatDateTime from 'utilities/FormatDateTime';
 import CalculateAge from 'utilities/CalculateAge';
-import FindLabelByValeu from 'utilities/FindLabelByValeu';
+import FindLabelByValue from 'utilities/FindLabelByValue';
 import GenderOptions from 'utilities/GenderOptions';
 import operations from '../redux/user/userOperations';
 import { useAppDispatch } from 'hooks/useAppDispatch';
@@ -35,7 +35,7 @@ const useProfile = () => {
   const isActivated = user?.isActivated ?? false;
   const email = user?.email ?? t(CommonLngKeys.Email, { ns: LocalesKeys.common });
   const gender = user?.gender ?? '';
-  const genderLabel = FindLabelByValeu(gender, GenderOptions);
+  const genderLabel = FindLabelByValue(gender, GenderOptions);
   const dateBirth = user?.dateBirth.toString();
   const formatedDateBirth = FormatDateTime(dateBirth ?? '');
   const age = CalculateAge(dateBirth ?? '');

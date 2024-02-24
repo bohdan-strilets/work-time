@@ -9,7 +9,7 @@ import { LocalesKeys } from 'types/enums/LocalesKeys';
 import FormatDateTime from 'utilities/FormatDateTime';
 import { TodoProps } from 'types/props/TodoProps';
 import { useUpdateCompletedMutation } from '../../../redux/todo/todoApi';
-import { month } from 'utilities/DefaultCalendarData';
+import { month } from 'utilities/defaultData/DefaultCalendarData';
 import { FormatDateTimeZone } from 'utilities/FormatDateTimeZone';
 import { TodosLngKeys } from 'types/locales/TodosLngKeys';
 import CustomErrorHandler from 'utilities/CustomErrorHandler';

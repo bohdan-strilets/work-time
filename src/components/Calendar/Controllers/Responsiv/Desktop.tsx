@@ -2,7 +2,7 @@ import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io';
 import { useTranslation } from 'react-i18next';
 import CalendarButton from '../../CalendarButton';
 import DropdownList from 'components/UI/DropdownList';
-import { month } from 'utilities/DefaultCalendarData';
+import { month } from 'utilities/defaultData/DefaultCalendarData';
 import { ControllersProps } from 'types/props/ControllersProps';
 import YearOptions from 'utilities/YearOptions';
 import useTime from 'hooks/useTime';
