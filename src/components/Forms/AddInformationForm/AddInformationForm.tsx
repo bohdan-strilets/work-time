@@ -6,7 +6,7 @@ import QuickTiming from 'components/UI/QuickTiming';
 import Loader from 'components/UI/Loader';
 import useAddInformationForm from 'hooks/useAddInformationForm';
 import { DayOptions, ShortDayOptions } from 'utilities/dropdownListOptions/DayOptions';
-import HoursOptions from 'utilities/HoursOptions';
+import HoursOptions from 'utilities/dropdownListOptions/HoursOptions';
 import { AddInformationFormProps } from 'types/props/AddInformationFormProps';
 import { Status } from 'types/enums/StatusEnum';
 import { LocalesKeys } from 'types/enums/LocalesKeys';

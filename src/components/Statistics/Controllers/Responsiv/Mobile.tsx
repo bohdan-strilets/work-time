@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import DropdownList from 'components/UI/DropdownList';
 import Button from 'components/UI/Button';
-import MonthOptions from 'utilities/MonthOption';
+import MonthOptions from 'utilities/dropdownListOptions/MonthOption';
 import YearOptions from 'utilities/YearOptions';
 import { ControllersForStatsProps } from 'types/props/ControllersForStatsProps';
 import useFilteredStatisticForm from 'hooks/useFilteredStatisticForm';

@@ -5,7 +5,7 @@ import Button from 'components/UI/Button';
 import QuickTiming from 'components/UI/QuickTiming';
 import Loader from 'components/UI/Loader';
 import { DayOptions, ShortDayOptions } from 'utilities/dropdownListOptions/DayOptions';
-import HoursOptions from 'utilities/HoursOptions';
+import HoursOptions from 'utilities/dropdownListOptions/HoursOptions';
 import useEditInformationForm from 'hooks/useEditInformationForm';
 import { EditInformationFormProps } from 'types/props/EditInformationFormProps';
 import GetLineSegment from 'utilities/GetLineSegment';
