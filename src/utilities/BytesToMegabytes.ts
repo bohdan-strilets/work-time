@@ -1,6 +1,9 @@
+const NumberBytesInMegabyte = 1024;
+
 const BytesToMegabytes = (bytes: number): number => {
-  const megabytes = bytes / (1024 * 1024);
-  return Math.round(megabytes * 10) / 10;
+  const megabytes = bytes / (NumberBytesInMegabyte * NumberBytesInMegabyte);
+  const megabyteInteger = Math.round(megabytes * 10) / 10;
+  return megabyteInteger;
 };
 
 export default BytesToMegabytes;
