@@ -1,25 +1,19 @@
-const CalculateWorkedHours = (start: string, finish: string): number => {
-  const startTimeParts = start.split(":");
-  const finishTimeParts = finish.split(":");
+const minutesInHour = 60;
+const hoursInDay = 24;
 
-  const startHour = parseInt(startTimeParts[0], 10);
-  const startMinute = parseInt(startTimeParts[1], 10);
-  const finishHour = parseInt(finishTimeParts[0], 10);
-  const finishMinute = parseInt(finishTimeParts[1], 10);
+const CalculateWorkedHours = (startTime: string, finishTime: string): number => {
+  const [startHour, startMinute] = startTime.split(':').map(Number);
+  const [finishHour, finishMinute] = finishTime.split(':').map(Number);
 
-  let hoursDiff = finishHour - startHour;
-  let minutesDiff = finishMinute - startMinute;
+  const totalStartMinutes = startHour * minutesInHour + startMinute;
+  const totalFinishMinutes = finishHour * minutesInHour + finishMinute;
+  let totalDiffMinutes = totalFinishMinutes - totalStartMinutes;
 
-  if (minutesDiff < 0) {
-    hoursDiff -= 1;
-    minutesDiff += 60;
+  if (totalDiffMinutes < 0) {
+    totalDiffMinutes += hoursInDay * minutesInHour;
   }
 
-  if (hoursDiff < 0) {
-    hoursDiff += 24;
-  }
-
-  return hoursDiff + minutesDiff / 60;
+  return totalDiffMinutes / minutesInHour;
 };
 
 export default CalculateWorkedHours;
