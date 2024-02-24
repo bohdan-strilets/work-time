@@ -1,17 +1,16 @@
-import { useEffect } from "react";
-import { UsePressEscCloseProps } from "types/props/UsePressEscCloseProps";
+import { useEffect } from 'react';
+import { UsePressEscCloseProps } from 'types/props/UsePressEscCloseProps';
 
 const usePressEscClose = ({ isOpen, toggle }: UsePressEscCloseProps) => {
   useEffect(() => {
-    const handleKeyPress = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen) {
+    const handleEscapePress = (e: KeyboardEvent) => {
+      if (isOpen && e.key === 'Escape') {
         toggle();
       }
     };
-    document.addEventListener("keydown", handleKeyPress);
-    return () => {
-      document.removeEventListener("keydown", handleKeyPress);
-    };
+
+    document.addEventListener('keydown', handleEscapePress);
+    return () => document.removeEventListener('keydown', handleEscapePress);
   }, [isOpen, toggle]);
 };
 
