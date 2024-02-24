@@ -9,7 +9,7 @@ import ContactFormSchema from 'validations/ContactFormSchema';
 import { useAppDispatch } from './useAppDispatch';
 import operations from '../redux/user/userOperations';
 import { UserResponseType } from 'types/types/UserResponseType';
-import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import CustomErrorHandler from 'utilities/secondaryFunctions/CustomErrorHandler';
 import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { AboutUsLngKeys } from 'types/locales/AboutUsLngKeys';

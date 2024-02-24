@@ -12,7 +12,7 @@ import { useAppDispatch } from 'hooks/useAppDispatch';
 import operations from '../redux/user/userOperations';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
-import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import CustomErrorHandler from 'utilities/secondaryFunctions/CustomErrorHandler';
 import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 
 const useResetPasswordForm = () => {

@@ -8,7 +8,7 @@ import { DayOptions, ShortDayOptions } from 'utilities/dropdownListOptions/DayOp
 import HoursOptions from 'utilities/dropdownListOptions/HoursOptions';
 import useEditInformationForm from 'hooks/useEditInformationForm';
 import { EditInformationFormProps } from 'types/props/EditInformationFormProps';
-import GetLineSegment from 'utilities/GetLineSegment';
+import GetLineSegment from 'utilities/secondaryFunctions/GetLineSegment';
 import { Status } from 'types/enums/StatusEnum';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { CalendarLngKeys } from 'types/locales/CalendarLngKeys';

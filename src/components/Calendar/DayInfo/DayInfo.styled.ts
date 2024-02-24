@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { ContainerProps, TextProps, ExtraTimeStatusProps } from 'types/props/DayInfoProps';
-import ScreenWidth from 'utilities/ScreenWidth';
+import ScreenWidth from 'utilities/defaultData/ScreenWidth';
 
 export const Container = styled.div<ContainerProps>`
   display: ${({ displayBlock }) => (displayBlock ? 'block' : 'flex')};

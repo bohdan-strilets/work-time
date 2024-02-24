@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from 'react';
 import useModalWindow from './useModalWindow';
 import { Result } from 'types/types/AdditionalHoursType';
 import { HookProps } from 'types/props/DayInfoProps';
-import GetNightRate from 'utilities/GetNightRate';
+import GetNightRate from 'utilities/secondaryFunctions/GetNightRate';
 import { WorkShiftNumber } from 'types/enums/WorkShiftNumber';
 import { Status } from 'types/enums/StatusEnum';
 import { useAppSelector } from './useAppSelector';

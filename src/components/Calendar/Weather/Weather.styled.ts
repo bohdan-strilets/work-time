@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import ScreenWidth from 'utilities/ScreenWidth';
+import ScreenWidth from 'utilities/defaultData/ScreenWidth';
 import { TemperatureValueProps } from 'types/props/WeatherProps';
 
 export const Wrapper = styled.div`

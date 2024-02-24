@@ -10,7 +10,7 @@ import { getTheme } from '../../../redux/settings/settingsSelectors';
 import { StatisticsLngKeys } from 'types/locales/StatisticsLngKeys';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
-import normalizingForNumber from 'utilities/normalizingForNumber';
+import normalizingForNumber from 'utilities/secondaryFunctions/normalizingForNumber';
 import {
   HeaderWrapper,
   Title,

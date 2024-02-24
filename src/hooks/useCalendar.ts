@@ -15,7 +15,7 @@ import { SoundNamesEnum } from 'types/enums/SoundNamesEnum';
 import { CalendarLngKeys } from 'types/locales/CalendarLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { CalendarResponseType } from 'types/types/CalendarResponseType';
-import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import CustomErrorHandler from 'utilities/secondaryFunctions/CustomErrorHandler';
 import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 import { useGetAllTodoQuery } from '../redux/todo/todoApi';
 

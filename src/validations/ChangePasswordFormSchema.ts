@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { passwordRegex } from 'utilities/Regex';
+import { passwordRegex } from 'utilities/regex/passwordRegex';
 import { translateLabel } from 'locales/config';
 import { ValidationLngKeys } from 'types/locales/ValidationLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';

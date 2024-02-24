@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import ScreenWidth from 'utilities/ScreenWidth';
+import ScreenWidth from 'utilities/defaultData/ScreenWidth';
 import { HeaderProps, TitleProps } from 'types/props/ModalWindowProps';
 import { ThemeEnum } from 'types/enums/ThemeEnum';
 

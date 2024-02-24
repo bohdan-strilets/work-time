@@ -5,9 +5,9 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { getUser } from '../redux/user/userSelectors';
-import FormatDateTime from 'utilities/FormatDateTime';
-import CalculateAge from 'utilities/CalculateAge';
-import FindLabelByValue from 'utilities/FindLabelByValue';
+import FormatDateTime from 'utilities/secondaryFunctions/FormatDateTime';
+import CalculateAge from 'utilities/secondaryFunctions/CalculateAge';
+import FindLabelByValue from 'utilities/secondaryFunctions/FindLabelByValue';
 import GenderOptions from 'utilities/dropdownListOptions/GenderOptions';
 import operations from '../redux/user/userOperations';
 import { useAppDispatch } from 'hooks/useAppDispatch';
@@ -17,7 +17,7 @@ import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
 import useSoundSprite from './useSoundSprite';
 import { SoundNamesEnum } from 'types/enums/SoundNamesEnum';
-import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import CustomErrorHandler from 'utilities/secondaryFunctions/CustomErrorHandler';
 import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 
 const useProfile = () => {

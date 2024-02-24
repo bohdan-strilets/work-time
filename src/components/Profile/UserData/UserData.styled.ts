@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { StatusProps } from 'types/props/UserDataProps';
-import ScreenWidth from 'utilities/ScreenWidth';
+import ScreenWidth from 'utilities/defaultData/ScreenWidth';
 
 export const Group = styled.div`
   display: flex;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StatisticsByMonths } from 'types/types/StatisticsType';
-import getRandomColor from 'utilities/getRandomColor';
+import getRandomColor from 'utilities/secondaryFunctions/getRandomColor';
 import { FilterDateType } from 'types/types/FilterDateType';
 import { ValueByMonth } from 'types/types/StatisticsType';
 import { HookProps } from 'types/props/StatisticsProps';

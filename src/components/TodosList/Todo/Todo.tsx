@@ -6,13 +6,13 @@ import TodoControllers from '../TodoControllers';
 import PriorityEnum from 'types/enums/PriorityEnum';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
-import FormatDateTime from 'utilities/FormatDateTime';
+import FormatDateTime from 'utilities/secondaryFunctions/FormatDateTime';
 import { TodoProps } from 'types/props/TodoProps';
 import { useUpdateCompletedMutation } from '../../../redux/todo/todoApi';
 import { month } from 'utilities/defaultData/DefaultCalendarData';
-import { FormatDateTimeZone } from 'utilities/FormatDateTimeZone';
+import { FormatDateTimeZone } from 'utilities/secondaryFunctions/FormatDateTimeZone';
 import { TodosLngKeys } from 'types/locales/TodosLngKeys';
-import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import CustomErrorHandler from 'utilities/secondaryFunctions/CustomErrorHandler';
 import { TodosResponseType } from 'types/types/TodosResponseType';
 import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 import {

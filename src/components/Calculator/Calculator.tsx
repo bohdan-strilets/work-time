@@ -6,7 +6,7 @@ import { LocalesKeys } from 'types/enums/LocalesKeys';
 import useCalculateTax from 'hooks/useCalculateTax';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { getSalaryPerHour } from '../../redux/user/userSelectors';
-import normalizingForNumber from 'utilities/normalizingForNumber';
+import normalizingForNumber from 'utilities/secondaryFunctions/normalizingForNumber';
 import {
   Text,
   Wrapper,

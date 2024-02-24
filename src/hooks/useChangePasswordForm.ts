@@ -15,7 +15,7 @@ import { getPassword } from '../redux/user/userSelectors';
 import { ChangePasswordDto } from 'types/dto/ChangePasswordDto';
 import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
-import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import CustomErrorHandler from 'utilities/secondaryFunctions/CustomErrorHandler';
 import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 
 const useChangePasswordForm = () => {

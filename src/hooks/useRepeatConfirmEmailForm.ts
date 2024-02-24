@@ -11,7 +11,7 @@ import { useAppDispatch } from 'hooks/useAppDispatch';
 import operations from '../redux/user/userOperations';
 import { AuthLngKeys } from 'types/locales/AuthLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
-import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import CustomErrorHandler from 'utilities/secondaryFunctions/CustomErrorHandler';
 import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 
 const useRepeatConfirmEmailForm = () => {

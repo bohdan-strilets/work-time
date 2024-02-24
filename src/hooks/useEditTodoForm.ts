@@ -12,7 +12,7 @@ import { useUpdateTodoMutation } from '../redux/todo/todoApi';
 import { HookProps } from 'types/props/EditTodoFormProps';
 import { useGetOneTodoQuery } from '../redux/todo/todoApi';
 import { TodosResponseType } from 'types/types/TodosResponseType';
-import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import CustomErrorHandler from 'utilities/secondaryFunctions/CustomErrorHandler';
 import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 
 const useEditTodoForm = ({ todoId }: HookProps) => {

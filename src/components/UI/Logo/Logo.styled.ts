@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { IoCalendar } from 'react-icons/io5';
-import ScreenWidth from 'utilities/ScreenWidth';
+import ScreenWidth from 'utilities/defaultData/ScreenWidth';
 
 export const Text = styled.p`
   position: relative;

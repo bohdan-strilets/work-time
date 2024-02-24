@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { ThemeEnum } from 'types/enums/ThemeEnum';
-import ScreenWidth from 'utilities/ScreenWidth';
+import ScreenWidth from 'utilities/defaultData/ScreenWidth';
 
 export const Backdrop = styled.div`
   position: fixed;

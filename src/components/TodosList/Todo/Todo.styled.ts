@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import PriorityEnum from 'types/enums/PriorityEnum';
-import ScreenWidth from 'utilities/ScreenWidth';
+import ScreenWidth from 'utilities/defaultData/ScreenWidth';
 import { PriorityProps } from 'types/props/ExtendedTodoListProps';
 
 export const Item = styled.li`

@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import ScreenWidth from "utilities/ScreenWidth";
+import styled from '@emotion/styled';
+import ScreenWidth from 'utilities/defaultData/ScreenWidth';
 
 export const Text = styled.p`
   margin-bottom: var(--medium-indent);

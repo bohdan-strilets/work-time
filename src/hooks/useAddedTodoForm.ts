@@ -12,10 +12,10 @@ import useModalWindow from 'hooks/useModalWindow';
 import AddedTodoFormSchema from 'validations/AddedTodoFormSchema';
 import useSoundSprite from './useSoundSprite';
 import { SoundNamesEnum } from 'types/enums/SoundNamesEnum';
-import { FormatDateTimeZone } from 'utilities/FormatDateTimeZone';
+import { FormatDateTimeZone } from 'utilities/secondaryFunctions/FormatDateTimeZone';
 import { TodosResponseType } from 'types/types/TodosResponseType';
 import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
-import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import CustomErrorHandler from 'utilities/secondaryFunctions/CustomErrorHandler';
 
 const useAddedTodoForm = ({ dayId, selectedDate }: AddedTodoFormProps) => {
   const validation = {

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import ScreenWidth from 'utilities/ScreenWidth';
+import ScreenWidth from 'utilities/defaultData/ScreenWidth';
 
 export const Text = styled.p`
   @media screen and (min-width: ${ScreenWidth.tablet}) {

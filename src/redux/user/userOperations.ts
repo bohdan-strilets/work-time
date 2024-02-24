@@ -12,7 +12,7 @@ import { ChangeProfileDto } from 'types/dto/ChangeProfileDto';
 import { EmailDto } from 'types/dto/EmailDto';
 import { ChangePasswordDto } from 'types/dto/ChangePasswordDto';
 import { ResetPasswordDto } from 'types/dto/resetPasswordDto';
-import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import CustomErrorHandler from 'utilities/secondaryFunctions/CustomErrorHandler';
 import { translateLabel } from 'locales/config';
 import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';

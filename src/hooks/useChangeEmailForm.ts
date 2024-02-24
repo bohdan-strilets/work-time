@@ -12,7 +12,7 @@ import { useAppSelector } from 'hooks/useAppSelector';
 import useModalWindow from 'hooks/useModalWindow';
 import operations from '../redux/user/userOperations';
 import { getEmail } from '../redux/user/userSelectors';
-import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import CustomErrorHandler from 'utilities/secondaryFunctions/CustomErrorHandler';
 import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { ListProps } from 'types/props/QuickTimingProps';
-import ScreenWidth from 'utilities/ScreenWidth';
+import ScreenWidth from 'utilities/defaultData/ScreenWidth';
 
 export const List = styled.ul<ListProps>`
   display: flex;

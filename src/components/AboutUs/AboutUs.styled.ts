@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import ScreenWidth from 'utilities/ScreenWidth';
+import ScreenWidth from 'utilities/defaultData/ScreenWidth';
 import { TextProps, TitleProps } from 'types/props/AboutUsProps';
 
 export const TopSide = styled.div`

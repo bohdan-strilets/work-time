@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { CellProps } from 'types/props/CellDayProps';
-import ScreenWidth from 'utilities/ScreenWidth';
+import ScreenWidth from 'utilities/defaultData/ScreenWidth';
 import { Status } from 'types/enums/StatusEnum';
 import workDayBg from 'Assets/images/work-day-bg.jpg';
 import dayOffBg from 'Assets/images/day-off-bg.jpg';
