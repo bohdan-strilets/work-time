@@ -1,9 +1,20 @@
+const numberMillisecondsInOneSecond = 1000;
+const numberSecondsInOneHour = 3600;
+const numberHoursInOneDay = 24;
+const averageNumberDaysPerYear = 365.25;
+
 const CalculateAge = (dateString: string): number => {
   const currentDate = new Date();
-  const profileDate = new Date(dateString);
+  const dateBirth = new Date(dateString);
 
-  let timeDifference = currentDate.getTime() - profileDate.getTime();
-  const yearsOld = Math.floor(timeDifference / (1000 * 3600 * 24 * 365.25));
+  let timeDifference = currentDate.getTime() - dateBirth.getTime();
+  const yearsOld = Math.floor(
+    timeDifference /
+      (numberMillisecondsInOneSecond *
+        numberSecondsInOneHour *
+        numberHoursInOneDay *
+        averageNumberDaysPerYear),
+  );
 
   return yearsOld;
 };
