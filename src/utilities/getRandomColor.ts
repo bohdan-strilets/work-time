@@ -1,10 +1,10 @@
 const getRandomColor = (alpha: number): string => {
-  const randomRed = Math.floor(Math.random() * 256);
-  const randomGreen = Math.floor(Math.random() * 256);
-  const randomBlue = Math.floor(Math.random() * 256);
+  const red = Math.floor(Math.random() * 256);
+  const green = Math.floor(Math.random() * 256);
+  const blue = Math.floor(Math.random() * 256);
   const validAlpha = Math.max(0, Math.min(1, alpha));
 
-  const color = `rgba(${randomRed}, ${randomGreen}, ${randomBlue}, ${validAlpha})`;
+  const color = `rgba(${red}, ${green}, ${blue}, ${validAlpha})`;
   return color;
 };
 
