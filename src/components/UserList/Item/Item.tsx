@@ -8,7 +8,7 @@ import { FaStar } from 'react-icons/fa6';
 import Avatar from 'components/UI/Avatar';
 import FormatDateTime from 'utilities/FormatDateTime';
 import FindLabelByValue from 'utilities/FindLabelByValue';
-import GenderOptions from 'utilities/GenderOptions';
+import GenderOptions from 'utilities/dropdownListOptions/GenderOptions';
 import { ItemProps } from 'types/props/ItemProps';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { StatisticsLngKeys } from 'types/locales/StatisticsLngKeys';

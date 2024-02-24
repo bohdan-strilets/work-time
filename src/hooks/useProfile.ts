@@ -8,7 +8,7 @@ import { getUser } from '../redux/user/userSelectors';
 import FormatDateTime from 'utilities/FormatDateTime';
 import CalculateAge from 'utilities/CalculateAge';
 import FindLabelByValue from 'utilities/FindLabelByValue';
-import GenderOptions from 'utilities/GenderOptions';
+import GenderOptions from 'utilities/dropdownListOptions/GenderOptions';
 import operations from '../redux/user/userOperations';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { UserResponseType } from 'types/types/UserResponseType';
