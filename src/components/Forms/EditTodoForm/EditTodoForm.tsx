@@ -3,7 +3,7 @@ import Textarea from 'components/UI/Textarea';
 import DropdownList from 'components/UI/DropdownList';
 import Button from 'components/UI/Button';
 import Loader from 'components/UI/Loader';
-import { PriorityOptions } from 'utilities/PriorityOptions';
+import { PriorityOptions } from 'utilities/dropdownListOptions/PriorityOptions';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { TodosLngKeys } from 'types/locales/TodosLngKeys';

@@ -15,7 +15,7 @@ import { useDeleteTodoMutation } from '../redux/todo/todoApi';
 import useSoundSprite from 'hooks/useSoundSprite';
 import { SoundNamesEnum } from 'types/enums/SoundNamesEnum';
 import { TodosResponseType } from 'types/types/TodosResponseType';
-import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import CustomErrorHandler from 'utilities/secondaryFunctions/CustomErrorHandler';
 import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 
 const TodosPage: React.FC<{}> = () => {

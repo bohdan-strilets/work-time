@@ -12,7 +12,7 @@ import SoundSwitch from 'components/UI/SoundSwitch';
 import useMenu from 'hooks/useMenu';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { getIsLoggedIn } from '../../redux/user/userSelectors';
-import ScreenWidth from 'utilities/ScreenWidth';
+import ScreenWidth from 'utilities/defaultData/ScreenWidth';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { Wrapper, Line, List, Item } from './Header.styled';

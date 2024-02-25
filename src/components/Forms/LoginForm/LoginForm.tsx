@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import Media from 'react-media';
-import ScreenWidth from 'utilities/ScreenWidth';
+import ScreenWidth from 'utilities/defaultData/ScreenWidth';
 import Mobile from './Responsiv/Mobile';
 import Tablet from './Responsiv/Tablet';
 import Desktop from './Responsiv/Desktop';

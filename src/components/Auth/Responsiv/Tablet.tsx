@@ -10,7 +10,7 @@ import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { Wrapper, LeftSide, Overlay, Title, Text, Button, RightSide } from '../Auth.styled';
 
 const Tablet: React.FC<{}> = () => {
-  const { changeType, type } = useAuth();
+  const { toggleType, type } = useAuth();
   const { t } = useTranslation();
 
   return (
@@ -22,7 +22,7 @@ const Tablet: React.FC<{}> = () => {
               {t(AuthLngKeys.HelloFriend, { ns: LocalesKeys.auth })}
             </Title>
             <Text>{t(AuthLngKeys.EnterYourPersonalDetails, { ns: LocalesKeys.auth })}</Text>
-            <Button onClick={changeType} type="button">
+            <Button onClick={toggleType} type="button">
               {t(CommonLngKeys.Login, { ns: LocalesKeys.common })}
             </Button>
           </Overlay>
@@ -32,7 +32,7 @@ const Tablet: React.FC<{}> = () => {
               {t(AuthLngKeys.WelcomeBack, { ns: LocalesKeys.auth })}
             </Title>
             <Text>{t(AuthLngKeys.ToKeepConnected, { ns: LocalesKeys.auth })}</Text>
-            <Button onClick={changeType} type="button">
+            <Button onClick={toggleType} type="button">
               {t(CommonLngKeys.Registration, { ns: LocalesKeys.common })}
             </Button>
           </Overlay>

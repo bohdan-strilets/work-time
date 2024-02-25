@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { WorkShiftNumber } from 'types/enums/WorkShiftNumber';
 import { IncomeListProps } from 'types/props/IncomeListProps';
-import Multiplication from 'utilities/Multiplication';
-import GetNightRate from 'utilities/GetNightRate';
+import Multiplication from 'utilities/secondaryFunctions/Multiplication';
+import GetNightRate from 'utilities/secondaryFunctions/GetNightRate';
 import { Status } from 'types/enums/StatusEnum';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { getSalaryPerHour } from '../../../redux/user/userSelectors';

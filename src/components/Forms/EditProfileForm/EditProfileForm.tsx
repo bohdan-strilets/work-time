@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import GenderOptions from 'utilities/GenderOptions';
+import GenderOptions from 'utilities/dropdownListOptions/GenderOptions';
 import TextInput from 'components/UI/TextInput';
 import DropdownList from 'components/UI/DropdownList';
 import Button from 'components/UI/Button';

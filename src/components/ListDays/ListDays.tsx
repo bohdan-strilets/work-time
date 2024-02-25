@@ -9,7 +9,7 @@ import { RiTimerFlashFill } from 'react-icons/ri';
 import Loader from 'components/UI/Loader';
 import Placeholder from 'components/Placeholder';
 import { Status } from 'types/enums/StatusEnum';
-import { month } from 'utilities/DefaultCalendarData';
+import { month } from 'utilities/defaultData/DefaultCalendarData';
 import useListDays from 'hooks/useListDays';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';

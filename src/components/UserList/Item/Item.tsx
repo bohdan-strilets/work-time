@@ -6,14 +6,14 @@ import { PiClockCountdownFill } from 'react-icons/pi';
 import { BsCalendar3WeekFill } from 'react-icons/bs';
 import { FaStar } from 'react-icons/fa6';
 import Avatar from 'components/UI/Avatar';
-import FormatDateTime from 'utilities/FormatDateTime';
-import FindLabelByValeu from 'utilities/FindLabelByValeu';
-import GenderOptions from 'utilities/GenderOptions';
+import FormatDateTime from 'utilities/secondaryFunctions/FormatDateTime';
+import FindLabelByValue from 'utilities/secondaryFunctions/FindLabelByValue';
+import GenderOptions from 'utilities/dropdownListOptions/GenderOptions';
 import { ItemProps } from 'types/props/ItemProps';
 import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { StatisticsLngKeys } from 'types/locales/StatisticsLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
-import normalizingForNumber from 'utilities/normalizingForNumber';
+import normalizingForNumber from 'utilities/secondaryFunctions/normalizingForNumber';
 import {
   Wrapper,
   FirstFloor,
@@ -66,7 +66,7 @@ const Item: React.FC<ItemProps> = ({
             <RiEmotionLaughFill size={20} color="var(--green-color)" />
             <KeyValue>
               <Property>{t(CommonLngKeys.Gender, { ns: LocalesKeys.common })}:</Property>
-              <Value>{FindLabelByValeu(gender, GenderOptions)}</Value>
+              <Value>{FindLabelByValue(gender, GenderOptions)}</Value>
             </KeyValue>
           </PropertyWrapper>
           <PropertyWrapper>

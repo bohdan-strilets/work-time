@@ -11,7 +11,7 @@ import { useAppDispatch } from 'hooks/useAppDispatch';
 import operations from '../redux/user/userOperations';
 import { UserResponseType } from 'types/types/UserResponseType';
 import useModalWindow from './useModalWindow';
-import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import CustomErrorHandler from 'utilities/secondaryFunctions/CustomErrorHandler';
 import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { ValidationLngKeys } from 'types/locales/ValidationLngKeys';

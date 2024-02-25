@@ -5,10 +5,10 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { getUser } from '../redux/user/userSelectors';
-import FormatDateTime from 'utilities/FormatDateTime';
-import CalculateAge from 'utilities/CalculateAge';
-import FindLabelByValeu from 'utilities/FindLabelByValeu';
-import GenderOptions from 'utilities/GenderOptions';
+import FormatDateTime from 'utilities/secondaryFunctions/FormatDateTime';
+import CalculateAge from 'utilities/secondaryFunctions/CalculateAge';
+import FindLabelByValue from 'utilities/secondaryFunctions/FindLabelByValue';
+import GenderOptions from 'utilities/dropdownListOptions/GenderOptions';
 import operations from '../redux/user/userOperations';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { UserResponseType } from 'types/types/UserResponseType';
@@ -17,7 +17,7 @@ import { CommonLngKeys } from 'types/locales/CommonLngKeys';
 import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
 import useSoundSprite from './useSoundSprite';
 import { SoundNamesEnum } from 'types/enums/SoundNamesEnum';
-import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import CustomErrorHandler from 'utilities/secondaryFunctions/CustomErrorHandler';
 import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 
 const useProfile = () => {
@@ -35,7 +35,7 @@ const useProfile = () => {
   const isActivated = user?.isActivated ?? false;
   const email = user?.email ?? t(CommonLngKeys.Email, { ns: LocalesKeys.common });
   const gender = user?.gender ?? '';
-  const genderLabel = FindLabelByValeu(gender, GenderOptions);
+  const genderLabel = FindLabelByValue(gender, GenderOptions);
   const dateBirth = user?.dateBirth.toString();
   const formatedDateBirth = FormatDateTime(dateBirth ?? '');
   const age = CalculateAge(dateBirth ?? '');

@@ -1,4 +1,3 @@
-import axios, { AxiosError } from 'axios';
 import { useTranslation } from 'react-i18next';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -12,10 +11,8 @@ import useModalWindow from 'hooks/useModalWindow';
 import AddedTodoFormSchema from 'validations/AddedTodoFormSchema';
 import useSoundSprite from './useSoundSprite';
 import { SoundNamesEnum } from 'types/enums/SoundNamesEnum';
-import { FormatDateTimeZone } from 'utilities/FormatDateTimeZone';
-import { TodosResponseType } from 'types/types/TodosResponseType';
-import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
-import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import { FormatDateTimeZone } from 'utilities/secondaryFunctions/FormatDateTimeZone';
+import useErrorHandle from './useErrorHandle';
 
 const useAddedTodoForm = ({ dayId, selectedDate }: AddedTodoFormProps) => {
   const validation = {
@@ -28,40 +25,38 @@ const useAddedTodoForm = ({ dayId, selectedDate }: AddedTodoFormProps) => {
     formState: { errors },
     control,
   } = useForm<AddedTodoFormInputs>(validation);
+
   const { t } = useTranslation();
   const [createTodo, { isLoading }] = useCreateTodoMutation();
   const { closeModal } = useModalWindow();
   const { play } = useSoundSprite();
+  const { handleError } = useErrorHandle();
+
+  const formatAppointmentDate = (date: Date) => FormatDateTimeZone(date);
+
+  const handleSuccess = () => {
+    closeModal();
+    toast.success(t(TodosLngKeys.TaskSuccessfullyCreated, { ns: LocalesKeys.todos }));
+    play({ id: SoundNamesEnum.Success });
+  };
 
   const onSubmit: SubmitHandler<AddedTodoFormInputs> = async value => {
-    if (selectedDate) {
-      const formatedDate = FormatDateTimeZone(selectedDate);
-      const dto = {
-        dayId: dayId ?? '',
-        task: value.task,
-        priority: value.priority,
-        isCompleted: false,
-        appointmentDate: formatedDate,
-      };
+    if (!selectedDate) return;
 
-      await createTodo(dto);
-      try {
-        closeModal();
-        toast.success(t(TodosLngKeys.TaskSuccessfullyCreated, { ns: LocalesKeys.todos }));
-        play({ id: SoundNamesEnum.Success });
-      } catch (error: any) {
-        if (axios.isAxiosError(error)) {
-          const axiosError = error as AxiosError<TodosResponseType>;
-          if (axiosError.response) {
-            const serverError = axiosError.response.data as TodosResponseType;
-            CustomErrorHandler(serverError);
-          } else {
-            toast.error(t(ErrorLngKeys.GeneralAxiosError, { ns: LocalesKeys.error }));
-          }
-        } else {
-          toast.error(t(ErrorLngKeys.GeneralError, { ns: LocalesKeys.error }));
-        }
-      }
+    const formatedDate = formatAppointmentDate(selectedDate);
+    const dto = {
+      dayId: dayId ?? '',
+      task: value.task,
+      priority: value.priority,
+      isCompleted: false,
+      appointmentDate: formatedDate,
+    };
+
+    await createTodo(dto);
+    try {
+      handleSuccess();
+    } catch (error) {
+      handleError(error);
     }
   };
 

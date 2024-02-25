@@ -4,10 +4,11 @@ import { AuthEnum } from 'types/enums/AuthEnum';
 const useAuth = () => {
   const [type, setType] = useState<AuthEnum>(AuthEnum.Login);
 
-  const changeType = () =>
-    type === AuthEnum.Registration ? setType(AuthEnum.Login) : setType(AuthEnum.Registration);
+  const toggleType = () => {
+    setType(prevType => (prevType === AuthEnum.Login ? AuthEnum.Registration : AuthEnum.Login));
+  };
 
-  return { changeType, type };
+  return { toggleType, type };
 };
 
 export default useAuth;

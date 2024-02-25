@@ -4,7 +4,7 @@ import axios, { AxiosError } from 'axios';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import { Month } from 'types/enums/CalendarEnum';
-import { month as monthNames } from 'utilities/DefaultCalendarData';
+import { month as monthNames } from 'utilities/defaultData/DefaultCalendarData';
 import useModalWindow from 'hooks/useModalWindow';
 import { useGetAllDaysInfoQuery } from '../redux/calendar/calendarApi';
 import { DayInfoType, DayDataType } from 'types/types/DayType';
@@ -15,7 +15,7 @@ import { SoundNamesEnum } from 'types/enums/SoundNamesEnum';
 import { CalendarLngKeys } from 'types/locales/CalendarLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
 import { CalendarResponseType } from 'types/types/CalendarResponseType';
-import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import CustomErrorHandler from 'utilities/secondaryFunctions/CustomErrorHandler';
 import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 import { useGetAllTodoQuery } from '../redux/todo/todoApi';
 

@@ -1,4 +1,4 @@
-import BytesToMegabytes from 'utilities/BytesToMegabytes';
+import BytesToMegabytes from 'utilities/secondaryFunctions/BytesToMegabytes';
 import { PreviewProps } from 'types/props/UploadFileProps';
 import { Wrapper, Image, Video, Text, Size } from './Preview.styled';
 

@@ -12,7 +12,7 @@ import operations from '../redux/user/userOperations';
 import { UserResponseType } from 'types/types/UserResponseType';
 import { ProfileLngKeys } from 'types/locales/ProfileLngKeys';
 import { LocalesKeys } from 'types/enums/LocalesKeys';
-import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import CustomErrorHandler from 'utilities/secondaryFunctions/CustomErrorHandler';
 import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 
 const useEditProfileForm = () => {

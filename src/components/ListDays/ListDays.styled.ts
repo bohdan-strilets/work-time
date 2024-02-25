@@ -6,7 +6,7 @@ import vacationDayBg from 'Assets/images/vacation-day-bg.jpg';
 import slickLeaveBg from 'Assets/images/sick-leave-day-bg.jpg';
 import { IsAdditionalProps, ImageProps } from 'types/props/ListDaysProps';
 import { Status } from 'types/enums/StatusEnum';
-import ScreenWidth from 'utilities/ScreenWidth';
+import ScreenWidth from 'utilities/defaultData/ScreenWidth';
 
 export const Title = styled.p`
   font-weight: 700;

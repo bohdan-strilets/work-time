@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
-import ScreenWidth from 'utilities/ScreenWidth';
+import ScreenWidth from 'utilities/defaultData/ScreenWidth';
 
 const pulse = keyframes`
   0% {

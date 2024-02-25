@@ -11,7 +11,7 @@ import { LocalesKeys } from 'types/enums/LocalesKeys';
 import useModalWindow from 'hooks/useModalWindow';
 import { useUpdateCompletedMutation } from '../../../redux/todo/todoApi';
 import { TodosResponseType } from 'types/types/TodosResponseType';
-import CustomErrorHandler from 'utilities/CustomErrorHandler';
+import CustomErrorHandler from 'utilities/secondaryFunctions/CustomErrorHandler';
 import { ErrorLngKeys } from 'types/locales/ErrorsLngKeys';
 import { Item } from './TodoList.styled';
 
