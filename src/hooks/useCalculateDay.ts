@@ -66,10 +66,9 @@ const useCalculateDay = ({
   }, [END_TIME, START_TIME, endStr, startStr, time]);
 
   useEffect(() => {
-    if (additionalHours) {
-      const hours = calculateAdditionalHours();
-      setAdditional(hours);
-    }
+    if (!additionalHours) return;
+    const hours = calculateAdditionalHours();
+    setAdditional(hours);
   }, [additionalHours, calculateAdditionalHours, time]);
 
   const calculateEarningsDay = useCallback(
