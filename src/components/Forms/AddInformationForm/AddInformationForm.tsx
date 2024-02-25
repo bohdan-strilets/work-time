@@ -4,7 +4,7 @@ import Button from 'components/UI/Button';
 import Checkbox from 'components/UI/Checkbox';
 import QuickTiming from 'components/UI/QuickTiming';
 import Loader from 'components/UI/Loader';
-import useAddInformationForm from 'hooks/useAddInformationForm';
+import useCreateNewDayForm from 'hooks/useCreateNewDayForm';
 import { DayOptions, ShortDayOptions } from 'utilities/dropdownListOptions/DayOptions';
 import HoursOptions from 'utilities/dropdownListOptions/HoursOptions';
 import { AddInformationFormProps } from 'types/props/AddInformationFormProps';
@@ -31,7 +31,7 @@ const AddInformationForm: React.FC<AddInformationFormProps> = ({ selectedDate })
     quickFinishTime,
     selectedVacationHours,
     isLoading,
-  } = useAddInformationForm({ selectedDate });
+  } = useCreateNewDayForm({ selectedDate });
   const { t } = useTranslation();
   const contractType = useAppSelector(getContractType);
 
